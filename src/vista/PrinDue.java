@@ -50,12 +50,17 @@ public class PrinDue extends javax.swing.JFrame
         opcion1.setRoundBottomRight(5);
         opcion1.setRoundTopLeft(5);
         opcion1.setRoundTopRight(5);
-        opcion1.setRuta(new java.io.File("C:\\Users\\Developer\\Downloads\\Clientes.png"));
+        opcion1.setRuta(new java.io.File("C:\\Users\\Developer\\OneDrive\\Documentos\\University\\Archivos\\PDF's\\Tópicos\\Proyecto_img\\Clientes.png"));
         opcion1.setText("EMPLEADOS");
         getContentPane().add(opcion1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, 210, 220));
 
         opcion2.setBackground(new java.awt.Color(211, 199, 196));
         opcion2.setColor(new java.awt.Color(98, 88, 88));
+        opcion2.setRoundBottomLeft(5);
+        opcion2.setRoundBottomRight(5);
+        opcion2.setRoundTopLeft(5);
+        opcion2.setRoundTopRight(5);
+        opcion2.setRuta(new java.io.File("C:\\Users\\Developer\\OneDrive\\Documentos\\University\\Archivos\\PDF's\\Tópicos\\Proyecto_img\\Servicios.png"));
         opcion2.setText("SERVICIOS");
         getContentPane().add(opcion2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 280, 210, 220));
 

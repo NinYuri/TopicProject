@@ -223,7 +223,7 @@ public class Login extends javax.swing.JFrame
         
         if(txtUsuario.getText().equals("Yuriana") && String.valueOf(pssContrasena.getPassword()).equals("Yuriana09@@"))
         {
-            PrinDue frmPrincipal = new PrinDue();
+            PrinCli frmPrincipal = new PrinCli();
             frmPrincipal.setVisible(true);
             dispose();
         }
