@@ -70,7 +70,7 @@ public class PrinDue extends javax.swing.JFrame
         opcion3.setRoundBottomRight(5);
         opcion3.setRoundTopLeft(5);
         opcion3.setRoundTopRight(5);
-        opcion3.setRuta(new java.io.File("C:\\Users\\Developer\\Downloads\\Clientes.png"));
+        opcion3.setRuta(new java.io.File("C:\\Users\\Developer\\OneDrive\\Documentos\\University\\Archivos\\PDF's\\Tópicos\\Proyecto_img\\Finanzas.png"));
         opcion3.setText("FINANZAS");
         getContentPane().add(opcion3, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 280, 210, 220));
 

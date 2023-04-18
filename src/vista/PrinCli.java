@@ -50,8 +50,8 @@ public class PrinCli extends javax.swing.JFrame
         opcion1.setRoundBottomRight(5);
         opcion1.setRoundTopLeft(5);
         opcion1.setRoundTopRight(5);
-        opcion1.setRuta(new java.io.File("C:\\Users\\Developer\\OneDrive\\Documentos\\University\\Archivos\\PDF's\\Tópicos\\Proyecto_img\\Servicios.png"));
-        opcion1.setText("VER CITAS");
+        opcion1.setRuta(new java.io.File("C:\\Users\\Developer\\OneDrive\\Documentos\\University\\Archivos\\PDF's\\Tópicos\\Proyecto_img\\Calendario.png"));
+        opcion1.setText("CALENDARIO");
         getContentPane().add(opcion1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, 210, 220));
 
         opcion2.setBackground(new java.awt.Color(211, 199, 196));
@@ -70,7 +70,7 @@ public class PrinCli extends javax.swing.JFrame
         opcion3.setRoundBottomRight(5);
         opcion3.setRoundTopLeft(5);
         opcion3.setRoundTopRight(5);
-        opcion3.setRuta(new java.io.File("C:\\Users\\Developer\\Downloads\\Clientes.png"));
+        opcion3.setRuta(new java.io.File("C:\\Users\\Developer\\OneDrive\\Documentos\\University\\Archivos\\PDF's\\Tópicos\\Proyecto_img\\Nosotros.png"));
         opcion3.setText("NOSOTROS");
         getContentPane().add(opcion3, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 280, 210, 220));
 
