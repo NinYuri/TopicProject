@@ -15,7 +15,7 @@ public class PrinDue extends javax.swing.JFrame
         initComponents();
         
         setLocationRelativeTo(null);
-        setSize(872,600);
+        setSize(870,602);
         setResizable(false);
     }
 
@@ -26,12 +26,14 @@ public class PrinDue extends javax.swing.JFrame
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        opcion1 = new comp.Opcion();
-        opcion2 = new comp.Opcion();
-        opcion3 = new comp.Opcion();
+        opcEmpleados = new comp.Opcion();
+        opcServicios = new comp.Opcion();
+        opcFinanzas = new comp.Opcion();
+        lblExit = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(830, 600));
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -44,38 +46,64 @@ public class PrinDue extends javax.swing.JFrame
         jLabel2.setText("\"Transformamos tu imagen, realzamos tu belleza\"");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 790, 70));
 
-        opcion1.setBackground(new java.awt.Color(227, 227, 227));
-        opcion1.setColor(new java.awt.Color(191, 166, 161));
-        opcion1.setRoundBottomLeft(5);
-        opcion1.setRoundBottomRight(5);
-        opcion1.setRoundTopLeft(5);
-        opcion1.setRoundTopRight(5);
-        opcion1.setRuta(new java.io.File("C:\\Users\\Developer\\OneDrive\\Documentos\\University\\Archivos\\PDF's\\Tópicos\\Proyecto_img\\Clientes.png"));
-        opcion1.setText("EMPLEADOS");
-        getContentPane().add(opcion1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, 210, 220));
+        opcEmpleados.setBackground(new java.awt.Color(227, 227, 227));
+        opcEmpleados.setColor(new java.awt.Color(191, 166, 161));
+        opcEmpleados.setRoundBottomLeft(5);
+        opcEmpleados.setRoundBottomRight(5);
+        opcEmpleados.setRoundTopLeft(5);
+        opcEmpleados.setRoundTopRight(5);
+        opcEmpleados.setRuta(new java.io.File("C:\\Users\\Developer\\OneDrive\\Documentos\\University\\Archivos\\PDF's\\Tópicos\\Proyecto_img\\Clientes.png"));
+        opcEmpleados.setText("EMPLEADOS");
+        getContentPane().add(opcEmpleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, 210, 220));
 
-        opcion2.setBackground(new java.awt.Color(211, 199, 196));
-        opcion2.setColor(new java.awt.Color(98, 88, 88));
-        opcion2.setRoundBottomLeft(5);
-        opcion2.setRoundBottomRight(5);
-        opcion2.setRoundTopLeft(5);
-        opcion2.setRoundTopRight(5);
-        opcion2.setRuta(new java.io.File("C:\\Users\\Developer\\OneDrive\\Documentos\\University\\Archivos\\PDF's\\Tópicos\\Proyecto_img\\Servicios.png"));
-        opcion2.setText("SERVICIOS");
-        getContentPane().add(opcion2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 280, 210, 220));
+        opcServicios.setBackground(new java.awt.Color(211, 199, 196));
+        opcServicios.setColor(new java.awt.Color(98, 88, 88));
+        opcServicios.setRoundBottomLeft(5);
+        opcServicios.setRoundBottomRight(5);
+        opcServicios.setRoundTopLeft(5);
+        opcServicios.setRoundTopRight(5);
+        opcServicios.setRuta(new java.io.File("C:\\Users\\Developer\\OneDrive\\Documentos\\University\\Archivos\\PDF's\\Tópicos\\Proyecto_img\\Servicios.png"));
+        opcServicios.setText("SERVICIOS");
+        opcServicios.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                opcServiciosMouseClicked(evt);
+            }
+        });
+        getContentPane().add(opcServicios, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 280, 210, 220));
 
-        opcion3.setBackground(new java.awt.Color(227, 227, 227));
-        opcion3.setColor(new java.awt.Color(191, 166, 161));
-        opcion3.setRoundBottomLeft(5);
-        opcion3.setRoundBottomRight(5);
-        opcion3.setRoundTopLeft(5);
-        opcion3.setRoundTopRight(5);
-        opcion3.setRuta(new java.io.File("C:\\Users\\Developer\\OneDrive\\Documentos\\University\\Archivos\\PDF's\\Tópicos\\Proyecto_img\\Finanzas.png"));
-        opcion3.setText("FINANZAS");
-        getContentPane().add(opcion3, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 280, 210, 220));
+        opcFinanzas.setBackground(new java.awt.Color(227, 227, 227));
+        opcFinanzas.setColor(new java.awt.Color(191, 166, 161));
+        opcFinanzas.setRoundBottomLeft(5);
+        opcFinanzas.setRoundBottomRight(5);
+        opcFinanzas.setRoundTopLeft(5);
+        opcFinanzas.setRoundTopRight(5);
+        opcFinanzas.setRuta(new java.io.File("C:\\Users\\Developer\\OneDrive\\Documentos\\University\\Archivos\\PDF's\\Tópicos\\Proyecto_img\\Finanzas.png"));
+        opcFinanzas.setText("FINANZAS");
+        getContentPane().add(opcFinanzas, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 280, 210, 220));
+
+        lblExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/principal/Exit.png"))); // NOI18N
+        lblExit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblExit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblExitMouseClicked(evt);
+            }
+        });
+        getContentPane().add(lblExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, 60));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void opcServiciosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_opcServiciosMouseClicked
+        FrmServicios ser = new FrmServicios();
+        ser.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_opcServiciosMouseClicked
+
+    private void lblExitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblExitMouseClicked
+        Login log = new Login();
+        log.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_lblExitMouseClicked
 
     /**
      * @param args the command line arguments
@@ -131,8 +159,9 @@ public class PrinDue extends javax.swing.JFrame
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private comp.Opcion opcion1;
-    private comp.Opcion opcion2;
-    private comp.Opcion opcion3;
+    private javax.swing.JLabel lblExit;
+    private comp.Opcion opcEmpleados;
+    private comp.Opcion opcFinanzas;
+    private comp.Opcion opcServicios;
     // End of variables declaration//GEN-END:variables
 }

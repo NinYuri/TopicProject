@@ -375,31 +375,35 @@ public class Login extends javax.swing.JFrame
                 JOptionPane.showMessageDialog(this, "Debes escribir una Contraseña", "Bienvenido al Sistema...", JOptionPane.ERROR_MESSAGE);
         }
         
-        if(txtUsuario.getText().equals("Susana") && String.valueOf(pssContrasena.getPassword()).equals("Susy:1971"))
+        if(txtUsuario.getText().equals("Susana"))
         {
-            PrinDue frmPrincipal = new PrinDue();
-            frmPrincipal.setVisible(true);
-            dispose();
+            if(String.valueOf(pssContrasena.getPassword()).equals("Susy:1971"))
+            {
+                PrinDue frmPrincipal = new PrinDue();
+                frmPrincipal.setVisible(true);
+                dispose();
+            }
+            else
+            {             
+                JOptionPane.showMessageDialog(this, "Contraseña Incorrecta", "Bienvenido al Sistema...", JOptionPane.ERROR_MESSAGE);
+                pssContrasena.setText("");
+            } 
         }
-        else
-            if(!String.valueOf(pssContrasena.getPassword()).equals("Susy:1971"))
+        
+        if(txtUsuario.getText().equals("Yuriana"))
+        {
+            if(String.valueOf(pssContrasena.getPassword()).equals("Yuriana09@@"))
+            {
+                PrinEmp frmPrincipal = new PrinEmp();
+                frmPrincipal.setVisible(true);
+                dispose();
+            }
+            else
             {
                 JOptionPane.showMessageDialog(this, "Contraseña Incorrecta", "Bienvenido al Sistema...", JOptionPane.ERROR_MESSAGE);
                 pssContrasena.setText("");
             }
-            else
-                if(txtUsuario.getText().equals("Yuriana") && String.valueOf(pssContrasena.getPassword()).equals("Yuriana09@@"))
-                {
-                    PrinEmp frmPrincipal = new PrinEmp();
-                    frmPrincipal.setVisible(true);
-                    dispose();
-                }
-                else
-                    if(!String.valueOf(pssContrasena.getPassword()).equals("Yuriana09@@"))
-                    {
-                        JOptionPane.showMessageDialog(this, "Contraseña Incorrecta", "Bienvenido al Sistema...", JOptionPane.ERROR_MESSAGE);
-                        pssContrasena.setText("");
-                    }
+        }
     }//GEN-LAST:event_lblIniSesMouseClicked
 
     private void lblRegistroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRegistroMouseClicked
