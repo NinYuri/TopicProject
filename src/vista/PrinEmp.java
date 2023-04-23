@@ -48,7 +48,7 @@ public class PrinEmp extends javax.swing.JFrame
         opcion1.setRoundBottomRight(5);
         opcion1.setRoundTopLeft(5);
         opcion1.setRoundTopRight(5);
-        opcion1.setRuta(new java.io.File("C:\\Users\\Developer\\Downloads\\Clientes.png"));
+        opcion1.setRuta(new java.io.File("C:\\Users\\Developer\\OneDrive\\Documentos\\University\\Archivos\\PDF's\\Tópicos\\Proyecto_img\\Agenda.png"));
         opcion1.setText("AGENDA");
         getContentPane().add(opcion1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 280, 210, 220));
 
