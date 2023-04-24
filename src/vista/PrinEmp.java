@@ -15,7 +15,7 @@ public class PrinEmp extends javax.swing.JFrame
         initComponents();
         
         setLocationRelativeTo(null);
-        setSize(872,600);
+        setSize(865,602);
         setResizable(false);
     }
 
@@ -27,9 +27,11 @@ public class PrinEmp extends javax.swing.JFrame
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         opcion1 = new comp.Opcion();
+        lblExit = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(830, 600));
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -52,8 +54,23 @@ public class PrinEmp extends javax.swing.JFrame
         opcion1.setText("AGENDA");
         getContentPane().add(opcion1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 280, 210, 220));
 
+        lblExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/principal/Exit.png"))); // NOI18N
+        lblExit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblExit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblExitMouseClicked(evt);
+            }
+        });
+        getContentPane().add(lblExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, 60));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void lblExitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblExitMouseClicked
+        Login log = new Login();
+        log.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_lblExitMouseClicked
 
     /**
      * @param args the command line arguments
@@ -109,6 +126,7 @@ public class PrinEmp extends javax.swing.JFrame
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel lblExit;
     private comp.Opcion opcion1;
     // End of variables declaration//GEN-END:variables
 }

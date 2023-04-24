@@ -94,9 +94,7 @@ public class PrinDue extends javax.swing.JFrame
     }// </editor-fold>//GEN-END:initComponents
 
     private void opcServiciosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_opcServiciosMouseClicked
-        FrmServicios ser = new FrmServicios();
-        ser.setVisible(true);
-        dispose();
+
     }//GEN-LAST:event_opcServiciosMouseClicked
 
     private void lblExitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblExitMouseClicked
