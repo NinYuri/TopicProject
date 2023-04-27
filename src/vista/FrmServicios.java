@@ -232,8 +232,6 @@ public class FrmServicios extends javax.swing.JFrame
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCortesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCortesMouseClicked
-        Servicios ser = new Servicios();
-        ser.setVisible(true);
     }//GEN-LAST:event_btnCortesMouseClicked
 
     private void btnCortesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCortesMousePressed
@@ -297,7 +295,8 @@ public class FrmServicios extends javax.swing.JFrame
     }//GEN-LAST:event_btnUñasMouseReleased
 
     private void btnMaquillajeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMaquillajeMouseClicked
-        // TODO add your handling code here:
+        Servicios ser = new Servicios();
+        ser.setVisible(true);
     }//GEN-LAST:event_btnMaquillajeMouseClicked
 
     private void btnMaquillajeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMaquillajeMousePressed

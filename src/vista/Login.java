@@ -5,36 +5,41 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
-import java.util.HashMap;
-import java.util.Map;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import libreriaproyecto.Contrasena;
 import libreriaproyecto.Generar;
-import libreriaproyecto.Recordar;
+import negocio.UsuariosControl;
 
 public class Login extends javax.swing.JFrame 
 {
     FondoPanel fondo = new FondoPanel();
-    HashMap<String, String> clientes = new Recordar().getUSUARIOS();
+    private final UsuariosControl CONTROL;
 
-    public Login() 
+    public Login()
     {
         setContentPane(fondo);
         initComponents();
+        CONTROL = new UsuariosControl();
         lblSee.setVisible(false);
         lblSeeReg.setVisible(false);
         lblSeeReg1.setVisible(false);
         pnlRegistro.setVisible(false);
-        
-for (Map.Entry<String, String> entrada : clientes.entrySet()) {
-    System.out.println(entrada.getKey() + " -> " + entrada.getValue());
-}
-        
+
         setLocationRelativeTo(null);
         setSize(872,600);
-        setResizable(false);
+        setResizable(false);  
+    }
+    
+    private void mensajeError(String msj)
+    {
+        JOptionPane.showMessageDialog(this, msj, "Sistema de Ventas y Compras", JOptionPane.ERROR_MESSAGE);
+    }
+    
+    private void mensajeOK(String msj)
+    {
+        JOptionPane.showMessageDialog(this, msj, "Sistema de Ventas y Compras", JOptionPane.INFORMATION_MESSAGE);
     }
 
     @SuppressWarnings("unchecked")
@@ -368,11 +373,9 @@ for (Map.Entry<String, String> entrada : clientes.entrySet()) {
     }//GEN-LAST:event_txtUsuarioMouseClicked
 
     private void lblIniSesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblIniSesMouseClicked
-        Recordar obr = new Recordar();
-        
         if(txtUsuario.getText().equals("Susana"))
         {
-            if(obr.revisarContrasena(String.valueOf(pssContrasena.getPassword())) == true)
+            if(CONTROL.Comparar(txtUsuario.getText(), String.valueOf(pssContrasena.getPassword())) == true)
             {
                 PrinDue frmPrincipal = new PrinDue();
                 frmPrincipal.setVisible(true);
@@ -382,50 +385,50 @@ for (Map.Entry<String, String> entrada : clientes.entrySet()) {
             {             
                 JOptionPane.showMessageDialog(this, "Contraseña Incorrecta", "Bienvenido al Sistema...", JOptionPane.ERROR_MESSAGE);
                 pssContrasena.setText("");
-            } 
+            }
         }
         else
             if(txtUsuario.getText().equals("Yuriana"))
             {
-                if(String.valueOf(pssContrasena.getPassword()).equals("Yuriana09@@"))
+                if(CONTROL.Comparar(txtUsuario.getText(), String.valueOf(pssContrasena.getPassword())) == true)
                 {
                     PrinEmp frmPrincipal = new PrinEmp();
                     frmPrincipal.setVisible(true);
                     dispose();
                 }
                 else
-                {
+                {             
                     JOptionPane.showMessageDialog(this, "Contraseña Incorrecta", "Bienvenido al Sistema...", JOptionPane.ERROR_MESSAGE);
                     pssContrasena.setText("");
                 }
             }
             else
-                if(clientes.containsKey(txtUsuario.getText()))
+                if(CONTROL.Existe(txtUsuario.getText()) == true)
                 {
-                    if(clientes.containsValue(String.valueOf(pssContrasena.getPassword())))
+                    if(CONTROL.Comparar(txtUsuario.getText(), String.valueOf(pssContrasena.getPassword())) == true)
                     {
                         PrinCli frmPrincipal = new PrinCli();
                         frmPrincipal.setVisible(true);
                         dispose();
                     }
                     else
-                    {
+                    {             
                         JOptionPane.showMessageDialog(this, "Contraseña Incorrecta", "Bienvenido al Sistema...", JOptionPane.ERROR_MESSAGE);
                         pssContrasena.setText("");
                     }
                 }
-            else
-            {
-                if(txtUsuario.getText().isEmpty() || txtUsuario.getText().equals("Nombre de usuario"))
-                    JOptionPane.showMessageDialog(this, "Debes escribir un Nombre de Usuario", "Bienvenido al Sistema...", JOptionPane.ERROR_MESSAGE);
-                if(String.valueOf(pssContrasena.getPassword()).isEmpty() || String.valueOf(pssContrasena.getPassword()).equals("Contraseña"))
-                    JOptionPane.showMessageDialog(this, "Debes escribir una Contraseña", "Bienvenido al Sistema...", JOptionPane.ERROR_MESSAGE);
                 else
                 {
-                    JOptionPane.showMessageDialog(this, "Usuario Incorrecto", "Bienvenido al Sistema...", JOptionPane.ERROR_MESSAGE);
-                    txtUsuario.setText("");                 
+                    if(txtUsuario.getText().isEmpty() || txtUsuario.getText().equals("Nombre de usuario"))
+                        JOptionPane.showMessageDialog(this, "Debes escribir un Nombre de Usuario", "Bienvenido al Sistema...", JOptionPane.ERROR_MESSAGE);
+                    if(String.valueOf(pssContrasena.getPassword()).isEmpty() || String.valueOf(pssContrasena.getPassword()).equals("Contraseña"))
+                        JOptionPane.showMessageDialog(this, "Debes escribir una Contraseña", "Bienvenido al Sistema...", JOptionPane.ERROR_MESSAGE);
+                    else
+                    {
+                        JOptionPane.showMessageDialog(this, "Usuario Incorrecto", "Bienvenido al Sistema...", JOptionPane.ERROR_MESSAGE);
+                        txtUsuario.setText("");                 
+                    }
                 }
-            }
     }//GEN-LAST:event_lblIniSesMouseClicked
 
     private void lblRegistroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRegistroMouseClicked
@@ -446,12 +449,12 @@ for (Map.Entry<String, String> entrada : clientes.entrySet()) {
     }//GEN-LAST:event_lblSeeMouseClicked
 
     private void lblOlvidarContMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblOlvidarContMouseClicked
-    if(clientes.containsKey(txtUsuario.getText()))
-    {
-        pssContrasena.setText(String.valueOf(clientes.get(txtUsuario.getText())));
-        pssContrasena.setForeground(new Color(255,255,255));
-    }
-    else
+    String resp;
+    resp = CONTROL.Contrasena(txtUsuario.getText());
+    
+    if(!resp.equals("Null"))
+        pssContrasena.setText(resp);
+    else        
         JOptionPane.showMessageDialog(this, "El usuario no esta registrado", "Recuperación de Contraseña...", JOptionPane.ERROR_MESSAGE);         
     }//GEN-LAST:event_lblOlvidarContMouseClicked
 
@@ -513,33 +516,38 @@ for (Map.Entry<String, String> entrada : clientes.entrySet()) {
 
     private void lblCrearCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCrearCMouseClicked
         Contrasena contrasena = new Contrasena(String.valueOf(pssContrasenaReg.getPassword()));
+        String resp;
         
-        if(!txtUsuarioN.getText().isEmpty() || !txtUsuarioN.getText().equals("Nombre de usuario"))
-        {
-            if(!clientes.containsKey(txtUsuarioN.getText()))
+        if(!txtUsuarioN.getText().isEmpty() && !txtUsuarioN.getText().equals("Nombre de usuario"))
+            if(CONTROL.Existe(txtUsuarioN.getText()) == true)
             {
-                if(!String.valueOf(pssContrasenaReg.getPassword()).isEmpty() || !String.valueOf(pssContrasenaReg.getPassword()).equals("Contraseña"))
-                {
-                    if(!String.valueOf(pssConfCont.getPassword()).isEmpty() || !String.valueOf(pssConfCont.getPassword()).equals("Confirmar Contraseña"))
+                JOptionPane.showMessageDialog(this, "El usuario ya se encuentra registrado en el sistema", "Registro en el Sistema...", JOptionPane.ERROR_MESSAGE);
+                txtUsuarioN.setText("");
+                pssContrasenaReg.setText("Contraseña");
+                pssConfCont.setText("Confirmar contraseña");
+            }
+            else
+                if(!String.valueOf(pssContrasenaReg.getPassword()).isEmpty() && !String.valueOf(pssContrasenaReg.getPassword()).equals("Contraseña"))
+                    if(!String.valueOf(pssConfCont.getPassword()).isEmpty() && !String.valueOf(pssConfCont.getPassword()).equals("Confirmar contraseña"))
                     {
-                        if(String.valueOf(pssContrasenaReg.getPassword()).equals(String.valueOf(pssConfCont.getPassword())) && !txtUsuarioN.getText().isEmpty())
+                        if(String.valueOf(pssContrasenaReg.getPassword()).equals(String.valueOf(pssConfCont.getPassword())))
                         {
                             if(contrasena.ValidarContrasena() == true)
                             {
-                                clientes.put(txtUsuarioN.getText(), String.valueOf(pssContrasenaReg.getPassword()));
-                                JOptionPane.showMessageDialog(this, "Usuario registrado exitosamente, por favor ingrese con su nueva cuenta", "Registro en el Sistema...", JOptionPane.OK_OPTION);
+                                resp = CONTROL.Insertar(txtUsuarioN.getText(), String.valueOf(pssContrasenaReg.getPassword()));
+                                JOptionPane.showMessageDialog(this, "Usuario registrado exitosamente, por favor ingrese con su nueva cuenta", "Registro en el Sistema...", JOptionPane.INFORMATION_MESSAGE);
                                 txtUsuarioN.setText("Nombre de usuario");
                                 pssContrasenaReg.setText("Contraseña");
-                                pssConfCont.setText("Confirmar Contraseña");
+                                pssConfCont.setText("Confirmar contraseña");
                                 pnlRegistro.setVisible(false);
                                 pnlIniSes.setVisible(true);
                             }
                             else
                             {
                                 JOptionPane.showMessageDialog(this, contrasena.Error(), "Registro en el Sistema...", JOptionPane.ERROR_MESSAGE);
-                                pssContrasenaReg.setText("");
-                                pssConfCont.setText("");
-                            }
+                                pssContrasenaReg.setText("Contraseña");
+                                pssConfCont.setText("Confirmar contraseña");
+                            }    
                         }
                         else
                         {
@@ -548,19 +556,11 @@ for (Map.Entry<String, String> entrada : clientes.entrySet()) {
                         }
                     }
                     else
-                        JOptionPane.showMessageDialog(this, "Debes confirmar tu Contraseña", "Registro en el Sistema...", JOptionPane.ERROR_MESSAGE);  
-                }
+                        JOptionPane.showMessageDialog(this, "Y confirmar tu Contraseña", "Registro en el Sistema...", JOptionPane.ERROR_MESSAGE);
                 else
-                    JOptionPane.showMessageDialog(this, "Debes escribir una Contraseña", "Registro en el Sistema...", JOptionPane.ERROR_MESSAGE);  
-            }
+                    JOptionPane.showMessageDialog(this, "Debes escribir una Contraseña", "Registro en el Sistema...", JOptionPane.ERROR_MESSAGE);
             else
-            {
-                JOptionPane.showMessageDialog(this, "El usuario ya se encuentra registrado en el sistema", "Registro en el Sistema...", JOptionPane.ERROR_MESSAGE);
-                txtUsuarioN.setText("");
-            }
-        }
-        else
-            JOptionPane.showMessageDialog(this, "Debes escribir un Nombre de usuario", "Registro en el Sistema...", JOptionPane.ERROR_MESSAGE);  
+                JOptionPane.showMessageDialog(this, "Debes escribir un Nombre de usuario", "Registro en el Sistema...", JOptionPane.ERROR_MESSAGE);
     }//GEN-LAST:event_lblCrearCMouseClicked
 
     private void pssContrasenaRegFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pssContrasenaRegFocusGained
