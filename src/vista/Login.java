@@ -10,6 +10,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import libreriaproyecto.Contrasena;
 import libreriaproyecto.Generar;
+import libreriaproyecto.Recordar;
 import negocio.UsuariosControl;
 
 public class Login extends javax.swing.JFrame 
@@ -27,9 +28,7 @@ public class Login extends javax.swing.JFrame
         lblSeeReg1.setVisible(false);
         pnlRegistro.setVisible(false);
 
-        setLocationRelativeTo(null);
-        setSize(872,600);
-        setResizable(false);  
+        setExtendedState(MAXIMIZED_BOTH);
     }
     
     private void mensajeError(String msj)
@@ -56,10 +55,13 @@ public class Login extends javax.swing.JFrame
         lblSeeReg1 = new javax.swing.JLabel();
         lblBlindReg1 = new javax.swing.JLabel();
         txtUsuarioN = new javax.swing.JTextField();
+        txtTelefono = new javax.swing.JTextField();
         pssConfCont = new javax.swing.JPasswordField();
         lblCrearC = new javax.swing.JLabel();
         pssContrasenaReg = new javax.swing.JPasswordField();
         lblGenerar = new javax.swing.JLabel();
+        txtGenero = new javax.swing.JTextField();
+        txtEdad = new javax.swing.JTextField();
         pnlIniSes = new RoundedPanel(50);
         lblSee = new javax.swing.JLabel();
         lblBlind = new javax.swing.JLabel();
@@ -68,7 +70,6 @@ public class Login extends javax.swing.JFrame
         pssContrasena = new javax.swing.JPasswordField();
         lblIniSes = new javax.swing.JLabel();
         lblRegistro = new javax.swing.JLabel();
-        lblOlvidarCont = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -76,25 +77,25 @@ public class Login extends javax.swing.JFrame
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Screenshot_2023-02-09_184636-removebg-preview 1.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 10, -1, 160));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/LogoW.png"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 10, 260, 230));
 
-        jLabel5.setFont(new java.awt.Font("Arial Narrow", 1, 75)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Arial Narrow", 1, 95)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("STAY FASHI");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 0, 370, 170));
+        jLabel5.setText("STAY FASHION");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 25, 580, 170));
 
-        jLabel4.setFont(new java.awt.Font("Arial Narrow", 1, 75)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Arial Narrow", 1, 95)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel4.setText("AY FASHION");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(-40, 0, 380, 170));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel4.setText("STAY FASHION");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, 25, 580, 170));
 
         pnlRegistro.setBackground(new java.awt.Color(217, 217, 217, 140));
         pnlRegistro.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/mail.png"))); // NOI18N
-        pnlRegistro.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(495, 45, -1, -1));
+        pnlRegistro.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(512, 55, -1, -1));
 
         lblSeeReg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/blind.png"))); // NOI18N
         lblSeeReg.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -103,7 +104,7 @@ public class Login extends javax.swing.JFrame
                 lblSeeRegMouseClicked(evt);
             }
         });
-        pnlRegistro.add(lblSeeReg, new org.netbeans.lib.awtextra.AbsoluteConstraints(495, 125, -1, -1));
+        pnlRegistro.add(lblSeeReg, new org.netbeans.lib.awtextra.AbsoluteConstraints(512, 282, -1, -1));
 
         lblBlindReg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/see.png"))); // NOI18N
         lblBlindReg.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -112,7 +113,7 @@ public class Login extends javax.swing.JFrame
                 lblBlindRegMouseClicked(evt);
             }
         });
-        pnlRegistro.add(lblBlindReg, new org.netbeans.lib.awtextra.AbsoluteConstraints(495, 125, -1, -1));
+        pnlRegistro.add(lblBlindReg, new org.netbeans.lib.awtextra.AbsoluteConstraints(512, 282, -1, -1));
 
         lblSeeReg1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/blind.png"))); // NOI18N
         lblSeeReg1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -121,7 +122,7 @@ public class Login extends javax.swing.JFrame
                 lblSeeReg1MouseClicked(evt);
             }
         });
-        pnlRegistro.add(lblSeeReg1, new org.netbeans.lib.awtextra.AbsoluteConstraints(495, 183, -1, -1));
+        pnlRegistro.add(lblSeeReg1, new org.netbeans.lib.awtextra.AbsoluteConstraints(512, 356, -1, -1));
 
         lblBlindReg1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/see.png"))); // NOI18N
         lblBlindReg1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -130,10 +131,10 @@ public class Login extends javax.swing.JFrame
                 lblBlindReg1MouseClicked(evt);
             }
         });
-        pnlRegistro.add(lblBlindReg1, new org.netbeans.lib.awtextra.AbsoluteConstraints(495, 183, -1, -1));
+        pnlRegistro.add(lblBlindReg1, new org.netbeans.lib.awtextra.AbsoluteConstraints(512, 356, -1, -1));
 
         txtUsuarioN.setBackground(new java.awt.Color(191, 166, 161, 170));
-        txtUsuarioN.setFont(new java.awt.Font("Consolas", 1, 17)); // NOI18N
+        txtUsuarioN.setFont(new java.awt.Font("Consolas", 1, 19)); // NOI18N
         txtUsuarioN.setForeground(new java.awt.Color(255, 255, 255));
         txtUsuarioN.setText("Nombre de usuario");
         txtUsuarioN.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
@@ -155,10 +156,35 @@ public class Login extends javax.swing.JFrame
                 txtUsuarioNActionPerformed(evt);
             }
         });
-        pnlRegistro.add(txtUsuarioN, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 520, 40));
+        pnlRegistro.add(txtUsuarioN, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 45, 540, 45));
+
+        txtTelefono.setBackground(new java.awt.Color(191, 166, 161, 170));
+        txtTelefono.setFont(new java.awt.Font("Consolas", 1, 19)); // NOI18N
+        txtTelefono.setForeground(new java.awt.Color(255, 255, 255));
+        txtTelefono.setText("Teléfono");
+        txtTelefono.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        txtTelefono.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtTelefonoFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtTelefonoFocusLost(evt);
+            }
+        });
+        txtTelefono.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtTelefonoMouseClicked(evt);
+            }
+        });
+        txtTelefono.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTelefonoActionPerformed(evt);
+            }
+        });
+        pnlRegistro.add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 540, 45));
 
         pssConfCont.setBackground(new java.awt.Color(191, 166, 161, 170));
-        pssConfCont.setFont(new java.awt.Font("Consolas", 1, 17)); // NOI18N
+        pssConfCont.setFont(new java.awt.Font("Consolas", 1, 19)); // NOI18N
         pssConfCont.setForeground(new java.awt.Color(255, 255, 255));
         pssConfCont.setText("Confirmar contraseña");
         pssConfCont.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
@@ -170,7 +196,7 @@ public class Login extends javax.swing.JFrame
                 pssConfContFocusLost(evt);
             }
         });
-        pnlRegistro.add(pssConfCont, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 173, 520, 40));
+        pnlRegistro.add(pssConfCont, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 345, 540, 45));
 
         lblCrearC.setBackground(new java.awt.Color(170, 145, 138));
         lblCrearC.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
@@ -185,10 +211,10 @@ public class Login extends javax.swing.JFrame
                 lblCrearCMouseClicked(evt);
             }
         });
-        pnlRegistro.add(lblCrearC, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 270, 320, 50));
+        pnlRegistro.add(lblCrearC, new org.netbeans.lib.awtextra.AbsoluteConstraints(73, 445, 430, 55));
 
         pssContrasenaReg.setBackground(new java.awt.Color(191, 166, 161, 170));
-        pssContrasenaReg.setFont(new java.awt.Font("Consolas", 1, 17)); // NOI18N
+        pssContrasenaReg.setFont(new java.awt.Font("Consolas", 1, 19)); // NOI18N
         pssContrasenaReg.setForeground(new java.awt.Color(255, 255, 255));
         pssContrasenaReg.setText("Contraseña");
         pssContrasenaReg.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
@@ -200,7 +226,7 @@ public class Login extends javax.swing.JFrame
                 pssContrasenaRegFocusLost(evt);
             }
         });
-        pnlRegistro.add(pssContrasenaReg, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 115, 520, 40));
+        pnlRegistro.add(pssContrasenaReg, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 540, 45));
 
         lblGenerar.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
         lblGenerar.setForeground(new java.awt.Color(140, 91, 87));
@@ -211,9 +237,59 @@ public class Login extends javax.swing.JFrame
                 lblGenerarMouseClicked(evt);
             }
         });
-        pnlRegistro.add(lblGenerar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 217, -1, 30));
+        pnlRegistro.add(lblGenerar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 393, -1, 30));
 
-        getContentPane().add(pnlRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 190, 560, 350));
+        txtGenero.setBackground(new java.awt.Color(191, 166, 161, 170));
+        txtGenero.setFont(new java.awt.Font("Consolas", 1, 19)); // NOI18N
+        txtGenero.setForeground(new java.awt.Color(255, 255, 255));
+        txtGenero.setText("Femenino/Masculino");
+        txtGenero.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        txtGenero.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtGeneroFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtGeneroFocusLost(evt);
+            }
+        });
+        txtGenero.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtGeneroMouseClicked(evt);
+            }
+        });
+        txtGenero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtGeneroActionPerformed(evt);
+            }
+        });
+        pnlRegistro.add(txtGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 195, 300, 45));
+
+        txtEdad.setBackground(new java.awt.Color(191, 166, 161, 170));
+        txtEdad.setFont(new java.awt.Font("Consolas", 1, 19)); // NOI18N
+        txtEdad.setForeground(new java.awt.Color(255, 255, 255));
+        txtEdad.setText("Edad");
+        txtEdad.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        txtEdad.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtEdadFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtEdadFocusLost(evt);
+            }
+        });
+        txtEdad.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtEdadMouseClicked(evt);
+            }
+        });
+        txtEdad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEdadActionPerformed(evt);
+            }
+        });
+        pnlRegistro.add(txtEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 195, 190, 45));
+
+        getContentPane().add(pnlRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 245, 580, 530));
 
         pnlIniSes.setBackground(new java.awt.Color(217, 217, 217, 140));
         pnlIniSes.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -225,7 +301,7 @@ public class Login extends javax.swing.JFrame
                 lblSeeMouseClicked(evt);
             }
         });
-        pnlIniSes.add(lblSee, new org.netbeans.lib.awtextra.AbsoluteConstraints(407, 120, -1, -1));
+        pnlIniSes.add(lblSee, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 160, -1, -1));
 
         lblBlind.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/see.png"))); // NOI18N
         lblBlind.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -234,13 +310,13 @@ public class Login extends javax.swing.JFrame
                 lblBlindMouseClicked(evt);
             }
         });
-        pnlIniSes.add(lblBlind, new org.netbeans.lib.awtextra.AbsoluteConstraints(407, 120, -1, -1));
+        pnlIniSes.add(lblBlind, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 160, -1, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/mail.png"))); // NOI18N
-        pnlIniSes.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(407, 45, -1, -1));
+        pnlIniSes.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 70, -1, -1));
 
         txtUsuario.setBackground(new java.awt.Color(191, 166, 161, 170));
-        txtUsuario.setFont(new java.awt.Font("Consolas", 1, 17)); // NOI18N
+        txtUsuario.setFont(new java.awt.Font("Consolas", 1, 20)); // NOI18N
         txtUsuario.setForeground(new java.awt.Color(255, 255, 255));
         txtUsuario.setText("Nombre de usuario");
         txtUsuario.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
@@ -262,10 +338,10 @@ public class Login extends javax.swing.JFrame
                 txtUsuarioActionPerformed(evt);
             }
         });
-        pnlIniSes.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 430, 40));
+        pnlIniSes.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 540, 50));
 
         pssContrasena.setBackground(new java.awt.Color(191, 166, 161, 170));
-        pssContrasena.setFont(new java.awt.Font("Consolas", 1, 17)); // NOI18N
+        pssContrasena.setFont(new java.awt.Font("Consolas", 1, 20)); // NOI18N
         pssContrasena.setForeground(new java.awt.Color(255, 255, 255));
         pssContrasena.setText("Contraseña");
         pssContrasena.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
@@ -277,7 +353,7 @@ public class Login extends javax.swing.JFrame
                 pssContrasenaFocusLost(evt);
             }
         });
-        pnlIniSes.add(pssContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 430, 40));
+        pnlIniSes.add(pssContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 145, 540, 50));
 
         lblIniSes.setBackground(new java.awt.Color(170, 145, 138));
         lblIniSes.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
@@ -292,9 +368,9 @@ public class Login extends javax.swing.JFrame
                 lblIniSesMouseClicked(evt);
             }
         });
-        pnlIniSes.add(lblIniSes, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 205, 320, 50));
+        pnlIniSes.add(lblIniSes, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 240, 420, 60));
 
-        lblRegistro.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        lblRegistro.setFont(new java.awt.Font("Consolas", 1, 16)); // NOI18N
         lblRegistro.setForeground(new java.awt.Color(140, 91, 87));
         lblRegistro.setText("Regístrate");
         lblRegistro.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -303,20 +379,9 @@ public class Login extends javax.swing.JFrame
                 lblRegistroMouseClicked(evt);
             }
         });
-        pnlIniSes.add(lblRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 275, -1, -1));
+        pnlIniSes.add(lblRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 330, -1, -1));
 
-        lblOlvidarCont.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
-        lblOlvidarCont.setForeground(new java.awt.Color(140, 91, 87));
-        lblOlvidarCont.setText("Olvidé mi contraseña");
-        lblOlvidarCont.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        lblOlvidarCont.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblOlvidarContMouseClicked(evt);
-            }
-        });
-        pnlIniSes.add(lblOlvidarCont, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, -1));
-
-        jLabel6.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Consolas", 1, 16)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(140, 91, 87));
         jLabel6.setText("¿No tienes cuenta?");
         jLabel6.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -325,9 +390,9 @@ public class Login extends javax.swing.JFrame
                 jLabel6MouseClicked(evt);
             }
         });
-        pnlIniSes.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 275, -1, -1));
+        pnlIniSes.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(155, 330, -1, -1));
 
-        getContentPane().add(pnlIniSes, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 200, 470, 300));
+        getContentPane().add(pnlIniSes, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 345, 580, 360));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -369,13 +434,14 @@ public class Login extends javax.swing.JFrame
     }//GEN-LAST:event_pssContrasenaFocusLost
 
     private void txtUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtUsuarioMouseClicked
-
     }//GEN-LAST:event_txtUsuarioMouseClicked
 
     private void lblIniSesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblIniSesMouseClicked
+        Recordar obc = new Recordar();
+        
         if(txtUsuario.getText().equals("Susana"))
         {
-            if(CONTROL.Comparar(txtUsuario.getText(), String.valueOf(pssContrasena.getPassword())) == true)
+            if(obc.revisarContrasena(String.valueOf(pssContrasena.getPassword())) == true)
             {
                 PrinDue frmPrincipal = new PrinDue();
                 frmPrincipal.setVisible(true);
@@ -390,7 +456,7 @@ public class Login extends javax.swing.JFrame
         else
             if(txtUsuario.getText().equals("Yuriana"))
             {
-                if(CONTROL.Comparar(txtUsuario.getText(), String.valueOf(pssContrasena.getPassword())) == true)
+                if(obc.revisarContrasena(String.valueOf(pssContrasena.getPassword())) == true)
                 {
                     PrinEmp frmPrincipal = new PrinEmp();
                     frmPrincipal.setVisible(true);
@@ -447,16 +513,6 @@ public class Login extends javax.swing.JFrame
         lblSee.setVisible(false);
         pssContrasena.setEchoChar('*');
     }//GEN-LAST:event_lblSeeMouseClicked
-
-    private void lblOlvidarContMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblOlvidarContMouseClicked
-    String resp;
-    resp = CONTROL.Contrasena(txtUsuario.getText());
-    
-    if(!resp.equals("Null"))
-        pssContrasena.setText(resp);
-    else        
-        JOptionPane.showMessageDialog(this, "El usuario no esta registrado", "Recuperación de Contraseña...", JOptionPane.ERROR_MESSAGE);         
-    }//GEN-LAST:event_lblOlvidarContMouseClicked
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
         // TODO add your handling code here:
@@ -579,13 +635,6 @@ public class Login extends javax.swing.JFrame
         }
     }//GEN-LAST:event_pssContrasenaRegFocusLost
 
-    private void lblGenerarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblGenerarMouseClicked
-        Generar obg = new Generar();
-        String contseg = obg.Generador();
-        pssContrasenaReg.setText(contseg);
-        pssConfCont.setText(contseg);
-    }//GEN-LAST:event_lblGenerarMouseClicked
-
     private void lblSeeReg1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSeeReg1MouseClicked
         lblBlindReg1.setVisible(true);
         lblSeeReg1.setVisible(false);
@@ -597,6 +646,81 @@ public class Login extends javax.swing.JFrame
         lblSeeReg1.setVisible(true);
         pssConfCont.setEchoChar((char)0);
     }//GEN-LAST:event_lblBlindReg1MouseClicked
+
+    private void lblGenerarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblGenerarMouseClicked
+        Generar obg = new Generar();
+        String contseg = obg.Generador();
+        pssContrasenaReg.setText(contseg);
+        pssConfCont.setText(contseg);
+    }//GEN-LAST:event_lblGenerarMouseClicked
+
+    private void txtTelefonoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTelefonoFocusGained
+        if(txtTelefono.getText().equals("Teléfono"))
+        {
+            txtTelefono.setText("");
+            txtTelefono.setForeground(new Color(255,255,255));
+        }
+    }//GEN-LAST:event_txtTelefonoFocusGained
+
+    private void txtTelefonoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTelefonoFocusLost
+        if(txtTelefono.getText().isEmpty())
+        {
+            txtTelefono.setText("Teléfono");
+            txtTelefono.setForeground(new Color(255,255,255));
+        }
+    }//GEN-LAST:event_txtTelefonoFocusLost
+
+    private void txtTelefonoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtTelefonoMouseClicked
+    }//GEN-LAST:event_txtTelefonoMouseClicked
+
+    private void txtTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelefonoActionPerformed
+    }//GEN-LAST:event_txtTelefonoActionPerformed
+
+    private void txtGeneroFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtGeneroFocusGained
+        if(txtGenero.getText().equals("Femenino/Masculino"))
+        {
+            txtGenero.setText("");
+            txtGenero.setForeground(new Color(255,255,255));
+        }
+    }//GEN-LAST:event_txtGeneroFocusGained
+
+    private void txtGeneroFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtGeneroFocusLost
+        if(txtGenero.getText().isEmpty())
+        {
+            txtGenero.setText("Femenino/Masculino");
+            txtGenero.setForeground(new Color(255,255,255));
+        }
+    }//GEN-LAST:event_txtGeneroFocusLost
+
+    private void txtGeneroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtGeneroMouseClicked
+    }//GEN-LAST:event_txtGeneroMouseClicked
+
+    private void txtGeneroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtGeneroActionPerformed
+    }//GEN-LAST:event_txtGeneroActionPerformed
+
+    private void txtEdadFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEdadFocusGained
+        if(txtEdad.getText().equals("Edad"))
+        {
+            txtEdad.setText("");
+            txtEdad.setForeground(new Color(255,255,255));
+        }
+    }//GEN-LAST:event_txtEdadFocusGained
+
+    private void txtEdadFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEdadFocusLost
+        if(txtEdad.getText().isEmpty())
+        {
+            txtEdad.setText("Edad");
+            txtEdad.setForeground(new Color(255,255,255));
+        }
+    }//GEN-LAST:event_txtEdadFocusLost
+
+    private void txtEdadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtEdadMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEdadMouseClicked
+
+    private void txtEdadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEdadActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEdadActionPerformed
 
     /**
      * @param args the command line arguments
@@ -690,7 +814,6 @@ public class Login extends javax.swing.JFrame
     private javax.swing.JLabel lblCrearC;
     private javax.swing.JLabel lblGenerar;
     private javax.swing.JLabel lblIniSes;
-    private javax.swing.JLabel lblOlvidarCont;
     private javax.swing.JLabel lblRegistro;
     private javax.swing.JLabel lblSee;
     private javax.swing.JLabel lblSeeReg;
@@ -700,6 +823,9 @@ public class Login extends javax.swing.JFrame
     private javax.swing.JPasswordField pssConfCont;
     private javax.swing.JPasswordField pssContrasena;
     private javax.swing.JPasswordField pssContrasenaReg;
+    private javax.swing.JTextField txtEdad;
+    private javax.swing.JTextField txtGenero;
+    private javax.swing.JTextField txtTelefono;
     private javax.swing.JTextField txtUsuario;
     private javax.swing.JTextField txtUsuarioN;
     // End of variables declaration//GEN-END:variables

@@ -14,9 +14,10 @@ public class PrinCli extends javax.swing.JFrame
         setContentPane(fondo);
         initComponents();
         
-        setLocationRelativeTo(null);
-        setSize(865,600);
-        setResizable(false);
+        //setLocationRelativeTo(null);
+        //setSize(865,600);
+        setExtendedState(MAXIMIZED_BOTH);
+        //setResizable(false);
     }
 
 
@@ -39,12 +40,12 @@ public class PrinCli extends javax.swing.JFrame
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/principal/log.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 10, -1, 160));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 70, -1, 160));
 
         jLabel2.setFont(new java.awt.Font("Consolas", 1, 30)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(193, 175, 170));
         jLabel2.setText("\"Transformamos tu imagen, realzamos tu belleza\"");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 790, 70));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 240, 790, 70));
 
         btnCalendario.setBackground(new java.awt.Color(227, 227, 227));
         btnCalendario.setColor(new java.awt.Color(191, 166, 161));
@@ -54,7 +55,7 @@ public class PrinCli extends javax.swing.JFrame
         btnCalendario.setRoundTopRight(5);
         btnCalendario.setRuta(new java.io.File("C:\\Users\\Developer\\OneDrive\\Documentos\\University\\Archivos\\PDF's\\Tópicos\\Proyecto_img\\Calendario.png"));
         btnCalendario.setText("CALENDARIO");
-        getContentPane().add(btnCalendario, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, 210, 220));
+        getContentPane().add(btnCalendario, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 440, 210, 220));
 
         btnServicios.setBackground(new java.awt.Color(211, 199, 196));
         btnServicios.setColor(new java.awt.Color(98, 88, 88));
@@ -69,7 +70,7 @@ public class PrinCli extends javax.swing.JFrame
                 btnServiciosMouseClicked(evt);
             }
         });
-        getContentPane().add(btnServicios, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 280, 210, 220));
+        getContentPane().add(btnServicios, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 440, 210, 220));
 
         btnNosotros.setBackground(new java.awt.Color(227, 227, 227));
         btnNosotros.setColor(new java.awt.Color(191, 166, 161));
@@ -79,7 +80,7 @@ public class PrinCli extends javax.swing.JFrame
         btnNosotros.setRoundTopRight(5);
         btnNosotros.setRuta(new java.io.File("C:\\Users\\Developer\\OneDrive\\Documentos\\University\\Archivos\\PDF's\\Tópicos\\Proyecto_img\\Nosotros.png"));
         btnNosotros.setText("NOSOTROS");
-        getContentPane().add(btnNosotros, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 280, 210, 220));
+        getContentPane().add(btnNosotros, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 440, 210, 220));
 
         lblExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/principal/Exit.png"))); // NOI18N
         lblExit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -88,7 +89,7 @@ public class PrinCli extends javax.swing.JFrame
                 lblExitMouseClicked(evt);
             }
         });
-        getContentPane().add(lblExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, 60));
+        getContentPane().add(lblExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 70, 70));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

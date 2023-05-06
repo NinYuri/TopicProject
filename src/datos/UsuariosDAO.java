@@ -2,13 +2,13 @@ package datos;
 
 import database.Conexion;
 import datos.interfaces.CrudUsuarios;
-import entidades.Usuarios;
+import entidades.Usuario;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
-public class UsuariosDAO implements CrudUsuarios<Usuarios>
+public class UsuariosDAO implements CrudUsuarios<Usuario>
 {
     private final Conexion CON;
     private PreparedStatement ps;
@@ -21,7 +21,7 @@ public class UsuariosDAO implements CrudUsuarios<Usuarios>
     }
     
     @Override
-    public boolean insertar(Usuarios obj) 
+    public boolean insertar(Usuario obj) 
     {
         String sql;
         resp = false;
@@ -80,38 +80,6 @@ public class UsuariosDAO implements CrudUsuarios<Usuarios>
             CON.desconectar();
         }
         return resp;
-    }
-
-    @Override
-    public String contrasena(String texto) 
-    {
-        String contrasena = "";
-        String sql;
-        try
-        {
-            sql = "select passwordUsuario from Usuarios where nombreUsuario = ?;";
-            ps = CON.Conectar().prepareStatement(sql);
-            // Pasar los valores a la consulta sql
-            ps.setString(1, texto);
-            // Ejecuta la consulta
-            rs = ps.executeQuery();
-            // El puntero se mueve de regitro en registro, por lo tanto:
-            if(rs.next())
-                contrasena = rs.getString(1);
-            ps.close();
-            rs.close();
-        }
-        catch(SQLException e)
-        {
-            JOptionPane.showMessageDialog(null, e.getMessage());
-        }
-        finally
-        {
-            ps = null;
-            rs = null;
-            CON.desconectar();
-        }
-        return contrasena;
     }
 
     @Override

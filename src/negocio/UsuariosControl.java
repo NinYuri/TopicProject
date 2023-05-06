@@ -1,18 +1,18 @@
 package negocio;
 
 import datos.UsuariosDAO;
-import entidades.Usuarios;
+import entidades.Usuario;
 
 
 public class UsuariosControl 
 {
     private final UsuariosDAO DATOS; // Tiene comunicación con la capa de datos
-    private Usuarios obj;
+    private Usuario obj;
     
     public UsuariosControl()
     {
         DATOS = new UsuariosDAO();
-        obj = new Usuarios();
+        obj = new Usuario();
     }
     
     public boolean Existe(String usuario)
@@ -40,14 +40,6 @@ public class UsuariosControl
             else
                 return "Error en la inserción del registro";
         }
-    }
-    
-    public String Contrasena(String usuario)
-    {
-        if(DATOS.existe(usuario))
-            return DATOS.contrasena(usuario);
-        else
-            return "Null";
     }
     
     public boolean Comparar(String usuario, String password)

@@ -1,19 +1,19 @@
 package entidades;
 
-public class Usuarios 
+public class Usuario 
 {
     private int idUsuario;
     private String nombreUsuario;
     private String passwordUsuario;
 
-    public Usuarios(int idUsuario, String nombreUsuario, String passwordUsuario) 
+    public Usuario(int idUsuario, String nombreUsuario, String passwordUsuario) 
     {
         this.idUsuario = idUsuario;
         this.nombreUsuario = nombreUsuario;
         this.passwordUsuario = passwordUsuario;
     }
 
-    public Usuarios() 
+    public Usuario() 
     {
     }
 
