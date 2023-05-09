@@ -9,19 +9,19 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.JTableHeader;
-import negocio.CortesControl;
+import negocio.ServiciosControl;
 
 public class SCortes extends javax.swing.JFrame 
 {
     Fondo fondo = new Fondo();
-    private final CortesControl CONTROL;
+    private final ServiciosControl CONTROL;
 
     public SCortes() 
     {
         setContentPane(fondo);
         initComponents();
-        CONTROL = new CortesControl();
-        Listar("");
+        CONTROL = new ServiciosControl();
+        Listar("Corte");
         Icono(new ImageIcon(getClass().getResource("/img/iconos/Close.png")), lblClose);
         
         setLocationRelativeTo(null);
@@ -33,7 +33,7 @@ public class SCortes extends javax.swing.JFrame
     
     private void Listar(String texto)
     {
-        tblServicios.setModel(CONTROL.Listar(texto));
+        tblServicios.setModel(CONTROL.ListarCortes(texto));
         Tabla();
     }
 
@@ -82,7 +82,7 @@ public class SCortes extends javax.swing.JFrame
                 btnGaleriaMouseReleased(evt);
             }
         });
-        getContentPane().add(btnGaleria, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 190, 390, 90));
+        getContentPane().add(btnGaleria, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 220, 390, 90));
 
         carMujer.setRuta1(new java.io.File("C:\\Users\\Developer\\OneDrive\\Documentos\\University\\Archivos\\PDF's\\Tópicos\\Proyecto_img\\CarCMujer\\1.jpg"));
         carMujer.setRuta2(new java.io.File("C:\\Users\\Developer\\OneDrive\\Documentos\\University\\Archivos\\PDF's\\Tópicos\\Proyecto_img\\CarCMujer\\2.jpg"));
@@ -92,7 +92,7 @@ public class SCortes extends javax.swing.JFrame
         carMujer.setRuta6(new java.io.File("C:\\Users\\Developer\\OneDrive\\Documentos\\University\\Archivos\\PDF's\\Tópicos\\Proyecto_img\\CarCMujer\\6.jpg"));
         carMujer.setRuta7(new java.io.File("C:\\Users\\Developer\\OneDrive\\Documentos\\University\\Archivos\\PDF's\\Tópicos\\Proyecto_img\\CarCMujer\\7.jpg"));
         carMujer.setRuta8(new java.io.File("C:\\Users\\Developer\\OneDrive\\Documentos\\University\\Archivos\\PDF's\\Tópicos\\Proyecto_img\\CarCMujer\\8.jpg"));
-        getContentPane().add(carMujer, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, -1, -1));
+        getContentPane().add(carMujer, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, -1, -1));
 
         carNiños.setRuta1(new java.io.File("C:\\Users\\Developer\\OneDrive\\Documentos\\University\\Archivos\\PDF's\\Tópicos\\Proyecto_img\\CarCNiño\\1.jpg"));
         carNiños.setRuta2(new java.io.File("C:\\Users\\Developer\\OneDrive\\Documentos\\University\\Archivos\\PDF's\\Tópicos\\Proyecto_img\\CarCNiño\\2.jpg"));
@@ -102,7 +102,7 @@ public class SCortes extends javax.swing.JFrame
         carNiños.setRuta6(new java.io.File("C:\\Users\\Developer\\OneDrive\\Documentos\\University\\Archivos\\PDF's\\Tópicos\\Proyecto_img\\CarCNiño\\6.jpg"));
         carNiños.setRuta7(new java.io.File("C:\\Users\\Developer\\OneDrive\\Documentos\\University\\Archivos\\PDF's\\Tópicos\\Proyecto_img\\CarCNiño\\7.jpg"));
         carNiños.setRuta8(new java.io.File("C:\\Users\\Developer\\OneDrive\\Documentos\\University\\Archivos\\PDF's\\Tópicos\\Proyecto_img\\CarCNiño\\8.png"));
-        getContentPane().add(carNiños, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, -1, -1));
+        getContentPane().add(carNiños, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, -1, -1));
 
         carHombre.setRuta1(new java.io.File("C:\\Users\\Developer\\OneDrive\\Documentos\\University\\Archivos\\PDF's\\Tópicos\\Proyecto_img\\CarCHombre\\1.jpg"));
         carHombre.setRuta2(new java.io.File("C:\\Users\\Developer\\OneDrive\\Documentos\\University\\Archivos\\PDF's\\Tópicos\\Proyecto_img\\CarCHombre\\2.jpg"));
@@ -112,7 +112,7 @@ public class SCortes extends javax.swing.JFrame
         carHombre.setRuta6(new java.io.File("C:\\Users\\Developer\\OneDrive\\Documentos\\University\\Archivos\\PDF's\\Tópicos\\Proyecto_img\\CarCHombre\\6.jpg"));
         carHombre.setRuta7(new java.io.File("C:\\Users\\Developer\\OneDrive\\Documentos\\University\\Archivos\\PDF's\\Tópicos\\Proyecto_img\\CarCHombre\\7.jpg"));
         carHombre.setRuta8(new java.io.File("C:\\Users\\Developer\\OneDrive\\Documentos\\University\\Archivos\\PDF's\\Tópicos\\Proyecto_img\\CarCHombre\\8.jpg"));
-        getContentPane().add(carHombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, -1, -1));
+        getContentPane().add(carHombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, -1, -1));
 
         tblServicios.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
         tblServicios.setForeground(new java.awt.Color(67, 63, 63));
@@ -129,6 +129,7 @@ public class SCortes extends javax.swing.JFrame
         tblServicios.setRowHeight(30);
         tblServicios.setSelectionBackground(new java.awt.Color(225, 214, 212));
         tblServicios.setSelectionForeground(new java.awt.Color(67, 63, 63));
+        tblServicios.setShowGrid(false);
         tblServicios.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblServiciosMouseClicked(evt);
@@ -136,7 +137,7 @@ public class SCortes extends javax.swing.JFrame
         });
         jScrollPane1.setViewportView(tblServicios);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 360, 870, 130));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 400, 870, 130));
 
         btnCerrarG.setBackground(new java.awt.Color(225, 214, 212));
         btnCerrarG.setFont(new java.awt.Font("Consolas", 1, 20)); // NOI18N
@@ -148,7 +149,7 @@ public class SCortes extends javax.swing.JFrame
                 btnCerrarGMouseClicked(evt);
             }
         });
-        getContentPane().add(btnCerrarG, new org.netbeans.lib.awtextra.AbsoluteConstraints(716, 520, 190, -1));
+        getContentPane().add(btnCerrarG, new org.netbeans.lib.awtextra.AbsoluteConstraints(716, 590, 190, -1));
 
         btnCita.setBackground(new java.awt.Color(225, 214, 212));
         btnCita.setFont(new java.awt.Font("Consolas", 1, 20)); // NOI18N
@@ -160,12 +161,12 @@ public class SCortes extends javax.swing.JFrame
                 btnCitaMouseClicked(evt);
             }
         });
-        getContentPane().add(btnCita, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 520, 190, -1));
+        getContentPane().add(btnCita, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 590, 190, -1));
 
         jLabel1.setFont(new java.awt.Font("Consolas", 1, 48)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(98, 88, 88));
         jLabel1.setText("Menú Cortes");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 60, 300, 70));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 65, 300, 70));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -175,34 +176,41 @@ public class SCortes extends javax.swing.JFrame
     }//GEN-LAST:event_lblCloseMouseClicked
 
     private void btnGaleriaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGaleriaMouseClicked
-        if(tblServicios.getSelectedRow() == 0)
+        if(tblServicios.getSelectedRowCount() == 1)
         {
-            btnGaleria.setVisible(false);
-            carHombre.setVisible(true);
-            carMujer.setVisible(false);
-            carNiños.setVisible(false);
-            btnCerrarG.setVisible(true);
-        }
-        else
-            if(tblServicios.getSelectedRow() == 1)
+            String nombre = String.valueOf(tblServicios.getValueAt(tblServicios.getSelectedRow(), 0));
+
+            if(nombre.equals("Corte de Hombre"))
             {
                 btnGaleria.setVisible(false);
-                carHombre.setVisible(false);
-                carMujer.setVisible(true);
+                carHombre.setVisible(true);
+                carMujer.setVisible(false);
                 carNiños.setVisible(false);
                 btnCerrarG.setVisible(true);
             }
             else
-                if(tblServicios.getSelectedRow() == 2)
+                if(nombre.equals("Corte de Mujer"))
                 {
                     btnGaleria.setVisible(false);
                     carHombre.setVisible(false);
-                    carMujer.setVisible(false);
-                    carNiños.setVisible(true);
+                    carMujer.setVisible(true);
+                    carNiños.setVisible(false);
                     btnCerrarG.setVisible(true);
                 }
                 else
-                    JOptionPane.showMessageDialog(this, "Debes seleccionar un servicio para mostrarte la galería", "", JOptionPane.INFORMATION_MESSAGE);
+                    if(nombre.equals("Corte de Niño"))
+                    {
+                        btnGaleria.setVisible(false);
+                        carHombre.setVisible(false);
+                        carMujer.setVisible(false);
+                        carNiños.setVisible(true);
+                        btnCerrarG.setVisible(true);
+                    }
+                    else
+                        JOptionPane.showMessageDialog(this, "Lo siento, la galería de este servicio no se encuentra aún disponible", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        else
+            JOptionPane.showMessageDialog(this, "Debes seleccionar un servicio para mostrarte la galería", "", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_btnGaleriaMouseClicked
 
     private void btnGaleriaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGaleriaMousePressed

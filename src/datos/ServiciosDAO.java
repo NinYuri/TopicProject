@@ -1,38 +1,40 @@
 package datos;
 
 import database.Conexion;
-import entidades.Corte;
+import datos.interfaces.CrudServicios;
+import entidades.Servicio;
+import java.util.List;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
 import javax.swing.JOptionPane;
-import datos.interfaces.CrudServiciosEsp;
 
-public class CortesDAO implements CrudServiciosEsp<Corte>
+public class ServiciosDAO implements CrudServicios<Servicio>
 {
     private final Conexion CON;
     private PreparedStatement ps;
     private ResultSet rs;
     private boolean resp;
-
-    public CortesDAO() {
+    
+    public ServiciosDAO()
+    {
         CON = Conexion.getInstancia();
     }
     
     @Override
-    public List<Corte> listar(String texto) 
+    public List<Servicio> listarCortes(String texto) 
     {
-        List<Corte> registros = new ArrayList();
+        List<Servicio> registros = new ArrayList();
         String sql;
         try
         {
-            sql = "select * from Cortes;";
+            sql = "select * from Servicios where tipoServicio = ?;";
             ps = CON.Conectar().prepareStatement(sql);
+            ps.setString(1, texto);
             rs = ps.executeQuery();
             while(rs.next())
-                registros.add(new Corte(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4)));
+                registros.add(new Servicio(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4), rs.getInt(5), rs.getString(6)));
             ps.close();
             rs.close();
         }
@@ -47,51 +49,24 @@ public class CortesDAO implements CrudServiciosEsp<Corte>
             CON.desconectar();
         }
         return registros;
-    }    
-
-    @Override
-    public boolean insertar(Corte obj) 
-    {
-        String sql;
-        resp = false;
-        try
-        {
-            sql = "insert into Cortes(nombreScervicio, duracionScervicio, costoScervicio) \n" + 
-                    "values(?, ?, ?);";
-            ps = CON.Conectar().prepareStatement(sql);
-            ps.setString(1, obj.getNombreScervicio());
-            ps.setString(2, obj.getDuracionScervicio());
-            ps.setDouble(3, obj.getCostoScervicio());
-            if(ps.executeUpdate() > 0)
-                resp = true;
-            ps.close();
-        }
-        catch(SQLException e)
-        {
-            JOptionPane.showMessageDialog(null, e.getMessage());
-        }
-        finally
-        {
-            ps = null;
-            CON.desconectar();
-        }
-        return resp;
     }
 
     @Override
-    public boolean actualizar(Corte obj) 
+    public boolean insertar(Servicio obj) 
     {
         String sql;
         resp = false;
         try
         {
-            sql = "update Cortes \n" +
-                "set nombreScervicio = ?, duracionScervicio = ?, costoScervicio = ? \n" +
-                "where idCorte = ?; ";
+            sql = "insert into Servicios(nombreServicio, duracionServicio, costoServicio, descuentoServicio, tipoServicio) \n" +
+                    "values(?, ?, ?, ?, ?);";
             ps = CON.Conectar().prepareStatement(sql);
-            ps.setString(1, obj.getNombreScervicio());
-            ps.setString(2, obj.getDuracionScervicio());
-            ps.setDouble(3, obj.getCostoScervicio());
+            
+            ps.setString(1, obj.getNombreServicio());
+            ps.setString(2, obj.getDuracionServicio());
+            ps.setDouble(3, obj.getCostoServicio());
+            ps.setInt(4, obj.getDescuentoServicio());
+            ps.setString(5, obj.getTipoServicio());
             
             if(ps.executeUpdate() > 0)
                 resp = true;
@@ -110,18 +85,30 @@ public class CortesDAO implements CrudServiciosEsp<Corte>
     }
 
     @Override
-    public boolean borrar(int id) 
+    public boolean actualizar(Servicio obj) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public boolean borrar(int id) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public boolean existe(String texto) 
     {
         String sql;
         resp = false;
         try
         {
-            sql = "delete from Cortes where idCorte = ?;";
+            sql = "select idServicio from Servicios where nombreServicio = ?;";
             ps = CON.Conectar().prepareStatement(sql);
-            ps.setInt(1, id);
-            if(ps.executeUpdate() > 0)
+            ps.setString(1, texto);
+            rs = ps.executeQuery();
+            if(rs.next())
                 resp = true;
             ps.close();
+            rs.close();
         }
         catch(SQLException e)
         {
@@ -130,8 +117,11 @@ public class CortesDAO implements CrudServiciosEsp<Corte>
         finally
         {
             ps = null;
+            rs = null;
             CON.desconectar();
         }
         return resp;
     }
+    
+    
 }

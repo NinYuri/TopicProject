@@ -8,11 +8,11 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class FrmServicios extends javax.swing.JFrame 
+public class FrmSerClientes extends javax.swing.JFrame 
 {
     Fondo fondo = new Fondo();
     
-    public FrmServicios() 
+    public FrmSerClientes() 
     {
         setContentPane(fondo);
         initComponents();
@@ -64,7 +64,7 @@ public class FrmServicios extends javax.swing.JFrame
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(2736, 50));
-        setPreferredSize(new java.awt.Dimension(2736, 50));
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnCortes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -329,7 +329,7 @@ public class FrmServicios extends javax.swing.JFrame
     }//GEN-LAST:event_btnEpilacionMouseReleased
 
     private void btnSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseClicked
-        PrinCli obd = new PrinCli();
+        PrinCliente obd = new PrinCliente();
         obd.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnSalirMouseClicked
@@ -363,20 +363,21 @@ public class FrmServicios extends javax.swing.JFrame
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmServicios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmSerClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmServicios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmSerClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmServicios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmSerClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmServicios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmSerClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmServicios().setVisible(true);
+                new FrmSerClientes().setVisible(true);
             }
         });
     }
@@ -395,7 +396,7 @@ public class FrmServicios extends javax.swing.JFrame
         @Override
         public void paint(Graphics g)
         {
-            imagen = new ImageIcon(getClass().getResource("/img/Fondo_menu.png")).getImage();
+            imagen = new ImageIcon(getClass().getResource("/img/Fondo_men.png")).getImage();
             g.drawImage(imagen, 0, 0, getWidth(), getHeight(),this);
             setOpaque(false);
             super.paint(g);

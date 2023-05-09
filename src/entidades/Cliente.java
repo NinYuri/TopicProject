@@ -3,21 +3,19 @@ package entidades;
 public class Cliente 
 {
     private int idCliente;
-    private int idUsuario;
     private String nombreCliente;
+    private String passwordCliente;
     private String telefonoCliente;
-    private char generoCliente;
+    private String generoCliente;
     private int edadCliente;
-    private String preferenciaCliente;
 
-    public Cliente(int idCliente, int idUsuario, String nombreCliente, String telefonoCliente, char generoCliente, int edadCliente, String preferenciaCliente) {
-        this.idUsuario = idUsuario;
+    public Cliente(int idCliente, String nombreCliente, String passwordCliente, String telefonoCliente, String generoCliente, int edadCliente) {
         this.idCliente = idCliente;
         this.nombreCliente = nombreCliente;
+        this.passwordCliente = passwordCliente;
         this.telefonoCliente = telefonoCliente;
         this.generoCliente = generoCliente;
         this.edadCliente = edadCliente;
-        this.preferenciaCliente = preferenciaCliente;
     }
 
     public Cliente() {
@@ -31,20 +29,20 @@ public class Cliente
         this.idCliente = idCliente;
     }
 
-    public int getIdUsuario() {
-        return idUsuario;
-    }
-
-    public void setIdUsuario(int idUsuario) {
-        this.idUsuario = idUsuario;
-    }
-
     public String getNombreCliente() {
         return nombreCliente;
     }
 
     public void setNombreCliente(String nombreCliente) {
         this.nombreCliente = nombreCliente;
+    }
+
+    public String getPasswordCliente() {
+        return passwordCliente;
+    }
+
+    public void setPasswordCliente(String passwordCliente) {
+        this.passwordCliente = passwordCliente;
     }
 
     public String getTelefonoCliente() {
@@ -55,11 +53,11 @@ public class Cliente
         this.telefonoCliente = telefonoCliente;
     }
 
-    public char getGeneroCliente() {
+    public String getGeneroCliente() {
         return generoCliente;
     }
 
-    public void setGeneroCliente(char generoCliente) {
+    public void setGeneroCliente(String generoCliente) {
         this.generoCliente = generoCliente;
     }
 
@@ -71,16 +69,8 @@ public class Cliente
         this.edadCliente = edadCliente;
     }
 
-    public String getPreferenciaCliente() {
-        return preferenciaCliente;
-    }
-
-    public void setPreferenciaCliente(String preferenciaCliente) {
-        this.preferenciaCliente = preferenciaCliente;
-    }
-
     @Override
     public String toString() {
-        return "Clientes{" + "idCliente=" + idCliente + ", idUsuario=" + idUsuario + ", nombreCliente=" + nombreCliente + ", telefonoCliente=" + telefonoCliente + ", generoCliente=" + generoCliente + ", edadCliente=" + edadCliente + ", preferenciaCliente=" + preferenciaCliente + '}';
+        return "Cliente{" + "idCliente=" + idCliente + ", nombreCliente=" + nombreCliente + ", passwordCliente=" + passwordCliente + ", telefonoCliente=" + telefonoCliente + ", generoCliente=" + generoCliente + ", edadCliente=" + edadCliente + '}';
     }
 }

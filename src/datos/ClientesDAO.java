@@ -1,42 +1,45 @@
 package datos;
 
 import database.Conexion;
-import datos.interfaces.CrudUsuarios;
-import entidades.Usuario;
+import datos.interfaces.CrudClientes;
+import entidades.Cliente;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
-public class UsuariosDAO implements CrudUsuarios<Usuario>
+public class ClientesDAO implements CrudClientes<Cliente>
 {
     private final Conexion CON;
     private PreparedStatement ps;
     private ResultSet rs;
     private boolean resp;
     
-    public UsuariosDAO()
+    public ClientesDAO()
     {
         CON = Conexion.getInstancia();
     }
     
     @Override
-    public boolean insertar(Usuario obj) 
+    public boolean insertar(Cliente obj) 
     {
         String sql;
         resp = false;
         try
         {
-            sql = "insert into Usuarios(nombreUsuario, passwordUsuario)\n" +
-                    "values(?, ?);";
+            sql = "insert into Clientes(nombreCliente, passwordCliente, telefonoCliente, generoCliente, edadCliente)\n" +
+                "values(?, ?, ?, ?, ?);";
             ps = CON.Conectar().prepareStatement(sql);
-            //Pasar los valores a la consulta sql
-            ps.setString(1, obj.getNombreUsuario());
-            ps.setString(2, obj.getPasswordUsuario());
-            //Verificar si se insertó el registro
+            
+            ps.setString(1, obj.getNombreCliente());
+            ps.setString(2, obj.getPasswordCliente());
+            ps.setString(3, obj.getTelefonoCliente());
+            ps.setString(4, obj.getGeneroCliente());
+            ps.setInt(5, obj.getEdadCliente());
+            
             if(ps.executeUpdate() > 0)
                 resp = true;
-            ps.close(); // Se manejan como archivos
+            ps.close();
         }
         catch(SQLException e)
         {
@@ -57,13 +60,10 @@ public class UsuariosDAO implements CrudUsuarios<Usuario>
         resp = false;
         try
         {
-            sql = "select idUsuario from Usuarios where nombreUsuario = ?;";
+            sql = "select idCliente from Clientes where nombreCliente = ?;";
             ps = CON.Conectar().prepareStatement(sql);
-            // Pasar los valores a la consulta sql
             ps.setString(1, texto);
-            // Ejecuta la consulta
             rs = ps.executeQuery();
-            // El puntero se mueve de regitro en registro, por lo tanto:
             if(rs.next())
                 resp = true;
             ps.close();
@@ -89,13 +89,10 @@ public class UsuariosDAO implements CrudUsuarios<Usuario>
         resp = false;
         try
         {
-            sql = "select nombreUsuario from Usuarios where passwordUsuario = ?;";
+            sql = "select nombreCliente from Clientes where passwordCliente = ?;";
             ps = CON.Conectar().prepareStatement(sql);
-            // Pasar los valores a la consulta sql
             ps.setString(1, pass);
-            // Ejecuta la consulta
             rs = ps.executeQuery();
-            // El puntero se mueve de regitro en registro, por lo tanto:
             if(rs.next())
                 if(rs.getString(1).equals(usu))
                     resp = true;
@@ -115,5 +112,5 @@ public class UsuariosDAO implements CrudUsuarios<Usuario>
             CON.desconectar();
         }
         return resp;
-    }   
+    }
 }

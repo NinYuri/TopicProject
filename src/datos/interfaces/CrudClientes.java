@@ -1,6 +1,6 @@
 package datos.interfaces;
 
-public interface CrudUsuarios <T>
+public interface CrudClientes <T>
 {
     public boolean insertar(T obj);
     public boolean existe(String texto);
