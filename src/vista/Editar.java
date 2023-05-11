@@ -1,25 +1,36 @@
 package vista;
 
 import java.awt.Color;
-import java.util.Arrays;
 import java.util.List;
-import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 import libreriaproyecto.NuevoServicio;
 import negocio.ServiciosControl;
 
-public class Nuevo extends javax.swing.JFrame 
+public class Editar extends javax.swing.JFrame 
 {
+    private int id;
+    private String nombreAnt;
     private final ServiciosControl CONTROL;
     
-    public Nuevo() 
+    public Editar() 
     {
         initComponents();
         CONTROL = new ServiciosControl();
         
         setLocation(360, 100);
         jPanel2.setVisible(false);
+    }
+    
+    public void Variables(String id, String nombre, String nombreAnt, String duracion, String costo, String descuento, String tipo)
+    {
+        this.id = Integer.parseInt(id);
+        txtNombreS.setText(nombre);
+        this.nombreAnt = nombreAnt;
+        txtDuracion.setText(duracion);
+        txtCosto.setText(costo.substring(1));
+        txtDescuento.setText(descuento.replace("%", ""));
+        txtTipo.setText(tipo);
+        Rutas(nombre);
     }
     
     private void Limpiar()
@@ -29,18 +40,6 @@ public class Nuevo extends javax.swing.JFrame
         txtCosto.setText("");
         txtDescuento.setText("");
         txtTipo.setText("");
-    }
-    
-    private void LlenarRutas()
-    {
-        txtRuta1.setText("Ruta 1");
-        txtRuta2.setText("Ruta 2");
-        txtRuta3.setText("Ruta 3");
-        txtRuta4.setText("Ruta 4");
-        txtRuta5.setText("Ruta 5");
-        txtRuta6.setText("Ruta 6");
-        txtRuta7.setText("Ruta 7");
-        txtRuta8.setText("Ruta 8");
     }
     
     private void Llenar()
@@ -79,15 +78,6 @@ public class Nuevo extends javax.swing.JFrame
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel2 = new javax.swing.JPanel();
-        txtRuta1 = new javax.swing.JTextField();
-        txtRuta2 = new javax.swing.JTextField();
-        txtRuta3 = new javax.swing.JTextField();
-        txtRuta4 = new javax.swing.JTextField();
-        txtRuta5 = new javax.swing.JTextField();
-        txtRuta6 = new javax.swing.JTextField();
-        txtRuta7 = new javax.swing.JTextField();
-        txtRuta8 = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -99,12 +89,212 @@ public class Nuevo extends javax.swing.JFrame
         txtDescuento = new javax.swing.JTextField();
         txtTipo = new javax.swing.JTextField();
         btnCancelar = new javax.swing.JButton();
-        btnNuevo = new javax.swing.JButton();
+        btnEditarCarr = new javax.swing.JButton();
+        btnGuardar = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        txtRuta1 = new javax.swing.JTextField();
+        txtRuta2 = new javax.swing.JTextField();
+        txtRuta3 = new javax.swing.JTextField();
+        txtRuta4 = new javax.swing.JTextField();
+        txtRuta5 = new javax.swing.JTextField();
+        txtRuta6 = new javax.swing.JTextField();
+        txtRuta7 = new javax.swing.JTextField();
+        txtRuta8 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel1.setBackground(new java.awt.Color(207, 189, 186));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel4.setOpaque(true);
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 920, 10));
+
+        jLabel3.setBackground(new java.awt.Color(207, 189, 186));
+        jLabel3.setOpaque(true);
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 920, 30));
+
+        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel2.setFont(new java.awt.Font("Consolas", 1, 48)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(98, 88, 88));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Editar Servicio");
+        jLabel2.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 920, 110));
+
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setOpaque(true);
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 920, 120));
+
+        txtNombreS.setBackground(new java.awt.Color(255, 255, 255, 180));
+        txtNombreS.setFont(new java.awt.Font("Consolas", 1, 19)); // NOI18N
+        txtNombreS.setForeground(new java.awt.Color(98, 88, 88));
+        txtNombreS.setText("Nombre");
+        txtNombreS.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        txtNombreS.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtNombreSFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtNombreSFocusLost(evt);
+            }
+        });
+        txtNombreS.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtNombreSMouseClicked(evt);
+            }
+        });
+        txtNombreS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreSActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtNombreS, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 190, 540, 45));
+
+        txtDuracion.setBackground(new java.awt.Color(255, 255, 255, 180));
+        txtDuracion.setFont(new java.awt.Font("Consolas", 1, 19)); // NOI18N
+        txtDuracion.setForeground(new java.awt.Color(98, 88, 88));
+        txtDuracion.setText("Duración");
+        txtDuracion.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        txtDuracion.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtDuracionFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtDuracionFocusLost(evt);
+            }
+        });
+        txtDuracion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtDuracionMouseClicked(evt);
+            }
+        });
+        txtDuracion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDuracionActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtDuracion, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 270, 540, 45));
+
+        txtCosto.setBackground(new java.awt.Color(255, 255, 255, 180));
+        txtCosto.setFont(new java.awt.Font("Consolas", 1, 19)); // NOI18N
+        txtCosto.setForeground(new java.awt.Color(98, 88, 88));
+        txtCosto.setText("Costo");
+        txtCosto.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        txtCosto.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtCostoFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtCostoFocusLost(evt);
+            }
+        });
+        txtCosto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtCostoMouseClicked(evt);
+            }
+        });
+        txtCosto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCostoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtCosto, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 350, 540, 45));
+
+        txtDescuento.setBackground(new java.awt.Color(255, 255, 255, 180));
+        txtDescuento.setFont(new java.awt.Font("Consolas", 1, 19)); // NOI18N
+        txtDescuento.setForeground(new java.awt.Color(98, 88, 88));
+        txtDescuento.setText("Descuento");
+        txtDescuento.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        txtDescuento.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtDescuentoFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtDescuentoFocusLost(evt);
+            }
+        });
+        txtDescuento.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtDescuentoMouseClicked(evt);
+            }
+        });
+        txtDescuento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDescuentoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtDescuento, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 430, 540, 45));
+
+        txtTipo.setBackground(new java.awt.Color(255, 255, 255, 180));
+        txtTipo.setFont(new java.awt.Font("Consolas", 1, 19)); // NOI18N
+        txtTipo.setForeground(new java.awt.Color(98, 88, 88));
+        txtTipo.setText("Tipo");
+        txtTipo.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        txtTipo.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtTipoFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtTipoFocusLost(evt);
+            }
+        });
+        txtTipo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtTipoMouseClicked(evt);
+            }
+        });
+        txtTipo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTipoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 510, 540, 45));
+
+        btnCancelar.setBackground(new java.awt.Color(225, 214, 212));
+        btnCancelar.setFont(new java.awt.Font("Consolas", 1, 20)); // NOI18N
+        btnCancelar.setForeground(new java.awt.Color(98, 88, 88));
+        btnCancelar.setText("Cancelar");
+        btnCancelar.setFocusPainted(false);
+        btnCancelar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnCancelarMouseClicked(evt);
+            }
+        });
+        jPanel1.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 600, 190, -1));
+
+        btnEditarCarr.setBackground(new java.awt.Color(225, 214, 212));
+        btnEditarCarr.setFont(new java.awt.Font("Consolas", 1, 20)); // NOI18N
+        btnEditarCarr.setForeground(new java.awt.Color(98, 88, 88));
+        btnEditarCarr.setText("Editar Carrusel");
+        btnEditarCarr.setFocusPainted(false);
+        btnEditarCarr.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEditarCarrMouseClicked(evt);
+            }
+        });
+        jPanel1.add(btnEditarCarr, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 600, 210, -1));
+
+        btnGuardar.setBackground(new java.awt.Color(225, 214, 212));
+        btnGuardar.setFont(new java.awt.Font("Consolas", 1, 20)); // NOI18N
+        btnGuardar.setForeground(new java.awt.Color(98, 88, 88));
+        btnGuardar.setText("Guardar");
+        btnGuardar.setFocusPainted(false);
+        btnGuardar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnGuardarMouseClicked(evt);
+            }
+        });
+        jPanel1.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 600, 190, -1));
+
+        jLabel5.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel5.setOpaque(true);
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 920, 10));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 670));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -311,184 +501,6 @@ public class Nuevo extends javax.swing.JFrame
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, 580, 405));
 
-        jPanel1.setBackground(new java.awt.Color(207, 189, 186));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel4.setOpaque(true);
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 920, 10));
-
-        jLabel3.setBackground(new java.awt.Color(207, 189, 186));
-        jLabel3.setOpaque(true);
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 920, 30));
-
-        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel2.setFont(new java.awt.Font("Consolas", 1, 48)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(98, 88, 88));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Añadir Nuevo Servicio");
-        jLabel2.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 920, 110));
-
-        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel1.setOpaque(true);
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 920, 120));
-
-        txtNombreS.setBackground(new java.awt.Color(255, 255, 255, 180));
-        txtNombreS.setFont(new java.awt.Font("Consolas", 1, 19)); // NOI18N
-        txtNombreS.setForeground(new java.awt.Color(98, 88, 88));
-        txtNombreS.setText("Nombre");
-        txtNombreS.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        txtNombreS.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtNombreSFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtNombreSFocusLost(evt);
-            }
-        });
-        txtNombreS.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtNombreSMouseClicked(evt);
-            }
-        });
-        txtNombreS.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNombreSActionPerformed(evt);
-            }
-        });
-        jPanel1.add(txtNombreS, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 190, 540, 45));
-
-        txtDuracion.setBackground(new java.awt.Color(255, 255, 255, 180));
-        txtDuracion.setFont(new java.awt.Font("Consolas", 1, 19)); // NOI18N
-        txtDuracion.setForeground(new java.awt.Color(98, 88, 88));
-        txtDuracion.setText("Duración");
-        txtDuracion.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        txtDuracion.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtDuracionFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtDuracionFocusLost(evt);
-            }
-        });
-        txtDuracion.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtDuracionMouseClicked(evt);
-            }
-        });
-        txtDuracion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDuracionActionPerformed(evt);
-            }
-        });
-        jPanel1.add(txtDuracion, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 270, 540, 45));
-
-        txtCosto.setBackground(new java.awt.Color(255, 255, 255, 180));
-        txtCosto.setFont(new java.awt.Font("Consolas", 1, 19)); // NOI18N
-        txtCosto.setForeground(new java.awt.Color(98, 88, 88));
-        txtCosto.setText("Costo");
-        txtCosto.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        txtCosto.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtCostoFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtCostoFocusLost(evt);
-            }
-        });
-        txtCosto.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtCostoMouseClicked(evt);
-            }
-        });
-        txtCosto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCostoActionPerformed(evt);
-            }
-        });
-        jPanel1.add(txtCosto, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 350, 540, 45));
-
-        txtDescuento.setBackground(new java.awt.Color(255, 255, 255, 180));
-        txtDescuento.setFont(new java.awt.Font("Consolas", 1, 19)); // NOI18N
-        txtDescuento.setForeground(new java.awt.Color(98, 88, 88));
-        txtDescuento.setText("Descuento");
-        txtDescuento.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        txtDescuento.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtDescuentoFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtDescuentoFocusLost(evt);
-            }
-        });
-        txtDescuento.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtDescuentoMouseClicked(evt);
-            }
-        });
-        txtDescuento.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDescuentoActionPerformed(evt);
-            }
-        });
-        jPanel1.add(txtDescuento, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 430, 540, 45));
-
-        txtTipo.setBackground(new java.awt.Color(255, 255, 255, 180));
-        txtTipo.setFont(new java.awt.Font("Consolas", 1, 19)); // NOI18N
-        txtTipo.setForeground(new java.awt.Color(98, 88, 88));
-        txtTipo.setText("Tipo");
-        txtTipo.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        txtTipo.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtTipoFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtTipoFocusLost(evt);
-            }
-        });
-        txtTipo.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtTipoMouseClicked(evt);
-            }
-        });
-        txtTipo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTipoActionPerformed(evt);
-            }
-        });
-        jPanel1.add(txtTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 510, 540, 45));
-
-        btnCancelar.setBackground(new java.awt.Color(225, 214, 212));
-        btnCancelar.setFont(new java.awt.Font("Consolas", 1, 20)); // NOI18N
-        btnCancelar.setForeground(new java.awt.Color(98, 88, 88));
-        btnCancelar.setText("Cancelar");
-        btnCancelar.setFocusPainted(false);
-        btnCancelar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnCancelarMouseClicked(evt);
-            }
-        });
-        jPanel1.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 600, 190, -1));
-
-        btnNuevo.setBackground(new java.awt.Color(225, 214, 212));
-        btnNuevo.setFont(new java.awt.Font("Consolas", 1, 20)); // NOI18N
-        btnNuevo.setForeground(new java.awt.Color(98, 88, 88));
-        btnNuevo.setText("Armar Carrusel");
-        btnNuevo.setFocusPainted(false);
-        btnNuevo.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnNuevoMouseClicked(evt);
-            }
-        });
-        jPanel1.add(btnNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 600, 190, -1));
-
-        jLabel5.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel5.setOpaque(true);
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 920, 10));
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 670));
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -617,82 +629,9 @@ public class Nuevo extends javax.swing.JFrame
         dispose();
     }//GEN-LAST:event_btnCancelarMouseClicked
 
-    private void btnNuevoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNuevoMouseClicked
-        NuevoServicio obn = new NuevoServicio();
-        List<JTextField> textFields = Arrays.asList(txtRuta1, txtRuta2, txtRuta3, txtRuta4, txtRuta5, txtRuta6, txtRuta7, txtRuta8);
-        String resp;
-        
-        if(!txtNombreS.getText().isEmpty() && !txtNombreS.getText().equals("Nombre"))
-            if(obn.validarNombre(txtNombreS.getText()) == false)
-            {
-                JOptionPane.showMessageDialog(this, obn.Mensaje(), "Añadir Servicios", JOptionPane.ERROR_MESSAGE);
-                txtNombreS.setText("");
-            }
-            else
-                if(!txtDuracion.getText().isEmpty() && !txtDuracion.getText().equals("Duración"))
-                    if(obn.validarDuracion(txtDuracion.getText()) == false)
-                    {
-                        JOptionPane.showMessageDialog(this, obn.Mensaje(), "Añadir Servicios", JOptionPane.ERROR_MESSAGE);
-                        txtDuracion.setText("");
-                    }
-                    else
-                        if(!txtCosto.getText().isEmpty() && !txtCosto.getText().equals("Costo"))
-                            if(obn.validarCosto(txtCosto.getText()) == false)
-                            {
-                                JOptionPane.showMessageDialog(this, obn.Mensaje(), "Añadir Servicios", JOptionPane.ERROR_MESSAGE);
-                                txtCosto.setText("");
-                            }
-                            else
-                                if(!txtDescuento.getText().isEmpty() && !txtDescuento.getText().equals("Descuento"))
-                                    if(obn.validarDescuento(txtDescuento.getText()) == false)
-                                    {
-                                        JOptionPane.showMessageDialog(this, obn.Mensaje(), "Añadir Servicios", JOptionPane.ERROR_MESSAGE);
-                                        txtDescuento.setText("");
-                                    }
-                                    else
-                                        if(!txtTipo.getText().isEmpty() && !txtTipo.getText().equals("Tipo"))
-                                            if(obn.validarTipo(txtTipo.getText()) == false)
-                                            {
-                                                JOptionPane.showMessageDialog(this, obn.Mensaje(), "Añadir Servicios", JOptionPane.ERROR_MESSAGE);
-                                                txtTipo.setText("");
-                                            }
-                                            else
-                                            {
-                                                jPanel2.setVisible(true);
-                                                Desaparecer();
-                                                btnNuevo.setText("Guardar");
-                                                
-                                                for(int i = 0; i < 8; i++)
-                                                {
-                                                    JFileChooser archivo = new JFileChooser();
-                                                    int opcion = archivo.showOpenDialog(this);
-                                                    if(opcion == JFileChooser.APPROVE_OPTION)
-                                                        textFields.get(i).setText(archivo.getSelectedFile().getAbsolutePath());
-                                                }
-                                                resp = CONTROL.Insertar(txtNombreS.getText(), txtDuracion.getText(), Double.parseDouble(txtCosto.getText()), Integer.parseInt(txtDescuento.getText()), txtTipo.getText(), txtRuta1.getText(), txtRuta2.getText(), txtRuta3.getText(), txtRuta4.getText(), txtRuta5.getText(), txtRuta6.getText(), txtRuta7.getText(), txtRuta8.getText());
-                                                
-                                                if ( resp.equals("OK"))
-                                                    JOptionPane.showMessageDialog(this, "Registro exitoso", "Nuevo Servicio", JOptionPane.INFORMATION_MESSAGE);
-                                                else
-                                                    JOptionPane.showMessageDialog(this, "Hubo un error en el registro", "Nuevo Servicio", JOptionPane.INFORMATION_MESSAGE);
-                                                
-                                                jPanel2.setVisible(false);
-                                                btnNuevo.setText("Armar Carrusel");
-                                                LlenarRutas();
-                                                Aparecer();
-                                                Llenar();
-                                            }
-                                        else
-                                            JOptionPane.showMessageDialog(this, "Debes escribir el tipo al que pertenece el servicio", "Añadir Servicios", JOptionPane.ERROR_MESSAGE);         
-                                else
-                                    JOptionPane.showMessageDialog(this, "Debes escribir el descuento del servicio", "Añadir Servicios", JOptionPane.ERROR_MESSAGE);       
-                        else
-                            JOptionPane.showMessageDialog(this, "Debes escribir el costo del servicio", "Añadir Servicios", JOptionPane.ERROR_MESSAGE);
-                else
-                    JOptionPane.showMessageDialog(this, "Debes escribir la duración del servicio", "Añadir Servicios", JOptionPane.ERROR_MESSAGE);
-        else
-            JOptionPane.showMessageDialog(this, "Debes escribir un nombre para el servicio", "Añadir Servicios", JOptionPane.ERROR_MESSAGE);
-    }//GEN-LAST:event_btnNuevoMouseClicked
+    private void btnEditarCarrMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditarCarrMouseClicked
+
+    }//GEN-LAST:event_btnEditarCarrMouseClicked
 
     private void txtRuta1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRuta1ActionPerformed
         // TODO add your handling code here:
@@ -822,6 +761,62 @@ public class Nuevo extends javax.swing.JFrame
         // TODO add your handling code here:
     }//GEN-LAST:event_txtRuta8ActionPerformed
 
+    private void btnGuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarMouseClicked
+        NuevoServicio obn = new NuevoServicio();
+        String resp;
+              
+        if(!txtNombreS.getText().isEmpty() && !txtNombreS.getText().equals("Nombre"))
+            if(obn.validarNombre(txtNombreS.getText()) == false)
+            {
+                JOptionPane.showMessageDialog(this, obn.Mensaje(), "Añadir Servicios", JOptionPane.ERROR_MESSAGE);
+                txtNombreS.setText("");
+            }
+            else
+                if(!txtDuracion.getText().isEmpty() && !txtDuracion.getText().equals("Duración"))
+                    if(obn.validarDuracion(txtDuracion.getText()) == false)
+                    {
+                        JOptionPane.showMessageDialog(this, obn.Mensaje(), "Añadir Servicios", JOptionPane.ERROR_MESSAGE);
+                        txtDuracion.setText("");
+                    }
+                    else
+                        if(!txtCosto.getText().isEmpty() && !txtCosto.getText().equals("Costo"))
+                                if(!txtDescuento.getText().isEmpty() && !txtDescuento.getText().equals("Descuento"))
+                                    if(obn.validarDescuento(txtDescuento.getText()) == false)
+                                    {
+                                        JOptionPane.showMessageDialog(this, obn.Mensaje(), "Añadir Servicios", JOptionPane.ERROR_MESSAGE);
+                                        txtDescuento.setText("");
+                                    }
+                                    else
+                                        if(!txtTipo.getText().isEmpty() && !txtTipo.getText().equals("Tipo"))
+                                            if(obn.validarTipo(txtTipo.getText()) == false)
+                                            {
+                                                JOptionPane.showMessageDialog(this, obn.Mensaje(), "Añadir Servicios", JOptionPane.ERROR_MESSAGE);
+                                                txtTipo.setText("");
+                                            }
+                                            else
+                                            {
+                                                resp = CONTROL.Actualizar(id, txtNombreS.getText(), nombreAnt, txtDuracion.getText(), Double.parseDouble(txtCosto.getText()), Integer.parseInt(txtDescuento.getText()), txtTipo.getText(), txtRuta1.getText(), txtRuta2.getText(), txtRuta3.getText(), txtRuta4.getText(), txtRuta5.getText(), txtRuta6.getText(), txtRuta7.getText(), txtRuta8.getText());
+                                                if(resp.equals("OK"))
+                                                {
+                                                    JOptionPane.showMessageDialog(this, "Servicio actualizado correctamente", "Editar", JOptionPane.INFORMATION_MESSAGE);
+                                                    Llenar();
+                                                    dispose();
+                                                }
+                                                else
+                                                    JOptionPane.showMessageDialog(this, "Hubo un error en la actualización", "Editar", JOptionPane.ERROR_MESSAGE);
+                                            }
+                                        else
+                                            JOptionPane.showMessageDialog(this, "Debes escribir el tipo al que pertenece el servicio", "Añadir Servicios", JOptionPane.ERROR_MESSAGE);         
+                                else
+                                    JOptionPane.showMessageDialog(this, "Debes escribir el descuento del servicio", "Añadir Servicios", JOptionPane.ERROR_MESSAGE);       
+                        else
+                            JOptionPane.showMessageDialog(this, "Debes escribir el costo del servicio", "Añadir Servicios", JOptionPane.ERROR_MESSAGE);
+                else
+                    JOptionPane.showMessageDialog(this, "Debes escribir la duración del servicio", "Añadir Servicios", JOptionPane.ERROR_MESSAGE);
+        else
+            JOptionPane.showMessageDialog(this, "Debes escribir un nombre para el servicio", "Añadir Servicios", JOptionPane.ERROR_MESSAGE);
+    }//GEN-LAST:event_btnGuardarMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -839,27 +834,43 @@ public class Nuevo extends javax.swing.JFrame
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Nuevo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Editar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Nuevo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Editar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Nuevo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Editar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Nuevo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Editar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Nuevo().setVisible(true);
+                new Editar().setVisible(true);
             }
         });
+    }
+    
+    public void Rutas(String texto)
+    {
+        List<String[]> rutas = CONTROL.Imagen(texto);
+        String[] rutasServicio = rutas.get(0);
+        txtRuta1.setText(rutasServicio[0]);
+        txtRuta2.setText(rutasServicio[1]);
+        txtRuta3.setText(rutasServicio[2]);
+        txtRuta4.setText(rutasServicio[3]);
+        txtRuta5.setText(rutasServicio[4]);
+        txtRuta6.setText(rutasServicio[5]);
+        txtRuta7.setText(rutasServicio[6]);
+        txtRuta8.setText(rutasServicio[7]);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
-    private javax.swing.JButton btnNuevo;
+    private javax.swing.JButton btnEditarCarr;
+    private javax.swing.JButton btnGuardar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

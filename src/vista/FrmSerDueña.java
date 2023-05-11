@@ -7,7 +7,9 @@ import java.awt.Image;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTable;
 import javax.swing.table.JTableHeader;
 import negocio.ServiciosControl;
 
@@ -15,22 +17,26 @@ public class FrmSerDueña extends javax.swing.JFrame
 {
     Fondo fondo = new Fondo();
     private final ServiciosControl CONTROL;
+    String nombreAnt;
     
     public FrmSerDueña() 
     {
         setContentPane(fondo);
         initComponents();
         CONTROL = new ServiciosControl();
-        ListarCortes();
+        Listar("");
         
         Icono(new ImageIcon(getClass().getResource("/img/iconos/SalirW.png")), lblIconSalir);
+        Icono(new ImageIcon(getClass().getResource("/img/iconos/NuevoW.png")), lblIconNuevo);
+        Icono(new ImageIcon(getClass().getResource("/img/iconos/BorrarW.png")), lblIconEliminar);
+        Icono(new ImageIcon(getClass().getResource("/img/iconos/EditarW.png")), lblIconEditar);
         setExtendedState(MAXIMIZED_BOTH);
     }
     
-    private void ListarCortes()
+    public void Listar(String texto)
     {
-        tblCortes.setModel(CONTROL.ListarCortes("Corte"));
-        Tabla();
+        tblServicios.setModel(CONTROL.Listar(texto));
+        Tabla(tblServicios);
     }
 
     /**
@@ -46,10 +52,16 @@ public class FrmSerDueña extends javax.swing.JFrame
         lblSalir = new javax.swing.JLabel();
         lblIconSalir = new javax.swing.JLabel();
         tablaC = new javax.swing.JScrollPane();
-        tblCortes = new javax.swing.JTable();
+        tblServicios = new javax.swing.JTable();
         btnNuevo = new javax.swing.JLabel();
         lblNuevo = new javax.swing.JLabel();
         lblIconNuevo = new javax.swing.JLabel();
+        btnEliminar = new javax.swing.JLabel();
+        lblEliminar = new javax.swing.JLabel();
+        lblIconEliminar = new javax.swing.JLabel();
+        btnEditar = new javax.swing.JLabel();
+        lblEditar = new javax.swing.JLabel();
+        lblIconEditar = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -78,9 +90,9 @@ public class FrmSerDueña extends javax.swing.JFrame
 
         tablaC.setBackground(new java.awt.Color(255, 255, 255));
 
-        tblCortes.setFont(new java.awt.Font("Consolas", 1, 14)); // NOI18N
-        tblCortes.setForeground(new java.awt.Color(67, 63, 63));
-        tblCortes.setModel(new javax.swing.table.DefaultTableModel(
+        tblServicios.setFont(new java.awt.Font("Consolas", 1, 16)); // NOI18N
+        tblServicios.setForeground(new java.awt.Color(67, 63, 63));
+        tblServicios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -88,9 +100,10 @@ public class FrmSerDueña extends javax.swing.JFrame
 
             }
         ));
-        tablaC.setViewportView(tblCortes);
+        tblServicios.setRowHeight(30);
+        tablaC.setViewportView(tblServicios);
 
-        getContentPane().add(tablaC, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 170, 900, 160));
+        getContentPane().add(tablaC, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 170, 1010, 160));
 
         btnNuevo.setBackground(new java.awt.Color(204, 204, 255));
         btnNuevo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -113,6 +126,50 @@ public class FrmSerDueña extends javax.swing.JFrame
         lblNuevo.setText("Añadir");
         getContentPane().add(lblNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 610, -1, 50));
         getContentPane().add(lblIconNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 600, 70, 60));
+
+        btnEliminar.setBackground(new java.awt.Color(204, 204, 255));
+        btnEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEliminarMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnEliminarMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnEliminarMouseReleased(evt);
+            }
+        });
+        getContentPane().add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 680, 280, 60));
+
+        lblEliminar.setBackground(new java.awt.Color(255, 255, 255));
+        lblEliminar.setFont(new java.awt.Font("Consolas", 1, 28)); // NOI18N
+        lblEliminar.setForeground(new java.awt.Color(255, 255, 255));
+        lblEliminar.setText("Eliminar");
+        getContentPane().add(lblEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 690, -1, 50));
+        getContentPane().add(lblIconEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 680, 70, 60));
+
+        btnEditar.setBackground(new java.awt.Color(204, 204, 255));
+        btnEditar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnEditar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEditarMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnEditarMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnEditarMouseReleased(evt);
+            }
+        });
+        getContentPane().add(btnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 760, 280, 60));
+
+        lblEditar.setBackground(new java.awt.Color(255, 255, 255));
+        lblEditar.setFont(new java.awt.Font("Consolas", 1, 28)); // NOI18N
+        lblEditar.setForeground(new java.awt.Color(255, 255, 255));
+        lblEditar.setText("Editar");
+        getContentPane().add(lblEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 770, -1, 50));
+        getContentPane().add(lblIconEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 760, 70, 60));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -143,14 +200,78 @@ public class FrmSerDueña extends javax.swing.JFrame
     private void btnNuevoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNuevoMousePressed
         btnNuevo.setBorder(BorderFactory.createLoweredBevelBorder());
         lblNuevo.setForeground(new Color(98, 88, 88));
-        Icono(new ImageIcon(getClass().getResource("/img/iconos/SalirB.png")), lblIconNuevo);
+        Icono(new ImageIcon(getClass().getResource("/img/iconos/NuevoB.png")), lblIconNuevo);
     }//GEN-LAST:event_btnNuevoMousePressed
 
     private void btnNuevoMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNuevoMouseReleased
         btnNuevo.setBorder(null);
         lblNuevo.setForeground(new Color(255, 255, 255));
-        Icono(new ImageIcon(getClass().getResource("/img/iconos/SalirW.png")), lblIconNuevo);
+        Icono(new ImageIcon(getClass().getResource("/img/iconos/NuevoW.png")), lblIconNuevo);
     }//GEN-LAST:event_btnNuevoMouseReleased
+
+    private void btnEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseClicked
+        if(tblServicios.getSelectedRowCount() == 1)
+        {
+            String servicio = String.valueOf(tblServicios.getValueAt(tblServicios.getSelectedRow(), 0));
+            if(JOptionPane.showConfirmDialog(this, "¿Desea eliminar el servicio " + servicio + "?", "Eliminar",JOptionPane.YES_NO_OPTION) == 0)
+            {
+                String resp = CONTROL.Borrar(servicio);
+                if(resp.equals("OK"))
+                {
+                    JOptionPane.showMessageDialog(this, "Servicio eliminado", "Eliminar", JOptionPane.INFORMATION_MESSAGE);
+                    Listar("");
+                }
+                else
+                    JOptionPane.showMessageDialog(this, "Error al eliminar el servicio", "Eliminar", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+        else
+            JOptionPane.showMessageDialog(this, "Debes seleccionar un servicio para eliminar", "Eliminar", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_btnEliminarMouseClicked
+
+    private void btnEliminarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMousePressed
+        btnEliminar.setBorder(BorderFactory.createLoweredBevelBorder());
+        lblEliminar.setForeground(new Color(98, 88, 88));
+        Icono(new ImageIcon(getClass().getResource("/img/iconos/BorrarB.png")), lblIconEliminar);
+    }//GEN-LAST:event_btnEliminarMousePressed
+
+    private void btnEliminarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseReleased
+        btnEliminar.setBorder(null);
+        lblEliminar.setForeground(new Color(255, 255, 255));
+        Icono(new ImageIcon(getClass().getResource("/img/iconos/BorrarW.png")), lblIconEliminar);
+    }//GEN-LAST:event_btnEliminarMouseReleased
+
+    private void btnEditarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditarMouseClicked
+        Editar obe = new Editar();
+        
+        if(tblServicios.getSelectedRowCount() == 1)
+        {
+            String id = String.valueOf(tblServicios.getValueAt(tblServicios.getSelectedRow(), 0));
+            String nombre = String.valueOf(tblServicios.getValueAt(tblServicios.getSelectedRow(), 1));
+            nombreAnt = String.valueOf(tblServicios.getValueAt(tblServicios.getSelectedRow(), 1));
+            String duracion = String.valueOf(tblServicios.getValueAt(tblServicios.getSelectedRow(), 2));
+            String costo = String.valueOf(tblServicios.getValueAt(tblServicios.getSelectedRow(), 3));
+            String descuento = String.valueOf(tblServicios.getValueAt(tblServicios.getSelectedRow(), 4));
+            String tipo = String.valueOf(tblServicios.getValueAt(tblServicios.getSelectedRow(), 5));
+            
+            obe.Variables(id, nombre, nombreAnt, duracion, costo, descuento, tipo);
+            obe.setVisible(true);
+        }
+        else
+            JOptionPane.showMessageDialog(this, "Debes seleccionar un servicio para editar", "Editar", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_btnEditarMouseClicked
+
+    private void btnEditarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditarMousePressed
+        btnEditar.setBorder(BorderFactory.createLoweredBevelBorder());
+        lblEditar.setForeground(new Color(98, 88, 88));
+        Icono(new ImageIcon(getClass().getResource("/img/iconos/EditarB.png")), lblIconEditar);
+    }//GEN-LAST:event_btnEditarMousePressed
+
+    private void btnEditarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditarMouseReleased
+        btnEditar.setBorder(null);
+        lblEditar.setForeground(new Color(255, 255, 255));
+        Icono(new ImageIcon(getClass().getResource("/img/iconos/EditarW.png")), lblIconEditar);
+    }//GEN-LAST:event_btnEditarMouseReleased
 
     /**
      * @param args the command line arguments
@@ -178,6 +299,9 @@ public class FrmSerDueña extends javax.swing.JFrame
             java.util.logging.Logger.getLogger(FrmSerDueña.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -195,9 +319,9 @@ public class FrmSerDueña extends javax.swing.JFrame
         label.setIcon(icono);
     }
     
-    public void Tabla()
+    public void Tabla(JTable tabla)
     {
-        JTableHeader theader = tblCortes.getTableHeader();
+        JTableHeader theader = tabla.getTableHeader();
         theader.setBackground(Color.red);
         theader.setFont(new Font("Consolas", Font.BOLD, 20));
         theader.setForeground(new Color(67,63,63));
@@ -217,13 +341,19 @@ public class FrmSerDueña extends javax.swing.JFrame
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel btnEditar;
+    private javax.swing.JLabel btnEliminar;
     private javax.swing.JLabel btnNuevo;
     private javax.swing.JLabel btnSalir;
+    private javax.swing.JLabel lblEditar;
+    private javax.swing.JLabel lblEliminar;
+    private javax.swing.JLabel lblIconEditar;
+    private javax.swing.JLabel lblIconEliminar;
     private javax.swing.JLabel lblIconNuevo;
     private javax.swing.JLabel lblIconSalir;
     private javax.swing.JLabel lblNuevo;
     private javax.swing.JLabel lblSalir;
     private javax.swing.JScrollPane tablaC;
-    private javax.swing.JTable tblCortes;
+    private javax.swing.JTable tblServicios;
     // End of variables declaration//GEN-END:variables
 }
