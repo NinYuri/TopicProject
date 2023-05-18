@@ -2,41 +2,53 @@ package vista;
 
 import comp.Carrusel;
 import java.awt.Color;
-import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
+import javaswingdev.message.MessageDialog;
 import javax.swing.JPanel;
-import javax.swing.table.JTableHeader;
 import negocio.ServiciosControl;
 
-public class SCortes extends javax.swing.JFrame 
+public class Servicios extends javax.swing.JFrame 
 {
+    String imagen;
+    String texto = "";
     Fondo fondo = new Fondo();
     private final ServiciosControl CONTROL;
 
-    public SCortes() 
+    public Servicios() 
     {
         setContentPane(fondo);
         initComponents();
         CONTROL = new ServiciosControl();
-        Listar("Corte");
         Icono(new ImageIcon(getClass().getResource("/img/iconos/Close.png")), lblClose);
+        lblTitulo.setText(texto);
         
         setLocationRelativeTo(null);
         btnCerrarG.setVisible(false);
         Carrusel.setVisible(false);
+        imagen = Carrusel.getImagen();
+        System.out.println(imagen);
     }
     
-    private void Listar(String texto)
+    public void Listar(String texto)
     {
         tblServicios.setModel(CONTROL.ListarServicios(texto));
-        Tabla();
     }
-
+    
+    public String getTexto()
+    {
+        return texto;
+    }
+    
+    public void setTexto(String texto)
+    {
+        this.texto = texto;
+        lblTitulo.setText(texto);
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -44,15 +56,15 @@ public class SCortes extends javax.swing.JFrame
         lblClose = new javax.swing.JLabel();
         btnGaleria = new javax.swing.JButton();
         Carrusel = new comp.Carrusel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblServicios = new javax.swing.JTable();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblServicios = new rojeru_san.complementos.RSTableMetro();
         btnCerrarG = new javax.swing.JButton();
         btnCita = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        lblTitulo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(960, 670));
+        setPreferredSize(new java.awt.Dimension(960, 690));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblClose.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -81,32 +93,46 @@ public class SCortes extends javax.swing.JFrame
             }
         });
         getContentPane().add(btnGaleria, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 220, 390, 90));
+
+        Carrusel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                CarruselMouseClicked(evt);
+            }
+        });
         getContentPane().add(Carrusel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, -1, -1));
 
-        tblServicios.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
-        tblServicios.setForeground(new java.awt.Color(67, 63, 63));
         tblServicios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {},
-                {},
-                {}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-
+                "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tblServicios.setColorBackgoundHead(new java.awt.Color(225, 214, 212));
+        tblServicios.setColorBordeFilas(new java.awt.Color(98, 88, 88));
+        tblServicios.setColorBordeHead(new java.awt.Color(98, 88, 88));
+        tblServicios.setColorFilasBackgound2(new java.awt.Color(225, 214, 212));
+        tblServicios.setColorFilasForeground1(new java.awt.Color(67, 63, 63));
+        tblServicios.setColorFilasForeground2(new java.awt.Color(67, 63, 63));
+        tblServicios.setColorForegroundHead(new java.awt.Color(67, 63, 63));
+        tblServicios.setColorSelBackgound(new java.awt.Color(208, 195, 195));
+        tblServicios.setColorSelForeground(new java.awt.Color(0, 0, 0));
+        tblServicios.setFuenteFilas(new java.awt.Font("Consolas", 1, 18)); // NOI18N
+        tblServicios.setFuenteFilasSelect(new java.awt.Font("Consolas", 1, 18)); // NOI18N
+        tblServicios.setFuenteHead(new java.awt.Font("Consolas", 1, 23)); // NOI18N
         tblServicios.setRowHeight(30);
-        tblServicios.setSelectionBackground(new java.awt.Color(225, 214, 212));
-        tblServicios.setSelectionForeground(new java.awt.Color(67, 63, 63));
-        tblServicios.setShowGrid(false);
         tblServicios.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblServiciosMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(tblServicios);
+        jScrollPane2.setViewportView(tblServicios);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 400, 870, 130));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 400, 880, 146));
 
         btnCerrarG.setBackground(new java.awt.Color(225, 214, 212));
         btnCerrarG.setFont(new java.awt.Font("Consolas", 1, 20)); // NOI18N
@@ -118,7 +144,7 @@ public class SCortes extends javax.swing.JFrame
                 btnCerrarGMouseClicked(evt);
             }
         });
-        getContentPane().add(btnCerrarG, new org.netbeans.lib.awtextra.AbsoluteConstraints(716, 590, 190, -1));
+        getContentPane().add(btnCerrarG, new org.netbeans.lib.awtextra.AbsoluteConstraints(716, 610, 190, -1));
 
         btnCita.setBackground(new java.awt.Color(225, 214, 212));
         btnCita.setFont(new java.awt.Font("Consolas", 1, 20)); // NOI18N
@@ -130,12 +156,18 @@ public class SCortes extends javax.swing.JFrame
                 btnCitaMouseClicked(evt);
             }
         });
-        getContentPane().add(btnCita, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 590, 190, -1));
+        btnCita.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCitaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnCita, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 610, 190, -1));
 
-        jLabel1.setFont(new java.awt.Font("Consolas", 1, 48)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(98, 88, 88));
-        jLabel1.setText("Menú Cortes");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 65, 300, 70));
+        lblTitulo.setFont(new java.awt.Font("Consolas", 1, 48)); // NOI18N
+        lblTitulo.setForeground(new java.awt.Color(98, 88, 88));
+        lblTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTitulo.setText("\"\"");
+        getContentPane().add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 65, 500, 70));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -145,6 +177,8 @@ public class SCortes extends javax.swing.JFrame
     }//GEN-LAST:event_lblCloseMouseClicked
 
     private void btnGaleriaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGaleriaMouseClicked
+        MessageDialog OptionPane = new MessageDialog(this);
+        
         if(tblServicios.getSelectedRowCount() == 1)
         {
             String nombre = String.valueOf(tblServicios.getValueAt(tblServicios.getSelectedRow(), 0));
@@ -154,7 +188,7 @@ public class SCortes extends javax.swing.JFrame
             btnCerrarG.setVisible(true);
         }
         else
-            JOptionPane.showMessageDialog(this, "Debes seleccionar un servicio para mostrarte la galería", "", JOptionPane.INFORMATION_MESSAGE);
+            OptionPane.showMessage("Galería", "Debes seleccionar un servicio para mostrarte la galería", "/img/iconos/Close.png");
     }//GEN-LAST:event_btnGaleriaMouseClicked
 
     private void btnGaleriaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGaleriaMousePressed
@@ -165,7 +199,31 @@ public class SCortes extends javax.swing.JFrame
         btnGaleria.setForeground(new Color(98, 88, 88));
     }//GEN-LAST:event_btnGaleriaMouseReleased
 
+    private void btnCerrarGMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCerrarGMouseClicked
+        btnGaleria.setVisible(true);
+        Carrusel.setVisible(false);
+        btnCerrarG.setVisible(false);
+        tblServicios.clearSelection();
+    }//GEN-LAST:event_btnCerrarGMouseClicked
+
+    private void btnCitaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCitaMouseClicked
+        MessageDialog OptionPane = new MessageDialog(this);
+        
+        if(tblServicios.getSelectedRowCount() == 1)
+        {
+            System.out.println("Click " + imagen);
+        }
+        else
+            OptionPane.showMessage("Realizar Cita", "Debes seleccionar un servicio de la tabla", "/img/iconos/Close.png");
+    }//GEN-LAST:event_btnCitaMouseClicked
+
+    private void CarruselMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CarruselMouseClicked
+        
+    }//GEN-LAST:event_CarruselMouseClicked
+
     private void tblServiciosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblServiciosMouseClicked
+        MessageDialog OptionPane = new MessageDialog(this);
+        
         if(btnGaleria.isVisible() == false)
         {
             if(tblServicios.getSelectedRowCount() == 1)
@@ -177,19 +235,15 @@ public class SCortes extends javax.swing.JFrame
                 btnCerrarG.setVisible(true);
             }
             else
-            JOptionPane.showMessageDialog(this, "Debes seleccionar un servicio para mostrarte la galería", "", JOptionPane.INFORMATION_MESSAGE);
+            OptionPane.showMessage("Galería", "Debes seleccionar un servicio para mostrarte la galería", "/img/iconos/Close.png");
         }
     }//GEN-LAST:event_tblServiciosMouseClicked
 
-    private void btnCerrarGMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCerrarGMouseClicked
-        btnGaleria.setVisible(true);
-        Carrusel.setVisible(false);
-        btnCerrarG.setVisible(false);
-    }//GEN-LAST:event_btnCerrarGMouseClicked
-
-    private void btnCitaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCitaMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnCitaMouseClicked
+    private void btnCitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCitaActionPerformed
+        RealizarCita obr = new RealizarCita();
+        obr.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnCitaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -208,21 +262,23 @@ public class SCortes extends javax.swing.JFrame
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SCortes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Servicios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SCortes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Servicios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SCortes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Servicios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SCortes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Servicios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new SCortes().setVisible(true);
+                new Servicios().setVisible(true);
             }
         });
     }
@@ -262,22 +318,14 @@ public class SCortes extends javax.swing.JFrame
         label.setIcon(icono);
     }
     
-    public void Tabla()
-    {
-        JTableHeader theader = tblServicios.getTableHeader();
-        theader.setBackground(Color.red);
-        theader.setFont(new Font("Consolas", Font.BOLD, 20));
-        theader.setForeground(new Color(67,63,63));
-    }
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private comp.Carrusel Carrusel;
     private javax.swing.JButton btnCerrarG;
     private javax.swing.JButton btnCita;
     private javax.swing.JButton btnGaleria;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblClose;
-    private javax.swing.JTable tblServicios;
+    private javax.swing.JLabel lblTitulo;
+    private rojeru_san.complementos.RSTableMetro tblServicios;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,9 +1,11 @@
 package vista;
 
+import comp.Carrusel;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.util.List;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -11,6 +13,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.table.JTableHeader;
+import javaswingdev.message.MessageDialog;
 import negocio.ServiciosControl;
 
 public class FrmSerDueña extends javax.swing.JFrame 
@@ -25,11 +28,18 @@ public class FrmSerDueña extends javax.swing.JFrame
         initComponents();
         CONTROL = new ServiciosControl();
         Listar("");
+        btnOcultar.setVisible(false);
+        Carrusel.setVisible(false);
+        lblNombre.setVisible(false);
+        pnlFondo.setVisible(false);
         
+        Icono(new ImageIcon(getClass().getResource("/img/iconos/InfoW.png")), lblIconDetalles);
         Icono(new ImageIcon(getClass().getResource("/img/iconos/SalirW.png")), lblIconSalir);
         Icono(new ImageIcon(getClass().getResource("/img/iconos/NuevoW.png")), lblIconNuevo);
         Icono(new ImageIcon(getClass().getResource("/img/iconos/BorrarW.png")), lblIconEliminar);
         Icono(new ImageIcon(getClass().getResource("/img/iconos/EditarW.png")), lblIconEditar);
+        Icono(new ImageIcon(getClass().getResource("/img/iconos/EditarW.png")), lblIconAct);
+
         setExtendedState(MAXIMIZED_BOTH);
     }
     
@@ -51,8 +61,13 @@ public class FrmSerDueña extends javax.swing.JFrame
         btnSalir = new javax.swing.JLabel();
         lblSalir = new javax.swing.JLabel();
         lblIconSalir = new javax.swing.JLabel();
-        tablaC = new javax.swing.JScrollPane();
+        lblIconAct = new javax.swing.JLabel();
+        Carrusel = new comp.Carrusel();
+        tabla = new javax.swing.JScrollPane();
         tblServicios = new javax.swing.JTable();
+        btnDetalles = new javax.swing.JLabel();
+        lblDetalles = new javax.swing.JLabel();
+        lblIconDetalles = new javax.swing.JLabel();
         btnNuevo = new javax.swing.JLabel();
         lblNuevo = new javax.swing.JLabel();
         lblIconNuevo = new javax.swing.JLabel();
@@ -62,8 +77,12 @@ public class FrmSerDueña extends javax.swing.JFrame
         btnEditar = new javax.swing.JLabel();
         lblEditar = new javax.swing.JLabel();
         lblIconEditar = new javax.swing.JLabel();
+        lblNombre = new javax.swing.JLabel();
+        pnlFondo = new javax.swing.JPanel();
+        btnOcultar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnSalir.setBackground(new java.awt.Color(204, 204, 255));
@@ -88,7 +107,18 @@ public class FrmSerDueña extends javax.swing.JFrame
         getContentPane().add(lblSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, -1, 50));
         getContentPane().add(lblIconSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 70, 60));
 
-        tablaC.setBackground(new java.awt.Color(255, 255, 255));
+        lblIconAct.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblIconActMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                lblIconActMousePressed(evt);
+            }
+        });
+        getContentPane().add(lblIconAct, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 0, 70, 60));
+        getContentPane().add(Carrusel, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 280, -1, -1));
+
+        tabla.setBackground(new java.awt.Color(255, 255, 255));
 
         tblServicios.setFont(new java.awt.Font("Consolas", 1, 16)); // NOI18N
         tblServicios.setForeground(new java.awt.Color(67, 63, 63));
@@ -100,10 +130,34 @@ public class FrmSerDueña extends javax.swing.JFrame
 
             }
         ));
-        tblServicios.setRowHeight(30);
-        tablaC.setViewportView(tblServicios);
+        tblServicios.setRowHeight(25);
+        tblServicios.setSelectionBackground(new java.awt.Color(225, 214, 212));
+        tblServicios.setSelectionForeground(new java.awt.Color(67, 63, 63));
+        tabla.setViewportView(tblServicios);
 
-        getContentPane().add(tablaC, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 170, 1010, 160));
+        getContentPane().add(tabla, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 250, 970, 260));
+
+        btnDetalles.setBackground(new java.awt.Color(204, 204, 255));
+        btnDetalles.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnDetalles.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnDetallesMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnDetallesMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnDetallesMouseReleased(evt);
+            }
+        });
+        getContentPane().add(btnDetalles, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 520, 280, 60));
+
+        lblDetalles.setBackground(new java.awt.Color(255, 255, 255));
+        lblDetalles.setFont(new java.awt.Font("Consolas", 1, 28)); // NOI18N
+        lblDetalles.setForeground(new java.awt.Color(255, 255, 255));
+        lblDetalles.setText("Detalles");
+        getContentPane().add(lblDetalles, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 530, -1, 50));
+        getContentPane().add(lblIconDetalles, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 520, 70, 60));
 
         btnNuevo.setBackground(new java.awt.Color(204, 204, 255));
         btnNuevo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -171,6 +225,28 @@ public class FrmSerDueña extends javax.swing.JFrame
         getContentPane().add(lblEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 770, -1, 50));
         getContentPane().add(lblIconEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 760, 70, 60));
 
+        lblNombre.setFont(new java.awt.Font("Consolas", 1, 48)); // NOI18N
+        lblNombre.setForeground(new java.awt.Color(98, 88, 88));
+        lblNombre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(lblNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 160, 480, 100));
+
+        pnlFondo.setBackground(new java.awt.Color(255, 255, 255));
+        pnlFondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnOcultar.setBackground(new java.awt.Color(225, 214, 212));
+        btnOcultar.setFont(new java.awt.Font("Consolas", 1, 20)); // NOI18N
+        btnOcultar.setForeground(new java.awt.Color(98, 88, 88));
+        btnOcultar.setText("Ocultar Información");
+        btnOcultar.setFocusPainted(false);
+        btnOcultar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnOcultarMouseClicked(evt);
+            }
+        });
+        pnlFondo.add(btnOcultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 50, 270, -1));
+
+        getContentPane().add(pnlFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 500, 850, 130));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -210,23 +286,25 @@ public class FrmSerDueña extends javax.swing.JFrame
     }//GEN-LAST:event_btnNuevoMouseReleased
 
     private void btnEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseClicked
+        MessageDialog OptionPane = new MessageDialog(this);
+        
         if(tblServicios.getSelectedRowCount() == 1)
         {
-            String servicio = String.valueOf(tblServicios.getValueAt(tblServicios.getSelectedRow(), 0));
+            String servicio = String.valueOf(tblServicios.getValueAt(tblServicios.getSelectedRow(), 1));
             if(JOptionPane.showConfirmDialog(this, "¿Desea eliminar el servicio " + servicio + "?", "Eliminar",JOptionPane.YES_NO_OPTION) == 0)
             {
                 String resp = CONTROL.Borrar(servicio);
                 if(resp.equals("OK"))
                 {
-                    JOptionPane.showMessageDialog(this, "Servicio eliminado", "Eliminar", JOptionPane.INFORMATION_MESSAGE);
+                    OptionPane.showMessage("Eliminar", "Servicio eliminado", "/img/iconos/Info.png");
                     Listar("");
                 }
                 else
-                    JOptionPane.showMessageDialog(this, "Error al eliminar el servicio", "Eliminar", JOptionPane.ERROR_MESSAGE);
+                    OptionPane.showMessage("Eliminar", "Error al eliminar el servicio", "/img/iconos/Close.png");
             }
         }
         else
-            JOptionPane.showMessageDialog(this, "Debes seleccionar un servicio para eliminar", "Eliminar", JOptionPane.INFORMATION_MESSAGE);
+            OptionPane.showMessage("Eliminar", "Debes seleccionar un servicio para eliminar", "/img/iconos/Close.png");
     }//GEN-LAST:event_btnEliminarMouseClicked
 
     private void btnEliminarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMousePressed
@@ -242,6 +320,7 @@ public class FrmSerDueña extends javax.swing.JFrame
     }//GEN-LAST:event_btnEliminarMouseReleased
 
     private void btnEditarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditarMouseClicked
+        MessageDialog OptionPane = new MessageDialog(this);
         Editar obe = new Editar();
         
         if(tblServicios.getSelectedRowCount() == 1)
@@ -258,7 +337,7 @@ public class FrmSerDueña extends javax.swing.JFrame
             obe.setVisible(true);
         }
         else
-            JOptionPane.showMessageDialog(this, "Debes seleccionar un servicio para editar", "Editar", JOptionPane.INFORMATION_MESSAGE);
+            OptionPane.showMessage("Editar", "Debes seleccionar un servicio para editar", "/img/iconos/Close.png");
     }//GEN-LAST:event_btnEditarMouseClicked
 
     private void btnEditarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditarMousePressed
@@ -272,6 +351,59 @@ public class FrmSerDueña extends javax.swing.JFrame
         lblEditar.setForeground(new Color(255, 255, 255));
         Icono(new ImageIcon(getClass().getResource("/img/iconos/EditarW.png")), lblIconEditar);
     }//GEN-LAST:event_btnEditarMouseReleased
+
+    private void btnDetallesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDetallesMouseClicked
+        MessageDialog OptionPane = new MessageDialog(this);
+        
+        if(tblServicios.getSelectedRowCount() == 1)
+        {
+            String id = String.valueOf(tblServicios.getValueAt(tblServicios.getSelectedRow(), 0));
+            String nombre = String.valueOf(tblServicios.getValueAt(tblServicios.getSelectedRow(), 1));
+            nombreAnt = String.valueOf(tblServicios.getValueAt(tblServicios.getSelectedRow(), 1));
+            String duracion = String.valueOf(tblServicios.getValueAt(tblServicios.getSelectedRow(), 2));
+            String costo = String.valueOf(tblServicios.getValueAt(tblServicios.getSelectedRow(), 3));
+            String descuento = String.valueOf(tblServicios.getValueAt(tblServicios.getSelectedRow(), 4));
+            String tipo = String.valueOf(tblServicios.getValueAt(tblServicios.getSelectedRow(), 5));
+            
+            tabla.setVisible(false);
+            pnlFondo.setVisible(true);
+            Carrusel.setVisible(true);
+            Carrusel(nombre, Carrusel);
+            btnOcultar.setVisible(true);
+            lblNombre.setVisible(true);
+            lblNombre.setText(nombre);
+        }
+        else
+            OptionPane.showMessage("Detalles", "Debes seleccionar un servicio para mostrarte", "/img/iconos/Close.png");            
+    }//GEN-LAST:event_btnDetallesMouseClicked
+
+    private void btnDetallesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDetallesMousePressed
+        btnDetalles.setBorder(BorderFactory.createLoweredBevelBorder());
+        lblDetalles.setForeground(new Color(98, 88, 88));
+        Icono(new ImageIcon(getClass().getResource("/img/iconos/InfoB.png")), lblIconDetalles);
+    }//GEN-LAST:event_btnDetallesMousePressed
+
+    private void btnDetallesMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDetallesMouseReleased
+        btnDetalles.setBorder(null);
+        lblDetalles.setForeground(new Color(255,255,255));
+        Icono(new ImageIcon(getClass().getResource("/img/iconos/InfoW.png")), lblIconDetalles);
+    }//GEN-LAST:event_btnDetallesMouseReleased
+
+    private void btnOcultarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnOcultarMouseClicked
+        tabla.setVisible(true);
+        pnlFondo.setVisible(false);
+        Carrusel.setVisible(false);
+        btnOcultar.setVisible(false);
+        lblNombre.setVisible(false);
+    }//GEN-LAST:event_btnOcultarMouseClicked
+
+    private void lblIconActMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblIconActMousePressed
+        
+    }//GEN-LAST:event_lblIconActMousePressed
+
+    private void lblIconActMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblIconActMouseClicked
+        Listar("");
+    }//GEN-LAST:event_lblIconActMouseClicked
 
     /**
      * @param args the command line arguments
@@ -311,6 +443,20 @@ public class FrmSerDueña extends javax.swing.JFrame
         });
     }
     
+    public void Carrusel(String texto, Carrusel car)
+    {
+        List<String[]> rutas = CONTROL.Imagen(texto);
+        String[] rutasServicio = rutas.get(0);
+        car.setRuta1(rutasServicio[0]);
+        car.setRuta2(rutasServicio[1]);
+        car.setRuta3(rutasServicio[2]);
+        car.setRuta4(rutasServicio[3]);
+        car.setRuta5(rutasServicio[4]);
+        car.setRuta6(rutasServicio[5]);
+        car.setRuta7(rutasServicio[6]);
+        car.setRuta8(rutasServicio[7]);
+    }
+    
     public void Icono(ImageIcon icono, JLabel label)
     {
         Image image = icono.getImage();
@@ -341,19 +487,27 @@ public class FrmSerDueña extends javax.swing.JFrame
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private comp.Carrusel Carrusel;
+    private javax.swing.JLabel btnDetalles;
     private javax.swing.JLabel btnEditar;
     private javax.swing.JLabel btnEliminar;
     private javax.swing.JLabel btnNuevo;
+    private javax.swing.JButton btnOcultar;
     private javax.swing.JLabel btnSalir;
+    private javax.swing.JLabel lblDetalles;
     private javax.swing.JLabel lblEditar;
     private javax.swing.JLabel lblEliminar;
+    private javax.swing.JLabel lblIconAct;
+    private javax.swing.JLabel lblIconDetalles;
     private javax.swing.JLabel lblIconEditar;
     private javax.swing.JLabel lblIconEliminar;
     private javax.swing.JLabel lblIconNuevo;
     private javax.swing.JLabel lblIconSalir;
+    private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblNuevo;
     private javax.swing.JLabel lblSalir;
-    private javax.swing.JScrollPane tablaC;
+    private javax.swing.JPanel pnlFondo;
+    private javax.swing.JScrollPane tabla;
     private javax.swing.JTable tblServicios;
     // End of variables declaration//GEN-END:variables
 }

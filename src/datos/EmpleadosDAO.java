@@ -1,8 +1,8 @@
 package datos;
 
 import database.Conexion;
-import datos.interfaces.CrudClientes;
-import entidades.Cliente;
+import datos.interfaces.CrudEmpleados;
+import entidades.Empleada;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -10,31 +10,32 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 
-public class ClientesDAO implements CrudClientes<Cliente>
+public class EmpleadosDAO implements CrudEmpleados<Empleada>
 {
     private final Conexion CON;
     private PreparedStatement ps;
     private ResultSet rs;
     private boolean resp;
     
-    public ClientesDAO()
+    public EmpleadosDAO()
     {
         CON = Conexion.getInstancia();
     }
     
     @Override
-    public List<Cliente> datos(String texto)
+    public List<Empleada> datos(String texto) 
     {
-        List<Cliente> registros = new ArrayList();
+        List<Empleada> registros = new ArrayList();
         String sql;
         try
         {
-            sql = "select * from Clientes where nombreCliente = ?;";
+            sql = "select idEmpleada, nombreEmpleada, passwordEmpleada, direccionEmpleada, telefonoEmpleada from Empleadas \n" +
+                "where nombreEmpleada = ?;";
             ps = CON.Conectar().prepareStatement(sql);
             ps.setString(1, texto);
             rs = ps.executeQuery();
             while(rs.next())
-                registros.add(new Cliente(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getInt(6)));
+                registros.add(new Empleada(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5)));
             ps.close();
             rs.close();
         }
@@ -50,23 +51,25 @@ public class ClientesDAO implements CrudClientes<Cliente>
         }
         return registros;
     }
-    
+
     @Override
-    public boolean insertar(Cliente obj) 
+    public boolean insertar(Empleada obj) 
     {
         String sql;
         resp = false;
         try
         {
-            sql = "insert into Clientes(nombreCliente, passwordCliente, telefonoCliente, generoCliente, edadCliente)\n" +
-                "values(?, ?, ?, ?, ?);";
+            sql = "insert into Empleadas(nombreEmpleada, passwordEmpleada, direccionEmpleada, telefonoEmpleada, horarioEmpleada, sueldoEmpleada, imagenEmpleada)\n" +
+                "values(?, ?, ?, ?, ?, ?, ?);";
             ps = CON.Conectar().prepareStatement(sql);
             
-            ps.setString(1, obj.getNombreCliente());
-            ps.setString(2, obj.getPasswordCliente());
-            ps.setString(3, obj.getTelefonoCliente());
-            ps.setString(4, obj.getGeneroCliente());
-            ps.setInt(5, obj.getEdadCliente());
+            ps.setString(1, obj.getNombreEmpleada());
+            ps.setString(2, obj.getPasswordEmpleada());
+            ps.setString(3, obj.getDireccionEmpleada());
+            ps.setString(4, obj.getTelefonoEmpleada());
+            ps.setString(5, obj.getHorarioEmpleada());
+            ps.setDouble(6, obj.getSueldoEmpleada());
+            ps.setString(7, obj.getImagenEmpleada());
             
             if(ps.executeUpdate() > 0)
                 resp = true;
@@ -91,7 +94,7 @@ public class ClientesDAO implements CrudClientes<Cliente>
         resp = false;
         try
         {
-            sql = "select idCliente from Clientes where nombreCliente = ?;";
+            sql = "select idEmpleada from Empleadas where nombreEmpleada = ?;";
             ps = CON.Conectar().prepareStatement(sql);
             ps.setString(1, texto);
             rs = ps.executeQuery();
@@ -120,7 +123,7 @@ public class ClientesDAO implements CrudClientes<Cliente>
         resp = false;
         try
         {
-            sql = "select nombreCliente from Clientes where passwordCliente = ?;";
+            sql = "select nombreEmpleada from Empleadas where passwordEmpleada = ?;";
             ps = CON.Conectar().prepareStatement(sql);
             ps.setString(1, pass);
             rs = ps.executeQuery();
@@ -146,26 +149,62 @@ public class ClientesDAO implements CrudClientes<Cliente>
     }
 
     @Override
-    public boolean actualizar(Cliente obj) 
+    public boolean actualizarD(Empleada obj) 
     {
         String sql;
         resp = false;
         try
         {
-            sql = "update Clientes \n" +
-        "set nombreCliente = ?, passwordCliente = ?, telefonoCliente = ?, generoCliente = ?, edadCliente = ? \n" +
-        "where nombreCliente = ?;";
+            sql = "update Empleadas \n" +
+        "set nombreEmpleada = ?, passwordEmpleada = ?, direccionEmpleada = ?, telefonoEmpleada = ?, horarioEmpleada = ?, sueldoEmpleada = ?, imagenEmpleada = ? \n" +
+        "where nombreEmpleada = ?;";
             ps = CON.Conectar().prepareStatement(sql);
             
-            ps.setString(1, obj.getNombreCliente());
-            ps.setString(2, obj.getPasswordCliente());
-            ps.setString(3, obj.getTelefonoCliente());
-            ps.setString(4, obj.getGeneroCliente());
-            ps.setInt(5, obj.getEdadCliente());
-            ps.setString(6, obj.getNombreCliente());
+            ps.setString(1, obj.getNombreEmpleada());
+            ps.setString(2, obj.getPasswordEmpleada());
+            ps.setString(3, obj.getDireccionEmpleada());
+            ps.setString(4, obj.getTelefonoEmpleada());
+            ps.setString(5, obj.getHorarioEmpleada());
+            ps.setDouble(6, obj.getSueldoEmpleada());
+            ps.setString(7, obj.getImagenEmpleada());
+            ps.setString(8, obj.getNombreEmpleada());
             
             if(ps.executeUpdate() > 0)
-                resp  = true;
+                resp = true;
+            ps.close();
+        }
+        catch(SQLException e)
+        {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+        finally
+        {
+            ps = null;
+            CON.desconectar();
+        }
+        return resp;
+    }
+    
+    @Override
+    public boolean actualizarE(Empleada obj) 
+    {
+        String sql;
+        resp = false;
+        try
+        {
+            sql = "update Empleadas \n" +
+        "set nombreEmpleada = ?, passwordEmpleada = ?, direccionEmpleada = ?, telefonoEmpleada = ? \n" +
+        "where nombreEmpleada = ?;";
+            ps = CON.Conectar().prepareStatement(sql);
+            
+            ps.setString(1, obj.getNombreEmpleada());
+            ps.setString(2, obj.getPasswordEmpleada());
+            ps.setString(3, obj.getDireccionEmpleada());
+            ps.setString(4, obj.getTelefonoEmpleada());
+            ps.setString(5, obj.getNombreEmpleada());
+            
+            if(ps.executeUpdate() > 0)
+                resp = true;
             ps.close();
         }
         catch(SQLException e)
@@ -181,13 +220,13 @@ public class ClientesDAO implements CrudClientes<Cliente>
     }
 
     @Override
-    public boolean borrar(String texto) 
+    public boolean despedir(String texto) 
     {
         String sql;
         resp = false;
         try
         {
-            sql = "delete from Clientes where nombreCliente = ?;";
+            sql = "delete from Empleadas where nombreEmpleada = ?;";
             ps = CON.Conectar().prepareStatement(sql);
             ps.setString(1, texto);
             if(ps.executeUpdate() > 0)

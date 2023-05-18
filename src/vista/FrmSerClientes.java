@@ -18,6 +18,8 @@ public class FrmSerClientes extends javax.swing.JFrame
         initComponents();
         
         setExtendedState(MAXIMIZED_BOTH);
+        setResizable(false);
+        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         lblMenu.setIcon(new ImageIcon(getClass().getResource("/img/Fondo.png")));
         lblMenu1.setIcon(new ImageIcon(getClass().getResource("/img/Fondo.png")));
         Icono(new ImageIcon(getClass().getResource("/img/iconos/CortesW.png")), lblIconCortes);
@@ -232,7 +234,9 @@ public class FrmSerClientes extends javax.swing.JFrame
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCortesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCortesMouseClicked
-        SCortes ser = new SCortes();
+        Servicios ser = new Servicios();
+        ser.setTexto("Menú Cortes");
+        ser.Listar("Corte");
         ser.setVisible(true);
     }//GEN-LAST:event_btnCortesMouseClicked
 
@@ -249,7 +253,10 @@ public class FrmSerClientes extends javax.swing.JFrame
     }//GEN-LAST:event_btnCortesMouseReleased
 
     private void btnColorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnColorMouseClicked
-        // TODO add your handling code here:
+        Servicios ser = new Servicios();
+        ser.setTexto("Menú Color");
+        ser.Listar("Color");
+        ser.setVisible(true);
     }//GEN-LAST:event_btnColorMouseClicked
 
     private void btnColorMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnColorMousePressed
@@ -265,7 +272,10 @@ public class FrmSerClientes extends javax.swing.JFrame
     }//GEN-LAST:event_btnColorMouseReleased
 
     private void btnPeinadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPeinadoMouseClicked
-        // TODO add your handling code here:
+        Servicios ser = new Servicios();
+        ser.setTexto("Menú Peinado");
+        ser.Listar("Peinado");
+        ser.setVisible(true);
     }//GEN-LAST:event_btnPeinadoMouseClicked
 
     private void btnPeinadoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPeinadoMousePressed
@@ -281,7 +291,10 @@ public class FrmSerClientes extends javax.swing.JFrame
     }//GEN-LAST:event_btnPeinadoMouseReleased
 
     private void btnUñasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUñasMouseClicked
-        // TODO add your handling code here:
+        Servicios ser = new Servicios();
+        ser.setTexto("Menú Uñas");
+        ser.Listar("Uñas");
+        ser.setVisible(true);
     }//GEN-LAST:event_btnUñasMouseClicked
 
     private void btnUñasMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUñasMousePressed
@@ -297,7 +310,10 @@ public class FrmSerClientes extends javax.swing.JFrame
     }//GEN-LAST:event_btnUñasMouseReleased
 
     private void btnMaquillajeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMaquillajeMouseClicked
-
+        Servicios ser = new Servicios();
+        ser.setTexto("Menú Maquillaje");
+        ser.Listar("Maquillaje");
+        ser.setVisible(true);
     }//GEN-LAST:event_btnMaquillajeMouseClicked
 
     private void btnMaquillajeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMaquillajeMousePressed
@@ -313,7 +329,10 @@ public class FrmSerClientes extends javax.swing.JFrame
     }//GEN-LAST:event_btnMaquillajeMouseReleased
 
     private void btnEpilacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEpilacionMouseClicked
-        // TODO add your handling code here:
+        Servicios ser = new Servicios();
+        ser.setTexto("Menú Epilación");
+        ser.Listar("Epilacion");
+        ser.setVisible(true);
     }//GEN-LAST:event_btnEpilacionMouseClicked
 
     private void btnEpilacionMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEpilacionMousePressed

@@ -6,31 +6,35 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javaswingdev.message.MessageDialog;
 import libreriaproyecto.Contrasena;
 import libreriaproyecto.Generar;
 import libreriaproyecto.Recordar;
 import libreriaproyecto.Registrarse;
 import negocio.ClientesControl;
+import negocio.EmpleadosControl;
 
 public class Login extends javax.swing.JFrame 
 {
+    MessageDialog OptionPane = new MessageDialog(this);
     FondoPanel fondo = new FondoPanel();
     private final ClientesControl CONTROL;
+    private final EmpleadosControl CONTROLE;
 
     public Login()
     {
         setContentPane(fondo);
         initComponents();
+        setExtendedState(MAXIMIZED_BOTH);
+        setResizable(false);
+        
         CONTROL = new ClientesControl();
+        CONTROLE = new EmpleadosControl();
         lblSee.setVisible(false);
         lblSeeReg.setVisible(false);
         lblSeeReg1.setVisible(false);
         pnlRegistro.setVisible(false);
-
-        setExtendedState(MAXIMIZED_BOTH);
-        setResizable(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -453,34 +457,34 @@ public class Login extends javax.swing.JFrame
                     dispose();
                 }
                 else
-                {             
-                    JOptionPane.showMessageDialog(this, "Contraseña Incorrecta", "Bienvenido al Sistema...", JOptionPane.ERROR_MESSAGE);
+                {     
+                    OptionPane.showMessage("Bienvenido al Sistema", "Contraseña Incorrecta", "/img/iconos/Close.png");
                     pssContrasena.setText("");
                 }
             else
-            {             
-                JOptionPane.showMessageDialog(this, "Debes escribir una Contraseña", "Bienvenido al Sistema...", JOptionPane.ERROR_MESSAGE);
+            {
+                OptionPane.showMessage("Bienvenido al Sistema", "Debes escribir una Contraseña", "/img/iconos/Close.png");
                 pssContrasena.setText("");
             } 
         }
         else
-            if(txtUsuario.getText().equals("Yuriana"))
+            if(CONTROLE.Existe(txtUsuario.getText()) == true)
             {
                 if(!String.valueOf(pssContrasena.getPassword()).isEmpty() && !String.valueOf(pssContrasena.getPassword()).equals("Contraseña"))
-                    if(obc.comparar(txtUsuario.getText(), String.valueOf(pssContrasena.getPassword())) == true)
+                    if(CONTROLE.Comparar(txtUsuario.getText(), String.valueOf(pssContrasena.getPassword())) == true)
                     {
                         PrinEmpleada frmPrincipal = new PrinEmpleada();
                         frmPrincipal.setVisible(true);
                         dispose();
                     }
                     else
-                    {             
-                        JOptionPane.showMessageDialog(this, "Contraseña Incorrecta", "Bienvenido al Sistema...", JOptionPane.ERROR_MESSAGE);
+                    {    
+                        OptionPane.showMessage("Bienvenido al Sistema", "Contraseña Incorrecta", "/img/iconos/Close.png");
                         pssContrasena.setText("");
                     }
                 else
                 {
-                    JOptionPane.showMessageDialog(this, "Debes escribir una Contraseña", "Bienvenido al Sistema...", JOptionPane.ERROR_MESSAGE);
+                    OptionPane.showMessage("Bienvenido al Sistema", "Debes escribir una Contraseña", "/img/iconos/Close.png");
                     pssContrasena.setText("");
                 }
             }
@@ -496,27 +500,27 @@ public class Login extends javax.swing.JFrame
                         }
                         else
                         {             
-                            JOptionPane.showMessageDialog(this, "Contraseña Incorrecta", "Bienvenido al Sistema...", JOptionPane.ERROR_MESSAGE);
+                            OptionPane.showMessage("Bienvenido al Sistema", "Contraseña Incorrecta", "/img/iconos/Close.png");
                             pssContrasena.setText("");
                         }
                     else
                     {
-                        JOptionPane.showMessageDialog(this, "Debes escribir una Contraseña", "Bienvenido al Sistema...", JOptionPane.ERROR_MESSAGE);
+                        OptionPane.showMessage("Bienvenido al Sistema", "Debes escribir una Contraseña", "/img/iconos/Close.png");
                         pssContrasena.setText("");
                     }
                 }
                 else
                 {
                     if(txtUsuario.getText().isEmpty() || txtUsuario.getText().equals("Nombre de usuario"))
-                        JOptionPane.showMessageDialog(this, "Debes escribir un Nombre de Usuario", "Bienvenido al Sistema...", JOptionPane.ERROR_MESSAGE);
+                        OptionPane.showMessage("Bienvenido al Sistema", "Debes escribir un Nombre de Usuario", "/img/iconos/Close.png");
                     if(String.valueOf(pssContrasena.getPassword()).isEmpty() || String.valueOf(pssContrasena.getPassword()).equals("Contraseña"))
-                        JOptionPane.showMessageDialog(this, "Debes escribir una Contraseña", "Bienvenido al Sistema...", JOptionPane.ERROR_MESSAGE);
+                        OptionPane.showMessage("Bienvenido al Sistema", "Debes escribir una Contraseña", "/img/iconos/Close.png");
                     else
                     {
-                        JOptionPane.showMessageDialog(this, "Usuario Incorrecto", "Bienvenido al Sistema...", JOptionPane.ERROR_MESSAGE);
+                        OptionPane.showMessage("Bienvenido al Sistema", "Usuario Incorrecto", "/img/iconos/Close.png");
                         txtUsuario.setText("");                 
                     }
-                }    
+                }
     }//GEN-LAST:event_lblIniSesMouseClicked
 
     private void lblRegistroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRegistroMouseClicked
@@ -600,7 +604,7 @@ public class Login extends javax.swing.JFrame
         if(!txtUsuarioN.getText().isEmpty() && !txtUsuarioN.getText().equals("Nombre de usuario"))
             if(CONTROL.Existe(txtUsuarioN.getText()) == true)
             {
-                JOptionPane.showMessageDialog(this, "El usuario ya se encuentra registrado en el sistema", "Registro en el Sistema...", JOptionPane.ERROR_MESSAGE);
+                OptionPane.showMessage("Registro en el Sistema", "El usuario ya se encuentra registrado", "/img/iconos/Close.png");
                 txtUsuarioN.setText("");
                 pssContrasenaReg.setText("Contraseña");
                 pssConfCont.setText("Confirmar contraseña");
@@ -609,21 +613,21 @@ public class Login extends javax.swing.JFrame
                 if(!txtTelefono.getText().isEmpty() && !txtTelefono.getText().equals("Teléfono"))
                     if(obr.valTelefono(txtTelefono.getText().trim()) == false)
                     {
-                        JOptionPane.showMessageDialog(this, obr.Mensaje(), "Registro en el Sistema...", JOptionPane.ERROR_MESSAGE);
+                        OptionPane.showMessage("Registro en el Sistema", obr.Mensaje(), "/img/iconos/Close.png");
                         txtTelefono.setText("");
                     }
                     else
                         if(!txtGenero.getText().isEmpty() && !txtGenero.getText().equals("Femenino/Masculino"))
                             if(obr.valGenero(txtGenero.getText().trim()) == false)
                             {
-                                JOptionPane.showMessageDialog(this, obr.Mensaje(), "Registro en el Sistema...", JOptionPane.ERROR_MESSAGE);
+                                OptionPane.showMessage("Registro en el Sistema", obr.Mensaje(), "/img/iconos/Close.png");
                                 txtGenero.setText("");
                             }
                             else
                                 if(!txtEdad.getText().isBlank() && !txtEdad.getText().equals("Edad"))
                                     if(obr.valEdad(txtEdad.getText()) == false)
                                     {
-                                        JOptionPane.showMessageDialog(this, obr.Mensaje(), "Registro en el Sistema", JOptionPane.ERROR_MESSAGE);
+                                        OptionPane.showMessage("Registro en el Sistema", obr.Mensaje(), "/img/iconos/Close.png");
                                         txtEdad.setText("");
                                     }
                                     else
@@ -635,7 +639,7 @@ public class Login extends javax.swing.JFrame
                                                     if(contrasena.ValidarContrasena() == true)
                                                     {
                                                         resp = CONTROL.Insertar(txtUsuarioN.getText(), String.valueOf(pssContrasenaReg.getPassword()), txtTelefono.getText(), txtGenero.getText(), Integer.parseInt(txtEdad.getText()));
-                                                        JOptionPane.showMessageDialog(this, "Usuario registrado exitosamente, por favor ingrese con su nueva cuenta", "Registro en el Sistema...", JOptionPane.INFORMATION_MESSAGE);
+                                                        OptionPane.showMessage("Registro en el Sistema", "Usuario registrado exitosamente, por favor ingrese con su nueva cuenta", "/img/iconos/Info.png");
                                                         txtUsuarioN.setText("Nombre de usuario");
                                                         txtTelefono.setText("Teléfono");
                                                         txtGenero.setText("Femenino/Masculino");
@@ -647,29 +651,29 @@ public class Login extends javax.swing.JFrame
                                                     }
                                                     else
                                                     {
-                                                        JOptionPane.showMessageDialog(this, contrasena.Error(), "Registro en el Sistema...", JOptionPane.ERROR_MESSAGE);
+                                                        OptionPane.showMessage("Registro en el Sistema", contrasena.Error(), "/img/iconos/Close.png");
                                                         pssContrasenaReg.setText("Contraseña");
                                                         pssConfCont.setText("Confirmar contraseña");
                                                     }    
                                                 }
                                                 else
                                                 {
-                                                    JOptionPane.showMessageDialog(this, "Las contraseñas no coinciden", "Registro en el Sistema...", JOptionPane.ERROR_MESSAGE);
+                                                    OptionPane.showMessage("Registro en el Sistema", "Las contraseñas no coinciden", "/img/iconos/Close.png");
                                                     pssConfCont.setText("");
                                                 }
                                             }
                                             else
-                                                JOptionPane.showMessageDialog(this, "Y confirmar tu Contraseña", "Registro en el Sistema...", JOptionPane.ERROR_MESSAGE);
+                                                OptionPane.showMessage("Registro en el Sistema", "Y confirmar tu Contraseña", "/img/iconos/Close.png");
                                         else
-                                            JOptionPane.showMessageDialog(this, "Debes escribir una Contraseña", "Registro en el Sistema...", JOptionPane.ERROR_MESSAGE);
+                                            OptionPane.showMessage("Registro en el Sistema", "Debes escribir una Contraseña", "/img/iconos/Close.png");
                                 else
-                                    JOptionPane.showMessageDialog(this, "Debes escribir tu Edad", "Registro en el Sistema", JOptionPane.ERROR_MESSAGE);
+                                    OptionPane.showMessage("Registro en el Sistema", "Debes escribir tu Edad", "/img/iconos/Close.png");
                         else
-                            JOptionPane.showMessageDialog(this, "Debes ingresar tu Género", "Registro en el Sistema...", JOptionPane.ERROR_MESSAGE);
+                            OptionPane.showMessage("Registro en el Sistema", "Debes ingresar tu Género", "/img/iconos/Close.png");
                 else
-                    JOptionPane.showMessageDialog(this, "Debes escribir un Número de Teléfono", "Registro en el Sistema...", JOptionPane.ERROR_MESSAGE);
+                    OptionPane.showMessage("Registro en el Sistema", "Debes escribir un Número de Teléfono", "/img/iconos/Close.png");
         else
-            JOptionPane.showMessageDialog(this, "Debes escribir un Nombre de usuario", "Registro en el Sistema...", JOptionPane.ERROR_MESSAGE);
+            OptionPane.showMessage("Registro en el Sistema", "Debes escribir un Nombre de usuario", "/img/iconos/Close.png");
     }//GEN-LAST:event_lblCrearCMouseClicked
 
     private void pssContrasenaRegFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pssContrasenaRegFocusGained

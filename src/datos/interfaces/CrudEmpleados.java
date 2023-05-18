@@ -2,12 +2,13 @@ package datos.interfaces;
 
 import java.util.List;
 
-public interface CrudClientes <T>
+public interface CrudEmpleados <T>
 {
     public List<T> datos(String texto);
     public boolean insertar(T obj);
     public boolean existe(String texto);
     public boolean comparar(String usu, String pass);
-    public boolean actualizar(T obj);
-    public boolean borrar(String texto);
+    public boolean actualizarD(T obj);
+    public boolean actualizarE(T obj);
+    public boolean despedir(String texto);
 }

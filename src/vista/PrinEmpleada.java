@@ -18,8 +18,8 @@ public class PrinEmpleada extends javax.swing.JFrame
         setExtendedState(MAXIMIZED_BOTH);
         Icono(new ImageIcon(getClass().getResource("/img/principal/Menu.jpg")), lblImagen);
         Icono(new ImageIcon(getClass().getResource("/img/iconos/SalirW.png")), lblExit);
+        Icono(new ImageIcon(getClass().getResource("/img/iconos/Usuario.png")), lblUsuarios);        
     }
-
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -30,6 +30,7 @@ public class PrinEmpleada extends javax.swing.JFrame
         btnCalendario = new comp.Opcion();
         lblExit = new javax.swing.JLabel();
         lblImagen = new javax.swing.JLabel();
+        lblUsuarios = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(830, 600));
@@ -67,6 +68,14 @@ public class PrinEmpleada extends javax.swing.JFrame
         lblImagen.setBackground(new java.awt.Color(255, 204, 204));
         getContentPane().add(lblImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, 490, 520));
 
+        lblUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblUsuarios.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblUsuariosMouseClicked(evt);
+            }
+        });
+        getContentPane().add(lblUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(1260, 10, 70, 70));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -75,6 +84,12 @@ public class PrinEmpleada extends javax.swing.JFrame
         log.setVisible(true);
         dispose();
     }//GEN-LAST:event_lblExitMouseClicked
+
+    private void lblUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblUsuariosMouseClicked
+        Empleado emp = new Empleado();
+        emp.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_lblUsuariosMouseClicked
 
     /**
      * @param args the command line arguments
@@ -153,5 +168,6 @@ public class PrinEmpleada extends javax.swing.JFrame
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lblExit;
     private javax.swing.JLabel lblImagen;
+    private javax.swing.JLabel lblUsuarios;
     // End of variables declaration//GEN-END:variables
 }

@@ -16,8 +16,11 @@ public class PrinCliente extends javax.swing.JFrame
         initComponents();
         
         setExtendedState(MAXIMIZED_BOTH);
+        setResizable(false);
+        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         Icono(new ImageIcon(getClass().getResource("/img/principal/Menu.jpg")), lblImagen);
         Icono(new ImageIcon(getClass().getResource("/img/iconos/SalirW.png")), lblExit);
+        Icono(new ImageIcon(getClass().getResource("/img/iconos/Usuario.png")), lblUsuarios);        
     }
 
 
@@ -32,6 +35,7 @@ public class PrinCliente extends javax.swing.JFrame
         btnNosotros = new comp.Opcion();
         lblExit = new javax.swing.JLabel();
         lblImagen = new javax.swing.JLabel();
+        lblUsuarios = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(830, 600));
@@ -81,6 +85,11 @@ public class PrinCliente extends javax.swing.JFrame
         btnNosotros.setRoundTopRight(5);
         btnNosotros.setRuta(new java.io.File("C:\\Users\\Developer\\OneDrive\\Documentos\\University\\Archivos\\PDF's\\Tópicos\\Proyecto_img\\Nosotros.png"));
         btnNosotros.setText("NOSOTROS");
+        btnNosotros.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnNosotrosMouseClicked(evt);
+            }
+        });
         getContentPane().add(btnNosotros, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 440, 210, 220));
 
         lblExit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -93,6 +102,14 @@ public class PrinCliente extends javax.swing.JFrame
 
         lblImagen.setBackground(new java.awt.Color(255, 204, 204));
         getContentPane().add(lblImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, 490, 520));
+
+        lblUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblUsuarios.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblUsuariosMouseClicked(evt);
+            }
+        });
+        getContentPane().add(lblUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(1260, 10, 70, 70));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -108,6 +125,18 @@ public class PrinCliente extends javax.swing.JFrame
         ser.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnServiciosMouseClicked
+
+    private void lblUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblUsuariosMouseClicked
+        Usuario user = new Usuario();
+        user.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_lblUsuariosMouseClicked
+
+    private void btnNosotrosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNosotrosMouseClicked
+        FrmAbtusClientes nosotros = new FrmAbtusClientes();
+        nosotros.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnNosotrosMouseClicked
 
     /**
      * @param args the command line arguments
@@ -176,5 +205,6 @@ public class PrinCliente extends javax.swing.JFrame
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lblExit;
     private javax.swing.JLabel lblImagen;
+    private javax.swing.JLabel lblUsuarios;
     // End of variables declaration//GEN-END:variables
 }

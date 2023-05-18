@@ -4,8 +4,8 @@ import java.awt.Color;
 import java.util.Arrays;
 import java.util.List;
 import javax.swing.JFileChooser;
-import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javaswingdev.message.MessageDialog;
 import libreriaproyecto.NuevoServicio;
 import negocio.ServiciosControl;
 
@@ -618,6 +618,7 @@ public class Nuevo extends javax.swing.JFrame
     }//GEN-LAST:event_btnCancelarMouseClicked
 
     private void btnNuevoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNuevoMouseClicked
+        MessageDialog OptionPane = new MessageDialog(this);
         NuevoServicio obn = new NuevoServicio();
         List<JTextField> textFields = Arrays.asList(txtRuta1, txtRuta2, txtRuta3, txtRuta4, txtRuta5, txtRuta6, txtRuta7, txtRuta8);
         String resp;
@@ -625,35 +626,35 @@ public class Nuevo extends javax.swing.JFrame
         if(!txtNombreS.getText().isEmpty() && !txtNombreS.getText().equals("Nombre"))
             if(obn.validarNombre(txtNombreS.getText()) == false)
             {
-                JOptionPane.showMessageDialog(this, obn.Mensaje(), "Añadir Servicios", JOptionPane.ERROR_MESSAGE);
+                OptionPane.showMessage("Añadir Servicios", obn.Mensaje(), "/img/iconos/Close.png");
                 txtNombreS.setText("");
             }
             else
                 if(!txtDuracion.getText().isEmpty() && !txtDuracion.getText().equals("Duración"))
                     if(obn.validarDuracion(txtDuracion.getText()) == false)
                     {
-                        JOptionPane.showMessageDialog(this, obn.Mensaje(), "Añadir Servicios", JOptionPane.ERROR_MESSAGE);
+                        OptionPane.showMessage("Añadir Servicios", obn.Mensaje(), "/img/iconos/Close.png");
                         txtDuracion.setText("");
                     }
                     else
                         if(!txtCosto.getText().isEmpty() && !txtCosto.getText().equals("Costo"))
                             if(obn.validarCosto(txtCosto.getText()) == false)
                             {
-                                JOptionPane.showMessageDialog(this, obn.Mensaje(), "Añadir Servicios", JOptionPane.ERROR_MESSAGE);
+                                OptionPane.showMessage("Añadir Servicios", obn.Mensaje(), "/img/iconos/Close.png");
                                 txtCosto.setText("");
                             }
                             else
                                 if(!txtDescuento.getText().isEmpty() && !txtDescuento.getText().equals("Descuento"))
                                     if(obn.validarDescuento(txtDescuento.getText()) == false)
                                     {
-                                        JOptionPane.showMessageDialog(this, obn.Mensaje(), "Añadir Servicios", JOptionPane.ERROR_MESSAGE);
+                                        OptionPane.showMessage("Añadir Servicios", obn.Mensaje(), "/img/iconos/Close.png");
                                         txtDescuento.setText("");
                                     }
                                     else
                                         if(!txtTipo.getText().isEmpty() && !txtTipo.getText().equals("Tipo"))
                                             if(obn.validarTipo(txtTipo.getText()) == false)
                                             {
-                                                JOptionPane.showMessageDialog(this, obn.Mensaje(), "Añadir Servicios", JOptionPane.ERROR_MESSAGE);
+                                                OptionPane.showMessage("Añadir Servicios", obn.Mensaje(), "/img/iconos/Close.png");
                                                 txtTipo.setText("");
                                             }
                                             else
@@ -672,9 +673,9 @@ public class Nuevo extends javax.swing.JFrame
                                                 resp = CONTROL.Insertar(txtNombreS.getText(), txtDuracion.getText(), Double.parseDouble(txtCosto.getText()), Integer.parseInt(txtDescuento.getText()), txtTipo.getText(), txtRuta1.getText(), txtRuta2.getText(), txtRuta3.getText(), txtRuta4.getText(), txtRuta5.getText(), txtRuta6.getText(), txtRuta7.getText(), txtRuta8.getText());
                                                 
                                                 if ( resp.equals("OK"))
-                                                    JOptionPane.showMessageDialog(this, "Registro exitoso", "Nuevo Servicio", JOptionPane.INFORMATION_MESSAGE);
+                                                    OptionPane.showMessage("Nuevo Servicio", "Registro exitoso", "/img/iconos/Info.png");
                                                 else
-                                                    JOptionPane.showMessageDialog(this, "Hubo un error en el registro", "Nuevo Servicio", JOptionPane.INFORMATION_MESSAGE);
+                                                    OptionPane.showMessage("Nuevo Servicio", "Hubo un error en el registro", "/img/iconos/Info.png");
                                                 
                                                 jPanel2.setVisible(false);
                                                 btnNuevo.setText("Armar Carrusel");
@@ -683,15 +684,15 @@ public class Nuevo extends javax.swing.JFrame
                                                 Llenar();
                                             }
                                         else
-                                            JOptionPane.showMessageDialog(this, "Debes escribir el tipo al que pertenece el servicio", "Añadir Servicios", JOptionPane.ERROR_MESSAGE);         
+                                            OptionPane.showMessage("Añadir Servicios", "Debes escribir el tipo al que pertenece el servicio", "/img/iconos/Close.png");         
                                 else
-                                    JOptionPane.showMessageDialog(this, "Debes escribir el descuento del servicio", "Añadir Servicios", JOptionPane.ERROR_MESSAGE);       
+                                    OptionPane.showMessage("Añadir Servicios", "Debes escribir el descuento del servicio", "/img/iconos/Close.png");       
                         else
-                            JOptionPane.showMessageDialog(this, "Debes escribir el costo del servicio", "Añadir Servicios", JOptionPane.ERROR_MESSAGE);
+                            OptionPane.showMessage("Añadir Servicios", "Debes escribir el costo del servicio", "/img/iconos/Close.png");
                 else
-                    JOptionPane.showMessageDialog(this, "Debes escribir la duración del servicio", "Añadir Servicios", JOptionPane.ERROR_MESSAGE);
+                    OptionPane.showMessage("Añadir Servicios", "Debes escribir la duración del servicio", "/img/iconos/Close.png");
         else
-            JOptionPane.showMessageDialog(this, "Debes escribir un nombre para el servicio", "Añadir Servicios", JOptionPane.ERROR_MESSAGE);
+            OptionPane.showMessage("Añadir Servicios", "Debes escribir un nombre para el servicio", "/img/iconos/Close.png");
     }//GEN-LAST:event_btnNuevoMouseClicked
 
     private void txtRuta1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRuta1ActionPerformed
