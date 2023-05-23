@@ -10,6 +10,8 @@ import javax.swing.JPanel;
 
 public class FrmSerClientes extends javax.swing.JFrame 
 {
+    Servicios ser = new Servicios();
+    RealizarCita cita = new RealizarCita();
     Fondo fondo = new Fondo();
     
     public FrmSerClientes() 
@@ -234,9 +236,9 @@ public class FrmSerClientes extends javax.swing.JFrame
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCortesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCortesMouseClicked
-        Servicios ser = new Servicios();
         ser.setTexto("Menú Cortes");
         ser.Listar("Corte");
+        ser.setTipo("Corte");
         ser.setVisible(true);
     }//GEN-LAST:event_btnCortesMouseClicked
 
@@ -253,7 +255,6 @@ public class FrmSerClientes extends javax.swing.JFrame
     }//GEN-LAST:event_btnCortesMouseReleased
 
     private void btnColorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnColorMouseClicked
-        Servicios ser = new Servicios();
         ser.setTexto("Menú Color");
         ser.Listar("Color");
         ser.setVisible(true);
@@ -272,7 +273,6 @@ public class FrmSerClientes extends javax.swing.JFrame
     }//GEN-LAST:event_btnColorMouseReleased
 
     private void btnPeinadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPeinadoMouseClicked
-        Servicios ser = new Servicios();
         ser.setTexto("Menú Peinado");
         ser.Listar("Peinado");
         ser.setVisible(true);
@@ -291,7 +291,6 @@ public class FrmSerClientes extends javax.swing.JFrame
     }//GEN-LAST:event_btnPeinadoMouseReleased
 
     private void btnUñasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUñasMouseClicked
-        Servicios ser = new Servicios();
         ser.setTexto("Menú Uñas");
         ser.Listar("Uñas");
         ser.setVisible(true);
@@ -310,7 +309,6 @@ public class FrmSerClientes extends javax.swing.JFrame
     }//GEN-LAST:event_btnUñasMouseReleased
 
     private void btnMaquillajeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMaquillajeMouseClicked
-        Servicios ser = new Servicios();
         ser.setTexto("Menú Maquillaje");
         ser.Listar("Maquillaje");
         ser.setVisible(true);
@@ -329,7 +327,6 @@ public class FrmSerClientes extends javax.swing.JFrame
     }//GEN-LAST:event_btnMaquillajeMouseReleased
 
     private void btnEpilacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEpilacionMouseClicked
-        Servicios ser = new Servicios();
         ser.setTexto("Menú Epilación");
         ser.Listar("Epilacion");
         ser.setVisible(true);
@@ -350,6 +347,8 @@ public class FrmSerClientes extends javax.swing.JFrame
     private void btnSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseClicked
         PrinCliente obd = new PrinCliente();
         obd.setVisible(true);
+        ser.dispose();
+        cita.dispose();
         dispose();
     }//GEN-LAST:event_btnSalirMouseClicked
 

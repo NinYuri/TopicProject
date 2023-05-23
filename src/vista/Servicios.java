@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.util.List;
+import java.util.Vector;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javaswingdev.message.MessageDialog;
@@ -13,8 +14,17 @@ import negocio.ServiciosControl;
 
 public class Servicios extends javax.swing.JFrame 
 {
-    String imagen;
+    int contador = 0;
     String texto = "";
+    String nombre, duracion, costo, descuento, tipo;
+    
+    Vector<String> nombres = new Vector<String>();
+    Vector<String> horas = new Vector<String>();
+    Vector<String> costos = new Vector<String>();
+    Vector<String> descuentos = new Vector<String>();
+    Vector<String> tipos = new Vector<String>();
+    
+    RealizarCita cita = new RealizarCita();
     Fondo fondo = new Fondo();
     private final ServiciosControl CONTROL;
 
@@ -29,8 +39,6 @@ public class Servicios extends javax.swing.JFrame
         setLocationRelativeTo(null);
         btnCerrarG.setVisible(false);
         Carrusel.setVisible(false);
-        imagen = Carrusel.getImagen();
-        System.out.println(imagen);
     }
     
     public void Listar(String texto)
@@ -173,7 +181,7 @@ public class Servicios extends javax.swing.JFrame
     }// </editor-fold>//GEN-END:initComponents
 
     private void lblCloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCloseMouseClicked
-        dispose();
+        setVisible(false);
     }//GEN-LAST:event_lblCloseMouseClicked
 
     private void btnGaleriaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGaleriaMouseClicked
@@ -211,7 +219,33 @@ public class Servicios extends javax.swing.JFrame
         
         if(tblServicios.getSelectedRowCount() == 1)
         {
-            System.out.println("Click " + imagen);
+            String datoTabla = String.valueOf(tblServicios.getValueAt(tblServicios.getSelectedRow(), 0));
+            if(!nombres.contains(datoTabla))
+            {
+                nombre = String.valueOf(tblServicios.getValueAt(tblServicios.getSelectedRow(), 0));            
+                nombres.add(nombre);
+                duracion = String.valueOf(tblServicios.getValueAt(tblServicios.getSelectedRow(), 1));            
+                horas.add(duracion);
+                costo = String.valueOf(tblServicios.getValueAt(tblServicios.getSelectedRow(), 2));
+                costos.add(costo);
+                descuento = String.valueOf(tblServicios.getValueAt(tblServicios.getSelectedRow(), 3));
+                descuentos.add(descuento);
+                tipo = getTipo();
+                tipos.add(tipo);
+
+                contador++;
+                cita.setNombres(nombres);
+                cita.setHoras(horas);
+                cita.setTipos(tipos);
+                cita.setDescuentos(descuentos);
+                cita.setCostos(costos);
+                cita.Datos(nombre, duracion, tipo, costo, contador);
+
+                cita.setVisible(true);
+                setVisible(false);
+            }
+            else
+                OptionPane.showMessage("Realizar Cita", "Este servicio ya se encuentra seleccionado en la cita", "/img/iconos/Close.png");
         }
         else
             OptionPane.showMessage("Realizar Cita", "Debes seleccionar un servicio de la tabla", "/img/iconos/Close.png");
@@ -240,9 +274,6 @@ public class Servicios extends javax.swing.JFrame
     }//GEN-LAST:event_tblServiciosMouseClicked
 
     private void btnCitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCitaActionPerformed
-        RealizarCita obr = new RealizarCita();
-        obr.setVisible(true);
-        dispose();
     }//GEN-LAST:event_btnCitaActionPerformed
 
     /**
@@ -281,6 +312,16 @@ public class Servicios extends javax.swing.JFrame
                 new Servicios().setVisible(true);
             }
         });
+    }
+
+    public String getTipo() 
+    {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) 
+    {
+        this.tipo = tipo;
     }
     
     public void Carrusel(String texto, Carrusel car)
