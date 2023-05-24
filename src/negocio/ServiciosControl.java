@@ -153,4 +153,12 @@ public class ServiciosControl
             }
         }
     }
+    
+    public int GetId(String nombre)
+    {
+        if(DATOS.existe(nombre))
+            return DATOS.id(nombre);
+        else
+            return 0;
+    }
 }

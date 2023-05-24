@@ -20,7 +20,9 @@ public class RealizarCita extends javax.swing.JFrame
     int contador2 = 1;
     int contador3 = 1;
     int contador4 = 1;
+    
     Fondo fondo = new Fondo();
+    Citas cita = new Citas();
 
     public RealizarCita() 
     {
@@ -32,7 +34,7 @@ public class RealizarCita extends javax.swing.JFrame
         Invisible();
     }
     
-    public void Invisible()
+    private void Invisible()
     {
         lblIcon2.setVisible(false);
         lblIcon3.setVisible(false);
@@ -58,6 +60,24 @@ public class RealizarCita extends javax.swing.JFrame
         lblPrecio2.setVisible(false);
         lblPrecio3.setVisible(false);
         lblPrecio4.setVisible(false);
+    }
+    
+    private void Limpiar()
+    {
+        nombres.clear();
+        horas.clear();
+        costos.clear();
+        descuentos.clear();
+        tipos.clear();
+        contador1 = 1;
+        contador2 = 1;
+        contador3 = 1;
+        contador4 = 1;
+        lblIcon1.setIcon(null);
+        lblNombre1.setText("");
+        lblTipo1.setText("");
+        lblDuracion1.setText("");
+        lblPrecio1.setText("$");
     }
     
     @SuppressWarnings("unchecked")
@@ -129,6 +149,11 @@ public class RealizarCita extends javax.swing.JFrame
                 btnCitaMouseClicked(evt);
             }
         });
+        btnCita.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCitaActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnCita, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 720, 210, -1));
 
         btnAgServicio.setBackground(new java.awt.Color(225, 214, 212));
@@ -139,6 +164,11 @@ public class RealizarCita extends javax.swing.JFrame
         btnAgServicio.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnAgServicioMouseClicked(evt);
+            }
+        });
+        btnAgServicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgServicioActionPerformed(evt);
             }
         });
         getContentPane().add(btnAgServicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 720, 280, -1));
@@ -487,7 +517,7 @@ public class RealizarCita extends javax.swing.JFrame
 
             lblCan1.setText(String.valueOf(contador1));
             lblDuracion1.setText(restaHoras(lblDuracion1, 0));
-            //lblDurTotal.setText(restaHoras(lblDurTotal, 0));
+            lblDurTotal.setText(convResHoras(lblDurTotal.getText(), horas.get(0)));
             lblPrecio1.setText("$" + String.valueOf(restaCostos(contador1, 0)));
             lblCantTotal.setText("$" + String.valueOf(convertirCostos(lblCantTotal.getText()) - convertirCostos(costos.get(0))));
         }
@@ -504,7 +534,7 @@ public class RealizarCita extends javax.swing.JFrame
         lblCan1.setText(String.valueOf(contador1));
         
         lblDuracion1.setText(sumaHoras(contador1, 0));
-        //lblDurTotal.setText(sumaHoras(contador1, 0));
+        lblDurTotal.setText(convSumHoras(lblDurTotal.getText(), horas.get(0)));
         lblPrecio1.setText("$" + String.valueOf(sumaCostos(contador1, 0)));
         lblCantTotal.setText("$" + String.valueOf(convertirCostos(lblCantTotal.getText()) + convertirCostos(costos.get(0))));
     }//GEN-LAST:event_btnUp1ActionPerformed
@@ -518,6 +548,7 @@ public class RealizarCita extends javax.swing.JFrame
         lblCan2.setText(String.valueOf(contador2));
         
         lblDuracion2.setText(sumaHoras(contador2, 1));
+        lblDurTotal.setText(convSumHoras(lblDurTotal.getText(), horas.get(1)));
         lblPrecio2.setText("$" + String.valueOf(sumaCostos(contador2, 1)));
         lblCantTotal.setText("$" + String.valueOf(convertirCostos(lblCantTotal.getText()) + convertirCostos(costos.get(1))));        
     }//GEN-LAST:event_btnUp2ActionPerformed
@@ -531,6 +562,7 @@ public class RealizarCita extends javax.swing.JFrame
         lblCan3.setText(String.valueOf(contador3));
         
         lblDuracion3.setText(sumaHoras(contador3, 2));
+        lblDurTotal.setText(convSumHoras(lblDurTotal.getText(), horas.get(2)));
         lblPrecio3.setText("$" + String.valueOf(sumaCostos(contador3, 2)));
         lblCantTotal.setText("$" + String.valueOf(convertirCostos(lblCantTotal.getText()) + convertirCostos(costos.get(2))));
     }//GEN-LAST:event_btnUp3ActionPerformed
@@ -544,6 +576,7 @@ public class RealizarCita extends javax.swing.JFrame
         lblCan4.setText(String.valueOf(contador4));
         
         lblDuracion4.setText(sumaHoras(contador4, 3));
+        lblDurTotal.setText(convSumHoras(lblDurTotal.getText(), horas.get(3)));
         lblPrecio4.setText("$" + String.valueOf(sumaCostos(contador4, 3)));   
         lblCantTotal.setText("$" + String.valueOf(convertirCostos(lblCantTotal.getText()) + convertirCostos(costos.get(3))));
     }//GEN-LAST:event_btnUp4ActionPerformed
@@ -560,6 +593,7 @@ public class RealizarCita extends javax.swing.JFrame
 
             lblCan2.setText(String.valueOf(contador2));
             lblDuracion2.setText(restaHoras(lblDuracion2, 1));
+            lblDurTotal.setText(convResHoras(lblDurTotal.getText(), horas.get(1)));
             lblPrecio2.setText("$" + String.valueOf(restaCostos(contador2, 1)));
             lblCantTotal.setText("$" + String.valueOf(convertirCostos(lblCantTotal.getText()) - convertirCostos(costos.get(1))));
         }
@@ -579,6 +613,7 @@ public class RealizarCita extends javax.swing.JFrame
 
             lblCan3.setText(String.valueOf(contador3));
             lblDuracion3.setText(restaHoras(lblDuracion3, 2));
+            lblDurTotal.setText(convResHoras(lblDurTotal.getText(), horas.get(2)));            
             lblPrecio3.setText("$" + String.valueOf(restaCostos(contador3, 2)));            
             lblCantTotal.setText("$" + String.valueOf(convertirCostos(lblCantTotal.getText()) - convertirCostos(costos.get(2))));        
         }
@@ -598,12 +633,26 @@ public class RealizarCita extends javax.swing.JFrame
 
             lblCan4.setText(String.valueOf(contador4));
             lblDuracion4.setText(restaHoras(lblDuracion4, 3));
+            lblDurTotal.setText(convResHoras(lblDurTotal.getText(), horas.get(3)));            
             lblPrecio4.setText("$" + String.valueOf(restaCostos(contador4, 3)));            
             lblCantTotal.setText("$" + String.valueOf(convertirCostos(lblCantTotal.getText()) - convertirCostos(costos.get(3))));        
         }
         else
             OptionPane.showMessage("Servicios", "Se tiene que tener seleccionado el servicio por lo menos una vez", "/img/iconos/Close.png");
     }//GEN-LAST:event_btnDown4ActionPerformed
+
+    private void btnAgServicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgServicioActionPerformed
+        
+    }//GEN-LAST:event_btnAgServicioActionPerformed
+
+    private void btnCitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCitaActionPerformed
+        setVisible(false);
+        cita.setDuracionCita(lblDurTotal.getText());
+        cita.setNombres(nombres);
+        Invisible();
+        Limpiar();
+        cita.setVisible(true);
+    }//GEN-LAST:event_btnCitaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -740,6 +789,59 @@ public class RealizarCita extends javax.swing.JFrame
         double costoDouble = Double.parseDouble(valorNumerico);
         return costoDouble;
     }
+    
+    private String convSumHoras(String duracion, String horaSumar)
+    {
+        int horasTotal = 0;
+        int minutosTotal = 0;
+
+        String[] partesHora = duracion.split(":");
+        int horas = Integer.parseInt(partesHora[0]);
+        int minutos = Integer.parseInt(partesHora[1]);
+        horasTotal += horas;
+        minutosTotal += minutos;
+
+        String[] partesHoraAdicional = horaSumar.split(":");
+        int horasAdicional = Integer.parseInt(partesHoraAdicional[0]);
+        int minutosAdicional = Integer.parseInt(partesHoraAdicional[1]);
+
+        horasTotal += horasAdicional;
+        minutosTotal += minutosAdicional;
+
+        horasTotal += minutosTotal / 60;
+        minutosTotal %= 60;
+        String horaTotal = String.format("%02d:%02d", horasTotal, minutosTotal);
+
+        return horaTotal;
+    }
+    
+    private String convResHoras(String duracion, String horaRestar)
+    {
+        int horasTotal = 0;
+        int minutosTotal = 0;
+
+        String[] partesHora = duracion.split(":");
+        int horas = Integer.parseInt(partesHora[0]);
+        int minutos = Integer.parseInt(partesHora[1]);
+        horasTotal += horas;
+        minutosTotal += minutos;
+
+        String[] partesHoraRestar = horaRestar.split(":");
+        int horasRestar = Integer.parseInt(partesHoraRestar[0]);
+        int minutosRestar = Integer.parseInt(partesHoraRestar[1]);
+
+        horasTotal -= horasRestar;
+        minutosTotal -= minutosRestar;
+
+        if (minutosTotal < 0) 
+        {
+            minutosTotal += 60;
+            horasTotal--;
+        }
+        String horaTotal = String.format("%02d:%02d", horasTotal, minutosTotal);
+
+        return horaTotal;
+    }
 
     public void Datos(String nombre, String dur, String tipo, String costo, int con) 
     {
@@ -767,6 +869,8 @@ public class RealizarCita extends javax.swing.JFrame
                 lblPrecio2.setVisible(true);
                 lblPrecio2.setText(costo);
                 lblCantTotal.setText("$" + String.valueOf(convertirCostos(lblCantTotal.getText()) + convertirCostos(costo)));
+                lblDurTotal.setText(convSumHoras(lblDurTotal.getText(), dur));
+                System.out.print(lblDurTotal.getText());
                 break;
             case 3:
                 lblIcon3.setVisible(true);
@@ -782,6 +886,7 @@ public class RealizarCita extends javax.swing.JFrame
                 lblPrecio3.setVisible(true);
                 lblPrecio3.setText(costo);
                 lblCantTotal.setText("$" + String.valueOf(convertirCostos(lblCantTotal.getText()) + convertirCostos(costo)));
+                lblDurTotal.setText(convSumHoras(lblDurTotal.getText(), dur));
                 break;
             case 4:
                 lblIcon4.setVisible(true);
@@ -797,6 +902,7 @@ public class RealizarCita extends javax.swing.JFrame
                 lblPrecio4.setVisible(true);
                 lblPrecio4.setText(costo);
                 lblCantTotal.setText("$" + String.valueOf(convertirCostos(lblCantTotal.getText()) + convertirCostos(costo)));                
+                lblDurTotal.setText(convSumHoras(lblDurTotal.getText(), dur));                
                 break;
             default:
                 break;

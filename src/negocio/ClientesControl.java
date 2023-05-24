@@ -116,4 +116,12 @@ public class ClientesControl
         else
             return "No se puede borrar el cliente registrado";
     }
+    
+    public int GetId(String nombre)
+    {
+        if(DATOS.existe(nombre))
+            return DATOS.id(nombre);
+        else
+            return 0;
+    }
 }

@@ -234,12 +234,12 @@ public class Servicios extends javax.swing.JFrame
                 tipos.add(tipo);
 
                 contador++;
-                cita.setNombres(nombres);
-                cita.setHoras(horas);
-                cita.setTipos(tipos);
-                cita.setDescuentos(descuentos);
-                cita.setCostos(costos);
-                cita.Datos(nombre, duracion, tipo, costo, contador);
+                    cita.setNombres(nombres);
+                    cita.setHoras(horas);
+                    cita.setTipos(tipos);
+                    cita.setDescuentos(descuentos);
+                    cita.setCostos(costos);
+                    cita.Datos(nombre, duracion, tipo, costo, contador);
 
                 cita.setVisible(true);
                 setVisible(false);
@@ -314,6 +314,16 @@ public class Servicios extends javax.swing.JFrame
         });
     }
 
+    public int getContador() 
+    {
+        return contador;
+    }
+
+    public void setContador(int contador) 
+    {
+        this.contador = contador;
+    }
+    
     public String getTipo() 
     {
         return tipo;

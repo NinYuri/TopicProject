@@ -22,7 +22,7 @@ public class CitasControl
     {
         List<Cita> lista = new ArrayList();
         lista.addAll(DATOS.listar(id));
-        String[] titulos = {"ID", "Cliente", "Empleada", "Fecha", "Hora", "Cantidad", "Detalles"};
+        String[] titulos = {"ID", "Cliente", "Empleada", "Fecha", "Hora", "Duración", "Detalles"};
         String[] registro = new String[7];
         modeloTabla = new DefaultTableModel(null, titulos);
         
@@ -33,11 +33,26 @@ public class CitasControl
             registro[2] = String.valueOf(item.getIdEmpleada());
             registro[3] = item.getFechaCita();
             registro[4] = item.getHoraCita();
-            registro[5] = String.valueOf(item.getCantidadServicios());
+            registro[5] = item.getDuracionCita();
             registro[6] = item.getObservacionesCita();
             modeloTabla.addRow(registro);
         }
         return modeloTabla;
+    }
+    
+    public String Insertar(int idCliente, int idEmpleada, String fechaCita, String horaCita, String duracionCita, String observacionesCita)
+    {
+        obj.setIdCliente(idCliente);
+        obj.setIdEmpleada(idEmpleada);
+        obj.setFechaCita(fechaCita);
+        obj.setHoraCita(horaCita);
+        obj.setDuracionCita(duracionCita);
+        obj.setObservacionesCita(observacionesCita);
+        
+        if(DATOS.insertar(obj))
+            return "OK";
+        else
+            return "Error en la agenda de la cita";
     }
     
 }

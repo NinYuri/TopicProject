@@ -156,18 +156,14 @@ public class EmpleadosDAO implements CrudEmpleados<Empleada>
         try
         {
             sql = "update Empleadas \n" +
-        "set nombreEmpleada = ?, passwordEmpleada = ?, direccionEmpleada = ?, telefonoEmpleada = ?, horarioEmpleada = ?, sueldoEmpleada = ?, imagenEmpleada = ? \n" +
+        "set horarioEmpleada = ?, sueldoEmpleada = ?, imagenEmpleada = ? \n" +
         "where nombreEmpleada = ?;";
             ps = CON.Conectar().prepareStatement(sql);
-            
-            ps.setString(1, obj.getNombreEmpleada());
-            ps.setString(2, obj.getPasswordEmpleada());
-            ps.setString(3, obj.getDireccionEmpleada());
-            ps.setString(4, obj.getTelefonoEmpleada());
-            ps.setString(5, obj.getHorarioEmpleada());
-            ps.setDouble(6, obj.getSueldoEmpleada());
-            ps.setString(7, obj.getImagenEmpleada());
-            ps.setString(8, obj.getNombreEmpleada());
+
+            ps.setString(1, obj.getHorarioEmpleada());
+            ps.setDouble(2, obj.getSueldoEmpleada());
+            ps.setString(3, obj.getImagenEmpleada());
+            ps.setString(4, obj.getNombreEmpleada());
             
             if(ps.executeUpdate() > 0)
                 resp = true;
@@ -243,5 +239,59 @@ public class EmpleadosDAO implements CrudEmpleados<Empleada>
             CON.desconectar();
         }
         return resp;
+    }
+    
+    public String imagen(String nombre)
+    {
+        String imagen = "";
+        String sql;
+        try
+        {
+            sql = "select imagenEmpleada from Empleadas where nombreEmpleada = ?;";
+            ps = CON.Conectar().prepareStatement(sql);
+            ps.setString(1, nombre);
+            rs = ps.executeQuery();
+            if(rs.next())
+                imagen = rs.getString(1);
+            ps.close();
+        }
+        catch(SQLException e)
+        {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+        finally
+        {
+            ps = null;
+            rs = null;
+            CON.desconectar();
+        }
+        return imagen;
+    }
+    
+    public int id(String texto)
+    {
+        int id = 0;
+        String sql;
+        try
+        {
+            sql = "select idEmpleada from Empleadas where nombreEmpleada = ?;";
+            ps = CON.Conectar().prepareStatement(sql);
+            ps.setString(1, texto);
+            rs = ps.executeQuery();
+            if(rs.next())
+                id = rs.getInt(1);
+            ps.close();
+        }
+        catch(SQLException e)
+        {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+        finally
+        {
+            ps = null;
+            rs = null;
+            CON.desconectar();
+        }
+        return id;
     }
 }

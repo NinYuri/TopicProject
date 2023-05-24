@@ -7,16 +7,16 @@ public class Cita
     private int idEmpleada;
     private String fechaCita;
     private String horaCita;
-    private int cantidadServicios;
+    private String duracionCita;
     private String observacionesCita;
 
-    public Cita(int idCita, int idCliente, int idEmpleada, String fechaCita, String horaCita, int cantidadServicios, String observacionesCita) {
+    public Cita(int idCita, int idCliente, int idEmpleada, String fechaCita, String horaCita, String duracionCita, String observacionesCita) {
         this.idCita = idCita;
         this.idCliente = idCliente;
         this.idEmpleada = idEmpleada;
         this.fechaCita = fechaCita;
         this.horaCita = horaCita;
-        this.cantidadServicios = cantidadServicios;
+        this.duracionCita = duracionCita;
         this.observacionesCita = observacionesCita;
     }
 
@@ -63,12 +63,12 @@ public class Cita
         this.horaCita = horaCita;
     }
 
-    public int getCantidadServicios() {
-        return cantidadServicios;
+    public String getDuracionCita() {
+        return duracionCita;
     }
 
-    public void setCantidadServicios(int cantidadServicios) {
-        this.cantidadServicios = cantidadServicios;
+    public void setDuracionCita(String duracionCita) {
+        this.duracionCita = duracionCita;
     }
 
     public String getObservacionesCita() {
@@ -81,6 +81,6 @@ public class Cita
 
     @Override
     public String toString() {
-        return "Cita{" + "idCita=" + idCita + ", idCliente=" + idCliente + ", idEmpleada=" + idEmpleada + ", fechaCita=" + fechaCita + ", horaCita=" + horaCita + ", cantidadServicios=" + cantidadServicios + ", observacionesCita=" + observacionesCita + '}';
+        return "Cita{" + "idCita=" + idCita + ", idCliente=" + idCliente + ", idEmpleada=" + idEmpleada + ", fechaCita=" + fechaCita + ", horaCita=" + horaCita + ", duracionCita=" + duracionCita + ", observacionesCita=" + observacionesCita + '}';
     }
 }

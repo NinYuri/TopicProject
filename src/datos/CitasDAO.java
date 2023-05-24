@@ -33,7 +33,7 @@ public class CitasDAO implements CrudCitas<Cita>
             ps = CON.Conectar().prepareStatement(sql);
             rs = ps.executeQuery();
             while(rs.next())
-                registros.add(new Cita(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getInt(6), rs.getString(7)));
+                registros.add(new Cita(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7)));
             ps.close();
             rs.close();
         }
@@ -57,7 +57,7 @@ public class CitasDAO implements CrudCitas<Cita>
         resp = false;
         try
         {
-            sql = "insert into Citas(idCliente, idEmpleada, fechaCita, horaCita, cantidadServicios, observacionesCita)\n" +
+            sql = "insert into Citas(idCliente, idEmpleada, fechaCita, horaCita, duracionCita, observacionesCita)\n" +
                 "values(?, ?, ?, ?, ?, ?);";
             ps = CON.Conectar().prepareStatement(sql);
             
@@ -65,7 +65,7 @@ public class CitasDAO implements CrudCitas<Cita>
             ps.setInt(2, obj.getIdEmpleada());
             ps.setString(3, obj.getFechaCita());
             ps.setString(4, obj.getHoraCita());
-            ps.setInt(5, obj.getCantidadServicios());
+            ps.setString(5, obj.getDuracionCita());
             ps.setString(6, obj.getObservacionesCita());
             
             if(ps.executeUpdate() > 0)
@@ -92,14 +92,14 @@ public class CitasDAO implements CrudCitas<Cita>
         try
         {
             sql = "update Citas \n" +
-        "set idEmpleada = ?, fechaCita = ?, horaCita = ?, cantidadServicios = ?, observacionesCita = ? \n" +
+        "set idEmpleada = ?, fechaCita = ?, horaCita = ?, duracionCita = ?, observacionesCita = ? \n" +
         "where idCita = ?;";
             ps = CON.Conectar().prepareStatement(sql);
             
             ps.setInt(1, obj.getIdEmpleada());
             ps.setString(2, obj.getFechaCita());
             ps.setString(3, obj.getHoraCita());
-            ps.setInt(4, obj.getCantidadServicios());
+            ps.setString(4, obj.getDuracionCita());
             ps.setString(5, obj.getObservacionesCita());
             ps.setInt(7, obj.getIdCita());
             

@@ -73,14 +73,11 @@ public class EmpleadosControl
         }
     }
     
-    public String ActualizarD(String nombre, String nombreAnt, String password, String direccion, String telefono, String horario, double sueldo, String imagen)
+    public String ActualizarD(String nombre, String nombreAnt, String horario, double sueldo, String imagen)
     {
         if(nombre.equals(nombreAnt))
         {
             obj.setNombreEmpleada(nombre);
-            obj.setPasswordEmpleada(password);
-            obj.setDireccionEmpleada(direccion);
-            obj.setTelefonoEmpleada(telefono);
             obj.setHorarioEmpleada(horario);
             obj.setSueldoEmpleada(sueldo);
             obj.setImagenEmpleada(imagen);
@@ -97,9 +94,6 @@ public class EmpleadosControl
             else
             {
                 obj.setNombreEmpleada(nombre);
-                obj.setPasswordEmpleada(password);
-                obj.setDireccionEmpleada(direccion);
-                obj.setTelefonoEmpleada(telefono);
                 obj.setHorarioEmpleada(horario);
                 obj.setSueldoEmpleada(sueldo);
                 obj.setImagenEmpleada(imagen);
@@ -152,4 +146,21 @@ public class EmpleadosControl
         else
             return "No se puede borrar el empleado registrado";
     }
+    
+    public String Imagen(String nombre)
+    {
+        if(DATOS.existe(nombre))
+            return DATOS.imagen(nombre);
+        else
+            return null;
+    }
+    
+    public int GetId(String nombre)
+    {
+        if(DATOS.existe(nombre))
+            return DATOS.id(nombre);
+        else
+            return 0;
+    }
+
 }

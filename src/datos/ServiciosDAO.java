@@ -258,4 +258,31 @@ public class ServiciosDAO implements CrudServicios<Servicio>
         }
         return rutas;
     }
+    
+    public int id(String texto)
+    {
+        int id = 0;
+        String sql;
+        try
+        {
+            sql = "select idServicio from Servicios where nombreServicio = ?;";
+            ps = CON.Conectar().prepareStatement(sql);
+            ps.setString(1, texto);
+            rs = ps.executeQuery();
+            if(rs.next())
+                id = rs.getInt(1);
+            ps.close();
+        }
+        catch(SQLException e)
+        {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+        finally
+        {
+            ps = null;
+            rs = null;
+            CON.desconectar();
+        }
+        return id;
+    }
 }
