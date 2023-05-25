@@ -18,12 +18,28 @@ public class CitasControl
         obj = new Cita();
     }
     
+    public String[] Datos(int idCliente, String fecha)
+    {
+        List<Cita> lista = new ArrayList();
+        lista.addAll(DATOS.datos(idCliente, fecha));
+        String[] registro = new String[5];
+        
+        for(Cita item:lista)
+        {
+            registro[0] = String.valueOf(item.getIdCita());
+            registro[1] = item.getHoraCita();
+            registro[2] = item.getDuracionCita();
+            registro[3] = item.getObservacionesCita();
+        }
+        return registro;
+    }
+    
     public DefaultTableModel Listar(int id)
     {
         List<Cita> lista = new ArrayList();
         lista.addAll(DATOS.listar(id));
-        String[] titulos = {"ID", "Cliente", "Empleada", "Fecha", "Hora", "Duración", "Detalles"};
-        String[] registro = new String[7];
+        String[] titulos = {"ID", "Cliente", "Empleada", "Fecha", "Hora", "Duración", "Costo", "Detalles"};
+        String[] registro = new String[8];
         modeloTabla = new DefaultTableModel(null, titulos);
         
         for(Cita item:lista)
@@ -34,19 +50,21 @@ public class CitasControl
             registro[3] = item.getFechaCita();
             registro[4] = item.getHoraCita();
             registro[5] = item.getDuracionCita();
-            registro[6] = item.getObservacionesCita();
+            registro[6] = String.valueOf(item.getCostoCita());
+            registro[7] = item.getObservacionesCita();
             modeloTabla.addRow(registro);
         }
         return modeloTabla;
     }
     
-    public String Insertar(int idCliente, int idEmpleada, String fechaCita, String horaCita, String duracionCita, String observacionesCita)
+    public String Insertar(int idCliente, int idEmpleada, String fechaCita, String horaCita, String duracionCita, double costoCita, String observacionesCita)
     {
         obj.setIdCliente(idCliente);
         obj.setIdEmpleada(idEmpleada);
         obj.setFechaCita(fechaCita);
         obj.setHoraCita(horaCita);
         obj.setDuracionCita(duracionCita);
+        obj.setCostoCita(costoCita);
         obj.setObservacionesCita(observacionesCita);
         
         if(DATOS.insertar(obj))
@@ -55,4 +73,11 @@ public class CitasControl
             return "Error en la agenda de la cita";
     }
     
+    public int GetId(String fecha, int idCliente, String hora)
+    {
+        if(DATOS.existe(fecha, idCliente, hora))
+            return DATOS.id(fecha, idCliente, hora);
+        else
+            return 0;
+    }
 }

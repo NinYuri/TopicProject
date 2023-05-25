@@ -12,6 +12,7 @@ public class FrmSerClientes extends javax.swing.JFrame
 {
     Servicios ser = new Servicios();
     RealizarCita cita = new RealizarCita();
+    Citas cerrarCita = new Citas();
     Fondo fondo = new Fondo();
     
     public FrmSerClientes() 
@@ -257,6 +258,7 @@ public class FrmSerClientes extends javax.swing.JFrame
     private void btnColorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnColorMouseClicked
         ser.setTexto("Menú Color");
         ser.Listar("Color");
+        ser.setTipo("Color");
         ser.setVisible(true);
     }//GEN-LAST:event_btnColorMouseClicked
 
@@ -275,6 +277,7 @@ public class FrmSerClientes extends javax.swing.JFrame
     private void btnPeinadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPeinadoMouseClicked
         ser.setTexto("Menú Peinado");
         ser.Listar("Peinado");
+        ser.setTipo("Color");
         ser.setVisible(true);
     }//GEN-LAST:event_btnPeinadoMouseClicked
 
@@ -293,6 +296,7 @@ public class FrmSerClientes extends javax.swing.JFrame
     private void btnUñasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUñasMouseClicked
         ser.setTexto("Menú Uñas");
         ser.Listar("Uñas");
+        ser.setTipo("Uñas");
         ser.setVisible(true);
     }//GEN-LAST:event_btnUñasMouseClicked
 
@@ -311,6 +315,7 @@ public class FrmSerClientes extends javax.swing.JFrame
     private void btnMaquillajeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMaquillajeMouseClicked
         ser.setTexto("Menú Maquillaje");
         ser.Listar("Maquillaje");
+        ser.setTipo("Maquillaje");
         ser.setVisible(true);
     }//GEN-LAST:event_btnMaquillajeMouseClicked
 
@@ -329,6 +334,7 @@ public class FrmSerClientes extends javax.swing.JFrame
     private void btnEpilacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEpilacionMouseClicked
         ser.setTexto("Menú Epilación");
         ser.Listar("Epilacion");
+        ser.setTipo("Epilación");
         ser.setVisible(true);
     }//GEN-LAST:event_btnEpilacionMouseClicked
 
@@ -349,6 +355,7 @@ public class FrmSerClientes extends javax.swing.JFrame
         obd.setVisible(true);
         ser.dispose();
         cita.dispose();
+        cerrarCita.dispose();
         dispose();
     }//GEN-LAST:event_btnSalirMouseClicked
 

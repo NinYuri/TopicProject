@@ -33,7 +33,7 @@ public class CitasDAO implements CrudCitas<Cita>
             ps = CON.Conectar().prepareStatement(sql);
             rs = ps.executeQuery();
             while(rs.next())
-                registros.add(new Cita(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7)));
+                registros.add(new Cita(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getDouble(7), rs.getString(8)));
             ps.close();
             rs.close();
         }
@@ -57,8 +57,8 @@ public class CitasDAO implements CrudCitas<Cita>
         resp = false;
         try
         {
-            sql = "insert into Citas(idCliente, idEmpleada, fechaCita, horaCita, duracionCita, observacionesCita)\n" +
-                "values(?, ?, ?, ?, ?, ?);";
+            sql = "insert into Citas(idCliente, idEmpleada, fechaCita, horaCita, duracionCita, costoCita, observacionesCita)\n" +
+                "values(?, ?, ?, ?, ?, ?, ?);";
             ps = CON.Conectar().prepareStatement(sql);
             
             ps.setInt(1, obj.getIdCliente());
@@ -66,7 +66,8 @@ public class CitasDAO implements CrudCitas<Cita>
             ps.setString(3, obj.getFechaCita());
             ps.setString(4, obj.getHoraCita());
             ps.setString(5, obj.getDuracionCita());
-            ps.setString(6, obj.getObservacionesCita());
+            ps.setDouble(6, obj.getCostoCita());
+            ps.setString(7, obj.getObservacionesCita());
             
             if(ps.executeUpdate() > 0)
                 resp = true;
@@ -92,7 +93,7 @@ public class CitasDAO implements CrudCitas<Cita>
         try
         {
             sql = "update Citas \n" +
-        "set idEmpleada = ?, fechaCita = ?, horaCita = ?, duracionCita = ?, observacionesCita = ? \n" +
+        "set idEmpleada = ?, fechaCita = ?, horaCita = ?, duracionCita = ?, costoCita = ?, observacionesCita = ? \n" +
         "where idCita = ?;";
             ps = CON.Conectar().prepareStatement(sql);
             
@@ -100,7 +101,8 @@ public class CitasDAO implements CrudCitas<Cita>
             ps.setString(2, obj.getFechaCita());
             ps.setString(3, obj.getHoraCita());
             ps.setString(4, obj.getDuracionCita());
-            ps.setString(5, obj.getObservacionesCita());
+            ps.setDouble(5, obj.getCostoCita());
+            ps.setString(6, obj.getObservacionesCita());
             ps.setInt(7, obj.getIdCita());
             
             if(ps.executeUpdate() > 0)
@@ -146,15 +148,17 @@ public class CitasDAO implements CrudCitas<Cita>
     }
 
     @Override
-    public boolean existe(String texto) 
+    public boolean existe(String fecha, int idCliente, String hora) 
     {
         String sql;
         resp = false;
         try
         {
-            sql = "select idCita from Citas where fechaCita = ?;";
+            sql = "select idCita from Citas where fechaCita = ? and idCliente = ? and horaCita = ?;";
             ps = CON.Conectar().prepareStatement(sql);
-            ps.setString(1, texto);
+            ps.setString(1, fecha);
+            ps.setInt(2, idCliente);
+            ps.setString(3, hora);
             rs = ps.executeQuery();
             if(rs.next())
                 resp = true;
@@ -172,5 +176,66 @@ public class CitasDAO implements CrudCitas<Cita>
             CON.desconectar();
         }
         return resp;
+    }
+    
+    public int id(String fecha, int idCliente, String hora)
+    {
+        int id = 0;
+        String sql;
+        try
+        {
+            sql = "select idCita from Citas where fechaCita = ? and idCliente = ? and horaCita = ?;";
+            ps = CON.Conectar().prepareStatement(sql);
+            ps.setString(1, fecha);
+            ps.setInt(2, idCliente);
+            ps.setString(3, hora);
+            rs = ps.executeQuery();
+            if(rs.next())
+                id = rs.getInt(1);
+            ps.close();
+            rs.close();
+        }
+        catch(SQLException e)
+        {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+        finally
+        {
+            ps = null;
+            rs = null;
+            CON.desconectar();
+        }
+        return id;
+    }
+
+    @Override
+    public List<Cita> datos(int idCliente, String fecha)
+    {
+        List<Cita> registros = new ArrayList();
+        String sql;
+        try
+        {
+            sql = "select idCita, horaCita, duracionCita, observacionesCita from Citas \n" +
+               "where idCliente = ? and fechaCita = ?;";
+            ps = CON.Conectar().prepareStatement(sql);
+            ps.setInt(1, idCliente);
+            ps.setString(2, fecha);
+            rs = ps.executeQuery();
+            while(rs.next())
+                registros.add(new Cita(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4)));
+            ps.close();
+            rs.close();
+        }
+        catch(SQLException e)
+        {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+        finally
+        {
+            ps = null;
+            rs = null;
+            CON.desconectar();
+        }
+        return registros;
     }
 }

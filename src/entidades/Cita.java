@@ -8,18 +8,27 @@ public class Cita
     private String fechaCita;
     private String horaCita;
     private String duracionCita;
+    private double costoCita;
     private String observacionesCita;
 
-    public Cita(int idCita, int idCliente, int idEmpleada, String fechaCita, String horaCita, String duracionCita, String observacionesCita) {
+    public Cita(int idCita, int idCliente, int idEmpleada, String fechaCita, String horaCita, String duracionCita, double costoCita, String observacionesCita) {
         this.idCita = idCita;
         this.idCliente = idCliente;
         this.idEmpleada = idEmpleada;
         this.fechaCita = fechaCita;
         this.horaCita = horaCita;
         this.duracionCita = duracionCita;
+        this.costoCita = costoCita;
         this.observacionesCita = observacionesCita;
     }
 
+    public Cita(int idCita, String horaCita, String duracionCita, String observacionesCita) {
+        this.idCita = idCita;
+        this.horaCita = horaCita;
+        this.duracionCita = duracionCita;
+        this.observacionesCita = observacionesCita;
+    }
+ 
     public Cita() {
     }
 
@@ -71,6 +80,14 @@ public class Cita
         this.duracionCita = duracionCita;
     }
 
+    public double getCostoCita() {
+        return costoCita;
+    }
+
+    public void setCostoCita(double costoCita) {
+        this.costoCita = costoCita;
+    }
+    
     public String getObservacionesCita() {
         return observacionesCita;
     }
@@ -81,6 +98,6 @@ public class Cita
 
     @Override
     public String toString() {
-        return "Cita{" + "idCita=" + idCita + ", idCliente=" + idCliente + ", idEmpleada=" + idEmpleada + ", fechaCita=" + fechaCita + ", horaCita=" + horaCita + ", duracionCita=" + duracionCita + ", observacionesCita=" + observacionesCita + '}';
+        return "Cita{" + "idCita=" + idCita + ", idCliente=" + idCliente + ", idEmpleada=" + idEmpleada + ", fechaCita=" + fechaCita + ", horaCita=" + horaCita + ", duracionCita=" + duracionCita + ", costoCita=" + costoCita + ", observacionesCita=" + observacionesCita + '}';
     }
 }

@@ -22,7 +22,9 @@ public class Citas extends javax.swing.JFrame
 {
     String imagen;
     String duracionCita;
+    double montoCita;
     Vector<String> nombres = new Vector<String>();
+    Vector<String> sersol = new Vector<String>();
     
     private final ClientesControl CONTROL;
     private final EmpleadosControl CONTROLEMP;
@@ -168,6 +170,7 @@ public class Citas extends javax.swing.JFrame
         txtObservaciones.setFont(new java.awt.Font("Consolas", 1, 17)); // NOI18N
         txtObservaciones.setForeground(new java.awt.Color(98, 88, 88));
         txtObservaciones.setText("Observaciones");
+        txtObservaciones.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED, new java.awt.Color(225, 214, 212), new java.awt.Color(225, 214, 212), new java.awt.Color(225, 214, 212), new java.awt.Color(225, 214, 212)));
         txtObservaciones.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtObservacionesFocusGained(evt);
@@ -191,7 +194,7 @@ public class Citas extends javax.swing.JFrame
     private void btnFinCitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinCitaActionPerformed
         MessageDialog OptionPane = new MessageDialog(this);
         String fechasql, obs;
-        String resp, respss;
+        String resp, respss = "";
         
         if(!txtUsuario.getText().isEmpty() && !txtUsuario.getText().equals("Nombre de Usuario"))
             if(CONTROL.Existe(txtUsuario.getText()))
@@ -208,19 +211,24 @@ public class Citas extends javax.swing.JFrame
                             else
                                 obs = "";
                             
-                            resp = CONTROLCIT.Insertar(CONTROL.GetId(txtUsuario.getText()), CONTROLEMP.GetId(lblNombreEmp.getText()), fechasql, txtHora.getText(), duracionCita, obs);
+                            resp = CONTROLCIT.Insertar(CONTROL.GetId(txtUsuario.getText()), CONTROLEMP.GetId(lblNombreEmp.getText()), fechasql, txtHora.getText(), duracionCita, montoCita, obs);
                             
                             if(resp.equals("OK"))
                             {
-                                //haz la consulta comparando muchos datos
-                                //for(String elemento : nombres)
-                                    //respss = CONTROLSERSOL.Insertar(5, CONTROLSER.GetId(elemento));
+                                for(String elemento : nombres)
+                                    respss = CONTROLSERSOL.Insertar(CONTROLCIT.GetId(fechasql, CONTROL.GetId(txtUsuario.getText()), txtHora.getText()), CONTROLSER.GetId(elemento));
+                                
+                                if(respss.equals("OK"))
+                                    OptionPane.showMessage("Agendar Cita", "Servicios registrados con éxito", "/img/iconos/Info.png");
+                                else
+                                    OptionPane.showMessage("Agendar Cita", "Hubo un error en el registro de los servicios de la cita", "/img/iconos/Close.png");                                    
+               
                                 OptionPane.showMessage("Agendar Cita", "Cita agendada con éxito", "/img/iconos/Info.png");
                             }
                             else
                                 OptionPane.showMessage("Agendar Cita", "Hubo un error en la agenda de la cita", "/img/iconos/Close.png");
                             
-                            setVisible(false);
+                            dispose();
                         }
                         else
                             OptionPane.showMessage("Agendar Cita", "Error en la estructura de dato 00:00", "/img/iconos/Close.png");
@@ -349,6 +357,21 @@ public class Citas extends javax.swing.JFrame
         });
     }
 
+    public double getMontoCita() 
+    {
+        return montoCita;
+    }
+
+    public void setMontoCita(double montoCita) 
+    {
+        this.montoCita = montoCita;
+    }
+    
+    public Vector<String> getNombres() 
+    {
+        return nombres;
+    }
+    
     public void setNombres(Vector<String> nombres) 
     {
         this.nombres = nombres;

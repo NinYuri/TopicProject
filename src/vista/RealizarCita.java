@@ -16,6 +16,7 @@ public class RealizarCita extends javax.swing.JFrame
     Vector<String> descuentos = new Vector<String>();
     Vector<String> tipos = new Vector<String>();
     
+    int conGeneral = 0;
     int contador1 = 1;
     int contador2 = 1;
     int contador3 = 1;
@@ -78,6 +79,23 @@ public class RealizarCita extends javax.swing.JFrame
         lblTipo1.setText("");
         lblDuracion1.setText("");
         lblPrecio1.setText("$");
+        lblIcon2.setIcon(null);
+        lblNombre2.setText("");
+        lblTipo2.setText("");
+        lblDuracion2.setText("");
+        lblPrecio2.setText("$");
+        lblIcon3.setIcon(null);
+        lblNombre3.setText("");
+        lblTipo3.setText("");
+        lblDuracion3.setText("");
+        lblPrecio3.setText("$");
+        lblIcon4.setIcon(null);
+        lblNombre4.setText("");
+        lblTipo4.setText("");
+        lblDuracion4.setText("");
+        lblPrecio4.setText("$");
+        lblDurTotal.setText("00:00");
+        lblCantTotal.setText("$");
     }
     
     @SuppressWarnings("unchecked")
@@ -646,11 +664,15 @@ public class RealizarCita extends javax.swing.JFrame
     }//GEN-LAST:event_btnAgServicioActionPerformed
 
     private void btnCitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCitaActionPerformed
+        String valorSinDolar = lblCantTotal.getText().replace("$", "");
+        double costo = Double.parseDouble(valorSinDolar);
         setVisible(false);
         cita.setDuracionCita(lblDurTotal.getText());
-        cita.setNombres(nombres);
+        cita.setNombres(nombres);        
+        cita.setMontoCita(costo);
         Invisible();
         Limpiar();
+        Revisar();
         cita.setVisible(true);
     }//GEN-LAST:event_btnCitaActionPerformed
 
@@ -786,8 +808,13 @@ public class RealizarCita extends javax.swing.JFrame
     public double convertirCostos(String costo)
     {
         String valorNumerico = costo.substring(1);
-        double costoDouble = Double.parseDouble(valorNumerico);
-        return costoDouble;
+        if(!valorNumerico.isEmpty())
+        {
+            double costoDouble = Double.parseDouble(valorNumerico);
+            return costoDouble;
+        }
+        else
+            return 0;
     }
     
     private String convSumHoras(String duracion, String horaSumar)
@@ -842,10 +869,20 @@ public class RealizarCita extends javax.swing.JFrame
 
         return horaTotal;
     }
-
-    public void Datos(String nombre, String dur, String tipo, String costo, int con) 
+    
+    public void Contador()
     {
-        switch(con)
+        conGeneral++;
+    }
+    
+    public void Revisar()
+    {
+        conGeneral = 0;
+    }
+
+    public void Datos(String nombre, String dur, String tipo, String costo) 
+    {
+        switch(conGeneral)
         {
             case 1:
                 lblNombre1.setText(nombre);
@@ -870,7 +907,6 @@ public class RealizarCita extends javax.swing.JFrame
                 lblPrecio2.setText(costo);
                 lblCantTotal.setText("$" + String.valueOf(convertirCostos(lblCantTotal.getText()) + convertirCostos(costo)));
                 lblDurTotal.setText(convSumHoras(lblDurTotal.getText(), dur));
-                System.out.print(lblDurTotal.getText());
                 break;
             case 3:
                 lblIcon3.setVisible(true);
@@ -888,7 +924,7 @@ public class RealizarCita extends javax.swing.JFrame
                 lblCantTotal.setText("$" + String.valueOf(convertirCostos(lblCantTotal.getText()) + convertirCostos(costo)));
                 lblDurTotal.setText(convSumHoras(lblDurTotal.getText(), dur));
                 break;
-            case 4:
+            case 4:   
                 lblIcon4.setVisible(true);
                 lblNombre4.setVisible(true);
                 lblNombre4.setText(nombre);

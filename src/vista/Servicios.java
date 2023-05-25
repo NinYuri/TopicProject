@@ -14,7 +14,6 @@ import negocio.ServiciosControl;
 
 public class Servicios extends javax.swing.JFrame 
 {
-    int contador = 0;
     String texto = "";
     String nombre, duracion, costo, descuento, tipo;
     
@@ -233,13 +232,13 @@ public class Servicios extends javax.swing.JFrame
                 tipo = getTipo();
                 tipos.add(tipo);
 
-                contador++;
-                    cita.setNombres(nombres);
-                    cita.setHoras(horas);
-                    cita.setTipos(tipos);
-                    cita.setDescuentos(descuentos);
-                    cita.setCostos(costos);
-                    cita.Datos(nombre, duracion, tipo, costo, contador);
+                cita.setNombres(nombres);
+                cita.setHoras(horas);
+                cita.setTipos(tipos);
+                cita.setDescuentos(descuentos);
+                cita.setCostos(costos);
+                cita.Contador();
+                cita.Datos(nombre, duracion, tipo, costo);
 
                 cita.setVisible(true);
                 setVisible(false);
@@ -312,16 +311,6 @@ public class Servicios extends javax.swing.JFrame
                 new Servicios().setVisible(true);
             }
         });
-    }
-
-    public int getContador() 
-    {
-        return contador;
-    }
-
-    public void setContador(int contador) 
-    {
-        this.contador = contador;
     }
     
     public String getTipo() 
