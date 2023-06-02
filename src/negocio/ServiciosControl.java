@@ -161,4 +161,12 @@ public class ServiciosControl
         else
             return 0;
     }
+    
+    public double GetCosto(int id, String nombre)
+    {
+        if(DATOS.existe(nombre))
+            return DATOS.costo(id);
+        else
+            return 0;
+    }
 }

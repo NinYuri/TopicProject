@@ -25,12 +25,14 @@ public class SerSolicitadosDAO
         resp = false;
         try
         {
-            sql = "insert into ServiciosSol(idCita, idServicio)\n" +
-                "values(?,?);";
+            sql = "insert into ServiciosSol(idCita, idServicio, costoServicio, descuento)\n" +
+                "values(?, ?, ?, ?);";
             ps = CON.Conectar().prepareStatement(sql);
             
             ps.setInt(1, obj.getIdCita());
             ps.setInt(2, obj.getIdServicio());
+            ps.setDouble(3, obj.getCostoServicio());
+            ps.setDouble(4, obj.getDescuento());
             
             if(ps.executeUpdate() > 0)
                 resp = true;

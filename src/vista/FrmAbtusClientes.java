@@ -30,6 +30,7 @@ public class FrmAbtusClientes extends javax.swing.JFrame
         Icono(new ImageIcon(getClass().getResource("/img/principal/Facebook.png")), lblFacebook);
         Icono(new ImageIcon(getClass().getResource("/img/principal/Instagram.png")), lblInstagram);
         Icono(new ImageIcon(getClass().getResource("/img/principal/log.png")), lblLogo);
+        Icono(new ImageIcon(getClass().getResource("/img/principal/Map.png")), lblMap);
     }
 
     /**
@@ -60,6 +61,7 @@ public class FrmAbtusClientes extends javax.swing.JFrame
         lblFacebook = new javax.swing.JLabel();
         lblInstagram = new javax.swing.JLabel();
         lblLogo = new javax.swing.JLabel();
+        lblMap = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -164,13 +166,13 @@ public class FrmAbtusClientes extends javax.swing.JFrame
         });
         getContentPane().add(lblInstagram, new org.netbeans.lib.awtextra.AbsoluteConstraints(1250, 740, 50, 40));
 
-        lblLogo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblLogo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblLogoMouseClicked(evt);
             }
         });
         getContentPane().add(lblLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 735, 60, 50));
+        getContentPane().add(lblMap, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 180, 520, 520));
 
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
         jLabel4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(230, 230, 230), 2, true));
@@ -337,6 +339,7 @@ public class FrmAbtusClientes extends javax.swing.JFrame
     private javax.swing.JLabel lblIconSalir;
     private javax.swing.JLabel lblInstagram;
     private javax.swing.JLabel lblLogo;
+    private javax.swing.JLabel lblMap;
     private javax.swing.JLabel lblMenu;
     private javax.swing.JLabel lblMenu1;
     private javax.swing.JLabel lblSalir;

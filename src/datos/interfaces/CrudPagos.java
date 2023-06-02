@@ -6,6 +6,7 @@ public interface CrudPagos <T>
 {
     public List<T> listar(String texto);
     public boolean insertar(T obj);
+    public boolean actualizar(T obj);
     public boolean borrar(T obj);
-    public boolean existe(int idPago);
+    public boolean existe(int idCita);
 }

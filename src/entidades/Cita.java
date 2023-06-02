@@ -28,7 +28,7 @@ public class Cita
         this.duracionCita = duracionCita;
         this.observacionesCita = observacionesCita;
     }
- 
+    
     public Cita() {
     }
 

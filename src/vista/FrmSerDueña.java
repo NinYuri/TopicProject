@@ -38,15 +38,14 @@ public class FrmSerDueña extends javax.swing.JFrame
         Icono(new ImageIcon(getClass().getResource("/img/iconos/NuevoW.png")), lblIconNuevo);
         Icono(new ImageIcon(getClass().getResource("/img/iconos/BorrarW.png")), lblIconEliminar);
         Icono(new ImageIcon(getClass().getResource("/img/iconos/EditarW.png")), lblIconEditar);
-        Icono(new ImageIcon(getClass().getResource("/img/iconos/EditarW.png")), lblIconAct);
+        Icono(new ImageIcon(getClass().getResource("/img/iconos/Refresh.png")), lblIconAct);
 
         setExtendedState(MAXIMIZED_BOTH);
     }
     
     public void Listar(String texto)
     {
-        tblServicios.setModel(CONTROL.Listar(texto));
-        Tabla(tblServicios);
+        tblSerPrincipal.setModel(CONTROL.Listar(texto));
     }
 
     /**
@@ -63,8 +62,8 @@ public class FrmSerDueña extends javax.swing.JFrame
         lblIconSalir = new javax.swing.JLabel();
         lblIconAct = new javax.swing.JLabel();
         Carrusel = new comp.Carrusel();
-        tabla = new javax.swing.JScrollPane();
-        tblServicios = new javax.swing.JTable();
+        tab = new javax.swing.JScrollPane();
+        tblSerPrincipal = new rojeru_san.complementos.RSTableMetro();
         btnDetalles = new javax.swing.JLabel();
         lblDetalles = new javax.swing.JLabel();
         lblIconDetalles = new javax.swing.JLabel();
@@ -107,6 +106,7 @@ public class FrmSerDueña extends javax.swing.JFrame
         getContentPane().add(lblSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, -1, 50));
         getContentPane().add(lblIconSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 70, 60));
 
+        lblIconAct.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblIconAct.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblIconActMouseClicked(evt);
@@ -115,27 +115,38 @@ public class FrmSerDueña extends javax.swing.JFrame
                 lblIconActMousePressed(evt);
             }
         });
-        getContentPane().add(lblIconAct, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 0, 70, 60));
+        getContentPane().add(lblIconAct, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 450, 70, 60));
         getContentPane().add(Carrusel, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 280, -1, -1));
 
-        tabla.setBackground(new java.awt.Color(255, 255, 255));
-
-        tblServicios.setFont(new java.awt.Font("Consolas", 1, 16)); // NOI18N
-        tblServicios.setForeground(new java.awt.Color(67, 63, 63));
-        tblServicios.setModel(new javax.swing.table.DefaultTableModel(
+        tblSerPrincipal.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-
+                "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        tblServicios.setRowHeight(25);
-        tblServicios.setSelectionBackground(new java.awt.Color(225, 214, 212));
-        tblServicios.setSelectionForeground(new java.awt.Color(67, 63, 63));
-        tabla.setViewportView(tblServicios);
+        tblSerPrincipal.setColorBackgoundHead(new java.awt.Color(225, 214, 212));
+        tblSerPrincipal.setColorBordeFilas(new java.awt.Color(98, 88, 88));
+        tblSerPrincipal.setColorBordeHead(new java.awt.Color(98, 88, 88));
+        tblSerPrincipal.setColorFilasBackgound2(new java.awt.Color(225, 214, 212));
+        tblSerPrincipal.setColorFilasForeground1(new java.awt.Color(67, 63, 63));
+        tblSerPrincipal.setColorFilasForeground2(new java.awt.Color(67, 63, 63));
+        tblSerPrincipal.setColorForegroundHead(new java.awt.Color(67, 63, 63));
+        tblSerPrincipal.setColorSelBackgound(new java.awt.Color(208, 195, 195));
+        tblSerPrincipal.setColorSelForeground(new java.awt.Color(0, 0, 0));
+        tblSerPrincipal.setFuenteFilas(new java.awt.Font("Consolas", 1, 18)); // NOI18N
+        tblSerPrincipal.setFuenteFilasSelect(new java.awt.Font("Consolas", 1, 18)); // NOI18N
+        tblSerPrincipal.setFuenteHead(new java.awt.Font("Consolas", 1, 23)); // NOI18N
+        tblSerPrincipal.setGridColor(new java.awt.Color(255, 255, 255));
+        tblSerPrincipal.setRowHeight(30);
+        tblSerPrincipal.setSelectionBackground(new java.awt.Color(255, 255, 255));
+        tab.setViewportView(tblSerPrincipal);
 
-        getContentPane().add(tabla, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 250, 970, 260));
+        getContentPane().add(tab, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 250, 970, 260));
 
         btnDetalles.setBackground(new java.awt.Color(204, 204, 255));
         btnDetalles.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -288,9 +299,9 @@ public class FrmSerDueña extends javax.swing.JFrame
     private void btnEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseClicked
         MessageDialog OptionPane = new MessageDialog(this);
         
-        if(tblServicios.getSelectedRowCount() == 1)
+        if(tblSerPrincipal.getSelectedRowCount() == 1)
         {
-            String servicio = String.valueOf(tblServicios.getValueAt(tblServicios.getSelectedRow(), 1));
+            String servicio = String.valueOf(tblSerPrincipal.getValueAt(tblSerPrincipal.getSelectedRow(), 1));
             if(JOptionPane.showConfirmDialog(this, "¿Desea eliminar el servicio " + servicio + "?", "Eliminar",JOptionPane.YES_NO_OPTION) == 0)
             {
                 String resp = CONTROL.Borrar(servicio);
@@ -323,15 +334,15 @@ public class FrmSerDueña extends javax.swing.JFrame
         MessageDialog OptionPane = new MessageDialog(this);
         Editar obe = new Editar();
         
-        if(tblServicios.getSelectedRowCount() == 1)
+        if(tblSerPrincipal.getSelectedRowCount() == 1)
         {
-            String id = String.valueOf(tblServicios.getValueAt(tblServicios.getSelectedRow(), 0));
-            String nombre = String.valueOf(tblServicios.getValueAt(tblServicios.getSelectedRow(), 1));
-            nombreAnt = String.valueOf(tblServicios.getValueAt(tblServicios.getSelectedRow(), 1));
-            String duracion = String.valueOf(tblServicios.getValueAt(tblServicios.getSelectedRow(), 2));
-            String costo = String.valueOf(tblServicios.getValueAt(tblServicios.getSelectedRow(), 3));
-            String descuento = String.valueOf(tblServicios.getValueAt(tblServicios.getSelectedRow(), 4));
-            String tipo = String.valueOf(tblServicios.getValueAt(tblServicios.getSelectedRow(), 5));
+            String id = String.valueOf(tblSerPrincipal.getValueAt(tblSerPrincipal.getSelectedRow(), 0));
+            String nombre = String.valueOf(tblSerPrincipal.getValueAt(tblSerPrincipal.getSelectedRow(), 1));
+            nombreAnt = String.valueOf(tblSerPrincipal.getValueAt(tblSerPrincipal.getSelectedRow(), 1));
+            String duracion = String.valueOf(tblSerPrincipal.getValueAt(tblSerPrincipal.getSelectedRow(), 2));
+            String costo = String.valueOf(tblSerPrincipal.getValueAt(tblSerPrincipal.getSelectedRow(), 3));
+            String descuento = String.valueOf(tblSerPrincipal.getValueAt(tblSerPrincipal.getSelectedRow(), 4));
+            String tipo = String.valueOf(tblSerPrincipal.getValueAt(tblSerPrincipal.getSelectedRow(), 5));
             
             obe.Variables(id, nombre, nombreAnt, duracion, costo, descuento, tipo);
             obe.setVisible(true);
@@ -355,17 +366,17 @@ public class FrmSerDueña extends javax.swing.JFrame
     private void btnDetallesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDetallesMouseClicked
         MessageDialog OptionPane = new MessageDialog(this);
         
-        if(tblServicios.getSelectedRowCount() == 1)
+        if(tblSerPrincipal.getSelectedRowCount() == 1)
         {
-            String id = String.valueOf(tblServicios.getValueAt(tblServicios.getSelectedRow(), 0));
-            String nombre = String.valueOf(tblServicios.getValueAt(tblServicios.getSelectedRow(), 1));
-            nombreAnt = String.valueOf(tblServicios.getValueAt(tblServicios.getSelectedRow(), 1));
-            String duracion = String.valueOf(tblServicios.getValueAt(tblServicios.getSelectedRow(), 2));
-            String costo = String.valueOf(tblServicios.getValueAt(tblServicios.getSelectedRow(), 3));
-            String descuento = String.valueOf(tblServicios.getValueAt(tblServicios.getSelectedRow(), 4));
-            String tipo = String.valueOf(tblServicios.getValueAt(tblServicios.getSelectedRow(), 5));
+            String id = String.valueOf(tblSerPrincipal.getValueAt(tblSerPrincipal.getSelectedRow(), 0));
+            String nombre = String.valueOf(tblSerPrincipal.getValueAt(tblSerPrincipal.getSelectedRow(), 1));
+            nombreAnt = String.valueOf(tblSerPrincipal.getValueAt(tblSerPrincipal.getSelectedRow(), 1));
+            String duracion = String.valueOf(tblSerPrincipal.getValueAt(tblSerPrincipal.getSelectedRow(), 2));
+            String costo = String.valueOf(tblSerPrincipal.getValueAt(tblSerPrincipal.getSelectedRow(), 3));
+            String descuento = String.valueOf(tblSerPrincipal.getValueAt(tblSerPrincipal.getSelectedRow(), 4));
+            String tipo = String.valueOf(tblSerPrincipal.getValueAt(tblSerPrincipal.getSelectedRow(), 5));
             
-            tabla.setVisible(false);
+            tab.setVisible(false);
             pnlFondo.setVisible(true);
             Carrusel.setVisible(true);
             Carrusel(nombre, Carrusel);
@@ -390,7 +401,7 @@ public class FrmSerDueña extends javax.swing.JFrame
     }//GEN-LAST:event_btnDetallesMouseReleased
 
     private void btnOcultarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnOcultarMouseClicked
-        tabla.setVisible(true);
+        tab.setVisible(true);
         pnlFondo.setVisible(false);
         Carrusel.setVisible(false);
         btnOcultar.setVisible(false);
@@ -465,14 +476,6 @@ public class FrmSerDueña extends javax.swing.JFrame
         label.setIcon(icono);
     }
     
-    public void Tabla(JTable tabla)
-    {
-        JTableHeader theader = tabla.getTableHeader();
-        theader.setBackground(Color.red);
-        theader.setFont(new Font("Consolas", Font.BOLD, 20));
-        theader.setForeground(new Color(67,63,63));
-    }
-    
     class Fondo extends JPanel
     {
         private Image imagen;
@@ -507,7 +510,7 @@ public class FrmSerDueña extends javax.swing.JFrame
     private javax.swing.JLabel lblNuevo;
     private javax.swing.JLabel lblSalir;
     private javax.swing.JPanel pnlFondo;
-    private javax.swing.JScrollPane tabla;
-    private javax.swing.JTable tblServicios;
+    private javax.swing.JScrollPane tab;
+    private rojeru_san.complementos.RSTableMetro tblSerPrincipal;
     // End of variables declaration//GEN-END:variables
 }

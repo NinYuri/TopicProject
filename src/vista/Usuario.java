@@ -437,24 +437,37 @@ public class Usuario extends javax.swing.JFrame
 
     private void btnBorrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBorrarMouseClicked
     MessageDialog OptionPane = new MessageDialog(this);
-        
-    if(txtTelefono.isVisible() == true && txtGenero.isVisible() == true && txtEdad.isVisible() == true)
+    String resp;
+    
+    //if(txtTelefono.isVisible() == true && txtGenero.isVisible() == true && txtEdad.isVisible() == true)
         if(CONTROL.Existe(txtNombre.getText()) == true)
         {
             if(!String.valueOf(pssContrasena.getPassword()).isEmpty() && !String.valueOf(pssContrasena.getPassword()).equals("Contraseña"))
                 if(CONTROL.Comparar(txtNombre.getText(), String.valueOf(pssContrasena.getPassword())) == true)
                 {
-                    String resp = CONTROL.Borrar(txtNombre.getText());
+                    String respc = CONTROL.BorrarCita(CONTROL.GetId(txtNombre.getText()));
                     
-                    if(resp.equals("OK"))
+                    if(respc.equals("OK"))
                     {
-                        OptionPane.showMessage("Datos Personales", "Usuario eliminado con éxito", "/img/iconos/Info.png");
+                        resp = CONTROL.Borrar(txtNombre.getText());
+                        OptionPane.showMessage("Datos Personales", "Usuario y citas eliminadas con éxito", "/img/iconos/Info.png");
                         dispose();
                         Login log = new Login();
                         log.setVisible(true);  
                     }
                     else
-                        OptionPane.showMessage("Datos Personales", "Hubo un error en la eliminación", "/img/iconos/Close.png");                                       
+                    {
+                        resp = CONTROL.Borrar(txtNombre.getText());
+                        if(resp.equals("OK"))
+                        {
+                            OptionPane.showMessage("Datos Personales", "Usuario eliminado con éxito", "/img/iconos/Info.png");
+                            dispose();
+                            Login log = new Login();
+                            log.setVisible(true); 
+                        }
+                        else
+                            OptionPane.showMessage("Datos Personales", "Hubo un error en la eliminación", "/img/iconos/Close.png");
+                    }
                 }
                 else
                 {             
@@ -479,8 +492,8 @@ public class Usuario extends javax.swing.JFrame
                 txtNombre.setText("");                 
             }
         }
-    else
-            OptionPane.showMessage("Modificar Datos de Usuario", "Debes obtener tus datos primero", "/img/iconos/Close.png");
+    //else
+            //OptionPane.showMessage("Modificar Datos de Usuario", "Debes obtener tus datos primero", "/img/iconos/Close.png");
     }//GEN-LAST:event_btnBorrarMouseClicked
 
     private void btnCancelarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelarMouseClicked

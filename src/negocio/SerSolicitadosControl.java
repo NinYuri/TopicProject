@@ -14,10 +14,11 @@ public class SerSolicitadosControl
         obj = new SerSolicitado();
     }
     
-    public String Insertar(int idCita, int idServicio)
+    public String Insertar(int idCita, int idServicio, double costoServicio)
     {
         obj.setIdCita(idCita);
         obj.setIdServicio(idServicio);
+        obj.setCostoServicio(costoServicio);
         
         if(DATOS.insertar(obj))
             return "OK";

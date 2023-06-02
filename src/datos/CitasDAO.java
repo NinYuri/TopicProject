@@ -93,17 +93,14 @@ public class CitasDAO implements CrudCitas<Cita>
         try
         {
             sql = "update Citas \n" +
-        "set idEmpleada = ?, fechaCita = ?, horaCita = ?, duracionCita = ?, costoCita = ?, observacionesCita = ? \n" +
+        "set fechaCita = ?, horaCita = ?, observacionesCita = ? \n" +
         "where idCita = ?;";
             ps = CON.Conectar().prepareStatement(sql);
             
-            ps.setInt(1, obj.getIdEmpleada());
-            ps.setString(2, obj.getFechaCita());
-            ps.setString(3, obj.getHoraCita());
-            ps.setString(4, obj.getDuracionCita());
-            ps.setDouble(5, obj.getCostoCita());
-            ps.setString(6, obj.getObservacionesCita());
-            ps.setInt(7, obj.getIdCita());
+            ps.setString(1, obj.getFechaCita());
+            ps.setString(2, obj.getHoraCita());
+            ps.setString(3, obj.getObservacionesCita());
+            ps.setInt(4, obj.getIdCita());
             
             if(ps.executeUpdate() > 0)
                 resp = true;
@@ -159,6 +156,34 @@ public class CitasDAO implements CrudCitas<Cita>
             ps.setString(1, fecha);
             ps.setInt(2, idCliente);
             ps.setString(3, hora);
+            rs = ps.executeQuery();
+            if(rs.next())
+                resp = true;
+            ps.close();
+            rs.close();
+        }
+        catch(SQLException e)
+        {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+        finally
+        {
+            ps = null;
+            rs = null;
+            CON.desconectar();
+        }
+        return resp;
+    }
+    
+    public boolean existeId(int id)
+    {
+        String sql;
+        resp = false;
+        try
+        {
+            sql = "select fechaCita from Citas where idCita = ?;";
+            ps = CON.Conectar().prepareStatement(sql);
+            ps.setInt(1, id);
             rs = ps.executeQuery();
             if(rs.next())
                 resp = true;

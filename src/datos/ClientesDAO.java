@@ -232,4 +232,61 @@ public class ClientesDAO implements CrudClientes<Cliente>
         }
         return id;
     }
+    
+    public boolean borrarCitas(int idCliente)
+    {
+        resp = false;
+        String sql;
+        try
+        {
+            sql = "delete from Citas where idCliente = ?;";
+            ps = CON.Conectar().prepareStatement(sql);
+            ps.setInt(1, idCliente);
+            //rs = ps.executeQuery();
+            if(ps.executeUpdate() > 0)
+            {
+                System.out.print("borrar" + rs);
+                resp = true;
+            }
+            ps.close();
+        }
+        catch(SQLException e)
+        {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+        finally
+        {
+            ps = null;
+            rs = null;
+            CON.desconectar();
+        }
+        return resp;
+    }
+    
+    public boolean tenerCitas(int idCliente)
+    {
+        resp = false;
+        String sql;
+        try
+        {
+            sql = "select * from Citas where idCliente = ?;";
+            ps = CON.Conectar().prepareStatement(sql);
+            ps.setInt(1, idCliente);
+            rs = ps.executeQuery();
+            if(rs.next())
+                resp = true;
+            ps.close();
+        }
+        catch(SQLException e)
+        {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+        finally
+        {
+            ps = null;
+            rs = null;
+            CON.desconectar();
+        }
+        return resp;
+    }
 }

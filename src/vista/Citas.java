@@ -24,7 +24,7 @@ public class Citas extends javax.swing.JFrame
     String duracionCita;
     double montoCita;
     Vector<String> nombres = new Vector<String>();
-    Vector<String> sersol = new Vector<String>();
+    String sersol[] = new String[6];
     
     private final ClientesControl CONTROL;
     private final EmpleadosControl CONTROLEMP;
@@ -44,10 +44,23 @@ public class Citas extends javax.swing.JFrame
         CONTROLCIT = new CitasControl();
         CONTROLSERSOL = new SerSolicitadosControl();
         Icono(new ImageIcon(getClass().getResource("/img/iconos/Close.png")), lblClose);
+        pnlPago.setVisible(false);
         
-        setBounds(380, 100, 600, 613);
+        setBounds(380, 170, 600, 613);
         imagen = CONTROLEMP.Imagen(lblNombreEmp.getText());
         Dibujar(imagen);
+    }
+    
+    private void Invisible()
+    {
+       lblEmpleada.setVisible(false);
+       lblEmp.setVisible(false);
+       lblNombreEmp.setVisible(false);
+       txtUsuario.setVisible(false);
+       lblDate.setVisible(false);
+       txtHora.setVisible(false);
+       txtObservaciones.setVisible(false);
+       btnFinCita.setVisible(false);
     }
     
     @SuppressWarnings("unchecked")
@@ -63,6 +76,7 @@ public class Citas extends javax.swing.JFrame
         lblEmp = new javax.swing.JLabel();
         lblNombreEmp = new javax.swing.JLabel();
         txtObservaciones = new javax.swing.JTextField();
+        pnlPago = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -181,6 +195,9 @@ public class Citas extends javax.swing.JFrame
         });
         getContentPane().add(txtObservaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 440, 540, 90));
 
+        pnlPago.setBackground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(pnlPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 580, 470));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -215,20 +232,21 @@ public class Citas extends javax.swing.JFrame
                             
                             if(resp.equals("OK"))
                             {
-                                for(String elemento : nombres)
-                                    respss = CONTROLSERSOL.Insertar(CONTROLCIT.GetId(fechasql, CONTROL.GetId(txtUsuario.getText()), txtHora.getText()), CONTROLSER.GetId(elemento));
+                                
+                                for(int i = 0; i < sersol.length; i++)
+                                    if (sersol[i] != null)
+                                        respss = CONTROLSERSOL.Insertar(CONTROLCIT.GetId(fechasql, CONTROL.GetId(txtUsuario.getText()), txtHora.getText()), CONTROLSER.GetId(sersol[i]), CONTROLSER.GetCosto(CONTROLSER.GetId(sersol[i]), sersol[i]));                                
                                 
                                 if(respss.equals("OK"))
-                                    OptionPane.showMessage("Agendar Cita", "Servicios registrados con éxito", "/img/iconos/Info.png");
+                                {
+                                    Invisible();
+                                    pnlPago.setVisible(true);
+                                }
                                 else
                                     OptionPane.showMessage("Agendar Cita", "Hubo un error en el registro de los servicios de la cita", "/img/iconos/Close.png");                                    
-               
-                                OptionPane.showMessage("Agendar Cita", "Cita agendada con éxito", "/img/iconos/Info.png");
                             }
                             else
                                 OptionPane.showMessage("Agendar Cita", "Hubo un error en la agenda de la cita", "/img/iconos/Close.png");
-                            
-                            dispose();
                         }
                         else
                             OptionPane.showMessage("Agendar Cita", "Error en la estructura de dato 00:00", "/img/iconos/Close.png");
@@ -374,7 +392,13 @@ public class Citas extends javax.swing.JFrame
     
     public void setNombres(Vector<String> nombres) 
     {
+        int con = 0;
         this.nombres = nombres;
+        for(String elemento:this.nombres)
+        {
+            sersol[con] = elemento;
+            con++;
+        }
     }
     
     public String getDuracionCita() {
@@ -460,6 +484,7 @@ public class Citas extends javax.swing.JFrame
     private javax.swing.JLabel lblEmp;
     private javax.swing.JLabel lblEmpleada;
     private javax.swing.JLabel lblNombreEmp;
+    private javax.swing.JPanel pnlPago;
     private javax.swing.JTextField txtHora;
     private javax.swing.JTextField txtObservaciones;
     private javax.swing.JTextField txtUsuario;

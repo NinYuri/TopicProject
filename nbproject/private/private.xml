@@ -3,12 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Developer/OneDrive/Documentos/NetBeansProjects/Proyecto/src/vista/Servicios.java</file>
-            <file>file:/C:/Users/Developer/OneDrive/Documentos/NetBeansProjects/Proyecto/src/vista/RealizarCita.java</file>
+            <file>file:/C:/Users/Developer/OneDrive/Documentos/NetBeansProjects/Proyecto/src/vista/Login.java</file>
+            <file>file:/C:/Users/Developer/OneDrive/Documentos/NetBeansProjects/Proyecto/src/vista/Usuario.java</file>
+            <file>file:/C:/Users/Developer/OneDrive/Documentos/NetBeansProjects/Proyecto/src/negocio/ClientesControl.java</file>
             <file>file:/C:/Users/Developer/OneDrive/Documentos/NetBeansProjects/Proyecto/src/datos/ClientesDAO.java</file>
-            <file>file:/C:/Users/Developer/OneDrive/Documentos/NetBeansProjects/Proyecto/src/vista/FrmSerClientes.java</file>
-            <file>file:/C:/Users/Developer/OneDrive/Documentos/NetBeansProjects/Proyecto/src/vista/Citas.java</file>
-            <file>file:/C:/Users/Developer/OneDrive/Documentos/NetBeansProjects/Proyecto/src/datos/CitasDAO.java</file>
         </group>
     </open-files>
 </project-private>

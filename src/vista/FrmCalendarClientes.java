@@ -43,6 +43,7 @@ public class FrmCalendarClientes extends javax.swing.JFrame
         btnModificar.setVisible(false);
         btnEliminar.setVisible(false);
         lblNota.setVisible(false);
+        lblNota1.setVisible(false);
         txtId.setVisible(false);
         txtHora.setVisible(false);
         txtDuracion.setVisible(false);
@@ -54,10 +55,20 @@ public class FrmCalendarClientes extends javax.swing.JFrame
         btnModificar.setVisible(true);
         btnEliminar.setVisible(true);
         lblNota.setVisible(true);
+        lblNota1.setVisible(true);
         txtId.setVisible(true);
         txtHora.setVisible(true);
         txtDuracion.setVisible(true);
         txtObservaciones.setVisible(true);
+    }
+    
+    public void Limpiar()
+    {
+        txtCliente.setText("Nombre de Cliente");
+        txtFecha.setText("Fecha Cita");
+        txtHora.setText("Hora Cita");
+        txtDuracion.setText("Duración Cita");
+        txtObservaciones.setText("Observaciones");
     }
 
     /**
@@ -76,6 +87,7 @@ public class FrmCalendarClientes extends javax.swing.JFrame
         lblMenu1 = new javax.swing.JLabel();
         lblTitulos2 = new javax.swing.JLabel();
         lblNota = new javax.swing.JLabel();
+        lblNota1 = new javax.swing.JLabel();
         cmpCalendar = new rojeru_san.componentes.RSCalendar();
         txtFecha = new javax.swing.JTextField();
         txtCliente = new javax.swing.JTextField();
@@ -138,6 +150,12 @@ public class FrmCalendarClientes extends javax.swing.JFrame
         lblNota.setText("ID DE CITA:");
         getContentPane().add(lblNota, new org.netbeans.lib.awtextra.AbsoluteConstraints(145, 250, 250, 40));
 
+        lblNota1.setFont(new java.awt.Font("Consolas", 1, 16)); // NOI18N
+        lblNota1.setForeground(new java.awt.Color(98, 88, 88));
+        lblNota1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblNota1.setText("Duración Cita:");
+        getContentPane().add(lblNota1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 370, 130, 30));
+
         cmpCalendar.setColorBackground(new java.awt.Color(225, 214, 212));
         cmpCalendar.setColorButtonHover(new java.awt.Color(98, 88, 88));
         cmpCalendar.setColorForeground(new java.awt.Color(57, 46, 46));
@@ -147,7 +165,7 @@ public class FrmCalendarClientes extends javax.swing.JFrame
         getContentPane().add(cmpCalendar, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 270, 500, 340));
 
         txtFecha.setBackground(new java.awt.Color(255, 255, 255, 110));
-        txtFecha.setFont(new java.awt.Font("Consolas", 1, 17)); // NOI18N
+        txtFecha.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
         txtFecha.setForeground(new java.awt.Color(98, 88, 88));
         txtFecha.setText("Fecha Cita");
         txtFecha.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED, new java.awt.Color(225, 214, 212), new java.awt.Color(225, 214, 212), new java.awt.Color(225, 214, 212), new java.awt.Color(225, 214, 212)));
@@ -172,7 +190,7 @@ public class FrmCalendarClientes extends javax.swing.JFrame
         getContentPane().add(txtFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 400, 180, 50));
 
         txtCliente.setBackground(new java.awt.Color(255, 255, 255, 110));
-        txtCliente.setFont(new java.awt.Font("Consolas", 1, 17)); // NOI18N
+        txtCliente.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
         txtCliente.setForeground(new java.awt.Color(98, 88, 88));
         txtCliente.setText("Nombre de Cliente");
         txtCliente.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED, new java.awt.Color(225, 214, 212), new java.awt.Color(225, 214, 212), new java.awt.Color(225, 214, 212), new java.awt.Color(225, 214, 212)));
@@ -197,7 +215,7 @@ public class FrmCalendarClientes extends javax.swing.JFrame
         getContentPane().add(txtCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 310, 540, 50));
 
         txtDuracion.setBackground(new java.awt.Color(255, 255, 255, 110));
-        txtDuracion.setFont(new java.awt.Font("Consolas", 1, 17)); // NOI18N
+        txtDuracion.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
         txtDuracion.setForeground(new java.awt.Color(98, 88, 88));
         txtDuracion.setText("Duración Cita");
         txtDuracion.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED, new java.awt.Color(225, 214, 212), new java.awt.Color(225, 214, 212), new java.awt.Color(225, 214, 212), new java.awt.Color(225, 214, 212)));
@@ -222,7 +240,7 @@ public class FrmCalendarClientes extends javax.swing.JFrame
         getContentPane().add(txtDuracion, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 400, 150, 50));
 
         txtHora.setBackground(new java.awt.Color(255, 255, 255, 110));
-        txtHora.setFont(new java.awt.Font("Consolas", 1, 17)); // NOI18N
+        txtHora.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
         txtHora.setForeground(new java.awt.Color(98, 88, 88));
         txtHora.setText("Hora Cita");
         txtHora.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED, new java.awt.Color(225, 214, 212), new java.awt.Color(225, 214, 212), new java.awt.Color(225, 214, 212), new java.awt.Color(225, 214, 212)));
@@ -246,7 +264,7 @@ public class FrmCalendarClientes extends javax.swing.JFrame
         });
         getContentPane().add(txtHora, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 400, 150, 50));
 
-        txtObservaciones.setFont(new java.awt.Font("Consolas", 1, 17)); // NOI18N
+        txtObservaciones.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
         txtObservaciones.setForeground(new java.awt.Color(98, 88, 88));
         txtObservaciones.setText("Observaciones");
         txtObservaciones.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED, new java.awt.Color(225, 214, 212), new java.awt.Color(225, 214, 212), new java.awt.Color(225, 214, 212), new java.awt.Color(225, 214, 212)));
@@ -261,7 +279,7 @@ public class FrmCalendarClientes extends javax.swing.JFrame
         getContentPane().add(txtObservaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 470, 540, 150));
 
         txtId.setBackground(new java.awt.Color(255, 255, 255, 110));
-        txtId.setFont(new java.awt.Font("Consolas", 1, 17)); // NOI18N
+        txtId.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
         txtId.setForeground(new java.awt.Color(98, 88, 88));
         txtId.setText("Id Cita");
         txtId.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED, new java.awt.Color(225, 214, 212), new java.awt.Color(225, 214, 212), new java.awt.Color(225, 214, 212), new java.awt.Color(225, 214, 212)));
@@ -417,12 +435,16 @@ public class FrmCalendarClientes extends javax.swing.JFrame
                 
                 if(!txtFecha.getText().isEmpty() && !txtFecha.getText().equals("Fecha Cita"))
                 {
+                    btnDatos.setVisible(false);
                     Visible();
                     datos = CONTROLCIT.Datos(CONTROL.GetId(txtCliente.getText()), txtFecha.getText());
                     txtId.setText(datos[0]);
                     txtHora.setText(datos[1]);
                     txtDuracion.setText(datos[2]);
                     txtObservaciones.setText(datos[3]);
+                    txtId.setEditable(false);
+                    txtCliente.setEditable(false);
+                    txtDuracion.setEditable(false);
                 }
                 else
                     OptionPane.showMessage("Agendar Cita", "Debes elegir una fecha del calendario", "/img/iconos/Close.png");                    
@@ -458,7 +480,36 @@ public class FrmCalendarClientes extends javax.swing.JFrame
     }//GEN-LAST:event_txtClienteActionPerformed
 
     private void btnModificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarMouseClicked
-        // TODO add your handling code here:
+        MessageDialog OptionPane = new MessageDialog(this);
+        String obs;
+        String resp;
+        
+        Date fecha = cmpCalendar.getDatoFecha();
+        if(fecha != null)
+        {
+            String fechatxt = convertirFecha(String.valueOf(fecha));
+            txtFecha.setText(fechatxt);
+            
+            if(!txtHora.getText().isEmpty() && !txtHora.getText().equals("Hora Cita"))
+                if(validarFormatoHora(txtHora.getText()))
+                {                            
+                    if(!txtObservaciones.getText().isBlank() && !txtObservaciones.getText().equals("Observaciones"))
+                        obs = txtObservaciones.getText();
+                    else
+                        obs = "";
+                    
+                    resp = CONTROLCIT.Actualizar(Integer.parseInt(txtId.getText()), txtFecha.getText(), txtHora.getText(), obs);
+                    
+                    if(resp.equals("OK"))
+                        OptionPane.showMessage("Cita", "Cita modificada con éxito", "/img/iconos/Info.png");
+                    else
+                        OptionPane.showMessage("Cita", "Hubo un error con la modificación", "/img/iconos/Info.png");                        
+                }
+                else
+                    OptionPane.showMessage("Cita", "Error en la estructura de dato 00:00", "/img/iconos/Close.png");
+        }
+        else
+            OptionPane.showMessage("Citas", "Debes escoger una fecha del calendario", "/img/iconos/Close.png");
     }//GEN-LAST:event_btnModificarMouseClicked
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
@@ -466,19 +517,39 @@ public class FrmCalendarClientes extends javax.swing.JFrame
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void btnEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseClicked
-        // TODO add your handling code here:
     }//GEN-LAST:event_btnEliminarMouseClicked
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        // TODO add your handling code here:
+        MessageDialog OptionPane = new MessageDialog(this);
+
+                boolean resp;
+        
+        resp = CONTROLCIT.Borrar(Integer.parseInt(txtId.getText()));
+        
+        if(resp == true)
+        {
+            Limpiar();
+            Invisible();
+            OptionPane.showMessage("Citas", "Cita eliminada", "/img/iconos/Info.png");
+        }
+        else
+            OptionPane.showMessage("Citas", "Hubo un error en la eliminación de la cita", "/img/iconos/Close.png");
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void txtHoraFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtHoraFocusGained
-        // TODO add your handling code here:
+        if(txtHora.getText().equals("Hora Cita"))
+        {
+            txtHora.setText("");
+            txtHora.setForeground(new Color(98,88,88));
+        }
     }//GEN-LAST:event_txtHoraFocusGained
 
     private void txtHoraFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtHoraFocusLost
-        // TODO add your handling code here:
+        if(txtHora.getText().isEmpty())
+        {
+            txtHora.setText("Hora Cita");
+            txtHora.setForeground(new Color(98,88,88));
+        }
     }//GEN-LAST:event_txtHoraFocusLost
 
     private void txtHoraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtHoraMouseClicked
@@ -490,11 +561,19 @@ public class FrmCalendarClientes extends javax.swing.JFrame
     }//GEN-LAST:event_txtHoraActionPerformed
 
     private void txtDuracionFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDuracionFocusGained
-        // TODO add your handling code here:
+        if(txtDuracion.getText().equals("Duración Cita"))
+        {
+            txtDuracion.setText("");
+            txtDuracion.setForeground(new Color(98,88,88));
+        }
     }//GEN-LAST:event_txtDuracionFocusGained
 
     private void txtDuracionFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDuracionFocusLost
-        // TODO add your handling code here:
+        if(txtDuracion.getText().isEmpty())
+        {
+            txtDuracion.setText("Duración Cita");
+            txtDuracion.setForeground(new Color(98,88,88));
+        }
     }//GEN-LAST:event_txtDuracionFocusLost
 
     private void txtDuracionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtDuracionMouseClicked
@@ -579,6 +658,23 @@ public class FrmCalendarClientes extends javax.swing.JFrame
         });
     }
     
+    public boolean validarFormatoHora(String hora) 
+    {
+        String formatoHora = "HH:mm";
+
+        try 
+        {
+            SimpleDateFormat sdf = new SimpleDateFormat(formatoHora);
+            sdf.setLenient(false);
+            sdf.parse(hora);
+            return true;
+        }
+        catch (ParseException e) 
+        {
+            return false;
+        }
+    }
+    
     public String convertirFecha(String fechaCal)
     {
         String formatoFechaEntrada = "E MMM dd HH:mm:ss zzz yyyy";
@@ -635,6 +731,7 @@ public class FrmCalendarClientes extends javax.swing.JFrame
     private javax.swing.JLabel lblMenu;
     private javax.swing.JLabel lblMenu1;
     private javax.swing.JLabel lblNota;
+    private javax.swing.JLabel lblNota1;
     private javax.swing.JLabel lblSalir;
     private javax.swing.JLabel lblTitulos2;
     private javax.swing.JTextField txtCliente;

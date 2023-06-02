@@ -35,34 +35,6 @@ public class RealizarCita extends javax.swing.JFrame
         Invisible();
     }
     
-    private void Invisible()
-    {
-        lblIcon2.setVisible(false);
-        lblIcon3.setVisible(false);
-        lblIcon4.setVisible(false);
-        lblNombre2.setVisible(false);
-        lblNombre3.setVisible(false);
-        lblNombre4.setVisible(false);
-        lblTipo2.setVisible(false);
-        lblTipo3.setVisible(false);
-        lblTipo4.setVisible(false);
-        lblDuracion2.setVisible(false);
-        lblDuracion3.setVisible(false);
-        lblDuracion4.setVisible(false);
-        btnUp2.setVisible(false);
-        btnUp3.setVisible(false);
-        btnUp4.setVisible(false);
-        btnDown2.setVisible(false);
-        btnDown3.setVisible(false);
-        btnDown4.setVisible(false);
-        lblCan2.setVisible(false);
-        lblCan3.setVisible(false);
-        lblCan4.setVisible(false);
-        lblPrecio2.setVisible(false);
-        lblPrecio3.setVisible(false);
-        lblPrecio4.setVisible(false);
-    }
-    
     private void Limpiar()
     {
         nombres.clear();
@@ -111,6 +83,14 @@ public class RealizarCita extends javax.swing.JFrame
         lblHoras = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel1 = new javax.swing.JPanel();
+        C1 = new fondos.RoundPanel();
+        lblDesc1 = new javax.swing.JLabel();
+        C2 = new fondos.RoundPanel();
+        lblDesc2 = new javax.swing.JLabel();
+        C3 = new fondos.RoundPanel();
+        lblDesc3 = new javax.swing.JLabel();
+        C4 = new fondos.RoundPanel();
+        lblDesc4 = new javax.swing.JLabel();
         lblIcon1 = new javax.swing.JLabel();
         lblIcon2 = new javax.swing.JLabel();
         lblIcon3 = new javax.swing.JLabel();
@@ -219,6 +199,126 @@ public class RealizarCita extends javax.swing.JFrame
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        C1.setBackground(new java.awt.Color(98, 88, 88));
+        C1.setRoundBottomLeft(100);
+        C1.setRoundBottomRight(100);
+        C1.setRoundTopLeft(100);
+        C1.setRoundTopRight(100);
+
+        lblDesc1.setFont(new java.awt.Font("Consolas", 1, 36)); // NOI18N
+        lblDesc1.setForeground(new java.awt.Color(255, 255, 255));
+        lblDesc1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblDesc1.setText("%");
+
+        javax.swing.GroupLayout C1Layout = new javax.swing.GroupLayout(C1);
+        C1.setLayout(C1Layout);
+        C1Layout.setHorizontalGroup(
+            C1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(C1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblDesc1, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        C1Layout.setVerticalGroup(
+            C1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, C1Layout.createSequentialGroup()
+                .addContainerGap(23, Short.MAX_VALUE)
+                .addComponent(lblDesc1)
+                .addGap(14, 14, 14))
+        );
+
+        jPanel1.add(C1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, 90, 80));
+
+        C2.setBackground(new java.awt.Color(98, 88, 88));
+        C2.setRoundBottomLeft(100);
+        C2.setRoundBottomRight(100);
+        C2.setRoundTopLeft(100);
+        C2.setRoundTopRight(100);
+
+        lblDesc2.setFont(new java.awt.Font("Consolas", 1, 36)); // NOI18N
+        lblDesc2.setForeground(new java.awt.Color(255, 255, 255));
+        lblDesc2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblDesc2.setText("%");
+
+        javax.swing.GroupLayout C2Layout = new javax.swing.GroupLayout(C2);
+        C2.setLayout(C2Layout);
+        C2Layout.setHorizontalGroup(
+            C2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(C2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblDesc2, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        C2Layout.setVerticalGroup(
+            C2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, C2Layout.createSequentialGroup()
+                .addContainerGap(23, Short.MAX_VALUE)
+                .addComponent(lblDesc2)
+                .addGap(14, 14, 14))
+        );
+
+        jPanel1.add(C2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, 90, 80));
+
+        C3.setBackground(new java.awt.Color(98, 88, 88));
+        C3.setRoundBottomLeft(100);
+        C3.setRoundBottomRight(100);
+        C3.setRoundTopLeft(100);
+        C3.setRoundTopRight(100);
+
+        lblDesc3.setFont(new java.awt.Font("Consolas", 1, 36)); // NOI18N
+        lblDesc3.setForeground(new java.awt.Color(255, 255, 255));
+        lblDesc3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblDesc3.setText("%");
+
+        javax.swing.GroupLayout C3Layout = new javax.swing.GroupLayout(C3);
+        C3.setLayout(C3Layout);
+        C3Layout.setHorizontalGroup(
+            C3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(C3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblDesc3, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        C3Layout.setVerticalGroup(
+            C3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, C3Layout.createSequentialGroup()
+                .addContainerGap(23, Short.MAX_VALUE)
+                .addComponent(lblDesc3)
+                .addGap(14, 14, 14))
+        );
+
+        jPanel1.add(C3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 390, 90, 80));
+
+        C4.setBackground(new java.awt.Color(98, 88, 88));
+        C4.setRoundBottomLeft(100);
+        C4.setRoundBottomRight(100);
+        C4.setRoundTopLeft(100);
+        C4.setRoundTopRight(100);
+
+        lblDesc4.setFont(new java.awt.Font("Consolas", 1, 36)); // NOI18N
+        lblDesc4.setForeground(new java.awt.Color(255, 255, 255));
+        lblDesc4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblDesc4.setText("%");
+
+        javax.swing.GroupLayout C4Layout = new javax.swing.GroupLayout(C4);
+        C4.setLayout(C4Layout);
+        C4Layout.setHorizontalGroup(
+            C4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(C4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblDesc4, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        C4Layout.setVerticalGroup(
+            C4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, C4Layout.createSequentialGroup()
+                .addContainerGap(23, Short.MAX_VALUE)
+                .addComponent(lblDesc4)
+                .addGap(14, 14, 14))
+        );
+
+        jPanel1.add(C4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 580, 90, 80));
 
         lblIcon1.setBackground(new java.awt.Color(255, 204, 255));
         lblIcon1.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
@@ -536,8 +636,20 @@ public class RealizarCita extends javax.swing.JFrame
             lblCan1.setText(String.valueOf(contador1));
             lblDuracion1.setText(restaHoras(lblDuracion1, 0));
             lblDurTotal.setText(convResHoras(lblDurTotal.getText(), horas.get(0)));
-            lblPrecio1.setText("$" + String.valueOf(restaCostos(contador1, 0)));
-            lblCantTotal.setText("$" + String.valueOf(convertirCostos(lblCantTotal.getText()) - convertirCostos(costos.get(0))));
+            
+            if(descuentos.get(0).equals("0%"))
+            {
+                lblPrecio1.setText("$" + String.valueOf(restaCostos(contador1, 0)));
+                lblCantTotal.setText("$" + String.valueOf(convertirCostos(lblCantTotal.getText()) - convertirCostos(costos.get(0))));
+            }
+            else
+            {
+                double por = Porcentaje(descuentos.get(0));
+                double precio = convertirCostos(costos.get(0));
+                double cantidad = precio - (por*precio);
+                lblPrecio1.setText("$" + String.valueOf(restaCostDescuento(contador1, cantidad)));
+                lblCantTotal.setText("$" + String.valueOf(convertirCostos(lblCantTotal.getText()) - cantidad));
+            }
         }
         else
             OptionPane.showMessage("Servicios", "Se tiene que tener seleccionado el servicio por lo menos una vez", "/img/iconos/Close.png");
@@ -553,8 +665,20 @@ public class RealizarCita extends javax.swing.JFrame
         
         lblDuracion1.setText(sumaHoras(contador1, 0));
         lblDurTotal.setText(convSumHoras(lblDurTotal.getText(), horas.get(0)));
-        lblPrecio1.setText("$" + String.valueOf(sumaCostos(contador1, 0)));
-        lblCantTotal.setText("$" + String.valueOf(convertirCostos(lblCantTotal.getText()) + convertirCostos(costos.get(0))));
+        
+        if(descuentos.get(0).equals("0%"))
+        {
+            lblPrecio1.setText("$" + String.valueOf(sumaCostos(contador1, 0)));
+            lblCantTotal.setText("$" + String.valueOf(convertirCostos(lblCantTotal.getText()) + convertirCostos(costos.get(0))));
+        }
+        else
+        {
+            double por = Porcentaje(descuentos.get(0));
+            double precio = convertirCostos(costos.get(0));
+            double cantidad = precio - (por*precio);
+            lblPrecio1.setText("$" + String.valueOf(sumaCostDescuento(contador1, cantidad)));
+            lblCantTotal.setText("$" + String.valueOf(convertirCostos(lblCantTotal.getText()) + cantidad));            
+        }
     }//GEN-LAST:event_btnUp1ActionPerformed
 
     private void btnUp2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUp2MouseClicked
@@ -568,7 +692,21 @@ public class RealizarCita extends javax.swing.JFrame
         lblDuracion2.setText(sumaHoras(contador2, 1));
         lblDurTotal.setText(convSumHoras(lblDurTotal.getText(), horas.get(1)));
         lblPrecio2.setText("$" + String.valueOf(sumaCostos(contador2, 1)));
-        lblCantTotal.setText("$" + String.valueOf(convertirCostos(lblCantTotal.getText()) + convertirCostos(costos.get(1))));        
+        lblCantTotal.setText("$" + String.valueOf(convertirCostos(lblCantTotal.getText()) + convertirCostos(costos.get(1))));
+        
+        if(descuentos.get(1).equals("0%"))
+        {
+            lblPrecio2.setText("$" + String.valueOf(sumaCostos(contador2, 1)));
+            lblCantTotal.setText("$" + String.valueOf(convertirCostos(lblCantTotal.getText()) + convertirCostos(costos.get(1))));
+        }
+        else
+        {
+            double por = Porcentaje(descuentos.get(0));
+            double precio = convertirCostos(costos.get(0));
+            double cantidad = precio - (por*precio);
+            lblPrecio1.setText("$" + String.valueOf(sumaCostDescuento(contador1, cantidad)));
+            lblCantTotal.setText("$" + String.valueOf(convertirCostos(lblCantTotal.getText()) + cantidad));            
+        }//
     }//GEN-LAST:event_btnUp2ActionPerformed
 
     private void btnUp3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUp3MouseClicked
@@ -718,6 +856,13 @@ public class RealizarCita extends javax.swing.JFrame
         });
     }
     
+    public double Porcentaje(String porc)
+    {
+        int intpor = Integer.parseInt(porc.replace("%", ""));
+        double porcentaje = (double)intpor/100;
+        return porcentaje;
+    }
+    
     public String sumaHoras(int contador, int indice)
     {
         String resultado = "00:00";
@@ -805,6 +950,30 @@ public class RealizarCita extends javax.swing.JFrame
         return Math.abs(restaTotal);
     }
     
+    public double sumaCostDescuento(int contador, double can)
+    {
+        double valorInicial = can;
+        double restaTotal = 0.0f;
+
+        for (int i = 0; i < contador; i++) 
+        {
+            restaTotal += valorInicial;
+        }
+        return Math.abs(restaTotal);
+    }
+    
+    public double restaCostDescuento(int contador, double can)
+    {
+        double valorInicial = can;
+        double restaTotal = 0.0f;
+
+        for (int i = 0; i < contador; i++) 
+        {
+            restaTotal -= valorInicial;
+        }
+        return Math.abs(restaTotal);
+    }
+    
     public double convertirCostos(String costo)
     {
         String valorNumerico = costo.substring(1);
@@ -888,9 +1057,22 @@ public class RealizarCita extends javax.swing.JFrame
                 lblNombre1.setText(nombre);
                 lblDuracion1.setText(dur);
                 lblTipo1.setText(tipo);
-                lblPrecio1.setText(costo);
-                lblCantTotal.setText(costo);
                 lblDurTotal.setText(dur);
+                if(!descuentos.get(0).equals("0%"))
+                {
+                    C1.setVisible(true);
+                    lblDesc1.setText(descuentos.get(0));
+                    double por = Porcentaje(descuentos.get(0));
+                    double precio = convertirCostos(costos.get(0));
+                    double cantidad = precio - (por*precio);
+                    lblPrecio1.setText("$" + cantidad);
+                    lblCantTotal.setText("$" + cantidad);
+                }
+                else
+                {
+                    lblPrecio1.setText(costo);
+                    lblCantTotal.setText(costo);                    
+                }    
                 break;
             case 2:
                 lblIcon2.setVisible(true);
@@ -903,10 +1085,23 @@ public class RealizarCita extends javax.swing.JFrame
                 btnUp2.setVisible(true);
                 btnDown2.setVisible(true);
                 lblCan2.setVisible(true);
-                lblPrecio2.setVisible(true);
-                lblPrecio2.setText(costo);
-                lblCantTotal.setText("$" + String.valueOf(convertirCostos(lblCantTotal.getText()) + convertirCostos(costo)));
                 lblDurTotal.setText(convSumHoras(lblDurTotal.getText(), dur));
+                lblPrecio2.setVisible(true);
+                if(!descuentos.get(1).equals("0%"))
+                {
+                    C2.setVisible(true);
+                    lblDesc2.setText(descuentos.get(1));
+                    double por = Porcentaje(descuentos.get(1));
+                    double precio = convertirCostos(costos.get(1));
+                    double cantidad = precio - (por*precio);
+                    lblPrecio2.setText("$" + cantidad);
+                    lblCantTotal.setText("$" + cantidad);
+                }
+                else
+                {
+                    lblPrecio2.setText(costo);
+                    lblCantTotal.setText(costo);                    
+                } 
                 break;
             case 3:
                 lblIcon3.setVisible(true);
@@ -919,10 +1114,23 @@ public class RealizarCita extends javax.swing.JFrame
                 btnUp3.setVisible(true);
                 btnDown3.setVisible(true);
                 lblCan3.setVisible(true);
+                lblDurTotal.setText(convSumHoras(lblDurTotal.getText(), dur));                
                 lblPrecio3.setVisible(true);
-                lblPrecio3.setText(costo);
-                lblCantTotal.setText("$" + String.valueOf(convertirCostos(lblCantTotal.getText()) + convertirCostos(costo)));
-                lblDurTotal.setText(convSumHoras(lblDurTotal.getText(), dur));
+                if(!descuentos.get(2).equals("0%"))
+                {
+                    C3.setVisible(true);
+                    lblDesc3.setText(descuentos.get(2));
+                    double por = Porcentaje(descuentos.get(2));
+                    double precio = convertirCostos(costos.get(2));
+                    double cantidad = precio - (por*precio);
+                    lblPrecio3.setText("$" + cantidad);
+                    lblCantTotal.setText("$" + cantidad);
+                }
+                else
+                {
+                    lblPrecio3.setText(costo);
+                    lblCantTotal.setText(costo);                    
+                } 
                 break;
             case 4:   
                 lblIcon4.setVisible(true);
@@ -935,10 +1143,23 @@ public class RealizarCita extends javax.swing.JFrame
                 btnUp4.setVisible(true);
                 btnDown4.setVisible(true);
                 lblCan4.setVisible(true);
+                lblDurTotal.setText(convSumHoras(lblDurTotal.getText(), dur));                                
                 lblPrecio4.setVisible(true);
-                lblPrecio4.setText(costo);
-                lblCantTotal.setText("$" + String.valueOf(convertirCostos(lblCantTotal.getText()) + convertirCostos(costo)));                
-                lblDurTotal.setText(convSumHoras(lblDurTotal.getText(), dur));                
+                if(!descuentos.get(3).equals("0%"))
+                {
+                    C4.setVisible(true);
+                    lblDesc4.setText(descuentos.get(3));
+                    double por = Porcentaje(descuentos.get(3));
+                    double precio = convertirCostos(costos.get(3));
+                    double cantidad = precio - (por*precio);
+                    lblPrecio4.setText("$" + cantidad);
+                    lblCantTotal.setText("$" + cantidad);
+                }
+                else
+                {
+                    lblPrecio4.setText(costo);
+                    lblCantTotal.setText(costo);                    
+                } 
                 break;
             default:
                 break;
@@ -1016,7 +1237,43 @@ public class RealizarCita extends javax.swing.JFrame
         label.setIcon(icono);
     }
     
+    private void Invisible()
+    {
+        C1.setVisible(false);
+        C2.setVisible(false);
+        C3.setVisible(false);
+        C4.setVisible(false);
+        lblIcon2.setVisible(false);
+        lblIcon3.setVisible(false);
+        lblIcon4.setVisible(false);
+        lblNombre2.setVisible(false);
+        lblNombre3.setVisible(false);
+        lblNombre4.setVisible(false);
+        lblTipo2.setVisible(false);
+        lblTipo3.setVisible(false);
+        lblTipo4.setVisible(false);
+        lblDuracion2.setVisible(false);
+        lblDuracion3.setVisible(false);
+        lblDuracion4.setVisible(false);
+        btnUp2.setVisible(false);
+        btnUp3.setVisible(false);
+        btnUp4.setVisible(false);
+        btnDown2.setVisible(false);
+        btnDown3.setVisible(false);
+        btnDown4.setVisible(false);
+        lblCan2.setVisible(false);
+        lblCan3.setVisible(false);
+        lblCan4.setVisible(false);
+        lblPrecio2.setVisible(false);
+        lblPrecio3.setVisible(false);
+        lblPrecio4.setVisible(false);
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private fondos.RoundPanel C1;
+    private fondos.RoundPanel C2;
+    private fondos.RoundPanel C3;
+    private fondos.RoundPanel C4;
     private javax.swing.JButton btnAgServicio;
     private javax.swing.JButton btnCita;
     private javax.swing.JButton btnDown1;
@@ -1035,6 +1292,10 @@ public class RealizarCita extends javax.swing.JFrame
     private javax.swing.JLabel lblCan4;
     private javax.swing.JLabel lblCantTotal;
     private javax.swing.JLabel lblClose;
+    private javax.swing.JLabel lblDesc1;
+    private javax.swing.JLabel lblDesc2;
+    private javax.swing.JLabel lblDesc3;
+    private javax.swing.JLabel lblDesc4;
     private javax.swing.JLabel lblDurTotal;
     private javax.swing.JLabel lblDuracion1;
     private javax.swing.JLabel lblDuracion2;

@@ -124,4 +124,15 @@ public class ClientesControl
         else
             return 0;
     }
+    
+    public String BorrarCita(int idCliente)
+    {
+        if(DATOS.tenerCitas(idCliente))
+            if(DATOS.borrarCitas(idCliente))
+                return "OK";
+            else
+                return "No se puede borrar el cliente";
+        else
+            return "El cliente no tiene citas";
+    }
 }

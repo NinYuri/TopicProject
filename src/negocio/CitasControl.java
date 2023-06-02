@@ -73,11 +73,35 @@ public class CitasControl
             return "Error en la agenda de la cita";
     }
     
+    public String Actualizar(int id, String fecha, String hora, String observaciones)
+    {
+        obj.setIdCita(id);
+        obj.setFechaCita(fecha);
+        obj.setHoraCita(hora);
+        obj.setObservacionesCita(observaciones);
+        
+        if(DATOS.actualizar(obj))
+            return "OK";
+        else
+            return "Error en la actualización";
+    }
+    
     public int GetId(String fecha, int idCliente, String hora)
     {
         if(DATOS.existe(fecha, idCliente, hora))
             return DATOS.id(fecha, idCliente, hora);
         else
             return 0;
+    }
+    
+    public boolean Borrar(int id)
+    {
+        if(DATOS.existeId(id))
+        {
+            DATOS.borrar(id);
+            return true;
+        }
+        else
+            return false;      
     }
 }
