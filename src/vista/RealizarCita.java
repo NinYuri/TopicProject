@@ -21,6 +21,9 @@ public class RealizarCita extends javax.swing.JFrame
     int contador2 = 1;
     int contador3 = 1;
     int contador4 = 1;
+    int contador5 = 1;
+    int contador6 = 1;
+    int contador7 = 1;
     
     Fondo fondo = new Fondo();
     Citas cita = new Citas();
@@ -46,26 +49,14 @@ public class RealizarCita extends javax.swing.JFrame
         contador2 = 1;
         contador3 = 1;
         contador4 = 1;
+        contador5 = 1;
+        contador6 = 1;
+        contador7 = 1;
         lblIcon1.setIcon(null);
         lblNombre1.setText("");
         lblTipo1.setText("");
         lblDuracion1.setText("");
         lblPrecio1.setText("$");
-        lblIcon2.setIcon(null);
-        lblNombre2.setText("");
-        lblTipo2.setText("");
-        lblDuracion2.setText("");
-        lblPrecio2.setText("$");
-        lblIcon3.setIcon(null);
-        lblNombre3.setText("");
-        lblTipo3.setText("");
-        lblDuracion3.setText("");
-        lblPrecio3.setText("$");
-        lblIcon4.setIcon(null);
-        lblNombre4.setText("");
-        lblTipo4.setText("");
-        lblDuracion4.setText("");
-        lblPrecio4.setText("$");
         lblDurTotal.setText("00:00");
         lblCantTotal.setText("$");
     }
@@ -91,38 +82,68 @@ public class RealizarCita extends javax.swing.JFrame
         lblDesc3 = new javax.swing.JLabel();
         C4 = new fondos.RoundPanel();
         lblDesc4 = new javax.swing.JLabel();
+        C5 = new fondos.RoundPanel();
+        lblDesc5 = new javax.swing.JLabel();
+        C6 = new fondos.RoundPanel();
+        lblDesc6 = new javax.swing.JLabel();
+        C7 = new fondos.RoundPanel();
+        lblDesc7 = new javax.swing.JLabel();
         lblIcon1 = new javax.swing.JLabel();
         lblIcon2 = new javax.swing.JLabel();
         lblIcon3 = new javax.swing.JLabel();
         lblIcon4 = new javax.swing.JLabel();
+        lblIcon5 = new javax.swing.JLabel();
+        lblIcon6 = new javax.swing.JLabel();
         lblNombre1 = new javax.swing.JLabel();
         lblNombre2 = new javax.swing.JLabel();
         lblNombre3 = new javax.swing.JLabel();
         lblNombre4 = new javax.swing.JLabel();
+        lblNombre5 = new javax.swing.JLabel();
+        lblNombre6 = new javax.swing.JLabel();
         lblTipo1 = new javax.swing.JLabel();
         lblTipo2 = new javax.swing.JLabel();
         lblTipo3 = new javax.swing.JLabel();
         lblTipo4 = new javax.swing.JLabel();
+        lblTipo5 = new javax.swing.JLabel();
+        lblTipo6 = new javax.swing.JLabel();
         lblDuracion1 = new javax.swing.JLabel();
         lblDuracion2 = new javax.swing.JLabel();
         lblDuracion3 = new javax.swing.JLabel();
         lblDuracion4 = new javax.swing.JLabel();
+        lblDuracion5 = new javax.swing.JLabel();
+        lblDuracion6 = new javax.swing.JLabel();
         btnUp1 = new javax.swing.JButton();
         btnUp2 = new javax.swing.JButton();
         btnUp3 = new javax.swing.JButton();
         btnUp4 = new javax.swing.JButton();
+        btnUp5 = new javax.swing.JButton();
+        btnUp6 = new javax.swing.JButton();
         btnDown1 = new javax.swing.JButton();
         btnDown2 = new javax.swing.JButton();
         btnDown3 = new javax.swing.JButton();
         btnDown4 = new javax.swing.JButton();
+        btnDown5 = new javax.swing.JButton();
+        btnDown6 = new javax.swing.JButton();
         lblCan1 = new javax.swing.JLabel();
         lblCan2 = new javax.swing.JLabel();
         lblCan3 = new javax.swing.JLabel();
         lblCan4 = new javax.swing.JLabel();
+        lblCan5 = new javax.swing.JLabel();
+        lblCan6 = new javax.swing.JLabel();
         lblPrecio1 = new javax.swing.JLabel();
         lblPrecio2 = new javax.swing.JLabel();
         lblPrecio3 = new javax.swing.JLabel();
         lblPrecio4 = new javax.swing.JLabel();
+        lblPrecio5 = new javax.swing.JLabel();
+        lblPrecio6 = new javax.swing.JLabel();
+        lblIcon7 = new javax.swing.JLabel();
+        lblNombre7 = new javax.swing.JLabel();
+        btnUp7 = new javax.swing.JButton();
+        lblPrecio7 = new javax.swing.JLabel();
+        lblDuracion7 = new javax.swing.JLabel();
+        lblTipo7 = new javax.swing.JLabel();
+        lblCan7 = new javax.swing.JLabel();
+        btnDown7 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -320,6 +341,96 @@ public class RealizarCita extends javax.swing.JFrame
 
         jPanel1.add(C4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 580, 90, 80));
 
+        C5.setBackground(new java.awt.Color(98, 88, 88));
+        C5.setRoundBottomLeft(100);
+        C5.setRoundBottomRight(100);
+        C5.setRoundTopLeft(100);
+        C5.setRoundTopRight(100);
+
+        lblDesc5.setFont(new java.awt.Font("Consolas", 1, 36)); // NOI18N
+        lblDesc5.setForeground(new java.awt.Color(255, 255, 255));
+        lblDesc5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblDesc5.setText("%");
+
+        javax.swing.GroupLayout C5Layout = new javax.swing.GroupLayout(C5);
+        C5.setLayout(C5Layout);
+        C5Layout.setHorizontalGroup(
+            C5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(C5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblDesc5, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        C5Layout.setVerticalGroup(
+            C5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, C5Layout.createSequentialGroup()
+                .addContainerGap(23, Short.MAX_VALUE)
+                .addComponent(lblDesc5)
+                .addGap(14, 14, 14))
+        );
+
+        jPanel1.add(C5, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 770, 90, 80));
+
+        C6.setBackground(new java.awt.Color(98, 88, 88));
+        C6.setRoundBottomLeft(100);
+        C6.setRoundBottomRight(100);
+        C6.setRoundTopLeft(100);
+        C6.setRoundTopRight(100);
+
+        lblDesc6.setFont(new java.awt.Font("Consolas", 1, 36)); // NOI18N
+        lblDesc6.setForeground(new java.awt.Color(255, 255, 255));
+        lblDesc6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblDesc6.setText("%");
+
+        javax.swing.GroupLayout C6Layout = new javax.swing.GroupLayout(C6);
+        C6.setLayout(C6Layout);
+        C6Layout.setHorizontalGroup(
+            C6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(C6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblDesc6, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        C6Layout.setVerticalGroup(
+            C6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, C6Layout.createSequentialGroup()
+                .addContainerGap(23, Short.MAX_VALUE)
+                .addComponent(lblDesc6)
+                .addGap(14, 14, 14))
+        );
+
+        jPanel1.add(C6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 960, 90, 80));
+
+        C7.setBackground(new java.awt.Color(98, 88, 88));
+        C7.setRoundBottomLeft(100);
+        C7.setRoundBottomRight(100);
+        C7.setRoundTopLeft(100);
+        C7.setRoundTopRight(100);
+
+        lblDesc7.setFont(new java.awt.Font("Consolas", 1, 36)); // NOI18N
+        lblDesc7.setForeground(new java.awt.Color(255, 255, 255));
+        lblDesc7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblDesc7.setText("%");
+
+        javax.swing.GroupLayout C7Layout = new javax.swing.GroupLayout(C7);
+        C7.setLayout(C7Layout);
+        C7Layout.setHorizontalGroup(
+            C7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(C7Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblDesc7, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        C7Layout.setVerticalGroup(
+            C7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, C7Layout.createSequentialGroup()
+                .addContainerGap(23, Short.MAX_VALUE)
+                .addComponent(lblDesc7)
+                .addGap(14, 14, 14))
+        );
+
+        jPanel1.add(C7, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 1150, 90, 80));
+
         lblIcon1.setBackground(new java.awt.Color(255, 204, 255));
         lblIcon1.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
         lblIcon1.setForeground(new java.awt.Color(98, 88, 88));
@@ -356,6 +467,24 @@ public class RealizarCita extends javax.swing.JFrame
         lblIcon4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.add(lblIcon4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 610, 150, 150));
 
+        lblIcon5.setBackground(new java.awt.Color(255, 204, 255));
+        lblIcon5.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
+        lblIcon5.setForeground(new java.awt.Color(98, 88, 88));
+        lblIcon5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblIcon5.setText("Cargar Imagen");
+        lblIcon5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(98, 88, 88), 2, true));
+        lblIcon5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(lblIcon5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 800, 150, 150));
+
+        lblIcon6.setBackground(new java.awt.Color(255, 204, 255));
+        lblIcon6.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
+        lblIcon6.setForeground(new java.awt.Color(98, 88, 88));
+        lblIcon6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblIcon6.setText("Cargar Imagen");
+        lblIcon6.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(98, 88, 88), 2, true));
+        lblIcon6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(lblIcon6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 990, 150, 150));
+
         lblNombre1.setFont(new java.awt.Font("Consolas", 1, 38)); // NOI18N
         lblNombre1.setForeground(new java.awt.Color(98, 88, 88));
         lblNombre1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -376,6 +505,16 @@ public class RealizarCita extends javax.swing.JFrame
         lblNombre4.setForeground(new java.awt.Color(98, 88, 88));
         lblNombre4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jPanel1.add(lblNombre4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 620, 450, 50));
+
+        lblNombre5.setFont(new java.awt.Font("Consolas", 1, 38)); // NOI18N
+        lblNombre5.setForeground(new java.awt.Color(98, 88, 88));
+        lblNombre5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel1.add(lblNombre5, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 810, 450, 50));
+
+        lblNombre6.setFont(new java.awt.Font("Consolas", 1, 38)); // NOI18N
+        lblNombre6.setForeground(new java.awt.Color(98, 88, 88));
+        lblNombre6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel1.add(lblNombre6, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 1000, 450, 50));
 
         lblTipo1.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
         lblTipo1.setForeground(new java.awt.Color(98, 88, 88));
@@ -398,6 +537,16 @@ public class RealizarCita extends javax.swing.JFrame
         lblTipo4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jPanel1.add(lblTipo4, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 680, 160, 50));
 
+        lblTipo5.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        lblTipo5.setForeground(new java.awt.Color(98, 88, 88));
+        lblTipo5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel1.add(lblTipo5, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 870, 160, 50));
+
+        lblTipo6.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        lblTipo6.setForeground(new java.awt.Color(98, 88, 88));
+        lblTipo6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel1.add(lblTipo6, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 1060, 160, 50));
+
         lblDuracion1.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
         lblDuracion1.setForeground(new java.awt.Color(98, 88, 88));
         lblDuracion1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -418,6 +567,16 @@ public class RealizarCita extends javax.swing.JFrame
         lblDuracion4.setForeground(new java.awt.Color(98, 88, 88));
         lblDuracion4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jPanel1.add(lblDuracion4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 680, 160, 50));
+
+        lblDuracion5.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        lblDuracion5.setForeground(new java.awt.Color(98, 88, 88));
+        lblDuracion5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel1.add(lblDuracion5, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 870, 160, 50));
+
+        lblDuracion6.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        lblDuracion6.setForeground(new java.awt.Color(98, 88, 88));
+        lblDuracion6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel1.add(lblDuracion6, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 1060, 160, 50));
 
         btnUp1.setBackground(new java.awt.Color(225, 214, 212));
         btnUp1.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
@@ -487,6 +646,40 @@ public class RealizarCita extends javax.swing.JFrame
         });
         jPanel1.add(btnUp4, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 620, 70, 30));
 
+        btnUp5.setBackground(new java.awt.Color(225, 214, 212));
+        btnUp5.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        btnUp5.setForeground(new java.awt.Color(98, 88, 88));
+        btnUp5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconos/Up.png"))); // NOI18N
+        btnUp5.setFocusPainted(false);
+        btnUp5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnUp5MouseClicked(evt);
+            }
+        });
+        btnUp5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUp5ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnUp5, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 810, 70, 30));
+
+        btnUp6.setBackground(new java.awt.Color(225, 214, 212));
+        btnUp6.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        btnUp6.setForeground(new java.awt.Color(98, 88, 88));
+        btnUp6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconos/Up.png"))); // NOI18N
+        btnUp6.setFocusPainted(false);
+        btnUp6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnUp6MouseClicked(evt);
+            }
+        });
+        btnUp6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUp6ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnUp6, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 1000, 70, 30));
+
         btnDown1.setBackground(new java.awt.Color(225, 214, 212));
         btnDown1.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
         btnDown1.setForeground(new java.awt.Color(98, 88, 88));
@@ -555,6 +748,40 @@ public class RealizarCita extends javax.swing.JFrame
         });
         jPanel1.add(btnDown4, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 720, 70, 30));
 
+        btnDown5.setBackground(new java.awt.Color(225, 214, 212));
+        btnDown5.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        btnDown5.setForeground(new java.awt.Color(98, 88, 88));
+        btnDown5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconos/Down.png"))); // NOI18N
+        btnDown5.setFocusPainted(false);
+        btnDown5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnDown5MouseClicked(evt);
+            }
+        });
+        btnDown5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDown5ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnDown5, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 910, 70, 30));
+
+        btnDown6.setBackground(new java.awt.Color(225, 214, 212));
+        btnDown6.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        btnDown6.setForeground(new java.awt.Color(98, 88, 88));
+        btnDown6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconos/Down.png"))); // NOI18N
+        btnDown6.setFocusPainted(false);
+        btnDown6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnDown6MouseClicked(evt);
+            }
+        });
+        btnDown6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDown6ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnDown6, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 1100, 70, 30));
+
         lblCan1.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
         lblCan1.setForeground(new java.awt.Color(98, 88, 88));
         lblCan1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -579,6 +806,18 @@ public class RealizarCita extends javax.swing.JFrame
         lblCan4.setText("1");
         jPanel1.add(lblCan4, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 660, 50, 50));
 
+        lblCan5.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        lblCan5.setForeground(new java.awt.Color(98, 88, 88));
+        lblCan5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblCan5.setText("1");
+        jPanel1.add(lblCan5, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 850, 50, 50));
+
+        lblCan6.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        lblCan6.setForeground(new java.awt.Color(98, 88, 88));
+        lblCan6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblCan6.setText("1");
+        jPanel1.add(lblCan6, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 1040, 50, 50));
+
         lblPrecio1.setFont(new java.awt.Font("Consolas", 1, 36)); // NOI18N
         lblPrecio1.setForeground(new java.awt.Color(98, 88, 88));
         lblPrecio1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -602,6 +841,88 @@ public class RealizarCita extends javax.swing.JFrame
         lblPrecio4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblPrecio4.setText("$");
         jPanel1.add(lblPrecio4, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 620, 150, 130));
+
+        lblPrecio5.setFont(new java.awt.Font("Consolas", 1, 36)); // NOI18N
+        lblPrecio5.setForeground(new java.awt.Color(98, 88, 88));
+        lblPrecio5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblPrecio5.setText("$");
+        jPanel1.add(lblPrecio5, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 810, 150, 130));
+
+        lblPrecio6.setFont(new java.awt.Font("Consolas", 1, 36)); // NOI18N
+        lblPrecio6.setForeground(new java.awt.Color(98, 88, 88));
+        lblPrecio6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblPrecio6.setText("$");
+        jPanel1.add(lblPrecio6, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 1000, 150, 130));
+
+        lblIcon7.setBackground(new java.awt.Color(255, 204, 255));
+        lblIcon7.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
+        lblIcon7.setForeground(new java.awt.Color(98, 88, 88));
+        lblIcon7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblIcon7.setText("Cargar Imagen");
+        lblIcon7.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(98, 88, 88), 2, true));
+        lblIcon7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(lblIcon7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 1180, 150, 150));
+
+        lblNombre7.setFont(new java.awt.Font("Consolas", 1, 38)); // NOI18N
+        lblNombre7.setForeground(new java.awt.Color(98, 88, 88));
+        lblNombre7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel1.add(lblNombre7, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 1190, 450, 50));
+
+        btnUp7.setBackground(new java.awt.Color(225, 214, 212));
+        btnUp7.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        btnUp7.setForeground(new java.awt.Color(98, 88, 88));
+        btnUp7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconos/Up.png"))); // NOI18N
+        btnUp7.setFocusPainted(false);
+        btnUp7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnUp7MouseClicked(evt);
+            }
+        });
+        btnUp7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUp7ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnUp7, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 1190, 70, 30));
+
+        lblPrecio7.setFont(new java.awt.Font("Consolas", 1, 36)); // NOI18N
+        lblPrecio7.setForeground(new java.awt.Color(98, 88, 88));
+        lblPrecio7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblPrecio7.setText("$");
+        jPanel1.add(lblPrecio7, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 1190, 150, 130));
+
+        lblDuracion7.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        lblDuracion7.setForeground(new java.awt.Color(98, 88, 88));
+        lblDuracion7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel1.add(lblDuracion7, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 1250, 160, 50));
+
+        lblTipo7.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        lblTipo7.setForeground(new java.awt.Color(98, 88, 88));
+        lblTipo7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel1.add(lblTipo7, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 1250, 160, 50));
+
+        lblCan7.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        lblCan7.setForeground(new java.awt.Color(98, 88, 88));
+        lblCan7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblCan7.setText("1");
+        jPanel1.add(lblCan7, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 1230, 50, 50));
+
+        btnDown7.setBackground(new java.awt.Color(225, 214, 212));
+        btnDown7.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        btnDown7.setForeground(new java.awt.Color(98, 88, 88));
+        btnDown7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconos/Down.png"))); // NOI18N
+        btnDown7.setFocusPainted(false);
+        btnDown7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnDown7MouseClicked(evt);
+            }
+        });
+        btnDown7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDown7ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnDown7, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 1290, 70, 30));
 
         jScrollPane1.setViewportView(jPanel1);
 
@@ -691,8 +1012,6 @@ public class RealizarCita extends javax.swing.JFrame
         
         lblDuracion2.setText(sumaHoras(contador2, 1));
         lblDurTotal.setText(convSumHoras(lblDurTotal.getText(), horas.get(1)));
-        lblPrecio2.setText("$" + String.valueOf(sumaCostos(contador2, 1)));
-        lblCantTotal.setText("$" + String.valueOf(convertirCostos(lblCantTotal.getText()) + convertirCostos(costos.get(1))));
         
         if(descuentos.get(1).equals("0%"))
         {
@@ -701,12 +1020,12 @@ public class RealizarCita extends javax.swing.JFrame
         }
         else
         {
-            double por = Porcentaje(descuentos.get(0));
-            double precio = convertirCostos(costos.get(0));
+            double por = Porcentaje(descuentos.get(1));
+            double precio = convertirCostos(costos.get(1));
             double cantidad = precio - (por*precio);
-            lblPrecio1.setText("$" + String.valueOf(sumaCostDescuento(contador1, cantidad)));
+            lblPrecio2.setText("$" + String.valueOf(restaCostDescuento(contador2, cantidad)));
             lblCantTotal.setText("$" + String.valueOf(convertirCostos(lblCantTotal.getText()) + cantidad));            
-        }//
+        }
     }//GEN-LAST:event_btnUp2ActionPerformed
 
     private void btnUp3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUp3MouseClicked
@@ -719,8 +1038,20 @@ public class RealizarCita extends javax.swing.JFrame
         
         lblDuracion3.setText(sumaHoras(contador3, 2));
         lblDurTotal.setText(convSumHoras(lblDurTotal.getText(), horas.get(2)));
-        lblPrecio3.setText("$" + String.valueOf(sumaCostos(contador3, 2)));
-        lblCantTotal.setText("$" + String.valueOf(convertirCostos(lblCantTotal.getText()) + convertirCostos(costos.get(2))));
+        
+        if(descuentos.get(2).equals("0%"))
+        {
+            lblPrecio3.setText("$" + String.valueOf(sumaCostos(contador3, 2)));
+            lblCantTotal.setText("$" + String.valueOf(convertirCostos(lblCantTotal.getText()) + convertirCostos(costos.get(2))));
+        }
+        else
+        {
+            double por = Porcentaje(descuentos.get(2));
+            double precio = convertirCostos(costos.get(2));
+            double cantidad = precio - (por*precio);
+            lblPrecio3.setText("$" + String.valueOf(sumaCostDescuento(contador3, cantidad)));
+            lblCantTotal.setText("$" + String.valueOf(convertirCostos(lblCantTotal.getText()) + cantidad));
+        }
     }//GEN-LAST:event_btnUp3ActionPerformed
 
     private void btnUp4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUp4MouseClicked
@@ -733,8 +1064,20 @@ public class RealizarCita extends javax.swing.JFrame
         
         lblDuracion4.setText(sumaHoras(contador4, 3));
         lblDurTotal.setText(convSumHoras(lblDurTotal.getText(), horas.get(3)));
-        lblPrecio4.setText("$" + String.valueOf(sumaCostos(contador4, 3)));   
-        lblCantTotal.setText("$" + String.valueOf(convertirCostos(lblCantTotal.getText()) + convertirCostos(costos.get(3))));
+        
+        if(descuentos.get(3).equals("0%"))
+        {
+            lblPrecio4.setText("$" + String.valueOf(sumaCostos(contador4, 3)));
+            lblCantTotal.setText("$" + String.valueOf(convertirCostos(lblCantTotal.getText()) + convertirCostos(costos.get(3))));
+        }
+        else
+        {
+            double por = Porcentaje(descuentos.get(3));
+            double precio = convertirCostos(costos.get(3));
+            double cantidad = precio - (por*precio);
+            lblPrecio4.setText("$" + String.valueOf(sumaCostDescuento(contador4, cantidad)));
+            lblCantTotal.setText("$" + String.valueOf(convertirCostos(lblCantTotal.getText()) + cantidad));            
+        }
     }//GEN-LAST:event_btnUp4ActionPerformed
 
     private void btnDown2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDown2MouseClicked
@@ -750,8 +1093,20 @@ public class RealizarCita extends javax.swing.JFrame
             lblCan2.setText(String.valueOf(contador2));
             lblDuracion2.setText(restaHoras(lblDuracion2, 1));
             lblDurTotal.setText(convResHoras(lblDurTotal.getText(), horas.get(1)));
-            lblPrecio2.setText("$" + String.valueOf(restaCostos(contador2, 1)));
-            lblCantTotal.setText("$" + String.valueOf(convertirCostos(lblCantTotal.getText()) - convertirCostos(costos.get(1))));
+            
+            if(descuentos.get(1).equals("0%"))
+            {
+                lblPrecio2.setText("$" + String.valueOf(restaCostos(contador2, 1)));
+                lblCantTotal.setText("$" + String.valueOf(convertirCostos(lblCantTotal.getText()) - convertirCostos(costos.get(1))));
+            }
+            else
+            {
+                double por = Porcentaje(descuentos.get(1));
+                double precio = convertirCostos(costos.get(1));
+                double cantidad = precio - (por*precio);
+                lblPrecio2.setText("$" + String.valueOf(restaCostDescuento(contador2, cantidad)));
+                lblCantTotal.setText("$" + String.valueOf(convertirCostos(lblCantTotal.getText()) - cantidad));
+            }
         }
         else
             OptionPane.showMessage("Servicios", "Se tiene que tener seleccionado el servicio por lo menos una vez", "/img/iconos/Close.png");
@@ -769,9 +1124,21 @@ public class RealizarCita extends javax.swing.JFrame
 
             lblCan3.setText(String.valueOf(contador3));
             lblDuracion3.setText(restaHoras(lblDuracion3, 2));
-            lblDurTotal.setText(convResHoras(lblDurTotal.getText(), horas.get(2)));            
-            lblPrecio3.setText("$" + String.valueOf(restaCostos(contador3, 2)));            
-            lblCantTotal.setText("$" + String.valueOf(convertirCostos(lblCantTotal.getText()) - convertirCostos(costos.get(2))));        
+            lblDurTotal.setText(convResHoras(lblDurTotal.getText(), horas.get(2)));
+            
+            if(descuentos.get(2).equals("0%"))
+            {
+                lblPrecio3.setText("$" + String.valueOf(restaCostos(contador3, 2)));
+                lblCantTotal.setText("$" + String.valueOf(convertirCostos(lblCantTotal.getText()) - convertirCostos(costos.get(2))));
+            }
+            else
+            {
+                double por = Porcentaje(descuentos.get(2));
+                double precio = convertirCostos(costos.get(2));
+                double cantidad = precio - (por*precio);
+                lblPrecio3.setText("$" + String.valueOf(restaCostDescuento(contador3, cantidad)));
+                lblCantTotal.setText("$" + String.valueOf(convertirCostos(lblCantTotal.getText()) - cantidad));
+            }
         }
         else
             OptionPane.showMessage("Servicios", "Se tiene que tener seleccionado el servicio por lo menos una vez", "/img/iconos/Close.png");
@@ -789,9 +1156,21 @@ public class RealizarCita extends javax.swing.JFrame
 
             lblCan4.setText(String.valueOf(contador4));
             lblDuracion4.setText(restaHoras(lblDuracion4, 3));
-            lblDurTotal.setText(convResHoras(lblDurTotal.getText(), horas.get(3)));            
-            lblPrecio4.setText("$" + String.valueOf(restaCostos(contador4, 3)));            
-            lblCantTotal.setText("$" + String.valueOf(convertirCostos(lblCantTotal.getText()) - convertirCostos(costos.get(3))));        
+            lblDurTotal.setText(convResHoras(lblDurTotal.getText(), horas.get(3)));
+            
+            if(descuentos.get(3).equals("0%"))
+            {
+                lblPrecio4.setText("$" + String.valueOf(restaCostos(contador4, 3)));
+                lblCantTotal.setText("$" + String.valueOf(convertirCostos(lblCantTotal.getText()) - convertirCostos(costos.get(3))));
+            }
+            else
+            {
+                double por = Porcentaje(descuentos.get(3));
+                double precio = convertirCostos(costos.get(3));
+                double cantidad = precio - (por*precio);
+                lblPrecio4.setText("$" + String.valueOf(restaCostDescuento(contador4, cantidad)));
+                lblCantTotal.setText("$" + String.valueOf(convertirCostos(lblCantTotal.getText()) - cantidad));
+            }
         }
         else
             OptionPane.showMessage("Servicios", "Se tiene que tener seleccionado el servicio por lo menos una vez", "/img/iconos/Close.png");
@@ -813,6 +1192,177 @@ public class RealizarCita extends javax.swing.JFrame
         Revisar();
         cita.setVisible(true);
     }//GEN-LAST:event_btnCitaActionPerformed
+
+    private void btnUp5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUp5MouseClicked
+    }//GEN-LAST:event_btnUp5MouseClicked
+
+    private void btnUp5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUp5ActionPerformed
+        contador5++;
+        lblCan5.setText(String.valueOf(contador5));
+        
+        lblDuracion5.setText(sumaHoras(contador5, 4));
+        lblDurTotal.setText(convSumHoras(lblDurTotal.getText(), horas.get(4)));
+        
+        if(descuentos.get(4).equals("0%"))
+        {
+            lblPrecio5.setText("$" + String.valueOf(sumaCostos(contador5, 4)));
+            lblCantTotal.setText("$" + String.valueOf(convertirCostos(lblCantTotal.getText()) + convertirCostos(costos.get(4))));
+        }
+        else
+        {
+            double por = Porcentaje(descuentos.get(4));
+            double precio = convertirCostos(costos.get(4));
+            double cantidad = precio - (por*precio);
+            lblPrecio5.setText("$" + String.valueOf(sumaCostDescuento(contador5, cantidad)));
+            lblCantTotal.setText("$" + String.valueOf(convertirCostos(lblCantTotal.getText()) + cantidad));            
+        }
+    }//GEN-LAST:event_btnUp5ActionPerformed
+
+    private void btnDown5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDown5MouseClicked
+    }//GEN-LAST:event_btnDown5MouseClicked
+
+    private void btnDown5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDown5ActionPerformed
+        MessageDialog OptionPane = new MessageDialog(this);
+        
+        if(contador5 > 1)
+        {
+            contador5--;
+
+            lblCan5.setText(String.valueOf(contador5));
+            lblDuracion5.setText(restaHoras(lblDuracion5, 4));
+            lblDurTotal.setText(convResHoras(lblDurTotal.getText(), horas.get(4)));
+            
+            if(descuentos.get(4).equals("0%"))
+            {
+                lblPrecio5.setText("$" + String.valueOf(restaCostos(contador5, 4)));
+                lblCantTotal.setText("$" + String.valueOf(convertirCostos(lblCantTotal.getText()) - convertirCostos(costos.get(4))));
+            }
+            else
+            {
+                double por = Porcentaje(descuentos.get(4));
+                double precio = convertirCostos(costos.get(4));
+                double cantidad = precio - (por*precio);
+                lblPrecio5.setText("$" + String.valueOf(restaCostDescuento(contador5, cantidad)));
+                lblCantTotal.setText("$" + String.valueOf(convertirCostos(lblCantTotal.getText()) - cantidad));
+            }
+        }
+        else
+            OptionPane.showMessage("Servicios", "Se tiene que tener seleccionado el servicio por lo menos una vez", "/img/iconos/Close.png");
+    }//GEN-LAST:event_btnDown5ActionPerformed
+
+    private void btnUp6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUp6MouseClicked
+    }//GEN-LAST:event_btnUp6MouseClicked
+
+    private void btnUp6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUp6ActionPerformed
+        contador6++;
+        lblCan6.setText(String.valueOf(contador6));
+        
+        lblDuracion6.setText(sumaHoras(contador6, 5));
+        lblDurTotal.setText(convSumHoras(lblDurTotal.getText(), horas.get(5)));
+        
+        if(descuentos.get(5).equals("0%"))
+        {
+            lblPrecio6.setText("$" + String.valueOf(sumaCostos(contador6, 5)));
+            lblCantTotal.setText("$" + String.valueOf(convertirCostos(lblCantTotal.getText()) + convertirCostos(costos.get(5))));
+        }
+        else
+        {
+            double por = Porcentaje(descuentos.get(5));
+            double precio = convertirCostos(costos.get(5));
+            double cantidad = precio - (por*precio);
+            lblPrecio6.setText("$" + String.valueOf(sumaCostDescuento(contador6, cantidad)));
+            lblCantTotal.setText("$" + String.valueOf(convertirCostos(lblCantTotal.getText()) + cantidad));            
+        }
+    }//GEN-LAST:event_btnUp6ActionPerformed
+
+    private void btnDown6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDown6MouseClicked
+    }//GEN-LAST:event_btnDown6MouseClicked
+
+    private void btnDown6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDown6ActionPerformed
+        MessageDialog OptionPane = new MessageDialog(this);
+        
+        if(contador6 > 1)
+        {
+            contador6--;
+
+            lblCan6.setText(String.valueOf(contador6));
+            lblDuracion6.setText(restaHoras(lblDuracion6, 5));
+            lblDurTotal.setText(convResHoras(lblDurTotal.getText(), horas.get(5)));
+            
+            if(descuentos.get(5).equals("0%"))
+            {
+                lblPrecio6.setText("$" + String.valueOf(restaCostos(contador6, 5)));
+                lblCantTotal.setText("$" + String.valueOf(convertirCostos(lblCantTotal.getText()) - convertirCostos(costos.get(5))));
+            }
+            else
+            {
+                double por = Porcentaje(descuentos.get(5));
+                double precio = convertirCostos(costos.get(5));
+                double cantidad = precio - (por*precio);
+                lblPrecio6.setText("$" + String.valueOf(restaCostDescuento(contador6, cantidad)));
+                lblCantTotal.setText("$" + String.valueOf(convertirCostos(lblCantTotal.getText()) - cantidad));
+            }
+        }
+        else
+            OptionPane.showMessage("Servicios", "Se tiene que tener seleccionado el servicio por lo menos una vez", "/img/iconos/Close.png");
+    }//GEN-LAST:event_btnDown6ActionPerformed
+
+    private void btnUp7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUp7MouseClicked
+    }//GEN-LAST:event_btnUp7MouseClicked
+
+    private void btnUp7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUp7ActionPerformed
+        contador7++;
+        lblCan7.setText(String.valueOf(contador7));
+        
+        lblDuracion7.setText(sumaHoras(contador7, 6));
+        lblDurTotal.setText(convSumHoras(lblDurTotal.getText(), horas.get(6)));
+        
+        if(descuentos.get(6).equals("0%"))
+        {
+            lblPrecio7.setText("$" + String.valueOf(sumaCostos(contador7, 6)));
+            lblCantTotal.setText("$" + String.valueOf(convertirCostos(lblCantTotal.getText()) + convertirCostos(costos.get(6))));
+        }
+        else
+        {
+            double por = Porcentaje(descuentos.get(6));
+            double precio = convertirCostos(costos.get(6));
+            double cantidad = precio - (por*precio);
+            lblPrecio7.setText("$" + String.valueOf(sumaCostDescuento(contador7, cantidad)));
+            lblCantTotal.setText("$" + String.valueOf(convertirCostos(lblCantTotal.getText()) + cantidad));            
+        }
+    }//GEN-LAST:event_btnUp7ActionPerformed
+
+    private void btnDown7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDown7MouseClicked
+    }//GEN-LAST:event_btnDown7MouseClicked
+
+    private void btnDown7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDown7ActionPerformed
+        MessageDialog OptionPane = new MessageDialog(this);
+        
+        if(contador7 > 1)
+        {
+            contador7--;
+
+            lblCan7.setText(String.valueOf(contador7));
+            lblDuracion7.setText(restaHoras(lblDuracion7, 6));
+            lblDurTotal.setText(convResHoras(lblDurTotal.getText(), horas.get(6)));
+            
+            if(descuentos.get(6).equals("0%"))
+            {
+                lblPrecio7.setText("$" + String.valueOf(restaCostos(contador7, 6)));
+                lblCantTotal.setText("$" + String.valueOf(convertirCostos(lblCantTotal.getText()) - convertirCostos(costos.get(6))));
+            }
+            else
+            {
+                double por = Porcentaje(descuentos.get(6));
+                double precio = convertirCostos(costos.get(6));
+                double cantidad = precio - (por*precio);
+                lblPrecio7.setText("$" + String.valueOf(restaCostDescuento(contador7, cantidad)));
+                lblCantTotal.setText("$" + String.valueOf(convertirCostos(lblCantTotal.getText()) - cantidad));
+            }
+        }
+        else
+            OptionPane.showMessage("Servicios", "Se tiene que tener seleccionado el servicio por lo menos una vez", "/img/iconos/Close.png");
+    }//GEN-LAST:event_btnDown7ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1094,13 +1644,13 @@ public class RealizarCita extends javax.swing.JFrame
                     double por = Porcentaje(descuentos.get(1));
                     double precio = convertirCostos(costos.get(1));
                     double cantidad = precio - (por*precio);
-                    lblPrecio2.setText("$" + cantidad);
-                    lblCantTotal.setText("$" + cantidad);
+                    lblPrecio2.setText("$" + cantidad);                    
+                    lblCantTotal.setText("$" + String.valueOf(convertirCostos(lblCantTotal.getText()) + cantidad));
                 }
                 else
                 {
                     lblPrecio2.setText(costo);
-                    lblCantTotal.setText(costo);                    
+                    lblCantTotal.setText("$" + String.valueOf(convertirCostos(lblCantTotal.getText()) + convertirCostos(costo)));
                 } 
                 break;
             case 3:
@@ -1124,12 +1674,12 @@ public class RealizarCita extends javax.swing.JFrame
                     double precio = convertirCostos(costos.get(2));
                     double cantidad = precio - (por*precio);
                     lblPrecio3.setText("$" + cantidad);
-                    lblCantTotal.setText("$" + cantidad);
+                    lblCantTotal.setText("$" + String.valueOf(convertirCostos(lblCantTotal.getText()) + cantidad));
                 }
                 else
                 {
                     lblPrecio3.setText(costo);
-                    lblCantTotal.setText(costo);                    
+                    lblCantTotal.setText("$" + String.valueOf(convertirCostos(lblCantTotal.getText()) + convertirCostos(costo)));
                 } 
                 break;
             case 4:   
@@ -1153,12 +1703,99 @@ public class RealizarCita extends javax.swing.JFrame
                     double precio = convertirCostos(costos.get(3));
                     double cantidad = precio - (por*precio);
                     lblPrecio4.setText("$" + cantidad);
-                    lblCantTotal.setText("$" + cantidad);
+                    lblCantTotal.setText("$" + String.valueOf(convertirCostos(lblCantTotal.getText()) + cantidad));
                 }
                 else
                 {
                     lblPrecio4.setText(costo);
-                    lblCantTotal.setText(costo);                    
+                    lblCantTotal.setText("$" + String.valueOf(convertirCostos(lblCantTotal.getText()) + convertirCostos(costo)));
+                } 
+                break;
+            case 5:   
+                lblIcon5.setVisible(true);
+                lblNombre5.setVisible(true);
+                lblNombre5.setText(nombre);
+                lblDuracion5.setVisible(true);
+                lblDuracion5.setText(dur);
+                lblTipo5.setVisible(true);
+                lblTipo5.setText(tipo);
+                btnUp5.setVisible(true);
+                btnDown5.setVisible(true);
+                lblCan5.setVisible(true);
+                lblDurTotal.setText(convSumHoras(lblDurTotal.getText(), dur));                                
+                lblPrecio5.setVisible(true);
+                if(!descuentos.get(4).equals("0%"))
+                {
+                    C5.setVisible(true);
+                    lblDesc5.setText(descuentos.get(4));
+                    double por = Porcentaje(descuentos.get(4));
+                    double precio = convertirCostos(costos.get(4));
+                    double cantidad = precio - (por*precio);
+                    lblPrecio5.setText("$" + cantidad);
+                    lblCantTotal.setText("$" + String.valueOf(convertirCostos(lblCantTotal.getText()) + cantidad));
+                }
+                else
+                {
+                    lblPrecio5.setText(costo);
+                    lblCantTotal.setText("$" + String.valueOf(convertirCostos(lblCantTotal.getText()) + convertirCostos(costo)));
+                } 
+                break;
+            case 6:   
+                lblIcon6.setVisible(true);
+                lblNombre6.setVisible(true);
+                lblNombre6.setText(nombre);
+                lblDuracion6.setVisible(true);
+                lblDuracion6.setText(dur);
+                lblTipo6.setVisible(true);
+                lblTipo6.setText(tipo);
+                btnUp6.setVisible(true);
+                btnDown6.setVisible(true);
+                lblCan6.setVisible(true);
+                lblDurTotal.setText(convSumHoras(lblDurTotal.getText(), dur));                                
+                lblPrecio6.setVisible(true);
+                if(!descuentos.get(5).equals("0%"))
+                {
+                    C6.setVisible(true);
+                    lblDesc6.setText(descuentos.get(5));
+                    double por = Porcentaje(descuentos.get(5));
+                    double precio = convertirCostos(costos.get(5));
+                    double cantidad = precio - (por*precio);
+                    lblPrecio6.setText("$" + cantidad);
+                    lblCantTotal.setText("$" + String.valueOf(convertirCostos(lblCantTotal.getText()) + cantidad));
+                }
+                else
+                {
+                    lblPrecio6.setText(costo);
+                    lblCantTotal.setText("$" + String.valueOf(convertirCostos(lblCantTotal.getText()) + convertirCostos(costo)));
+                } 
+                break;
+            case 7:   
+                lblIcon7.setVisible(true);
+                lblNombre7.setVisible(true);
+                lblNombre7.setText(nombre);
+                lblDuracion7.setVisible(true);
+                lblDuracion7.setText(dur);
+                lblTipo7.setVisible(true);
+                lblTipo7.setText(tipo);
+                btnUp7.setVisible(true);
+                btnDown7.setVisible(true);
+                lblCan7.setVisible(true);
+                lblDurTotal.setText(convSumHoras(lblDurTotal.getText(), dur));                                
+                lblPrecio7.setVisible(true);
+                if(!descuentos.get(6).equals("0%"))
+                {
+                    C7.setVisible(true);
+                    lblDesc7.setText(descuentos.get(6));
+                    double por = Porcentaje(descuentos.get(6));
+                    double precio = convertirCostos(costos.get(6));
+                    double cantidad = precio - (por*precio);
+                    lblPrecio7.setText("$" + cantidad);
+                    lblCantTotal.setText("$" + String.valueOf(convertirCostos(lblCantTotal.getText()) + cantidad));
+                }
+                else
+                {
+                    lblPrecio7.setText(costo);
+                    lblCantTotal.setText("$" + String.valueOf(convertirCostos(lblCantTotal.getText()) + convertirCostos(costo)));
                 } 
                 break;
             default:
@@ -1243,30 +1880,57 @@ public class RealizarCita extends javax.swing.JFrame
         C2.setVisible(false);
         C3.setVisible(false);
         C4.setVisible(false);
+        C5.setVisible(false);
+        C6.setVisible(false);
+        C7.setVisible(false);
         lblIcon2.setVisible(false);
         lblIcon3.setVisible(false);
         lblIcon4.setVisible(false);
+        lblIcon5.setVisible(false);
+        lblIcon6.setVisible(false);
+        lblIcon7.setVisible(false);
         lblNombre2.setVisible(false);
         lblNombre3.setVisible(false);
         lblNombre4.setVisible(false);
+        lblNombre5.setVisible(false);
+        lblNombre6.setVisible(false);
+        lblNombre7.setVisible(false);
         lblTipo2.setVisible(false);
         lblTipo3.setVisible(false);
         lblTipo4.setVisible(false);
+        lblTipo5.setVisible(false);
+        lblTipo6.setVisible(false);
+        lblTipo7.setVisible(false);
         lblDuracion2.setVisible(false);
         lblDuracion3.setVisible(false);
         lblDuracion4.setVisible(false);
+        lblDuracion5.setVisible(false);
+        lblDuracion6.setVisible(false);
+        lblDuracion7.setVisible(false);
         btnUp2.setVisible(false);
         btnUp3.setVisible(false);
         btnUp4.setVisible(false);
+        btnUp5.setVisible(false);
+        btnUp6.setVisible(false);
+        btnUp7.setVisible(false);
         btnDown2.setVisible(false);
         btnDown3.setVisible(false);
         btnDown4.setVisible(false);
+        btnDown5.setVisible(false);
+        btnDown6.setVisible(false);
+        btnDown7.setVisible(false);
         lblCan2.setVisible(false);
         lblCan3.setVisible(false);
         lblCan4.setVisible(false);
+        lblCan5.setVisible(false);
+        lblCan6.setVisible(false);
+        lblCan7.setVisible(false);
         lblPrecio2.setVisible(false);
         lblPrecio3.setVisible(false);
         lblPrecio4.setVisible(false);
+        lblPrecio5.setVisible(false);
+        lblPrecio6.setVisible(false);
+        lblPrecio7.setVisible(false);
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1274,50 +1938,80 @@ public class RealizarCita extends javax.swing.JFrame
     private fondos.RoundPanel C2;
     private fondos.RoundPanel C3;
     private fondos.RoundPanel C4;
+    private fondos.RoundPanel C5;
+    private fondos.RoundPanel C6;
+    private fondos.RoundPanel C7;
     private javax.swing.JButton btnAgServicio;
     private javax.swing.JButton btnCita;
     private javax.swing.JButton btnDown1;
     private javax.swing.JButton btnDown2;
     private javax.swing.JButton btnDown3;
     private javax.swing.JButton btnDown4;
+    private javax.swing.JButton btnDown5;
+    private javax.swing.JButton btnDown6;
+    private javax.swing.JButton btnDown7;
     private javax.swing.JButton btnUp1;
     private javax.swing.JButton btnUp2;
     private javax.swing.JButton btnUp3;
     private javax.swing.JButton btnUp4;
+    private javax.swing.JButton btnUp5;
+    private javax.swing.JButton btnUp6;
+    private javax.swing.JButton btnUp7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblCan1;
     private javax.swing.JLabel lblCan2;
     private javax.swing.JLabel lblCan3;
     private javax.swing.JLabel lblCan4;
+    private javax.swing.JLabel lblCan5;
+    private javax.swing.JLabel lblCan6;
+    private javax.swing.JLabel lblCan7;
     private javax.swing.JLabel lblCantTotal;
     private javax.swing.JLabel lblClose;
     private javax.swing.JLabel lblDesc1;
     private javax.swing.JLabel lblDesc2;
     private javax.swing.JLabel lblDesc3;
     private javax.swing.JLabel lblDesc4;
+    private javax.swing.JLabel lblDesc5;
+    private javax.swing.JLabel lblDesc6;
+    private javax.swing.JLabel lblDesc7;
     private javax.swing.JLabel lblDurTotal;
     private javax.swing.JLabel lblDuracion1;
     private javax.swing.JLabel lblDuracion2;
     private javax.swing.JLabel lblDuracion3;
     private javax.swing.JLabel lblDuracion4;
+    private javax.swing.JLabel lblDuracion5;
+    private javax.swing.JLabel lblDuracion6;
+    private javax.swing.JLabel lblDuracion7;
     private javax.swing.JLabel lblHoras;
     private javax.swing.JLabel lblIcon1;
     private javax.swing.JLabel lblIcon2;
     private javax.swing.JLabel lblIcon3;
     private javax.swing.JLabel lblIcon4;
+    private javax.swing.JLabel lblIcon5;
+    private javax.swing.JLabel lblIcon6;
+    private javax.swing.JLabel lblIcon7;
     private javax.swing.JLabel lblNombre1;
     private javax.swing.JLabel lblNombre2;
     private javax.swing.JLabel lblNombre3;
     private javax.swing.JLabel lblNombre4;
+    private javax.swing.JLabel lblNombre5;
+    private javax.swing.JLabel lblNombre6;
+    private javax.swing.JLabel lblNombre7;
     private javax.swing.JLabel lblPrecio1;
     private javax.swing.JLabel lblPrecio2;
     private javax.swing.JLabel lblPrecio3;
     private javax.swing.JLabel lblPrecio4;
+    private javax.swing.JLabel lblPrecio5;
+    private javax.swing.JLabel lblPrecio6;
+    private javax.swing.JLabel lblPrecio7;
     private javax.swing.JLabel lblTipo1;
     private javax.swing.JLabel lblTipo2;
     private javax.swing.JLabel lblTipo3;
     private javax.swing.JLabel lblTipo4;
+    private javax.swing.JLabel lblTipo5;
+    private javax.swing.JLabel lblTipo6;
+    private javax.swing.JLabel lblTipo7;
     private javax.swing.JLabel lblTotal;
     // End of variables declaration//GEN-END:variables
 }

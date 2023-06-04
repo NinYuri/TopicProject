@@ -228,7 +228,7 @@ public class Citas extends javax.swing.JFrame
                             else
                                 obs = "";
                             
-                            resp = CONTROLCIT.Insertar(CONTROL.GetId(txtUsuario.getText()), CONTROLEMP.GetId(lblNombreEmp.getText()), fechasql, txtHora.getText(), duracionCita, montoCita, obs);
+                            /*resp = CONTROLCIT.Insertar(CONTROL.GetId(txtUsuario.getText()), CONTROLEMP.GetId(lblNombreEmp.getText()), fechasql, txtHora.getText(), duracionCita, montoCita, obs);
                             
                             if(resp.equals("OK"))
                             {
@@ -247,7 +247,7 @@ public class Citas extends javax.swing.JFrame
                             }
                             else
                                 OptionPane.showMessage("Agendar Cita", "Hubo un error en la agenda de la cita", "/img/iconos/Close.png");
-                        }
+                        */}
                         else
                             OptionPane.showMessage("Agendar Cita", "Error en la estructura de dato 00:00", "/img/iconos/Close.png");
                     else
