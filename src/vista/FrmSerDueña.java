@@ -146,7 +146,7 @@ public class FrmSerDueña extends javax.swing.JFrame
         tblSerPrincipal.setSelectionBackground(new java.awt.Color(255, 255, 255));
         tab.setViewportView(tblSerPrincipal);
 
-        getContentPane().add(tab, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 250, 970, 260));
+        getContentPane().add(tab, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 160, 970, 660));
 
         btnDetalles.setBackground(new java.awt.Color(204, 204, 255));
         btnDetalles.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -456,7 +456,7 @@ public class FrmSerDueña extends javax.swing.JFrame
     
     public void Carrusel(String texto, Carrusel car)
     {
-        List<String[]> rutas = CONTROL.Imagen(texto);
+        List<String[]> rutas = CONTROL.Imagen(CONTROL.GetId(texto), texto);
         String[] rutasServicio = rutas.get(0);
         car.setRuta1(rutasServicio[0]);
         car.setRuta2(rutasServicio[1]);

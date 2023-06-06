@@ -928,7 +928,7 @@ public class Editar extends javax.swing.JFrame
     
     public void Rutas(String texto)
     {
-        List<String[]> rutas = CONTROL.Imagen(texto);
+        List<String[]> rutas = CONTROL.Imagen(CONTROL.GetId(texto), texto);
         String[] rutasServicio = rutas.get(0);
         txtRuta1.setText(rutasServicio[0]);
         txtRuta2.setText(rutasServicio[1]);

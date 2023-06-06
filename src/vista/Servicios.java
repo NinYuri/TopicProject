@@ -181,6 +181,10 @@ public class Servicios extends javax.swing.JFrame
 
     private void lblCloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCloseMouseClicked
         setVisible(false);
+        btnGaleria.setVisible(true);
+        Carrusel.setVisible(false);
+        btnCerrarG.setVisible(false);
+        tblServicios.clearSelection();
     }//GEN-LAST:event_lblCloseMouseClicked
 
     private void btnGaleriaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGaleriaMouseClicked
@@ -325,7 +329,7 @@ public class Servicios extends javax.swing.JFrame
     
     public void Carrusel(String texto, Carrusel car)
     {
-        List<String[]> rutas = CONTROL.Imagen(texto);
+        List<String[]> rutas = CONTROL.Imagen(CONTROL.GetId(texto), texto);
         String[] rutasServicio = rutas.get(0);
         car.setRuta1(rutasServicio[0]);
         car.setRuta2(rutasServicio[1]);

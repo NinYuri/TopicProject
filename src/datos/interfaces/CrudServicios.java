@@ -10,5 +10,5 @@ public interface CrudServicios <T>
     public boolean actualizar(T obj);
     public boolean borrar(String texto);
     public boolean existe(String texto);
-    public List<String[]> imagen(String texto);
+    public List<String[]> imagenes(int id);
 }

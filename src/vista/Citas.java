@@ -1,11 +1,14 @@
 package vista;
 
+import entidades.SerSolicitado;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 import java.util.Vector;
 import javax.swing.ImageIcon;
@@ -15,7 +18,6 @@ import javax.swing.JPanel;
 import negocio.CitasControl;
 import negocio.ClientesControl;
 import negocio.EmpleadosControl;
-import negocio.SerSolicitadosControl;
 import negocio.ServiciosControl;
 
 public class Citas extends javax.swing.JFrame 
@@ -23,14 +25,19 @@ public class Citas extends javax.swing.JFrame
     String imagen;
     String duracionCita;
     double montoCita;
+    
     Vector<String> nombres = new Vector<String>();
-    String sersol[] = new String[6];
+    Vector<String> costos = new Vector<String>();
+    Vector<String> descuentos = new Vector<String>();
+    
+    List<SerSolicitado> detalles = new ArrayList();
+    String sernom[] = new String[11];
     
     private final ClientesControl CONTROL;
     private final EmpleadosControl CONTROLEMP;
     private final ServiciosControl CONTROLSER;
     private final CitasControl CONTROLCIT;
-    private final SerSolicitadosControl CONTROLSERSOL;
+    
     
     Fondo fondo = new Fondo();
 
@@ -42,7 +49,6 @@ public class Citas extends javax.swing.JFrame
         CONTROLEMP = new EmpleadosControl();
         CONTROLSER = new ServiciosControl();
         CONTROLCIT = new CitasControl();
-        CONTROLSERSOL = new SerSolicitadosControl();
         Icono(new ImageIcon(getClass().getResource("/img/iconos/Close.png")), lblClose);
         pnlPago.setVisible(false);
         
@@ -227,27 +233,17 @@ public class Citas extends javax.swing.JFrame
                                 obs = txtObservaciones.getText();
                             else
                                 obs = "";
-                            
-                            /*resp = CONTROLCIT.Insertar(CONTROL.GetId(txtUsuario.getText()), CONTROLEMP.GetId(lblNombreEmp.getText()), fechasql, txtHora.getText(), duracionCita, montoCita, obs);
+                                                        
+                            resp = CONTROLCIT.Insertar(CONTROL.GetId(txtUsuario.getText()), CONTROLEMP.GetId(lblNombreEmp.getText()), fechasql, txtHora.getText(), duracionCita, montoCita, obs, agendarDetalle());
                             
                             if(resp.equals("OK"))
                             {
-                                
-                                for(int i = 0; i < sersol.length; i++)
-                                    if (sersol[i] != null)
-                                        respss = CONTROLSERSOL.Insertar(CONTROLCIT.GetId(fechasql, CONTROL.GetId(txtUsuario.getText()), txtHora.getText()), CONTROLSER.GetId(sersol[i]), CONTROLSER.GetCosto(CONTROLSER.GetId(sersol[i]), sersol[i]));                                
-                                
-                                if(respss.equals("OK"))
-                                {
-                                    Invisible();
-                                    pnlPago.setVisible(true);
-                                }
-                                else
-                                    OptionPane.showMessage("Agendar Cita", "Hubo un error en el registro de los servicios de la cita", "/img/iconos/Close.png");                                    
+                                Invisible();
+                                pnlPago.setVisible(true);
                             }
                             else
                                 OptionPane.showMessage("Agendar Cita", "Hubo un error en la agenda de la cita", "/img/iconos/Close.png");
-                        */}
+                        }
                         else
                             OptionPane.showMessage("Agendar Cita", "Error en la estructura de dato 00:00", "/img/iconos/Close.png");
                     else
@@ -374,6 +370,19 @@ public class Citas extends javax.swing.JFrame
             }
         });
     }
+    
+    public List agendarDetalle()
+    {
+        for(int i = 0; i < sernom.length; i++)
+            if(sernom[i] != null)
+            {
+                int id = CONTROLSER.GetId(sernom[i]);
+                Double costo = CONTROLSER.GetCosto(CONTROLSER.GetId(sernom[i]), sernom[i]);
+                Double descuento = CONTROLSER.GetDescuento(CONTROLSER.GetId(sernom[i]), sernom[i]);
+                detalles.add(new SerSolicitado(id, costo, descuento));
+            }
+        return detalles;
+    }
 
     public double getMontoCita() 
     {
@@ -396,7 +405,7 @@ public class Citas extends javax.swing.JFrame
         this.nombres = nombres;
         for(String elemento:this.nombres)
         {
-            sersol[con] = elemento;
+            sernom[con] = elemento;
             con++;
         }
     }

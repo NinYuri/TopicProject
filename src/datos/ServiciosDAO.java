@@ -218,17 +218,17 @@ public class ServiciosDAO implements CrudServicios<Servicio>
         }
         return resp;
     }   
-
+    
     @Override
-    public List<String[]> imagen(String texto) 
+    public List<String[]> imagenes(int id) 
     {
         List<String[]> rutas = new ArrayList();
         String sql;
         try
         {
-            sql = "select ruta1, ruta2, ruta3, ruta4, ruta5, ruta6, ruta7, ruta8 from Servicios where nombreServicio = ?;";
+            sql = "select ruta1, ruta2, ruta3, ruta4, ruta5, ruta6, ruta7, ruta8 from Servicios where idServicio = ?;";
             ps = CON.Conectar().prepareStatement(sql);
-            ps.setString(1, texto);
+            ps.setInt(1, id);
             rs = ps.executeQuery();
             while(rs.next())
             {
@@ -311,5 +311,32 @@ public class ServiciosDAO implements CrudServicios<Servicio>
             CON.desconectar();
         }
         return costo;
+    }
+    
+    public double descuento(int id)
+    {
+        double descuento = 0;
+        String sql;
+        try
+        {
+            sql = "select descuentoServicio from Servicios where idServicio = ?;";
+            ps  = CON.Conectar().prepareStatement(sql);
+            ps.setInt(1, id);
+            rs = ps.executeQuery();
+            if(rs.next())
+                descuento = rs.getDouble(1);
+            ps.close();
+        }
+        catch(SQLException e)
+        {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+        finally
+        {
+            ps = null;
+            rs = null;
+            CON.desconectar();
+        }
+        return descuento;
     }
 }

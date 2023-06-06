@@ -98,10 +98,8 @@ public class FrmCalendarClientes extends javax.swing.JFrame
         btnDatos = new javax.swing.JButton();
         btnModificar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(2736, 50));
@@ -156,13 +154,14 @@ public class FrmCalendarClientes extends javax.swing.JFrame
         lblNota1.setText("Duración Cita:");
         getContentPane().add(lblNota1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 370, 130, 30));
 
+        cmpCalendar.setAltoFilas(98);
         cmpCalendar.setColorBackground(new java.awt.Color(225, 214, 212));
         cmpCalendar.setColorButtonHover(new java.awt.Color(98, 88, 88));
         cmpCalendar.setColorForeground(new java.awt.Color(57, 46, 46));
-        cmpCalendar.setFont(new java.awt.Font("Consolas", 1, 12)); // NOI18N
-        cmpCalendar.setFuenteFilas(new java.awt.Font("Consolas", 1, 18)); // NOI18N
-        cmpCalendar.setFuenteHead(new java.awt.Font("Consolas", 1, 24)); // NOI18N
-        getContentPane().add(cmpCalendar, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 270, 500, 340));
+        cmpCalendar.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
+        cmpCalendar.setFuenteFilas(new java.awt.Font("Consolas", 1, 36)); // NOI18N
+        cmpCalendar.setFuenteHead(new java.awt.Font("Consolas", 1, 36)); // NOI18N
+        getContentPane().add(cmpCalendar, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 130, 660, 730));
 
         txtFecha.setBackground(new java.awt.Color(255, 255, 255, 110));
         txtFecha.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
@@ -354,11 +353,6 @@ public class FrmCalendarClientes extends javax.swing.JFrame
         });
         getContentPane().add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 680, 170, 40));
 
-        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(230, 230, 230), 2, true));
-        jLabel4.setOpaque(true);
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 640, 580, 60));
-
         jLabel1.setBackground(new java.awt.Color(193, 175, 170, 170));
         jLabel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(177, 152, 147), 2, true));
         jLabel1.setOpaque(true);
@@ -368,11 +362,6 @@ public class FrmCalendarClientes extends javax.swing.JFrame
         jLabel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(230, 230, 230), 2, true));
         jLabel2.setOpaque(true);
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 650, 680));
-
-        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(230, 230, 230), 2, true));
-        jLabel3.setOpaque(true);
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 230, 580, 470));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -725,8 +714,6 @@ public class FrmCalendarClientes extends javax.swing.JFrame
     private rojeru_san.componentes.RSCalendar cmpCalendar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel lblIconSalir;
     private javax.swing.JLabel lblMenu;
     private javax.swing.JLabel lblMenu1;

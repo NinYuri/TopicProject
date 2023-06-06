@@ -24,6 +24,9 @@ public class RealizarCita extends javax.swing.JFrame
     int contador5 = 1;
     int contador6 = 1;
     int contador7 = 1;
+    int contador8 = 1;
+    int contador9 = 1;
+    int contador10 = 1;
     
     Fondo fondo = new Fondo();
     Citas cita = new Citas();
@@ -52,6 +55,9 @@ public class RealizarCita extends javax.swing.JFrame
         contador5 = 1;
         contador6 = 1;
         contador7 = 1;
+        contador8 = 1;
+        contador9 = 1;
+        contador10 = 1;
         lblIcon1.setIcon(null);
         lblNombre1.setText("");
         lblTipo1.setText("");
@@ -88,6 +94,12 @@ public class RealizarCita extends javax.swing.JFrame
         lblDesc6 = new javax.swing.JLabel();
         C7 = new fondos.RoundPanel();
         lblDesc7 = new javax.swing.JLabel();
+        C8 = new fondos.RoundPanel();
+        lblDesc8 = new javax.swing.JLabel();
+        C9 = new fondos.RoundPanel();
+        lblDesc9 = new javax.swing.JLabel();
+        C10 = new fondos.RoundPanel();
+        lblDesc10 = new javax.swing.JLabel();
         lblIcon1 = new javax.swing.JLabel();
         lblIcon2 = new javax.swing.JLabel();
         lblIcon3 = new javax.swing.JLabel();
@@ -144,6 +156,30 @@ public class RealizarCita extends javax.swing.JFrame
         lblTipo7 = new javax.swing.JLabel();
         lblCan7 = new javax.swing.JLabel();
         btnDown7 = new javax.swing.JButton();
+        lblIcon8 = new javax.swing.JLabel();
+        lblNombre8 = new javax.swing.JLabel();
+        btnUp8 = new javax.swing.JButton();
+        lblPrecio8 = new javax.swing.JLabel();
+        lblDuracion8 = new javax.swing.JLabel();
+        lblTipo8 = new javax.swing.JLabel();
+        lblCan8 = new javax.swing.JLabel();
+        btnDown8 = new javax.swing.JButton();
+        lblIcon9 = new javax.swing.JLabel();
+        lblNombre9 = new javax.swing.JLabel();
+        btnUp9 = new javax.swing.JButton();
+        lblPrecio9 = new javax.swing.JLabel();
+        lblDuracion9 = new javax.swing.JLabel();
+        lblTipo9 = new javax.swing.JLabel();
+        lblCan9 = new javax.swing.JLabel();
+        btnDown9 = new javax.swing.JButton();
+        lblIcon10 = new javax.swing.JLabel();
+        lblNombre10 = new javax.swing.JLabel();
+        btnUp10 = new javax.swing.JButton();
+        lblPrecio10 = new javax.swing.JLabel();
+        lblDuracion10 = new javax.swing.JLabel();
+        lblTipo10 = new javax.swing.JLabel();
+        lblCan10 = new javax.swing.JLabel();
+        btnDown10 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -430,6 +466,96 @@ public class RealizarCita extends javax.swing.JFrame
         );
 
         jPanel1.add(C7, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 1150, 90, 80));
+
+        C8.setBackground(new java.awt.Color(98, 88, 88));
+        C8.setRoundBottomLeft(100);
+        C8.setRoundBottomRight(100);
+        C8.setRoundTopLeft(100);
+        C8.setRoundTopRight(100);
+
+        lblDesc8.setFont(new java.awt.Font("Consolas", 1, 36)); // NOI18N
+        lblDesc8.setForeground(new java.awt.Color(255, 255, 255));
+        lblDesc8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblDesc8.setText("%");
+
+        javax.swing.GroupLayout C8Layout = new javax.swing.GroupLayout(C8);
+        C8.setLayout(C8Layout);
+        C8Layout.setHorizontalGroup(
+            C8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(C8Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblDesc8, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        C8Layout.setVerticalGroup(
+            C8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, C8Layout.createSequentialGroup()
+                .addContainerGap(23, Short.MAX_VALUE)
+                .addComponent(lblDesc8)
+                .addGap(14, 14, 14))
+        );
+
+        jPanel1.add(C8, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 1340, 90, 80));
+
+        C9.setBackground(new java.awt.Color(98, 88, 88));
+        C9.setRoundBottomLeft(100);
+        C9.setRoundBottomRight(100);
+        C9.setRoundTopLeft(100);
+        C9.setRoundTopRight(100);
+
+        lblDesc9.setFont(new java.awt.Font("Consolas", 1, 36)); // NOI18N
+        lblDesc9.setForeground(new java.awt.Color(255, 255, 255));
+        lblDesc9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblDesc9.setText("%");
+
+        javax.swing.GroupLayout C9Layout = new javax.swing.GroupLayout(C9);
+        C9.setLayout(C9Layout);
+        C9Layout.setHorizontalGroup(
+            C9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(C9Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblDesc9, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        C9Layout.setVerticalGroup(
+            C9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, C9Layout.createSequentialGroup()
+                .addContainerGap(23, Short.MAX_VALUE)
+                .addComponent(lblDesc9)
+                .addGap(14, 14, 14))
+        );
+
+        jPanel1.add(C9, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 1530, 90, 80));
+
+        C10.setBackground(new java.awt.Color(98, 88, 88));
+        C10.setRoundBottomLeft(100);
+        C10.setRoundBottomRight(100);
+        C10.setRoundTopLeft(100);
+        C10.setRoundTopRight(100);
+
+        lblDesc10.setFont(new java.awt.Font("Consolas", 1, 36)); // NOI18N
+        lblDesc10.setForeground(new java.awt.Color(255, 255, 255));
+        lblDesc10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblDesc10.setText("%");
+
+        javax.swing.GroupLayout C10Layout = new javax.swing.GroupLayout(C10);
+        C10.setLayout(C10Layout);
+        C10Layout.setHorizontalGroup(
+            C10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(C10Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblDesc10, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        C10Layout.setVerticalGroup(
+            C10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, C10Layout.createSequentialGroup()
+                .addContainerGap(23, Short.MAX_VALUE)
+                .addComponent(lblDesc10)
+                .addGap(14, 14, 14))
+        );
+
+        jPanel1.add(C10, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 1720, 90, 80));
 
         lblIcon1.setBackground(new java.awt.Color(255, 204, 255));
         lblIcon1.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
@@ -924,6 +1050,216 @@ public class RealizarCita extends javax.swing.JFrame
         });
         jPanel1.add(btnDown7, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 1290, 70, 30));
 
+        lblIcon8.setBackground(new java.awt.Color(255, 204, 255));
+        lblIcon8.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
+        lblIcon8.setForeground(new java.awt.Color(98, 88, 88));
+        lblIcon8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblIcon8.setText("Cargar Imagen");
+        lblIcon8.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(98, 88, 88), 2, true));
+        lblIcon8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(lblIcon8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 1370, 150, 150));
+
+        lblNombre8.setFont(new java.awt.Font("Consolas", 1, 38)); // NOI18N
+        lblNombre8.setForeground(new java.awt.Color(98, 88, 88));
+        lblNombre8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel1.add(lblNombre8, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 1380, 450, 50));
+
+        btnUp8.setBackground(new java.awt.Color(225, 214, 212));
+        btnUp8.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        btnUp8.setForeground(new java.awt.Color(98, 88, 88));
+        btnUp8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconos/Up.png"))); // NOI18N
+        btnUp8.setFocusPainted(false);
+        btnUp8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnUp8MouseClicked(evt);
+            }
+        });
+        btnUp8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUp8ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnUp8, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 1380, 70, 30));
+
+        lblPrecio8.setFont(new java.awt.Font("Consolas", 1, 36)); // NOI18N
+        lblPrecio8.setForeground(new java.awt.Color(98, 88, 88));
+        lblPrecio8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblPrecio8.setText("$");
+        jPanel1.add(lblPrecio8, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 1380, 150, 130));
+
+        lblDuracion8.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        lblDuracion8.setForeground(new java.awt.Color(98, 88, 88));
+        lblDuracion8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel1.add(lblDuracion8, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 1440, 160, 50));
+
+        lblTipo8.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        lblTipo8.setForeground(new java.awt.Color(98, 88, 88));
+        lblTipo8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel1.add(lblTipo8, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 1440, 160, 50));
+
+        lblCan8.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        lblCan8.setForeground(new java.awt.Color(98, 88, 88));
+        lblCan8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblCan8.setText("1");
+        jPanel1.add(lblCan8, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 1420, 50, 50));
+
+        btnDown8.setBackground(new java.awt.Color(225, 214, 212));
+        btnDown8.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        btnDown8.setForeground(new java.awt.Color(98, 88, 88));
+        btnDown8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconos/Down.png"))); // NOI18N
+        btnDown8.setFocusPainted(false);
+        btnDown8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnDown8MouseClicked(evt);
+            }
+        });
+        btnDown8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDown8ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnDown8, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 1480, 70, 30));
+
+        lblIcon9.setBackground(new java.awt.Color(255, 204, 255));
+        lblIcon9.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
+        lblIcon9.setForeground(new java.awt.Color(98, 88, 88));
+        lblIcon9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblIcon9.setText("Cargar Imagen");
+        lblIcon9.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(98, 88, 88), 2, true));
+        lblIcon9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(lblIcon9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 1560, 150, 150));
+
+        lblNombre9.setFont(new java.awt.Font("Consolas", 1, 38)); // NOI18N
+        lblNombre9.setForeground(new java.awt.Color(98, 88, 88));
+        lblNombre9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel1.add(lblNombre9, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 1570, 450, 50));
+
+        btnUp9.setBackground(new java.awt.Color(225, 214, 212));
+        btnUp9.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        btnUp9.setForeground(new java.awt.Color(98, 88, 88));
+        btnUp9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconos/Up.png"))); // NOI18N
+        btnUp9.setFocusPainted(false);
+        btnUp9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnUp9MouseClicked(evt);
+            }
+        });
+        btnUp9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUp9ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnUp9, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 1570, 70, 30));
+
+        lblPrecio9.setFont(new java.awt.Font("Consolas", 1, 36)); // NOI18N
+        lblPrecio9.setForeground(new java.awt.Color(98, 88, 88));
+        lblPrecio9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblPrecio9.setText("$");
+        jPanel1.add(lblPrecio9, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 1570, 150, 130));
+
+        lblDuracion9.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        lblDuracion9.setForeground(new java.awt.Color(98, 88, 88));
+        lblDuracion9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel1.add(lblDuracion9, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 1630, 160, 50));
+
+        lblTipo9.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        lblTipo9.setForeground(new java.awt.Color(98, 88, 88));
+        lblTipo9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel1.add(lblTipo9, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 1630, 160, 50));
+
+        lblCan9.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        lblCan9.setForeground(new java.awt.Color(98, 88, 88));
+        lblCan9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblCan9.setText("1");
+        jPanel1.add(lblCan9, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 1610, 50, 50));
+
+        btnDown9.setBackground(new java.awt.Color(225, 214, 212));
+        btnDown9.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        btnDown9.setForeground(new java.awt.Color(98, 88, 88));
+        btnDown9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconos/Down.png"))); // NOI18N
+        btnDown9.setFocusPainted(false);
+        btnDown9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnDown9MouseClicked(evt);
+            }
+        });
+        btnDown9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDown9ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnDown9, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 1670, 70, 30));
+
+        lblIcon10.setBackground(new java.awt.Color(255, 204, 255));
+        lblIcon10.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
+        lblIcon10.setForeground(new java.awt.Color(98, 88, 88));
+        lblIcon10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblIcon10.setText("Cargar Imagen");
+        lblIcon10.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(98, 88, 88), 2, true));
+        lblIcon10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel1.add(lblIcon10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 1750, 150, 150));
+
+        lblNombre10.setFont(new java.awt.Font("Consolas", 1, 38)); // NOI18N
+        lblNombre10.setForeground(new java.awt.Color(98, 88, 88));
+        lblNombre10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel1.add(lblNombre10, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 1760, 450, 50));
+
+        btnUp10.setBackground(new java.awt.Color(225, 214, 212));
+        btnUp10.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        btnUp10.setForeground(new java.awt.Color(98, 88, 88));
+        btnUp10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconos/Up.png"))); // NOI18N
+        btnUp10.setFocusPainted(false);
+        btnUp10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnUp10MouseClicked(evt);
+            }
+        });
+        btnUp10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUp10ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnUp10, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 1760, 70, 30));
+
+        lblPrecio10.setFont(new java.awt.Font("Consolas", 1, 36)); // NOI18N
+        lblPrecio10.setForeground(new java.awt.Color(98, 88, 88));
+        lblPrecio10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblPrecio10.setText("$");
+        jPanel1.add(lblPrecio10, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 1760, 150, 130));
+
+        lblDuracion10.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        lblDuracion10.setForeground(new java.awt.Color(98, 88, 88));
+        lblDuracion10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel1.add(lblDuracion10, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 1820, 160, 50));
+
+        lblTipo10.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        lblTipo10.setForeground(new java.awt.Color(98, 88, 88));
+        lblTipo10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel1.add(lblTipo10, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 1820, 160, 50));
+
+        lblCan10.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        lblCan10.setForeground(new java.awt.Color(98, 88, 88));
+        lblCan10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblCan10.setText("1");
+        jPanel1.add(lblCan10, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 1800, 50, 50));
+
+        btnDown10.setBackground(new java.awt.Color(225, 214, 212));
+        btnDown10.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        btnDown10.setForeground(new java.awt.Color(98, 88, 88));
+        btnDown10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconos/Down.png"))); // NOI18N
+        btnDown10.setFocusPainted(false);
+        btnDown10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnDown10MouseClicked(evt);
+            }
+        });
+        btnDown10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDown10ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnDown10, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 1860, 70, 30));
+
         jScrollPane1.setViewportView(jPanel1);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 940, 500));
@@ -1364,6 +1700,177 @@ public class RealizarCita extends javax.swing.JFrame
             OptionPane.showMessage("Servicios", "Se tiene que tener seleccionado el servicio por lo menos una vez", "/img/iconos/Close.png");
     }//GEN-LAST:event_btnDown7ActionPerformed
 
+    private void btnUp8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUp8MouseClicked
+    }//GEN-LAST:event_btnUp8MouseClicked
+
+    private void btnUp8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUp8ActionPerformed
+        contador8++;
+        lblCan8.setText(String.valueOf(contador8));
+        
+        lblDuracion8.setText(sumaHoras(contador8, 7));
+        lblDurTotal.setText(convSumHoras(lblDurTotal.getText(), horas.get(7)));
+        
+        if(descuentos.get(7).equals("0%"))
+        {
+            lblPrecio8.setText("$" + String.valueOf(sumaCostos(contador8, 7)));
+            lblCantTotal.setText("$" + String.valueOf(convertirCostos(lblCantTotal.getText()) + convertirCostos(costos.get(7))));
+        }
+        else
+        {
+            double por = Porcentaje(descuentos.get(7));
+            double precio = convertirCostos(costos.get(7));
+            double cantidad = precio - (por*precio);
+            lblPrecio8.setText("$" + String.valueOf(sumaCostDescuento(contador8, cantidad)));
+            lblCantTotal.setText("$" + String.valueOf(convertirCostos(lblCantTotal.getText()) + cantidad));            
+        }
+    }//GEN-LAST:event_btnUp8ActionPerformed
+
+    private void btnDown8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDown8MouseClicked
+    }//GEN-LAST:event_btnDown8MouseClicked
+
+    private void btnDown8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDown8ActionPerformed
+        MessageDialog OptionPane = new MessageDialog(this);
+        
+        if(contador8 > 1)
+        {
+            contador8--;
+
+            lblCan8.setText(String.valueOf(contador8));
+            lblDuracion8.setText(restaHoras(lblDuracion8, 7));
+            lblDurTotal.setText(convResHoras(lblDurTotal.getText(), horas.get(7)));
+            
+            if(descuentos.get(7).equals("0%"))
+            {
+                lblPrecio8.setText("$" + String.valueOf(restaCostos(contador8, 7)));
+                lblCantTotal.setText("$" + String.valueOf(convertirCostos(lblCantTotal.getText()) - convertirCostos(costos.get(7))));
+            }
+            else
+            {
+                double por = Porcentaje(descuentos.get(7));
+                double precio = convertirCostos(costos.get(7));
+                double cantidad = precio - (por*precio);
+                lblPrecio8.setText("$" + String.valueOf(restaCostDescuento(contador8, cantidad)));
+                lblCantTotal.setText("$" + String.valueOf(convertirCostos(lblCantTotal.getText()) - cantidad));
+            }
+        }
+        else
+            OptionPane.showMessage("Servicios", "Se tiene que tener seleccionado el servicio por lo menos una vez", "/img/iconos/Close.png");
+    }//GEN-LAST:event_btnDown8ActionPerformed
+
+    private void btnUp9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUp9MouseClicked
+    }//GEN-LAST:event_btnUp9MouseClicked
+
+    private void btnUp9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUp9ActionPerformed
+        contador9++;
+        lblCan9.setText(String.valueOf(contador9));
+        
+        lblDuracion9.setText(sumaHoras(contador9, 8));
+        lblDurTotal.setText(convSumHoras(lblDurTotal.getText(), horas.get(8)));
+        
+        if(descuentos.get(8).equals("0%"))
+        {
+            lblPrecio9.setText("$" + String.valueOf(sumaCostos(contador9, 8)));
+            lblCantTotal.setText("$" + String.valueOf(convertirCostos(lblCantTotal.getText()) + convertirCostos(costos.get(8))));
+        }
+        else
+        {
+            double por = Porcentaje(descuentos.get(8));
+            double precio = convertirCostos(costos.get(8));
+            double cantidad = precio - (por*precio);
+            lblPrecio9.setText("$" + String.valueOf(sumaCostDescuento(contador9, cantidad)));
+            lblCantTotal.setText("$" + String.valueOf(convertirCostos(lblCantTotal.getText()) + cantidad));            
+        }
+    }//GEN-LAST:event_btnUp9ActionPerformed
+
+    private void btnDown9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDown9MouseClicked
+    }//GEN-LAST:event_btnDown9MouseClicked
+
+    private void btnDown9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDown9ActionPerformed
+        MessageDialog OptionPane = new MessageDialog(this);
+        
+        if(contador9 > 1)
+        {
+            contador9--;
+
+            lblCan9.setText(String.valueOf(contador9));
+            lblDuracion9.setText(restaHoras(lblDuracion9, 8));
+            lblDurTotal.setText(convResHoras(lblDurTotal.getText(), horas.get(8)));
+            
+            if(descuentos.get(8).equals("0%"))
+            {
+                lblPrecio9.setText("$" + String.valueOf(restaCostos(contador9, 8)));
+                lblCantTotal.setText("$" + String.valueOf(convertirCostos(lblCantTotal.getText()) - convertirCostos(costos.get(8))));
+            }
+            else
+            {
+                double por = Porcentaje(descuentos.get(8));
+                double precio = convertirCostos(costos.get(8));
+                double cantidad = precio - (por*precio);
+                lblPrecio9.setText("$" + String.valueOf(restaCostDescuento(contador9, cantidad)));
+                lblCantTotal.setText("$" + String.valueOf(convertirCostos(lblCantTotal.getText()) - cantidad));
+            }
+        }
+        else
+            OptionPane.showMessage("Servicios", "Se tiene que tener seleccionado el servicio por lo menos una vez", "/img/iconos/Close.png");
+    }//GEN-LAST:event_btnDown9ActionPerformed
+
+    private void btnUp10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUp10MouseClicked
+    }//GEN-LAST:event_btnUp10MouseClicked
+
+    private void btnUp10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUp10ActionPerformed
+        contador10++;
+        lblCan10.setText(String.valueOf(contador10));
+        
+        lblDuracion10.setText(sumaHoras(contador10, 9));
+        lblDurTotal.setText(convSumHoras(lblDurTotal.getText(), horas.get(9)));
+        
+        if(descuentos.get(9).equals("0%"))
+        {
+            lblPrecio10.setText("$" + String.valueOf(sumaCostos(contador10, 9)));
+            lblCantTotal.setText("$" + String.valueOf(convertirCostos(lblCantTotal.getText()) + convertirCostos(costos.get(9))));
+        }
+        else
+        {
+            double por = Porcentaje(descuentos.get(9));
+            double precio = convertirCostos(costos.get(9));
+            double cantidad = precio - (por*precio);
+            lblPrecio10.setText("$" + String.valueOf(sumaCostDescuento(contador10, cantidad)));
+            lblCantTotal.setText("$" + String.valueOf(convertirCostos(lblCantTotal.getText()) + cantidad));            
+        }
+    }//GEN-LAST:event_btnUp10ActionPerformed
+
+    private void btnDown10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDown10MouseClicked
+    }//GEN-LAST:event_btnDown10MouseClicked
+
+    private void btnDown10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDown10ActionPerformed
+        MessageDialog OptionPane = new MessageDialog(this);
+        
+        if(contador10 > 1)
+        {
+            contador10--;
+
+            lblCan10.setText(String.valueOf(contador10));
+            lblDuracion10.setText(restaHoras(lblDuracion10, 9));
+            lblDurTotal.setText(convResHoras(lblDurTotal.getText(), horas.get(9)));
+            
+            if(descuentos.get(9).equals("0%"))
+            {
+                lblPrecio10.setText("$" + String.valueOf(restaCostos(contador10, 9)));
+                lblCantTotal.setText("$" + String.valueOf(convertirCostos(lblCantTotal.getText()) - convertirCostos(costos.get(9))));
+            }
+            else
+            {
+                double por = Porcentaje(descuentos.get(9));
+                double precio = convertirCostos(costos.get(9));
+                double cantidad = precio - (por*precio);
+                lblPrecio10.setText("$" + String.valueOf(restaCostDescuento(contador10, cantidad)));
+                lblCantTotal.setText("$" + String.valueOf(convertirCostos(lblCantTotal.getText()) - cantidad));
+            }
+        }
+        else
+            OptionPane.showMessage("Servicios", "Se tiene que tener seleccionado el servicio por lo menos una vez", "/img/iconos/Close.png");
+    }//GEN-LAST:event_btnDown10ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1798,6 +2305,93 @@ public class RealizarCita extends javax.swing.JFrame
                     lblCantTotal.setText("$" + String.valueOf(convertirCostos(lblCantTotal.getText()) + convertirCostos(costo)));
                 } 
                 break;
+            case 8:   
+                lblIcon8.setVisible(true);
+                lblNombre8.setVisible(true);
+                lblNombre8.setText(nombre);
+                lblDuracion8.setVisible(true);
+                lblDuracion8.setText(dur);
+                lblTipo8.setVisible(true);
+                lblTipo8.setText(tipo);
+                btnUp8.setVisible(true);
+                btnDown8.setVisible(true);
+                lblCan8.setVisible(true);
+                lblDurTotal.setText(convSumHoras(lblDurTotal.getText(), dur));                                
+                lblPrecio8.setVisible(true);
+                if(!descuentos.get(7).equals("0%"))
+                {
+                    C8.setVisible(true);
+                    lblDesc8.setText(descuentos.get(7));
+                    double por = Porcentaje(descuentos.get(7));
+                    double precio = convertirCostos(costos.get(7));
+                    double cantidad = precio - (por*precio);
+                    lblPrecio8.setText("$" + cantidad);
+                    lblCantTotal.setText("$" + String.valueOf(convertirCostos(lblCantTotal.getText()) + cantidad));
+                }
+                else
+                {
+                    lblPrecio8.setText(costo);
+                    lblCantTotal.setText("$" + String.valueOf(convertirCostos(lblCantTotal.getText()) + convertirCostos(costo)));
+                } 
+                break;
+            case 9:   
+                lblIcon9.setVisible(true);
+                lblNombre9.setVisible(true);
+                lblNombre9.setText(nombre);
+                lblDuracion9.setVisible(true);
+                lblDuracion9.setText(dur);
+                lblTipo9.setVisible(true);
+                lblTipo9.setText(tipo);
+                btnUp9.setVisible(true);
+                btnDown9.setVisible(true);
+                lblCan9.setVisible(true);
+                lblDurTotal.setText(convSumHoras(lblDurTotal.getText(), dur));                                
+                lblPrecio9.setVisible(true);
+                if(!descuentos.get(8).equals("0%"))
+                {
+                    C9.setVisible(true);
+                    lblDesc9.setText(descuentos.get(8));
+                    double por = Porcentaje(descuentos.get(8));
+                    double precio = convertirCostos(costos.get(8));
+                    double cantidad = precio - (por*precio);
+                    lblPrecio9.setText("$" + cantidad);
+                    lblCantTotal.setText("$" + String.valueOf(convertirCostos(lblCantTotal.getText()) + cantidad));
+                }
+                else
+                {
+                    lblPrecio9.setText(costo);
+                    lblCantTotal.setText("$" + String.valueOf(convertirCostos(lblCantTotal.getText()) + convertirCostos(costo)));
+                } 
+                break;
+            case 10:   
+                lblIcon10.setVisible(true);
+                lblNombre10.setVisible(true);
+                lblNombre10.setText(nombre);
+                lblDuracion10.setVisible(true);
+                lblDuracion10.setText(dur);
+                lblTipo10.setVisible(true);
+                lblTipo10.setText(tipo);
+                btnUp10.setVisible(true);
+                btnDown10.setVisible(true);
+                lblCan10.setVisible(true);
+                lblDurTotal.setText(convSumHoras(lblDurTotal.getText(), dur));                                
+                lblPrecio10.setVisible(true);
+                if(!descuentos.get(9).equals("0%"))
+                {
+                    C10.setVisible(true);
+                    lblDesc8.setText(descuentos.get(9));
+                    double por = Porcentaje(descuentos.get(9));
+                    double precio = convertirCostos(costos.get(9));
+                    double cantidad = precio - (por*precio);
+                    lblPrecio10.setText("$" + cantidad);
+                    lblCantTotal.setText("$" + String.valueOf(convertirCostos(lblCantTotal.getText()) + cantidad));
+                }
+                else
+                {
+                    lblPrecio10.setText(costo);
+                    lblCantTotal.setText("$" + String.valueOf(convertirCostos(lblCantTotal.getText()) + convertirCostos(costo)));
+                } 
+                break;
             default:
                 break;
         }
@@ -1883,135 +2477,192 @@ public class RealizarCita extends javax.swing.JFrame
         C5.setVisible(false);
         C6.setVisible(false);
         C7.setVisible(false);
+        C8.setVisible(false);
+        C9.setVisible(false);
+        C10.setVisible(false);
         lblIcon2.setVisible(false);
         lblIcon3.setVisible(false);
         lblIcon4.setVisible(false);
         lblIcon5.setVisible(false);
         lblIcon6.setVisible(false);
         lblIcon7.setVisible(false);
+        lblIcon8.setVisible(false);
+        lblIcon9.setVisible(false);
+        lblIcon10.setVisible(false);
         lblNombre2.setVisible(false);
         lblNombre3.setVisible(false);
         lblNombre4.setVisible(false);
         lblNombre5.setVisible(false);
         lblNombre6.setVisible(false);
         lblNombre7.setVisible(false);
+        lblNombre8.setVisible(false);
+        lblNombre9.setVisible(false);
+        lblNombre10.setVisible(false);
         lblTipo2.setVisible(false);
         lblTipo3.setVisible(false);
         lblTipo4.setVisible(false);
         lblTipo5.setVisible(false);
         lblTipo6.setVisible(false);
         lblTipo7.setVisible(false);
+        lblTipo8.setVisible(false);
+        lblTipo9.setVisible(false);
+        lblTipo10.setVisible(false);
         lblDuracion2.setVisible(false);
         lblDuracion3.setVisible(false);
         lblDuracion4.setVisible(false);
         lblDuracion5.setVisible(false);
         lblDuracion6.setVisible(false);
         lblDuracion7.setVisible(false);
+        lblDuracion8.setVisible(false);
+        lblDuracion9.setVisible(false);
+        lblDuracion10.setVisible(false);
         btnUp2.setVisible(false);
         btnUp3.setVisible(false);
         btnUp4.setVisible(false);
         btnUp5.setVisible(false);
         btnUp6.setVisible(false);
         btnUp7.setVisible(false);
+        btnUp8.setVisible(false);
+        btnUp9.setVisible(false);
+        btnUp10.setVisible(false);
         btnDown2.setVisible(false);
         btnDown3.setVisible(false);
         btnDown4.setVisible(false);
         btnDown5.setVisible(false);
         btnDown6.setVisible(false);
         btnDown7.setVisible(false);
+        btnDown8.setVisible(false);
+        btnDown9.setVisible(false);
+        btnDown10.setVisible(false);
         lblCan2.setVisible(false);
         lblCan3.setVisible(false);
         lblCan4.setVisible(false);
         lblCan5.setVisible(false);
         lblCan6.setVisible(false);
         lblCan7.setVisible(false);
+        lblCan8.setVisible(false);
+        lblCan9.setVisible(false);
+        lblCan10.setVisible(false);
         lblPrecio2.setVisible(false);
         lblPrecio3.setVisible(false);
         lblPrecio4.setVisible(false);
         lblPrecio5.setVisible(false);
         lblPrecio6.setVisible(false);
         lblPrecio7.setVisible(false);
+        lblPrecio8.setVisible(false);
+        lblPrecio9.setVisible(false);
+        lblPrecio10.setVisible(false);
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private fondos.RoundPanel C1;
+    private fondos.RoundPanel C10;
     private fondos.RoundPanel C2;
     private fondos.RoundPanel C3;
     private fondos.RoundPanel C4;
     private fondos.RoundPanel C5;
     private fondos.RoundPanel C6;
     private fondos.RoundPanel C7;
+    private fondos.RoundPanel C8;
+    private fondos.RoundPanel C9;
     private javax.swing.JButton btnAgServicio;
     private javax.swing.JButton btnCita;
     private javax.swing.JButton btnDown1;
+    private javax.swing.JButton btnDown10;
     private javax.swing.JButton btnDown2;
     private javax.swing.JButton btnDown3;
     private javax.swing.JButton btnDown4;
     private javax.swing.JButton btnDown5;
     private javax.swing.JButton btnDown6;
     private javax.swing.JButton btnDown7;
+    private javax.swing.JButton btnDown8;
+    private javax.swing.JButton btnDown9;
     private javax.swing.JButton btnUp1;
+    private javax.swing.JButton btnUp10;
     private javax.swing.JButton btnUp2;
     private javax.swing.JButton btnUp3;
     private javax.swing.JButton btnUp4;
     private javax.swing.JButton btnUp5;
     private javax.swing.JButton btnUp6;
     private javax.swing.JButton btnUp7;
+    private javax.swing.JButton btnUp8;
+    private javax.swing.JButton btnUp9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblCan1;
+    private javax.swing.JLabel lblCan10;
     private javax.swing.JLabel lblCan2;
     private javax.swing.JLabel lblCan3;
     private javax.swing.JLabel lblCan4;
     private javax.swing.JLabel lblCan5;
     private javax.swing.JLabel lblCan6;
     private javax.swing.JLabel lblCan7;
+    private javax.swing.JLabel lblCan8;
+    private javax.swing.JLabel lblCan9;
     private javax.swing.JLabel lblCantTotal;
     private javax.swing.JLabel lblClose;
     private javax.swing.JLabel lblDesc1;
+    private javax.swing.JLabel lblDesc10;
     private javax.swing.JLabel lblDesc2;
     private javax.swing.JLabel lblDesc3;
     private javax.swing.JLabel lblDesc4;
     private javax.swing.JLabel lblDesc5;
     private javax.swing.JLabel lblDesc6;
     private javax.swing.JLabel lblDesc7;
+    private javax.swing.JLabel lblDesc8;
+    private javax.swing.JLabel lblDesc9;
     private javax.swing.JLabel lblDurTotal;
     private javax.swing.JLabel lblDuracion1;
+    private javax.swing.JLabel lblDuracion10;
     private javax.swing.JLabel lblDuracion2;
     private javax.swing.JLabel lblDuracion3;
     private javax.swing.JLabel lblDuracion4;
     private javax.swing.JLabel lblDuracion5;
     private javax.swing.JLabel lblDuracion6;
     private javax.swing.JLabel lblDuracion7;
+    private javax.swing.JLabel lblDuracion8;
+    private javax.swing.JLabel lblDuracion9;
     private javax.swing.JLabel lblHoras;
     private javax.swing.JLabel lblIcon1;
+    private javax.swing.JLabel lblIcon10;
     private javax.swing.JLabel lblIcon2;
     private javax.swing.JLabel lblIcon3;
     private javax.swing.JLabel lblIcon4;
     private javax.swing.JLabel lblIcon5;
     private javax.swing.JLabel lblIcon6;
     private javax.swing.JLabel lblIcon7;
+    private javax.swing.JLabel lblIcon8;
+    private javax.swing.JLabel lblIcon9;
     private javax.swing.JLabel lblNombre1;
+    private javax.swing.JLabel lblNombre10;
     private javax.swing.JLabel lblNombre2;
     private javax.swing.JLabel lblNombre3;
     private javax.swing.JLabel lblNombre4;
     private javax.swing.JLabel lblNombre5;
     private javax.swing.JLabel lblNombre6;
     private javax.swing.JLabel lblNombre7;
+    private javax.swing.JLabel lblNombre8;
+    private javax.swing.JLabel lblNombre9;
     private javax.swing.JLabel lblPrecio1;
+    private javax.swing.JLabel lblPrecio10;
     private javax.swing.JLabel lblPrecio2;
     private javax.swing.JLabel lblPrecio3;
     private javax.swing.JLabel lblPrecio4;
     private javax.swing.JLabel lblPrecio5;
     private javax.swing.JLabel lblPrecio6;
     private javax.swing.JLabel lblPrecio7;
+    private javax.swing.JLabel lblPrecio8;
+    private javax.swing.JLabel lblPrecio9;
     private javax.swing.JLabel lblTipo1;
+    private javax.swing.JLabel lblTipo10;
     private javax.swing.JLabel lblTipo2;
     private javax.swing.JLabel lblTipo3;
     private javax.swing.JLabel lblTipo4;
     private javax.swing.JLabel lblTipo5;
     private javax.swing.JLabel lblTipo6;
     private javax.swing.JLabel lblTipo7;
+    private javax.swing.JLabel lblTipo8;
+    private javax.swing.JLabel lblTipo9;
     private javax.swing.JLabel lblTotal;
     // End of variables declaration//GEN-END:variables
 }

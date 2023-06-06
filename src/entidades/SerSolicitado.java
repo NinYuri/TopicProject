@@ -16,6 +16,12 @@ public class SerSolicitado
         this.descuento = descuento;
     }
 
+    public SerSolicitado(int idServicio, double costoServicio, double descuento) {
+        this.idServicio = idServicio;
+        this.costoServicio = costoServicio;
+        this.descuento = descuento;
+    }
+    
     public SerSolicitado() {
     }
 

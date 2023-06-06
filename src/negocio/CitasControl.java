@@ -2,6 +2,7 @@ package negocio;
 
 import datos.CitasDAO;
 import entidades.Cita;
+import entidades.SerSolicitado;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
@@ -57,7 +58,7 @@ public class CitasControl
         return modeloTabla;
     }
     
-    public String Insertar(int idCliente, int idEmpleada, String fechaCita, String horaCita, String duracionCita, double costoCita, String observacionesCita)
+    public String Insertar(int idCliente, int idEmpleada, String fechaCita, String horaCita, String duracionCita, double costoCita, String observacionesCita, List<SerSolicitado> detalles)
     {
         obj.setIdCliente(idCliente);
         obj.setIdEmpleada(idEmpleada);
@@ -66,6 +67,7 @@ public class CitasControl
         obj.setDuracionCita(duracionCita);
         obj.setCostoCita(costoCita);
         obj.setObservacionesCita(observacionesCita);
+        obj.setDetalles(detalles);
         
         if(DATOS.insertar(obj))
             return "OK";

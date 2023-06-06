@@ -85,10 +85,10 @@ public class ServiciosControl
         }
     }
     
-    public List<String[]> Imagen(String nombre)
+    public List<String[]> Imagen(int id, String nombre)
     {
         if(DATOS.existe(nombre))
-            return DATOS.imagen(nombre);
+            return DATOS.imagenes(id);
         else
            return null;
     }
@@ -166,6 +166,14 @@ public class ServiciosControl
     {
         if(DATOS.existe(nombre))
             return DATOS.costo(id);
+        else
+            return 0;
+    }
+    
+    public double GetDescuento(int id, String nombre)
+    {
+        if(DATOS.existe(nombre))
+            return DATOS.descuento(id);
         else
             return 0;
     }

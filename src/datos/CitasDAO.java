@@ -1,13 +1,18 @@
 package datos;
 
+import java.sql.Connection;
+import java.sql.Statement;
 import database.Conexion;
 import datos.interfaces.CrudCitas;
 import entidades.Cita;
+import entidades.SerSolicitado;
 import java.util.List;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class CitasDAO implements CrudCitas<Cita>
@@ -55,12 +60,15 @@ public class CitasDAO implements CrudCitas<Cita>
     {
         String sql;
         resp = false;
+        Connection conn = null;
         try
         {
-            sql = "insert into Citas(idCliente, idEmpleada, fechaCita, horaCita, duracionCita, costoCita, observacionesCita)\n" +
-                "values(?, ?, ?, ?, ?, ?, ?);";
-            ps = CON.Conectar().prepareStatement(sql);
+            conn = CON.Conectar();
+            conn.setAutoCommit(false);
+            sql = "INSERT INTO Citas(idCliente, idEmpleada, fechaCita, horaCita, duracionCita, costoCita, observacionesCita)";
+            sql = sql + "VALUES(?, ?, ?, ?, ?, ?, ?);";
             
+            ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, obj.getIdCliente());
             ps.setInt(2, obj.getIdEmpleada());
             ps.setString(3, obj.getFechaCita());
@@ -69,18 +77,64 @@ public class CitasDAO implements CrudCitas<Cita>
             ps.setDouble(6, obj.getCostoCita());
             ps.setString(7, obj.getObservacionesCita());
             
-            if(ps.executeUpdate() > 0)
-                resp = true;
-            ps.close();
+            int filasAfect = ps.executeUpdate();
+            int idCitaGenerada = 0;
+            
+            //Obtener el IDCita
+            rs = ps.getGeneratedKeys();
+            if(rs.next())
+                idCitaGenerada = rs.getInt(1);
+            if(filasAfect == 1)
+            {
+                String sqlDetalles = "INSERT INTO ServiciosSol(idCita, idServicio, costoServicio, descuento)";
+                sqlDetalles += "VALUES(?, ?, ?, ?);";
+                ps = conn.prepareStatement(sqlDetalles);
+                for(SerSolicitado item : obj.getDetalles())
+                {
+                    ps.setInt(1, idCitaGenerada);
+                    ps.setInt(2, item.getIdServicio());
+                    ps.setDouble(3, item.getCostoServicio());
+                    ps.setDouble(4, item.getDescuento());
+                    
+                    if(ps.executeUpdate() > 0)
+                        resp = true;
+                }
+                //Cometer la transacción
+                conn.commit();
+            }
+            else
+            {
+                conn.rollback();
+            }
         }
         catch(SQLException e)
         {
-            JOptionPane.showMessageDialog(null, e.getMessage());
+            try
+            {
+                if(conn != null)
+                    conn.rollback();
+                JOptionPane.showMessageDialog(null, e.getMessage());
+            }
+            catch(SQLException ex)
+            {
+                Logger.getLogger(CitasDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         finally
         {
-            ps = null;
-            CON.desconectar();
+            try
+            {
+                if(rs != null)
+                    rs.close();
+                if(ps != null)
+                    ps.close();
+                if(conn != null)
+                    conn.close();
+            }
+            catch(SQLException ex)
+            {
+                Logger.getLogger(CitasDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         return resp;
     }
