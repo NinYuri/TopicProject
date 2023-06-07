@@ -135,4 +135,15 @@ public class ClientesControl
         else
             return "El cliente no tiene citas";
     }
+    
+    public boolean TenerCitas(int idCliente, String nombre)
+    {
+        if(DATOS.existe(nombre))
+            if(DATOS.tenerCitas(idCliente))
+                return true;
+            else
+                return false;
+        else
+            return false;
+    }
 }

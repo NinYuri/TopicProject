@@ -43,6 +43,10 @@ public class Cita
         this.duracionCita = duracionCita;
         this.observacionesCita = observacionesCita;
     }
+
+    public Cita(String fechaCita) {
+        this.fechaCita = fechaCita;
+    }
     
     public Cita() {
     }

@@ -346,4 +346,60 @@ public class CitasDAO implements CrudCitas<Cita>
         }
         return costo;
     }
+    
+    public List<Cita> fechasCitas(int idCliente)
+    {
+        List<Cita> fechas = new ArrayList();
+        String sql;
+        try
+        {
+            sql = "select fechaCita from Citas where idCliente = ?;";
+            ps = CON.Conectar().prepareStatement(sql);
+            ps.setInt(1, idCliente);
+            rs = ps.executeQuery();
+            while(rs.next())
+                fechas.add(new Cita(rs.getString(1)));
+            ps.close();
+            rs.close();
+        }
+        catch(SQLException e)
+        {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+        finally
+        {
+            ps = null;
+            rs = null;
+            CON.desconectar();
+        }
+        return fechas;
+    }
+    
+    public boolean fechaOcupada(String fecha)
+    {
+        String sql;
+        resp = false;
+        try
+        {
+            sql = "select idCita from Citas where fechaCita = ?;";
+            ps = CON.Conectar().prepareStatement(sql);
+            ps.setString(1, fecha);
+            rs = ps.executeQuery();
+            if(rs.next())
+                resp = true;
+            ps.close();
+            rs.close();
+        }
+        catch(SQLException e)
+        {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+        finally
+        {
+            ps = null;
+            rs = null;
+            CON.desconectar();
+        }
+        return resp;
+    }
 }

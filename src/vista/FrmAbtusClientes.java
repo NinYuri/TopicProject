@@ -31,6 +31,7 @@ public class FrmAbtusClientes extends javax.swing.JFrame
         Icono(new ImageIcon(getClass().getResource("/img/principal/Instagram.png")), lblInstagram);
         Icono(new ImageIcon(getClass().getResource("/img/principal/log.png")), lblLogo);
         Icono(new ImageIcon(getClass().getResource("/img/principal/Map.png")), lblMap);
+        Icono(new ImageIcon(getClass().getResource("/img/iconos/Contacto.png")), lblIconContact);
     }
 
     /**
@@ -42,6 +43,8 @@ public class FrmAbtusClientes extends javax.swing.JFrame
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblIconContact = new javax.swing.JLabel();
+        lblContacto = new javax.swing.JLabel();
         btnSalir = new javax.swing.JLabel();
         lblIconSalir = new javax.swing.JLabel();
         lblSalir = new javax.swing.JLabel();
@@ -71,6 +74,13 @@ public class FrmAbtusClientes extends javax.swing.JFrame
         setMinimumSize(new java.awt.Dimension(2736, 50));
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().add(lblIconContact, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 5, 60, 50));
+
+        lblContacto.setBackground(new java.awt.Color(255, 255, 255));
+        lblContacto.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        lblContacto.setForeground(new java.awt.Color(255, 255, 255));
+        lblContacto.setText("Contacto");
+        getContentPane().add(lblContacto, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 9, 120, 50));
 
         btnSalir.setBackground(new java.awt.Color(204, 204, 255));
         btnSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -332,10 +342,12 @@ public class FrmAbtusClientes extends javax.swing.JFrame
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel lblContacto;
     private javax.swing.JLabel lblFacebook;
     private javax.swing.JLabel lblHorario;
     private javax.swing.JLabel lblHorario1;
     private javax.swing.JLabel lblIcon;
+    private javax.swing.JLabel lblIconContact;
     private javax.swing.JLabel lblIconSalir;
     private javax.swing.JLabel lblInstagram;
     private javax.swing.JLabel lblLogo;

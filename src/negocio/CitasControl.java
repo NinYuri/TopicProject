@@ -77,15 +77,20 @@ public class CitasControl
     
     public String Actualizar(int id, String fecha, String hora, String observaciones)
     {
-        obj.setIdCita(id);
-        obj.setFechaCita(fecha);
-        obj.setHoraCita(hora);
-        obj.setObservacionesCita(observaciones);
-        
-        if(DATOS.actualizar(obj))
-            return "OK";
+        if(DATOS.fechaOcupada(fecha) == false)
+        {
+            obj.setIdCita(id);
+            obj.setFechaCita(fecha);
+            obj.setHoraCita(hora);
+            obj.setObservacionesCita(observaciones);
+            
+            if(DATOS.actualizar(obj))
+                return "OK";
+            else
+                return "Error en la actualización";
+        }
         else
-            return "Error en la actualización";
+           return "Fecha Ocupada";
     }
     
     public int GetId(String fecha, int idCliente, String hora)
@@ -116,5 +121,21 @@ public class CitasControl
         }
         else
             return 0;
+    }
+
+    public DefaultTableModel Fechas(int idCliente)
+    {
+        List<Cita> lista = new ArrayList();
+        lista.addAll(DATOS.fechasCitas(idCliente));
+        String[] titulos = {"Fechas de Citas"};
+        String[] registro = new String[1];
+        modeloTabla = new DefaultTableModel(null, titulos);
+        
+        for(Cita item:lista)
+        {
+            registro[0] = String.valueOf(item.getFechaCita());
+            modeloTabla.addRow(registro);
+        }
+        return modeloTabla;
     }
 }

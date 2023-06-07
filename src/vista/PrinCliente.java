@@ -144,7 +144,7 @@ public class PrinCliente extends javax.swing.JFrame
     }//GEN-LAST:event_btnNosotrosMouseClicked
 
     private void btnCalendarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCalendarioMouseClicked
-        FrmCalendarClientes calendario = new FrmCalendarClientes();
+        FrmCadrClientes calendario = new FrmCadrClientes();
         calendario.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnCalendarioMouseClicked
