@@ -7,19 +7,22 @@ public class SerSolicitado
     private int idServicio;
     private double costoServicio;
     private double descuento;
+    private String imagenServicio;
 
-    public SerSolicitado(int idSSol, int idCita, int idServicio, double costoServicio, double descuento) {
+    public SerSolicitado(int idSSol, int idCita, int idServicio, double costoServicio, double descuento, String imagenServicio) {
         this.idSSol = idSSol;
         this.idCita = idCita;
         this.idServicio = idServicio;
         this.costoServicio = costoServicio;
         this.descuento = descuento;
+        this.imagenServicio = imagenServicio;
     }
 
-    public SerSolicitado(int idServicio, double costoServicio, double descuento) {
+    public SerSolicitado(int idServicio, double costoServicio, double descuento, String imagenServicio) {
         this.idServicio = idServicio;
         this.costoServicio = costoServicio;
         this.descuento = descuento;
+        this.imagenServicio = imagenServicio;
     }
     
     public SerSolicitado() {
@@ -63,6 +66,14 @@ public class SerSolicitado
 
     public void setDescuento(double descuento) {
         this.descuento = descuento;
+    }
+
+    public String getImagenServicio() {
+        return imagenServicio;
+    }
+
+    public void setImagenServicio(String imagenServicio) {
+        this.imagenServicio = imagenServicio;
     }
 
     @Override

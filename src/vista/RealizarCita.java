@@ -2,11 +2,14 @@ package vista;
 
 import java.awt.Graphics;
 import java.awt.Image;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Vector;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javaswingdev.message.MessageDialog;
 import javax.swing.JPanel;
+import negocio.ServiciosControl;
 
 public class RealizarCita extends javax.swing.JFrame 
 {
@@ -28,13 +31,17 @@ public class RealizarCita extends javax.swing.JFrame
     int contador9 = 1;
     int contador10 = 1;
     
+    int cimg1 = -1, cimg2 = -1, cimg3 = -1, cimg4 = -1, cimg5 = -1, cimg6 = -1, cimg7 = -1, cimg8 = -1, cimg9 = -1, cimg10 = -1; 
+    
     Fondo fondo = new Fondo();
     Citas cita = new Citas();
+    private final ServiciosControl CONTROL;
 
     public RealizarCita() 
     {
         setContentPane(fondo);
         initComponents();
+        CONTROL = new ServiciosControl();
         Icono(new ImageIcon(getClass().getResource("/img/iconos/Close.png")), lblClose);
         
         setBounds(200, 80, 980, 800);
@@ -564,6 +571,17 @@ public class RealizarCita extends javax.swing.JFrame
         lblIcon1.setText("Cargar Imagen");
         lblIcon1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(98, 88, 88), 2, true));
         lblIcon1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblIcon1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblIcon1MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                lblIcon1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblIcon1MouseExited(evt);
+            }
+        });
         jPanel1.add(lblIcon1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 150, 150));
 
         lblIcon2.setBackground(new java.awt.Color(255, 204, 255));
@@ -573,6 +591,11 @@ public class RealizarCita extends javax.swing.JFrame
         lblIcon2.setText("Cargar Imagen");
         lblIcon2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(98, 88, 88), 2, true));
         lblIcon2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblIcon2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblIcon2MouseClicked(evt);
+            }
+        });
         jPanel1.add(lblIcon2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 150, 150));
 
         lblIcon3.setBackground(new java.awt.Color(255, 204, 255));
@@ -582,6 +605,11 @@ public class RealizarCita extends javax.swing.JFrame
         lblIcon3.setText("Cargar Imagen");
         lblIcon3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(98, 88, 88), 2, true));
         lblIcon3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblIcon3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblIcon3MouseClicked(evt);
+            }
+        });
         jPanel1.add(lblIcon3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 420, 150, 150));
 
         lblIcon4.setBackground(new java.awt.Color(255, 204, 255));
@@ -591,6 +619,11 @@ public class RealizarCita extends javax.swing.JFrame
         lblIcon4.setText("Cargar Imagen");
         lblIcon4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(98, 88, 88), 2, true));
         lblIcon4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblIcon4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblIcon4MouseClicked(evt);
+            }
+        });
         jPanel1.add(lblIcon4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 610, 150, 150));
 
         lblIcon5.setBackground(new java.awt.Color(255, 204, 255));
@@ -600,6 +633,11 @@ public class RealizarCita extends javax.swing.JFrame
         lblIcon5.setText("Cargar Imagen");
         lblIcon5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(98, 88, 88), 2, true));
         lblIcon5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblIcon5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblIcon5MouseClicked(evt);
+            }
+        });
         jPanel1.add(lblIcon5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 800, 150, 150));
 
         lblIcon6.setBackground(new java.awt.Color(255, 204, 255));
@@ -609,6 +647,11 @@ public class RealizarCita extends javax.swing.JFrame
         lblIcon6.setText("Cargar Imagen");
         lblIcon6.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(98, 88, 88), 2, true));
         lblIcon6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblIcon6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblIcon6MouseClicked(evt);
+            }
+        });
         jPanel1.add(lblIcon6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 990, 150, 150));
 
         lblNombre1.setFont(new java.awt.Font("Consolas", 1, 38)); // NOI18N
@@ -987,6 +1030,11 @@ public class RealizarCita extends javax.swing.JFrame
         lblIcon7.setText("Cargar Imagen");
         lblIcon7.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(98, 88, 88), 2, true));
         lblIcon7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblIcon7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblIcon7MouseClicked(evt);
+            }
+        });
         jPanel1.add(lblIcon7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 1180, 150, 150));
 
         lblNombre7.setFont(new java.awt.Font("Consolas", 1, 38)); // NOI18N
@@ -1057,6 +1105,11 @@ public class RealizarCita extends javax.swing.JFrame
         lblIcon8.setText("Cargar Imagen");
         lblIcon8.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(98, 88, 88), 2, true));
         lblIcon8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblIcon8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblIcon8MouseClicked(evt);
+            }
+        });
         jPanel1.add(lblIcon8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 1370, 150, 150));
 
         lblNombre8.setFont(new java.awt.Font("Consolas", 1, 38)); // NOI18N
@@ -1127,6 +1180,11 @@ public class RealizarCita extends javax.swing.JFrame
         lblIcon9.setText("Cargar Imagen");
         lblIcon9.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(98, 88, 88), 2, true));
         lblIcon9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblIcon9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblIcon9MouseClicked(evt);
+            }
+        });
         jPanel1.add(lblIcon9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 1560, 150, 150));
 
         lblNombre9.setFont(new java.awt.Font("Consolas", 1, 38)); // NOI18N
@@ -1197,6 +1255,11 @@ public class RealizarCita extends javax.swing.JFrame
         lblIcon10.setText("Cargar Imagen");
         lblIcon10.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(98, 88, 88), 2, true));
         lblIcon10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblIcon10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblIcon10MouseClicked(evt);
+            }
+        });
         jPanel1.add(lblIcon10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 1750, 150, 150));
 
         lblNombre10.setFont(new java.awt.Font("Consolas", 1, 38)); // NOI18N
@@ -1523,6 +1586,7 @@ public class RealizarCita extends javax.swing.JFrame
         cita.setDuracionCita(lblDurTotal.getText());
         cita.setNombres(nombres);        
         cita.setMontoCita(costo);
+        cita.setImagenes(guardarImagenes());
         Invisible();
         Limpiar();
         Revisar();
@@ -1871,6 +1935,122 @@ public class RealizarCita extends javax.swing.JFrame
             OptionPane.showMessage("Servicios", "Se tiene que tener seleccionado el servicio por lo menos una vez", "/img/iconos/Close.png");
     }//GEN-LAST:event_btnDown10ActionPerformed
 
+    private void lblIcon1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblIcon1MouseClicked
+        List<String[]> rutas = CONTROL.Imagen(CONTROL.GetId(lblNombre1.getText()), lblNombre1.getText());
+        String[] rutasServicio = rutas.get(0);
+        
+        lblIcon1.setText("");
+        cimg1++;
+        if (cimg1 >= rutasServicio.length) 
+            cimg1 = 0;
+        Dibujar(rutasServicio[cimg1], lblIcon1);
+    }//GEN-LAST:event_lblIcon1MouseClicked
+
+    private void lblIcon1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblIcon1MouseEntered
+    }//GEN-LAST:event_lblIcon1MouseEntered
+
+    private void lblIcon1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblIcon1MouseExited
+    }//GEN-LAST:event_lblIcon1MouseExited
+
+    private void lblIcon2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblIcon2MouseClicked
+        List<String[]> rutas = CONTROL.Imagen(CONTROL.GetId(lblNombre2.getText()), lblNombre2.getText());
+        String[] rutasServicio = rutas.get(0);
+        
+        lblIcon2.setText("");
+        cimg2++;
+        if (cimg2 >= rutasServicio.length) 
+            cimg2 = 0;
+        Dibujar(rutasServicio[cimg2], lblIcon2);
+    }//GEN-LAST:event_lblIcon2MouseClicked
+
+    private void lblIcon3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblIcon3MouseClicked
+        List<String[]> rutas = CONTROL.Imagen(CONTROL.GetId(lblNombre3.getText()), lblNombre3.getText());
+        String[] rutasServicio = rutas.get(0);
+        
+        lblIcon3.setText("");
+        cimg3++;
+        if (cimg3 >= rutasServicio.length) 
+            cimg3 = 0;
+        Dibujar(rutasServicio[cimg3], lblIcon3);
+    }//GEN-LAST:event_lblIcon3MouseClicked
+
+    private void lblIcon4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblIcon4MouseClicked
+        List<String[]> rutas = CONTROL.Imagen(CONTROL.GetId(lblNombre4.getText()), lblNombre4.getText());
+        String[] rutasServicio = rutas.get(0);
+        
+        lblIcon4.setText("");
+        cimg4++;
+        if (cimg4 >= rutasServicio.length) 
+            cimg4 = 0;
+        Dibujar(rutasServicio[cimg4], lblIcon4);
+    }//GEN-LAST:event_lblIcon4MouseClicked
+
+    private void lblIcon5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblIcon5MouseClicked
+        List<String[]> rutas = CONTROL.Imagen(CONTROL.GetId(lblNombre5.getText()), lblNombre5.getText());
+        String[] rutasServicio = rutas.get(0);
+        
+        lblIcon5.setText("");
+        cimg5++;
+        if (cimg5 >= rutasServicio.length) 
+            cimg5 = 0;
+        Dibujar(rutasServicio[cimg5], lblIcon5);
+    }//GEN-LAST:event_lblIcon5MouseClicked
+
+    private void lblIcon6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblIcon6MouseClicked
+        List<String[]> rutas = CONTROL.Imagen(CONTROL.GetId(lblNombre6.getText()), lblNombre6.getText());
+        String[] rutasServicio = rutas.get(0);
+        
+        lblIcon6.setText("");
+        cimg6++;
+        if (cimg6 >= rutasServicio.length) 
+            cimg6 = 0;
+        Dibujar(rutasServicio[cimg6], lblIcon6);
+    }//GEN-LAST:event_lblIcon6MouseClicked
+
+    private void lblIcon7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblIcon7MouseClicked
+        List<String[]> rutas = CONTROL.Imagen(CONTROL.GetId(lblNombre7.getText()), lblNombre7.getText());
+        String[] rutasServicio = rutas.get(0);
+        
+        lblIcon7.setText("");
+        cimg7++;
+        if (cimg7 >= rutasServicio.length) 
+            cimg7 = 0;
+        Dibujar(rutasServicio[cimg7], lblIcon7);
+    }//GEN-LAST:event_lblIcon7MouseClicked
+
+    private void lblIcon8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblIcon8MouseClicked
+        List<String[]> rutas = CONTROL.Imagen(CONTROL.GetId(lblNombre8.getText()), lblNombre8.getText());
+        String[] rutasServicio = rutas.get(0);
+        
+        lblIcon8.setText("");
+        cimg8++;
+        if (cimg8 >= rutasServicio.length) 
+            cimg8 = 0;
+        Dibujar(rutasServicio[cimg8], lblIcon8);
+    }//GEN-LAST:event_lblIcon8MouseClicked
+
+    private void lblIcon9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblIcon9MouseClicked
+        List<String[]> rutas = CONTROL.Imagen(CONTROL.GetId(lblNombre9.getText()), lblNombre9.getText());
+        String[] rutasServicio = rutas.get(0);
+        
+        lblIcon9.setText("");
+        cimg9++;
+        if (cimg9 >= rutasServicio.length) 
+            cimg9 = 0;
+        Dibujar(rutasServicio[cimg9], lblIcon9);
+    }//GEN-LAST:event_lblIcon9MouseClicked
+
+    private void lblIcon10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblIcon10MouseClicked
+        List<String[]> rutas = CONTROL.Imagen(CONTROL.GetId(lblNombre10.getText()), lblNombre10.getText());
+        String[] rutasServicio = rutas.get(0);
+        
+        lblIcon10.setText("");
+        cimg10++;
+        if (cimg10 >= rutasServicio.length) 
+            cimg10 = 0;
+        Dibujar(rutasServicio[cimg10], lblIcon10);
+    }//GEN-LAST:event_lblIcon10MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -1911,6 +2091,113 @@ public class RealizarCita extends javax.swing.JFrame
                 new RealizarCita().setVisible(true);
             }
         });
+    }
+    
+    private List guardarImagenes()
+    {
+        List<String> imagenes = new ArrayList<>();
+        
+        if(lblIcon1.isVisible() == true)
+            if(cimg1 != -1)
+            {
+                List<String[]> rutas1 = CONTROL.Imagen(CONTROL.GetId(lblNombre1.getText()), lblNombre1.getText());
+                String[] rS1 = rutas1.get(0);
+                imagenes.add(rS1[cimg1]);
+            }
+            else
+                imagenes.add(null);        
+        if(lblIcon2.isVisible() == true)
+            if(cimg2 != -1)
+            {
+                List<String[]> rutas2 = CONTROL.Imagen(CONTROL.GetId(lblNombre2.getText()), lblNombre2.getText());
+                String[] rS2 = rutas2.get(0);
+                imagenes.add(rS2[cimg2]);
+            }
+            else
+                imagenes.add(null);        
+        if(lblIcon3.isVisible() == true)
+            if(cimg3 != -1)
+            {
+                List<String[]> rutas3 = CONTROL.Imagen(CONTROL.GetId(lblNombre3.getText()), lblNombre3.getText());
+                String[] rS3 = rutas3.get(0);
+                imagenes.add(rS3[cimg3]);
+            }
+            else
+                imagenes.add(null);        
+        if(lblIcon4.isVisible() == true)
+            if(cimg4 != -1)
+            {
+                List<String[]> rutas4 = CONTROL.Imagen(CONTROL.GetId(lblNombre4.getText()), lblNombre4.getText());
+                String[] rS4 = rutas4.get(0);
+                imagenes.add(rS4[cimg4]);
+            }
+            else
+                imagenes.add(null);        
+        if(lblIcon5.isVisible() == true)
+            if(cimg5 != -1)
+            {
+                List<String[]> rutas5 = CONTROL.Imagen(CONTROL.GetId(lblNombre5.getText()), lblNombre5.getText());
+                String[] rS5 = rutas5.get(0);
+                imagenes.add(rS5[cimg5]);
+            }
+            else
+                imagenes.add(null);        
+        if(lblIcon6.isVisible() == true)
+            if(cimg6 != -1)
+            {
+                List<String[]> rutas6 = CONTROL.Imagen(CONTROL.GetId(lblNombre6.getText()), lblNombre6.getText());
+                String[] rS6 = rutas6.get(0);
+                imagenes.add(rS6[cimg6]);
+            }
+            else
+                imagenes.add(null);
+        if(lblIcon7.isVisible() == true)
+            if(cimg7 != -1)
+            {
+                List<String[]> rutas7 = CONTROL.Imagen(CONTROL.GetId(lblNombre7.getText()), lblNombre7.getText());
+                String[] rS7 = rutas7.get(0);
+                imagenes.add(rS7[cimg7]);
+            }
+            else
+                imagenes.add(null);
+        if(lblIcon8.isVisible() == true)
+            if(cimg8 != -1)
+            {
+                List<String[]> rutas8 = CONTROL.Imagen(CONTROL.GetId(lblNombre8.getText()), lblNombre8.getText());
+                String[] rS8 = rutas8.get(0);
+                imagenes.add(rS8[cimg8]);
+            }
+            else
+                imagenes.add(null);
+        if(lblIcon9.isVisible() == true)
+            if(cimg9 != -1)
+            {
+                List<String[]> rutas9 = CONTROL.Imagen(CONTROL.GetId(lblNombre9.getText()), lblNombre9.getText());
+                String[] rS9 = rutas9.get(0);
+                imagenes.add(rS9[cimg9]);
+            }
+            else
+                imagenes.add(null);
+        if(lblIcon10.isVisible() == true)
+            if(cimg10 != -1)
+            {
+                List<String[]> rutas10 = CONTROL.Imagen(CONTROL.GetId(lblNombre10.getText()), lblNombre10.getText());
+                String[] rS10 = rutas10.get(0);
+                imagenes.add(rS10[cimg10]);
+            }
+            else
+                imagenes.add(null);
+        
+        return imagenes;
+    }
+    
+    private void Dibujar(String ruta, JLabel label)
+    {
+        ImageIcon icono = new ImageIcon(ruta);
+        Image image = icono.getImage();
+        image = image.getScaledInstance(150, 150, Image.SCALE_SMOOTH);
+        icono = new ImageIcon(image);
+        label.setIcon(icono);
     }
     
     public double Porcentaje(String porc)

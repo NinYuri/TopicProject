@@ -103,7 +103,7 @@ public class PrinCliente extends javax.swing.JFrame
                 lblExitMouseClicked(evt);
             }
         });
-        getContentPane().add(lblExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 70, 70));
+        getContentPane().add(lblExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(1260, 10, 70, 70));
 
         lblImagen.setBackground(new java.awt.Color(255, 204, 204));
         getContentPane().add(lblImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, 490, 520));
@@ -114,7 +114,7 @@ public class PrinCliente extends javax.swing.JFrame
                 lblUsuariosMouseClicked(evt);
             }
         });
-        getContentPane().add(lblUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(1260, 10, 70, 70));
+        getContentPane().add(lblUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 70, 70));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

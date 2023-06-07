@@ -7,6 +7,7 @@ import java.awt.Image;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -18,6 +19,7 @@ import javax.swing.JPanel;
 import negocio.CitasControl;
 import negocio.ClientesControl;
 import negocio.EmpleadosControl;
+import negocio.PagosControl;
 import negocio.ServiciosControl;
 
 public class Citas extends javax.swing.JFrame 
@@ -25,10 +27,12 @@ public class Citas extends javax.swing.JFrame
     String imagen;
     String duracionCita;
     double montoCita;
+    String fechasql;
     
     Vector<String> nombres = new Vector<String>();
     Vector<String> costos = new Vector<String>();
     Vector<String> descuentos = new Vector<String>();
+    List<String> imagenes = new ArrayList<>();
     
     List<SerSolicitado> detalles = new ArrayList();
     String sernom[] = new String[11];
@@ -37,7 +41,7 @@ public class Citas extends javax.swing.JFrame
     private final EmpleadosControl CONTROLEMP;
     private final ServiciosControl CONTROLSER;
     private final CitasControl CONTROLCIT;
-    
+    private final PagosControl CONTROLPAG;
     
     Fondo fondo = new Fondo();
 
@@ -49,12 +53,15 @@ public class Citas extends javax.swing.JFrame
         CONTROLEMP = new EmpleadosControl();
         CONTROLSER = new ServiciosControl();
         CONTROLCIT = new CitasControl();
-        Icono(new ImageIcon(getClass().getResource("/img/iconos/Close.png")), lblClose);
+        CONTROLPAG = new PagosControl();
+        Icono(new ImageIcon(getClass().getResource("/img/iconos/Info.png")), lblInfoMetodo);       
         pnlPago.setVisible(false);
         
         setBounds(380, 170, 600, 613);
         imagen = CONTROLEMP.Imagen(lblNombreEmp.getText());
-        Dibujar(imagen);
+        Dibujar(imagen);        
+        lblDate.setPlaceholder("Seleccionar Fecha");
+        lblDatePago.setPlaceholder("Seleccionar Fecha");
     }
     
     private void Invisible()
@@ -73,7 +80,6 @@ public class Citas extends javax.swing.JFrame
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblClose = new javax.swing.JLabel();
         btnFinCita = new javax.swing.JButton();
         txtHora = new javax.swing.JTextField();
         lblDate = new rojeru_san.componentes.RSDateChooser();
@@ -83,19 +89,17 @@ public class Citas extends javax.swing.JFrame
         lblNombreEmp = new javax.swing.JLabel();
         txtObservaciones = new javax.swing.JTextField();
         pnlPago = new javax.swing.JPanel();
+        lblDatePago = new rojeru_san.componentes.RSDateChooser();
+        btnConfPago = new javax.swing.JButton();
+        txtMetodo = new javax.swing.JTextField();
+        lblInfoMetodo = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        lblCosto = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
         setPreferredSize(new java.awt.Dimension(600, 900));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        lblClose.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        lblClose.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblCloseMouseClicked(evt);
-            }
-        });
-        getContentPane().add(lblClose, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 10, 30, 30));
 
         btnFinCita.setBackground(new java.awt.Color(225, 214, 212));
         btnFinCita.setFont(new java.awt.Font("Consolas", 1, 20)); // NOI18N
@@ -202,52 +206,130 @@ public class Citas extends javax.swing.JFrame
         getContentPane().add(txtObservaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 440, 540, 90));
 
         pnlPago.setBackground(new java.awt.Color(255, 255, 255));
+        pnlPago.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblDatePago.setForeground(new java.awt.Color(98, 88, 88));
+        lblDatePago.setColorBackground(new java.awt.Color(225, 214, 212));
+        lblDatePago.setColorButtonHover(new java.awt.Color(98, 88, 88));
+        lblDatePago.setColorForeground(new java.awt.Color(57, 46, 46));
+        lblDatePago.setFont(new java.awt.Font("Consolas", 1, 12)); // NOI18N
+        lblDatePago.setFuente(new java.awt.Font("Consolas", 1, 17)); // NOI18N
+        pnlPago.add(lblDatePago, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 540, 50));
+
+        btnConfPago.setBackground(new java.awt.Color(225, 214, 212));
+        btnConfPago.setFont(new java.awt.Font("Consolas", 1, 20)); // NOI18N
+        btnConfPago.setForeground(new java.awt.Color(98, 88, 88));
+        btnConfPago.setText("Confirmar Pago");
+        btnConfPago.setFocusPainted(false);
+        btnConfPago.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnConfPagoMouseClicked(evt);
+            }
+        });
+        btnConfPago.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConfPagoActionPerformed(evt);
+            }
+        });
+        pnlPago.add(btnConfPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 410, 200, -1));
+
+        txtMetodo.setBackground(new java.awt.Color(255, 255, 255, 110));
+        txtMetodo.setFont(new java.awt.Font("Consolas", 1, 17)); // NOI18N
+        txtMetodo.setForeground(new java.awt.Color(98, 88, 88));
+        txtMetodo.setText("Método de Pago");
+        txtMetodo.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED, new java.awt.Color(225, 214, 212), new java.awt.Color(225, 214, 212), new java.awt.Color(225, 214, 212), new java.awt.Color(225, 214, 212)));
+        txtMetodo.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtMetodoFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtMetodoFocusLost(evt);
+            }
+        });
+        txtMetodo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtMetodoMouseClicked(evt);
+            }
+        });
+        txtMetodo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtMetodoActionPerformed(evt);
+            }
+        });
+        pnlPago.add(txtMetodo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 490, 50));
+
+        lblInfoMetodo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblInfoMetodo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblInfoMetodoMouseClicked(evt);
+            }
+        });
+        pnlPago.add(lblInfoMetodo, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 185, 40, 40));
+
+        jLabel1.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(98, 88, 88));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel1.setText("Monto de Pago:");
+        pnlPago.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 290, 190, 50));
+
+        lblCosto.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
+        lblCosto.setForeground(new java.awt.Color(98, 88, 88));
+        lblCosto.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblCosto.setText("$");
+        pnlPago.add(lblCosto, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 290, 130, 50));
+
         getContentPane().add(pnlPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 580, 470));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void lblCloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCloseMouseClicked
-        setVisible(false);
-    }//GEN-LAST:event_lblCloseMouseClicked
 
     private void btnFinCitaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFinCitaMouseClicked
     }//GEN-LAST:event_btnFinCitaMouseClicked
 
     private void btnFinCitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinCitaActionPerformed
         MessageDialog OptionPane = new MessageDialog(this);
-        String fechasql, obs;
-        String resp, respss = "";
+        Calendar fechaActual = Calendar.getInstance();
+        String obs;
+        String resp;
         
         if(!txtUsuario.getText().isEmpty() && !txtUsuario.getText().equals("Nombre de Usuario"))
             if(CONTROL.Existe(txtUsuario.getText()))
             {
                 Date fecha = lblDate.getDatoFecha();
                 if(fecha != null)
-                    if(!txtHora.getText().isEmpty() && !txtHora.getText().equals("Hora"))
-                        if(validarFormatoHora(txtHora.getText()))
-                        {
-                            fechasql = convertirFecha(String.valueOf(lblDate.getDatoFecha()));
-                            
-                            if(!txtObservaciones.getText().isBlank() && !txtObservaciones.getText().equals("Observaciones"))
-                                obs = txtObservaciones.getText();
-                            else
-                                obs = "";
-                                                        
-                            resp = CONTROLCIT.Insertar(CONTROL.GetId(txtUsuario.getText()), CONTROLEMP.GetId(lblNombreEmp.getText()), fechasql, txtHora.getText(), duracionCita, montoCita, obs, agendarDetalle());
-                            
-                            if(resp.equals("OK"))
+                {
+                    Calendar fechaSeleccionadaCalendar = Calendar.getInstance();
+                    fechaSeleccionadaCalendar.setTime(fecha);
+                    if(fechaSeleccionadaCalendar.after(fechaActual))
+                        if(!txtHora.getText().isEmpty() && !txtHora.getText().equals("Hora"))
+                            if(validarFormatoHora(txtHora.getText()))
                             {
-                                Invisible();
-                                pnlPago.setVisible(true);
+                                fechasql = convertirFecha(String.valueOf(lblDate.getDatoFecha()));
+
+                                if(!txtObservaciones.getText().isBlank() && !txtObservaciones.getText().equals("Observaciones"))
+                                    obs = txtObservaciones.getText();
+                                else
+                                    obs = "";
+
+                                resp = CONTROLCIT.Insertar(CONTROL.GetId(txtUsuario.getText()), CONTROLEMP.GetId(lblNombreEmp.getText()), fechasql, txtHora.getText(), duracionCita, montoCita, obs, agendarDetalle());
+
+                                if(resp.equals("OK"))
+                                {
+                                    Invisible();
+                                    OptionPane.showMessage("Agendar Cita", "Cita agendada con éxito. Por favor ingrese su pago", "/img/iconos/Info.png");
+                                    pnlPago.setVisible(true);
+                                    lblCosto.setText("$" + CONTROLCIT.GetCosto(fechasql, CONTROL.GetId(txtUsuario.getText()), txtHora.getText()));
+                                }
+                                else
+                                    OptionPane.showMessage("Agendar Cita", "Hubo un error en la agenda de la cita", "/img/iconos/Close.png");
                             }
                             else
-                                OptionPane.showMessage("Agendar Cita", "Hubo un error en la agenda de la cita", "/img/iconos/Close.png");
-                        }
+                                OptionPane.showMessage("Agendar Cita", "Error en la estructura de dato 00:00", "/img/iconos/Close.png");
                         else
-                            OptionPane.showMessage("Agendar Cita", "Error en la estructura de dato 00:00", "/img/iconos/Close.png");
+                            OptionPane.showMessage("Agendar Cita", "Debes escribir una Hora", "/img/iconos/Close.png");
                     else
-                        OptionPane.showMessage("Agendar Cita", "Debes escribir una Hora", "/img/iconos/Close.png");
+                        OptionPane.showMessage("Agendar Cita", "No puedes agendar una cita antes del día de hoy", "/img/iconos/Close.png");
+                }
                 else
                     OptionPane.showMessage("Agendar Cita", "Debes escribir una Fecha", "/img/iconos/Close.png");
             }
@@ -321,6 +403,86 @@ public class Citas extends javax.swing.JFrame
         }
     }//GEN-LAST:event_txtObservacionesFocusLost
 
+    private void btnConfPagoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConfPagoMouseClicked
+    }//GEN-LAST:event_btnConfPagoMouseClicked
+
+    private void btnConfPagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfPagoActionPerformed
+        MessageDialog OptionPane = new MessageDialog(this);
+        String estado, resp;
+        Calendar fechaActual = Calendar.getInstance();
+        Date faDate = fechaActual.getTime();
+
+        Date fecha = lblDatePago.getDatoFecha();
+        Date fechaLimiteSuperior = lblDate.getDatoFecha();
+
+        if(fecha != null) 
+        {
+            Calendar fechaSeleccionadaCalendar = Calendar.getInstance();
+            fechaSeleccionadaCalendar.setTime(fecha);
+            if(fechaSeleccionadaCalendar.after(fechaActual))
+                if(fecha.compareTo(fechaLimiteSuperior) <= 0) 
+                    if(!txtMetodo.getText().isEmpty() && !txtMetodo.getText().equals("Método de Pago"))
+                        if(txtMetodo.getText().equals("Transferencia") || txtMetodo.getText().equals("Depósito"))
+                        {
+                            if(fecha.equals(faDate))
+                                estado = "Pagado";
+                            else
+                                estado = "Pendiente";                            
+                            String fechapago = convertirFecha(String.valueOf(lblDatePago.getDatoFecha()));
+                            
+                            resp = CONTROLPAG.Insertar(CONTROL.GetId(txtUsuario.getText()), CONTROLCIT.GetId(fechasql, CONTROL.GetId(txtUsuario.getText()), txtHora.getText()), fechapago, txtMetodo.getText(), CONTROLCIT.GetCosto(fechasql, CONTROL.GetId(txtUsuario.getText()), txtHora.getText()), estado);
+                            
+                            if(resp.equals("OK"))
+                            {
+                                OptionPane.showMessage("Realizar Pago", "Pago registrado exitosamente. Muchas gracias por su preferencia", "/img/iconos/Info.png");
+                                dispose();
+                            }
+                            else
+                                OptionPane.showMessage("Realizar Pago", "Hubo un error en la realización del pago", "/img/iconos/Close.png");                                
+                        }
+                        else
+                            OptionPane.showMessage("Realizar Pago", "Debes ingresar un método válido. Revisa el icono de información", "/img/iconos/Close.png");
+                    else
+                        OptionPane.showMessage("Realizar Pago", "Debes escribir un método de pago", "/img/iconos/Close.png");                        
+                else
+                   OptionPane.showMessage("Realizar Pago", "El pago debe ser antes de la fecha de la cita", "/img/iconos/Close.png");                        
+            else
+                OptionPane.showMessage("Realizar Pago", "No puedes realizar un pago antes del día de hoy", "/img/iconos/Close.png");   
+        }
+        else
+            OptionPane.showMessage("Realizar Pago", "Debes escribir una Fecha", "/img/iconos/Close.png");
+    }//GEN-LAST:event_btnConfPagoActionPerformed
+
+    private void txtMetodoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMetodoFocusGained
+        if(txtMetodo.getText().equals("Método de Pago"))
+        {
+            txtMetodo.setText("");
+            txtMetodo.setForeground(new Color(98,88,88));
+        }
+    }//GEN-LAST:event_txtMetodoFocusGained
+
+    private void txtMetodoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtMetodoFocusLost
+        if(txtMetodo.getText().isEmpty())
+        {
+            txtMetodo.setText("Método de Pago");
+            txtMetodo.setForeground(new Color(98,88,88));
+        }
+    }//GEN-LAST:event_txtMetodoFocusLost
+
+    private void txtMetodoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtMetodoMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtMetodoMouseClicked
+
+    private void txtMetodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMetodoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtMetodoActionPerformed
+
+    private void lblInfoMetodoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblInfoMetodoMouseClicked
+        MessageDialog OptionPane = new MessageDialog(this);
+        
+        OptionPane.showMessage("Métodos de Pago", "Puede tratarse de una transferencia o depósito", "/img/iconos/Info.png");
+    }//GEN-LAST:event_lblInfoMetodoMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -379,7 +541,8 @@ public class Citas extends javax.swing.JFrame
                 int id = CONTROLSER.GetId(sernom[i]);
                 Double costo = CONTROLSER.GetCosto(CONTROLSER.GetId(sernom[i]), sernom[i]);
                 Double descuento = CONTROLSER.GetDescuento(CONTROLSER.GetId(sernom[i]), sernom[i]);
-                detalles.add(new SerSolicitado(id, costo, descuento));
+                String imagen = imagenes.get(i);
+                detalles.add(new SerSolicitado(id, costo, descuento, imagen));
             }
         return detalles;
     }
@@ -416,6 +579,14 @@ public class Citas extends javax.swing.JFrame
 
     public void setDuracionCita(String duracionCita) {
         this.duracionCita = duracionCita;
+    }
+
+    public List<String> getImagenes() {
+        return imagenes;
+    }
+
+    public void setImagenes(List<String> imagenes) {
+        this.imagenes = imagenes;
     }
     
     public String convertirFecha(String fechaCal)
@@ -472,7 +643,7 @@ public class Citas extends javax.swing.JFrame
     public void Icono(ImageIcon icono, JLabel label)
     {
         Image image = icono.getImage();
-        image = image.getScaledInstance(30, 30, Image.SCALE_SMOOTH);
+        image = image.getScaledInstance(label.getWidth(), label.getHeight(), Image.SCALE_SMOOTH);
         icono = new ImageIcon(image);
         label.setIcon(icono);
     }
@@ -487,14 +658,19 @@ public class Citas extends javax.swing.JFrame
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnConfPago;
     private javax.swing.JButton btnFinCita;
-    private javax.swing.JLabel lblClose;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel lblCosto;
     private rojeru_san.componentes.RSDateChooser lblDate;
+    private rojeru_san.componentes.RSDateChooser lblDatePago;
     private javax.swing.JLabel lblEmp;
     private javax.swing.JLabel lblEmpleada;
+    private javax.swing.JLabel lblInfoMetodo;
     private javax.swing.JLabel lblNombreEmp;
     private javax.swing.JPanel pnlPago;
     private javax.swing.JTextField txtHora;
+    private javax.swing.JTextField txtMetodo;
     private javax.swing.JTextField txtObservaciones;
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables

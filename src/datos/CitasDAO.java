@@ -86,8 +86,8 @@ public class CitasDAO implements CrudCitas<Cita>
                 idCitaGenerada = rs.getInt(1);
             if(filasAfect == 1)
             {
-                String sqlDetalles = "INSERT INTO ServiciosSol(idCita, idServicio, costoServicio, descuento)";
-                sqlDetalles += "VALUES(?, ?, ?, ?);";
+                String sqlDetalles = "INSERT INTO ServiciosSol(idCita, idServicio, costoServicio, descuento, imagenServicio)";
+                sqlDetalles += "VALUES(?, ?, ?, ?, ?);";
                 ps = conn.prepareStatement(sqlDetalles);
                 for(SerSolicitado item : obj.getDetalles())
                 {
@@ -95,6 +95,7 @@ public class CitasDAO implements CrudCitas<Cita>
                     ps.setInt(2, item.getIdServicio());
                     ps.setDouble(3, item.getCostoServicio());
                     ps.setDouble(4, item.getDescuento());
+                    ps.setString(5, item.getImagenServicio());
                     
                     if(ps.executeUpdate() > 0)
                         resp = true;
@@ -316,5 +317,33 @@ public class CitasDAO implements CrudCitas<Cita>
             CON.desconectar();
         }
         return registros;
+    }
+    
+    public double costo(int id)
+    {
+        double costo = 0;
+        String sql;
+        try
+        {
+            sql = "select costoCita from Citas where idCita = ?;";
+            ps = CON.Conectar().prepareStatement(sql);
+            ps.setInt(1, id);
+            rs = ps.executeQuery();
+            if(rs.next())
+                costo = rs.getInt(1);
+            ps.close();
+            rs.close();
+        }
+        catch(SQLException e)
+        {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+        finally
+        {
+            ps = null;
+            rs = null;
+            CON.desconectar();
+        }
+        return costo;
     }
 }

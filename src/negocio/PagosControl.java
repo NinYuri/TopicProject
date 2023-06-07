@@ -2,8 +2,6 @@ package negocio;
 
 import datos.PagosDAO;
 import entidades.Pago;
-import java.util.ArrayList;
-import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
 public class PagosControl 

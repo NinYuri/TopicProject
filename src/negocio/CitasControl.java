@@ -106,4 +106,15 @@ public class CitasControl
         else
             return false;      
     }
+    
+    public double GetCosto(String fecha, int idCliente, String hora)
+    {
+        if(DATOS.existe(fecha, idCliente, hora))
+        {
+            int id = DATOS.id(fecha, idCliente, hora);
+            return DATOS.costo(id);
+        }
+        else
+            return 0;
+    }
 }

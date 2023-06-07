@@ -1,16 +1,13 @@
 package datos;
 
 import database.Conexion;
-import datos.interfaces.CrudPagos;
 import entidades.Pago;
-import java.util.List;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
-public class PagosDAO implements CrudPagos<Pago>
+public class PagosDAO
 {
     private final Conexion CON;
     private PreparedStatement ps;
@@ -22,12 +19,6 @@ public class PagosDAO implements CrudPagos<Pago>
         CON = Conexion.getInstancia();
     }
 
-    @Override
-    public List<Pago> listar(String texto) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
     public boolean insertar(Pago obj) 
     {
         String sql;
@@ -61,12 +52,6 @@ public class PagosDAO implements CrudPagos<Pago>
         return resp;
     }
 
-    @Override
-    public boolean borrar(Pago obj) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
     public boolean existe(int idCita) 
     {
         String sql;
@@ -93,10 +78,5 @@ public class PagosDAO implements CrudPagos<Pago>
             CON.desconectar();
         }
         return resp;
-    }
-
-    @Override
-    public boolean actualizar(Pago obj) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }
