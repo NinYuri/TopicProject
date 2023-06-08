@@ -294,4 +294,59 @@ public class EmpleadosDAO implements CrudEmpleados<Empleada>
         }
         return id;
     }
+    
+    public boolean tenerCitasActivas(int idEmpleada, String estado)
+    {
+        resp = false;
+        String sql;
+        try
+        {
+            sql = "select * from Citas where idEmpleada = ? and estadoCita = ?;";
+            ps = CON.Conectar().prepareStatement(sql);
+            ps.setInt(1, idEmpleada);
+            ps.setString(2, estado);
+            rs = ps.executeQuery();
+            if(rs.next())
+                resp = true;
+            ps.close();
+        }
+        catch(SQLException e)
+        {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+        finally
+        {
+            ps = null;
+            rs = null;
+            CON.desconectar();
+        }
+        return resp;
+    }
+    
+    public List<Empleada> listaremp(String texto) 
+    {
+        List<Empleada> registros = new ArrayList();
+        String sql;
+        try
+        {
+            sql = "select * from Empleadas;";
+            ps = CON.Conectar().prepareStatement(sql);
+            rs = ps.executeQuery();
+            while(rs.next())
+                registros.add(new Empleada(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getDouble(7), rs.getString(8)));
+            ps.close();
+            rs.close();
+        }
+        catch(SQLException e)
+        {
+            JOptionPane.showMessageDialog(null, e.getMessage());            
+        }
+        finally
+        {
+            ps = null;
+            rs = null;
+            CON.desconectar();
+        }
+        return registros;
+    }
 }

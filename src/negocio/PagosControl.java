@@ -35,4 +35,12 @@ public class PagosControl
                 return "Error en la inserción del pago";
         }
     }
+    
+    public boolean Estado(int idCliente, int idCita, String estado)
+    {
+        if(DATOS.existe(idCita))
+            return DATOS.cambiarEstado(idCliente, idCita, estado);
+        else
+            return false;
+    }
 }

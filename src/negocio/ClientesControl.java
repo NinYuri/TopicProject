@@ -136,10 +136,10 @@ public class ClientesControl
             return "El cliente no tiene citas";
     }
     
-    public boolean TenerCitas(int idCliente, String nombre)
+    public boolean TenerCitas(int idCliente, String nombre, String estado)
     {
         if(DATOS.existe(nombre))
-            if(DATOS.tenerCitas(idCliente))
+            if(DATOS.tenerCitasActivas(idCliente, estado))
                 return true;
             else
                 return false;

@@ -35,6 +35,22 @@ public class CitasControl
         return registro;
     }
     
+    public String[] DatosEmpleada(int idEmpleada, String fecha)
+    {
+        List<Cita> lista = new ArrayList();
+        lista.addAll(DATOS.datosemp(idEmpleada, fecha));
+        String[] registro = new String[5];
+        
+        for(Cita item:lista)
+        {
+            registro[0] = String.valueOf(item.getIdCita());
+            registro[1] = item.getHoraCita();
+            registro[2] = item.getDuracionCita();
+            registro[3] = item.getObservacionesCita();
+        }
+        return registro;
+    }
+    
     public DefaultTableModel Listar(int id)
     {
         List<Cita> lista = new ArrayList();
@@ -58,31 +74,38 @@ public class CitasControl
         return modeloTabla;
     }
     
-    public String Insertar(int idCliente, int idEmpleada, String fechaCita, String horaCita, String duracionCita, double costoCita, String observacionesCita, List<SerSolicitado> detalles)
+    public String Insertar(int idCliente, int idEmpleada, String fechaCita, String horaCita, String duracionCita, double costoCita, String observacionesCita, String estadoCita, List<SerSolicitado> detalles)
     {
-        obj.setIdCliente(idCliente);
-        obj.setIdEmpleada(idEmpleada);
-        obj.setFechaCita(fechaCita);
-        obj.setHoraCita(horaCita);
-        obj.setDuracionCita(duracionCita);
-        obj.setCostoCita(costoCita);
-        obj.setObservacionesCita(observacionesCita);
-        obj.setDetalles(detalles);
-        
-        if(DATOS.insertar(obj))
-            return "OK";
+        if(DATOS.fechaOcupada(fechaCita) == false)
+        {
+            obj.setIdCliente(idCliente);
+            obj.setIdEmpleada(idEmpleada);
+            obj.setFechaCita(fechaCita);
+            obj.setHoraCita(horaCita);
+            obj.setDuracionCita(duracionCita);
+            obj.setCostoCita(costoCita);
+            obj.setObservacionesCita(observacionesCita);
+            obj.setEstadoCita(estadoCita);
+            obj.setDetalles(detalles);
+
+            if(DATOS.insertar(obj))
+                return "OK";
+            else
+                return "Error en la agenda de la cita";
+        }
         else
-            return "Error en la agenda de la cita";
+            return "Fecha Ocupada";
     }
     
-    public String Actualizar(int id, String fecha, String hora, String observaciones)
+    public String Actualizar(int id, String fecha, String fechaAnterior, String hora, String observaciones, String estado)
     {
-        if(DATOS.fechaOcupada(fecha) == false)
+        if(fecha.equals(fechaAnterior))
         {
             obj.setIdCita(id);
             obj.setFechaCita(fecha);
             obj.setHoraCita(hora);
             obj.setObservacionesCita(observaciones);
+            obj.setEstadoCita(estado);
             
             if(DATOS.actualizar(obj))
                 return "OK";
@@ -90,7 +113,21 @@ public class CitasControl
                 return "Error en la actualización";
         }
         else
-           return "Fecha Ocupada";
+            if(DATOS.fechaOcupada(fecha) == false)
+            {
+                obj.setIdCita(id);
+                obj.setFechaCita(fecha);
+                obj.setHoraCita(hora);
+                obj.setObservacionesCita(observaciones);
+                obj.setEstadoCita(estado);
+
+                if(DATOS.actualizar(obj))
+                    return "OK";
+                else
+                    return "Error en la actualización";
+            }
+            else
+               return "Fecha Ocupada";
     }
     
     public int GetId(String fecha, int idCliente, String hora)
@@ -101,15 +138,15 @@ public class CitasControl
             return 0;
     }
     
-    public boolean Borrar(int id)
+    public boolean Borrar(String estado, int id)
     {
         if(DATOS.existeId(id))
         {
-            DATOS.borrar(id);
+            DATOS.borrar(estado, id);
             return true;
         }
         else
-            return false;      
+            return false;
     }
     
     public double GetCosto(String fecha, int idCliente, String hora)
@@ -123,11 +160,27 @@ public class CitasControl
             return 0;
     }
 
-    public DefaultTableModel Fechas(int idCliente)
+    public DefaultTableModel Fechas(int idCliente, String estado)
     {
         List<Cita> lista = new ArrayList();
-        lista.addAll(DATOS.fechasCitas(idCliente));
+        lista.addAll(DATOS.fechasCitas(idCliente, estado));
         String[] titulos = {"Fechas de Citas"};
+        String[] registro = new String[1];
+        modeloTabla = new DefaultTableModel(null, titulos);
+        
+        for(Cita item:lista)
+        {
+            registro[0] = String.valueOf(item.getFechaCita());
+            modeloTabla.addRow(registro);
+        }
+        return modeloTabla;
+    }
+    
+    public DefaultTableModel FechasTrabajo(int idEmpleada, String estado)
+    {
+        List<Cita> lista = new ArrayList();
+        lista.addAll(DATOS.fechasTrabajo(idEmpleada, estado));
+        String[] titulos = {"Fechas Agendadas"};
         String[] registro = new String[1];
         modeloTabla = new DefaultTableModel(null, titulos);
         

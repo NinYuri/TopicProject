@@ -55,6 +55,11 @@ public class PrinEmpleada extends javax.swing.JFrame
         btnCalendario.setRoundTopRight(5);
         btnCalendario.setRuta(new java.io.File("C:\\Users\\Developer\\OneDrive\\Documentos\\University\\Archivos\\PDF's\\Tópicos\\Proyecto_img\\Agenda.png"));
         btnCalendario.setText("AGENDA");
+        btnCalendario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnCalendarioMouseClicked(evt);
+            }
+        });
         getContentPane().add(btnCalendario, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 440, 210, 220));
 
         lblExit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -63,7 +68,7 @@ public class PrinEmpleada extends javax.swing.JFrame
                 lblExitMouseClicked(evt);
             }
         });
-        getContentPane().add(lblExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 70, 70));
+        getContentPane().add(lblExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(1260, 10, 70, 70));
 
         lblImagen.setBackground(new java.awt.Color(255, 204, 204));
         getContentPane().add(lblImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, 490, 520));
@@ -74,7 +79,7 @@ public class PrinEmpleada extends javax.swing.JFrame
                 lblUsuariosMouseClicked(evt);
             }
         });
-        getContentPane().add(lblUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(1260, 10, 70, 70));
+        getContentPane().add(lblUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 70, 70));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -90,6 +95,12 @@ public class PrinEmpleada extends javax.swing.JFrame
         emp.setVisible(true);
         dispose();
     }//GEN-LAST:event_lblUsuariosMouseClicked
+
+    private void btnCalendarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCalendarioMouseClicked
+        FrmCadrEmpleada calendario = new FrmCadrEmpleada();
+        calendario.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnCalendarioMouseClicked
 
     /**
      * @param args the command line arguments

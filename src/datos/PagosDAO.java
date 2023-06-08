@@ -79,4 +79,33 @@ public class PagosDAO
         }
         return resp;
     }
+    
+    public boolean cambiarEstado(int idCliente, int idCita, String estado) 
+    {
+        String sql;
+        resp = false;
+        try
+        {
+            sql = "update Pagos set estadoPago = ? where idCliente = ? and idCita = ?;";
+            ps = CON.Conectar().prepareStatement(sql);
+            ps.setString(1, estado);
+            ps.setInt(2, idCliente);
+            ps.setInt(3, idCita);
+            if(ps.executeUpdate() > 0)
+                resp = true;
+            ps.close();
+//            rs.close();
+        }
+        catch(SQLException e)
+        {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+        finally
+        {
+            ps = null;
+            rs = null;
+            CON.desconectar();
+        }
+        return resp;
+    }
 }

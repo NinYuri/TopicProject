@@ -4,16 +4,39 @@ import datos.EmpleadosDAO;
 import entidades.Empleada;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.table.DefaultTableModel;
 
 public class EmpleadosControl 
 {
     private final EmpleadosDAO DATOS;
     private Empleada obj;
+    private DefaultTableModel modeloTabla;
     
     public EmpleadosControl()
     {
         DATOS = new EmpleadosDAO();
         obj = new Empleada();
+    }
+    
+    public DefaultTableModel Listar(String texto)
+    {
+        List<Empleada> lista = new ArrayList();
+        lista.addAll(DATOS.listaremp(texto));
+        String[] titulos = {"ID", "Nombre", "Dirección", "Teléfono", "Horario", "Sueldo"};
+        String[] registro = new String[6];
+        modeloTabla = new DefaultTableModel(null, titulos);
+        
+        for(Empleada item:lista)
+        {
+            registro[0] = String.valueOf(item.getIdEmpleada());
+            registro[1] = item.getNombreEmpleada();
+            registro[2] = item.getDireccionEmpleada();
+            registro[3] = item.getTelefonoEmpleada();
+            registro[4] = item.getHorarioEmpleada();
+            registro[5] = "$" + String.valueOf(item.getSueldoEmpleada());
+            modeloTabla.addRow(registro);
+        }
+        return modeloTabla;
     }
     
     public String[] Datos(String texto)
@@ -162,5 +185,15 @@ public class EmpleadosControl
         else
             return 0;
     }
-
+    
+    public boolean TenerCitas(int idEmpleada, String nombre, String estado)
+    {
+        if(DATOS.existe(nombre))
+            if(DATOS.tenerCitasActivas(idEmpleada, estado))
+                return true;
+            else
+                return false;
+        else
+            return false;
+    }
 }

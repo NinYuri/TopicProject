@@ -244,10 +244,35 @@ public class ClientesDAO implements CrudClientes<Cliente>
             ps.setInt(1, idCliente);
             //rs = ps.executeQuery();
             if(ps.executeUpdate() > 0)
-            {
-                System.out.print("borrar" + rs);
                 resp = true;
-            }
+            ps.close();
+        }
+        catch(SQLException e)
+        {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+        finally
+        {
+            ps = null;
+            rs = null;
+            CON.desconectar();
+        }
+        return resp;
+    }
+    
+    public boolean tenerCitasActivas(int idCliente, String estado)
+    {
+        resp = false;
+        String sql;
+        try
+        {
+            sql = "select * from Citas where idCliente = ? and estadoCita = ?;";
+            ps = CON.Conectar().prepareStatement(sql);
+            ps.setInt(1, idCliente);
+            ps.setString(2, estado);
+            rs = ps.executeQuery();
+            if(rs.next())
+                resp = true;
             ps.close();
         }
         catch(SQLException e)
@@ -269,7 +294,7 @@ public class ClientesDAO implements CrudClientes<Cliente>
         String sql;
         try
         {
-            sql = "select * from Citas where idCliente = ?;";
+            sql = "select * from Citas where idCliente = ?";
             ps = CON.Conectar().prepareStatement(sql);
             ps.setInt(1, idCliente);
             rs = ps.executeQuery();

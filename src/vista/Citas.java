@@ -311,7 +311,7 @@ public class Citas extends javax.swing.JFrame
                                 else
                                     obs = "";
 
-                                resp = CONTROLCIT.Insertar(CONTROL.GetId(txtUsuario.getText()), CONTROLEMP.GetId(lblNombreEmp.getText()), fechasql, txtHora.getText(), duracionCita, montoCita, obs, agendarDetalle());
+                                resp = CONTROLCIT.Insertar(CONTROL.GetId(txtUsuario.getText()), CONTROLEMP.GetId(lblNombreEmp.getText()), fechasql, txtHora.getText(), duracionCita, montoCita, obs, "Agendada",agendarDetalle());
 
                                 if(resp.equals("OK"))
                                 {
@@ -321,7 +321,13 @@ public class Citas extends javax.swing.JFrame
                                     lblCosto.setText("$" + CONTROLCIT.GetCosto(fechasql, CONTROL.GetId(txtUsuario.getText()), txtHora.getText()));
                                 }
                                 else
-                                    OptionPane.showMessage("Agendar Cita", "Hubo un error en la agenda de la cita", "/img/iconos/Close.png");
+                                    if(resp.equals("Fecha Ocupada"))
+                                        OptionPane.showMessage("Modificar Cita", "Esa fecha ya se encuentra reservada", "/img/iconos/Close.png");
+                                    else
+                                    {
+                                        OptionPane.showMessage("Agendar Cita", "Hubo un error en la agenda de la cita", "/img/iconos/Close.png");
+                                        dispose();
+                                    }
                             }
                             else
                                 OptionPane.showMessage("Agendar Cita", "Error en la estructura de dato 00:00", "/img/iconos/Close.png");

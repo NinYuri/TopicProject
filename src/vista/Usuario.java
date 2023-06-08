@@ -439,7 +439,6 @@ public class Usuario extends javax.swing.JFrame
     MessageDialog OptionPane = new MessageDialog(this);
     String resp;
     
-    //if(txtTelefono.isVisible() == true && txtGenero.isVisible() == true && txtEdad.isVisible() == true)
         if(CONTROL.Existe(txtNombre.getText()) == true)
         {
             if(!String.valueOf(pssContrasena.getPassword()).isEmpty() && !String.valueOf(pssContrasena.getPassword()).equals("Contraseña"))

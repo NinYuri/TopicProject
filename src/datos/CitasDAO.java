@@ -65,8 +65,8 @@ public class CitasDAO implements CrudCitas<Cita>
         {
             conn = CON.Conectar();
             conn.setAutoCommit(false);
-            sql = "INSERT INTO Citas(idCliente, idEmpleada, fechaCita, horaCita, duracionCita, costoCita, observacionesCita)";
-            sql = sql + "VALUES(?, ?, ?, ?, ?, ?, ?);";
+            sql = "INSERT INTO Citas(idCliente, idEmpleada, fechaCita, horaCita, duracionCita, costoCita, observacionesCita, estadoCita)";
+            sql = sql + "VALUES(?, ?, ?, ?, ?, ?, ?, ?);";
             
             ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, obj.getIdCliente());
@@ -76,6 +76,7 @@ public class CitasDAO implements CrudCitas<Cita>
             ps.setString(5, obj.getDuracionCita());
             ps.setDouble(6, obj.getCostoCita());
             ps.setString(7, obj.getObservacionesCita());
+            ps.setString(8, obj.getEstadoCita());
             
             int filasAfect = ps.executeUpdate();
             int idCitaGenerada = 0;
@@ -148,14 +149,15 @@ public class CitasDAO implements CrudCitas<Cita>
         try
         {
             sql = "update Citas \n" +
-        "set fechaCita = ?, horaCita = ?, observacionesCita = ? \n" +
+        "set fechaCita = ?, horaCita = ?, observacionesCita = ?, estadoCita = ? \n" +
         "where idCita = ?;";
             ps = CON.Conectar().prepareStatement(sql);
             
             ps.setString(1, obj.getFechaCita());
             ps.setString(2, obj.getHoraCita());
             ps.setString(3, obj.getObservacionesCita());
-            ps.setInt(4, obj.getIdCita());
+            ps.setString(4, obj.getEstadoCita());
+            ps.setInt(5, obj.getIdCita());
             
             if(ps.executeUpdate() > 0)
                 resp = true;
@@ -174,15 +176,16 @@ public class CitasDAO implements CrudCitas<Cita>
     }
 
     @Override
-    public boolean borrar(int id) 
+    public boolean borrar(String estado, int id) 
     {
         String sql;
         resp = false;
         try
         {
-            sql = "delete from Citas where idCita = ?;";
+            sql = "update Citas set estadoCita = ? where idCita = ?;";
             ps = CON.Conectar().prepareStatement(sql);
-            ps.setInt(1, id);
+            ps.setString(1, estado);
+            ps.setInt(2, id);
             if(ps.executeUpdate() > 0)
                 resp = true;
             ps.close();
@@ -319,6 +322,37 @@ public class CitasDAO implements CrudCitas<Cita>
         return registros;
     }
     
+    @Override
+    public List<Cita> datosemp(int idEmpleada, String fecha)
+    {
+        List<Cita> registros = new ArrayList();
+        String sql;
+        try
+        {
+            sql = "select idCita, horaCita, duracionCita, observacionesCita from Citas \n" +
+               "where idEmpleada = ? and fechaCita = ?;";
+            ps = CON.Conectar().prepareStatement(sql);
+            ps.setInt(1, idEmpleada);
+            ps.setString(2, fecha);
+            rs = ps.executeQuery();
+            while(rs.next())
+                registros.add(new Cita(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4)));
+            ps.close();
+            rs.close();
+        }
+        catch(SQLException e)
+        {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+        finally
+        {
+            ps = null;
+            rs = null;
+            CON.desconectar();
+        }
+        return registros;
+    }
+    
     public double costo(int id)
     {
         double costo = 0;
@@ -347,15 +381,16 @@ public class CitasDAO implements CrudCitas<Cita>
         return costo;
     }
     
-    public List<Cita> fechasCitas(int idCliente)
+    public List<Cita> fechasCitas(int idCliente, String estadoCita)
     {
         List<Cita> fechas = new ArrayList();
         String sql;
         try
         {
-            sql = "select fechaCita from Citas where idCliente = ?;";
+            sql = "select fechaCita from Citas where idCliente = ? and estadoCita = ?;";
             ps = CON.Conectar().prepareStatement(sql);
             ps.setInt(1, idCliente);
+            ps.setString(2, estadoCita);
             rs = ps.executeQuery();
             while(rs.next())
                 fechas.add(new Cita(rs.getString(1)));
@@ -401,5 +436,34 @@ public class CitasDAO implements CrudCitas<Cita>
             CON.desconectar();
         }
         return resp;
+    }
+    
+    public List<Cita> fechasTrabajo(int idEmpleada, String estadoCita)
+    {
+        List<Cita> fechas = new ArrayList();
+        String sql;
+        try
+        {
+            sql = "select fechaCita from Citas where idEmpleada = ? and estadoCita = ?;";
+            ps = CON.Conectar().prepareStatement(sql);
+            ps.setInt(1, idEmpleada);
+            ps.setString(2, estadoCita);
+            rs = ps.executeQuery();
+            while(rs.next())
+                fechas.add(new Cita(rs.getString(1)));
+            ps.close();
+            rs.close();
+        }
+        catch(SQLException e)
+        {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+        finally
+        {
+            ps = null;
+            rs = null;
+            CON.desconectar();
+        }
+        return fechas;
     }
 }

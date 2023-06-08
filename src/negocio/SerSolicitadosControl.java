@@ -2,6 +2,8 @@ package negocio;
 
 import datos.SerSolicitadosDAO;
 import entidades.SerSolicitado;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SerSolicitadosControl 
 {
@@ -14,16 +16,16 @@ public class SerSolicitadosControl
         obj = new SerSolicitado();
     }
     
-    public String Insertar(int idCita, int idServicio, double costoServicio)
+    public List<SerSolicitado> ListarNombser(int idCita)
     {
-        obj.setIdCita(idCita);
-        obj.setIdServicio(idServicio);
-        obj.setCostoServicio(costoServicio);
+        List<SerSolicitado> lista = new ArrayList();
+        lista.addAll(DATOS.listar(idCita));
+        List<SerSolicitado> servicios = new ArrayList();
         
-        if(DATOS.insertar(obj))
-            return "OK";
-        else
-            return "Error en la agenda de los servicios de la cita";
+        for(SerSolicitado item:lista)
+        {
+            servicios.add(new SerSolicitado(item.getNombreServicio(), item.getImagenServicio()));
+        }
+        return servicios;
     }
-    
 }

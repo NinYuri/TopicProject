@@ -12,9 +12,10 @@ public class Cita
     private String duracionCita;
     private double costoCita;
     private String observacionesCita;
+    private String estadoCita;
     private List<SerSolicitado> detalles;
 
-    public Cita(int idCita, int idCliente, int idEmpleada, String fechaCita, String horaCita, String duracionCita, double costoCita, String observacionesCita, List<SerSolicitado> detalles) {
+    public Cita(int idCita, int idCliente, int idEmpleada, String fechaCita, String horaCita, String duracionCita, double costoCita, String observacionesCita, String estadoCita, List<SerSolicitado> detalles) {
         this.idCita = idCita;
         this.idCliente = idCliente;
         this.idEmpleada = idEmpleada;
@@ -23,6 +24,7 @@ public class Cita
         this.duracionCita = duracionCita;
         this.costoCita = costoCita;
         this.observacionesCita = observacionesCita;
+        this.estadoCita = estadoCita;
         this.detalles = detalles;
     }
 
@@ -122,7 +124,15 @@ public class Cita
     public void setDetalles(List<SerSolicitado> detalles) {
         this.detalles = detalles;
     }
-    
+
+    public String getEstadoCita() {
+        return estadoCita;
+    }
+
+    public void setEstadoCita(String estadoCita) {
+        this.estadoCita = estadoCita;
+    }
+       
     @Override
     public String toString() {
         return "Cita{" + "idCita=" + idCita + ", idCliente=" + idCliente + ", idEmpleada=" + idEmpleada + ", fechaCita=" + fechaCita + ", horaCita=" + horaCita + ", duracionCita=" + duracionCita + ", costoCita=" + costoCita + ", observacionesCita=" + observacionesCita + ", detalles=" + detalles + '}';

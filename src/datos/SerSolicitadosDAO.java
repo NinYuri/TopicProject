@@ -5,6 +5,8 @@ import entidades.SerSolicitado;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 public class SerSolicitadosDAO 
@@ -19,24 +21,20 @@ public class SerSolicitadosDAO
         CON = Conexion.getInstancia();
     }
     
-    public boolean insertar(SerSolicitado obj)
+    public List<SerSolicitado> listar(int idCita)
     {
+        List<SerSolicitado> registros = new ArrayList();
         String sql;
-        resp = false;
         try
         {
-            sql = "insert into ServiciosSol(idCita, idServicio, costoServicio, descuento)\n" +
-                "values(?, ?, ?, ?);";
+            sql = "select S.nombreServicio, SS.imagenServicio from ServiciosSol SS inner join Servicios S on S.idServicio = SS.idServicio where SS.idCita = ?;";
             ps = CON.Conectar().prepareStatement(sql);
-            
-            ps.setInt(1, obj.getIdCita());
-            ps.setInt(2, obj.getIdServicio());
-            ps.setDouble(3, obj.getCostoServicio());
-            ps.setDouble(4, obj.getDescuento());
-            
-            if(ps.executeUpdate() > 0)
-                resp = true;
+            ps.setInt(1, idCita);
+            rs = ps.executeQuery(); 
+            while(rs.next())
+                registros.add(new SerSolicitado(rs.getString(1), rs.getString(2)));
             ps.close();
+            rs.close();
         }
         catch(SQLException e)
         {
@@ -45,8 +43,9 @@ public class SerSolicitadosDAO
         finally
         {
             ps = null;
+            rs= null;
             CON.desconectar();
         }
-        return resp;
+        return registros;
     }
 }

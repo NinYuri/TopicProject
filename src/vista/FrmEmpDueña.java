@@ -4,29 +4,27 @@ import comp.Carrusel;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
-import java.util.List;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javaswingdev.message.MessageDialog;
-import negocio.ServiciosControl;
+import negocio.EmpleadosControl;
 
-public class FrmSerDueña extends javax.swing.JFrame 
+public class FrmEmpDueña extends javax.swing.JFrame 
 {
     Fondo fondo = new Fondo();
-    private final ServiciosControl CONTROL;
+    private final EmpleadosControl CONTROL;
     String nombreAnt;
     
-    public FrmSerDueña() 
+    public FrmEmpDueña() 
     {
         setContentPane(fondo);
         initComponents();
-        CONTROL = new ServiciosControl();
+        CONTROL = new EmpleadosControl();
         Listar("");
         btnOcultar.setVisible(false);
-        Carrusel.setVisible(false);
         lblNombre.setVisible(false);
         pnlFondo.setVisible(false);
         
@@ -58,7 +56,6 @@ public class FrmSerDueña extends javax.swing.JFrame
         lblSalir = new javax.swing.JLabel();
         lblIconSalir = new javax.swing.JLabel();
         lblIconAct = new javax.swing.JLabel();
-        Carrusel = new comp.Carrusel();
         tab = new javax.swing.JScrollPane();
         tblSerPrincipal = new rojeru_san.complementos.RSTableMetro();
         btnDetalles = new javax.swing.JLabel();
@@ -113,7 +110,6 @@ public class FrmSerDueña extends javax.swing.JFrame
             }
         });
         getContentPane().add(lblIconAct, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 450, 70, 60));
-        getContentPane().add(Carrusel, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 280, -1, -1));
 
         tblSerPrincipal.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -143,7 +139,7 @@ public class FrmSerDueña extends javax.swing.JFrame
         tblSerPrincipal.setSelectionBackground(new java.awt.Color(255, 255, 255));
         tab.setViewportView(tblSerPrincipal);
 
-        getContentPane().add(tab, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 160, 970, 660));
+        getContentPane().add(tab, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 350, 970, 180));
 
         btnDetalles.setBackground(new java.awt.Color(204, 204, 255));
         btnDetalles.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -301,7 +297,7 @@ public class FrmSerDueña extends javax.swing.JFrame
             String servicio = String.valueOf(tblSerPrincipal.getValueAt(tblSerPrincipal.getSelectedRow(), 1));
             if(JOptionPane.showConfirmDialog(this, "¿Desea eliminar el servicio " + servicio + "?", "Eliminar",JOptionPane.YES_NO_OPTION) == 0)
             {
-                String resp = CONTROL.Borrar(servicio);
+                /*String resp = CONTROL.Borrar(servicio);
                 if(resp.equals("OK"))
                 {
                     OptionPane.showMessage("Eliminar", "Servicio eliminado", "/img/iconos/Info.png");
@@ -309,7 +305,7 @@ public class FrmSerDueña extends javax.swing.JFrame
                 }
                 else
                     OptionPane.showMessage("Eliminar", "Error al eliminar el servicio", "/img/iconos/Close.png");
-            }
+            */}
         }
         else
             OptionPane.showMessage("Eliminar", "Debes seleccionar un servicio para eliminar", "/img/iconos/Close.png");
@@ -375,8 +371,6 @@ public class FrmSerDueña extends javax.swing.JFrame
             
             tab.setVisible(false);
             pnlFondo.setVisible(true);
-            Carrusel.setVisible(true);
-            Carrusel(nombre, Carrusel);
             btnOcultar.setVisible(true);
             lblNombre.setVisible(true);
             lblNombre.setText(nombre);
@@ -400,7 +394,6 @@ public class FrmSerDueña extends javax.swing.JFrame
     private void btnOcultarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnOcultarMouseClicked
         tab.setVisible(true);
         pnlFondo.setVisible(false);
-        Carrusel.setVisible(false);
         btnOcultar.setVisible(false);
         lblNombre.setVisible(false);
     }//GEN-LAST:event_btnOcultarMouseClicked
@@ -430,14 +423,18 @@ public class FrmSerDueña extends javax.swing.JFrame
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmSerDueña.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmEmpDueña.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmSerDueña.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmEmpDueña.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmSerDueña.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmEmpDueña.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmSerDueña.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmEmpDueña.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -446,23 +443,9 @@ public class FrmSerDueña extends javax.swing.JFrame
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmSerDueña().setVisible(true);
+                new FrmEmpDueña().setVisible(true);
             }
         });
-    }
-    
-    public void Carrusel(String texto, Carrusel car)
-    {
-        List<String[]> rutas = CONTROL.Imagen(CONTROL.GetId(texto), texto);
-        String[] rutasServicio = rutas.get(0);
-        car.setRuta1(rutasServicio[0]);
-        car.setRuta2(rutasServicio[1]);
-        car.setRuta3(rutasServicio[2]);
-        car.setRuta4(rutasServicio[3]);
-        car.setRuta5(rutasServicio[4]);
-        car.setRuta6(rutasServicio[5]);
-        car.setRuta7(rutasServicio[6]);
-        car.setRuta8(rutasServicio[7]);
     }
     
     public void Icono(ImageIcon icono, JLabel label)
@@ -487,7 +470,6 @@ public class FrmSerDueña extends javax.swing.JFrame
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private comp.Carrusel Carrusel;
     private javax.swing.JLabel btnDetalles;
     private javax.swing.JLabel btnEditar;
     private javax.swing.JLabel btnEliminar;
