@@ -672,7 +672,7 @@ public class Nuevo extends javax.swing.JFrame
                                                 }
                                                 resp = CONTROL.Insertar(txtNombreS.getText(), txtDuracion.getText(), Double.parseDouble(txtCosto.getText()), Integer.parseInt(txtDescuento.getText()), txtTipo.getText(), txtRuta1.getText(), txtRuta2.getText(), txtRuta3.getText(), txtRuta4.getText(), txtRuta5.getText(), txtRuta6.getText(), txtRuta7.getText(), txtRuta8.getText());
                                                 
-                                                if ( resp.equals("OK"))
+                                                if (resp.equals("OK"))
                                                     OptionPane.showMessage("Nuevo Servicio", "Registro exitoso", "/img/iconos/Info.png");
                                                 else
                                                     OptionPane.showMessage("Nuevo Servicio", "Hubo un error en el registro", "/img/iconos/Info.png");

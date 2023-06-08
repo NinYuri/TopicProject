@@ -1,6 +1,7 @@
 package negocio;
 
 import datos.CitasDAO;
+import datos.ClientesDAO;
 import entidades.Cita;
 import entidades.SerSolicitado;
 import java.util.ArrayList;
@@ -10,12 +11,14 @@ import javax.swing.table.DefaultTableModel;
 public class CitasControl 
 {
     private final CitasDAO DATOS;
+    private final ClientesDAO DATOSC;
     private Cita obj;
     private DefaultTableModel modeloTabla;
     
     public CitasControl()
     {
         DATOS = new CitasDAO();
+        DATOSC = new ClientesDAO();
         obj = new Cita();
     }
     
@@ -51,18 +54,18 @@ public class CitasControl
         return registro;
     }
     
-    public DefaultTableModel Listar(int id)
+    public DefaultTableModel Listar(int idEmpleada, String estado)
     {
         List<Cita> lista = new ArrayList();
-        lista.addAll(DATOS.listar(id));
-        String[] titulos = {"ID", "Cliente", "Empleada", "Fecha", "Hora", "Duración", "Costo", "Detalles"};
+        lista.addAll(DATOS.listar(idEmpleada, estado));
+        String[] titulos = {"ID", "Cliente", "Empleada", "Fecha", "Hora", "Duración", "Costo", "Notas"};
         String[] registro = new String[8];
         modeloTabla = new DefaultTableModel(null, titulos);
         
         for(Cita item:lista)
         {
             registro[0] = String.valueOf(item.getIdCita());
-            registro[1] = String.valueOf(item.getIdCliente());
+            registro[1] = DATOSC.nombre(item.getIdCliente());
             registro[2] = String.valueOf(item.getIdEmpleada());
             registro[3] = item.getFechaCita();
             registro[4] = item.getHoraCita();

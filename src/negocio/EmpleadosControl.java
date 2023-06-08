@@ -196,4 +196,15 @@ public class EmpleadosControl
         else
             return false;
     }
+    
+    public String Borrar(String nombre)
+    {
+        if(DATOS.existe(nombre))
+            if(DATOS.despedir(nombre))
+                return "OK";
+            else
+                return "Hubo un error en el despido";
+        else
+            return "El empleado no existe";
+    }
 }

@@ -8,31 +8,37 @@ import javax.swing.JFileChooser;
 import javaswingdev.message.MessageDialog;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-import libreriaproyecto.Contrasena;
 import libreriaproyecto.Registrarse;
 import negocio.EmpleadosControl;
 
-public class NuevoEmp extends javax.swing.JFrame 
+public class EditarEmp extends javax.swing.JFrame 
 {
+    private int id;
+    private String nombreAnterior;
+    
     private final EmpleadosControl CONTROL;
     
-    public NuevoEmp() 
+    public EditarEmp() 
     {
         initComponents();
         CONTROL = new EmpleadosControl();
         
         setLocation(360, 100);
-        Icono(new ImageIcon(getClass().getResource("/img/iconos/blindC.png")), lblSee);
-        Icono(new ImageIcon(getClass().getResource("/img/iconos/seeC.png")), lblBlind);    
-        lblSee.setVisible(false);
+    }
+    
+    public void Variables(int id, String nombre, String nombreAnterior, String horario, String sueldo, String imagen)
+    {
+        this.id = id;
+        txtNombre.setText(nombre);
+        this.nombreAnterior = nombreAnterior;
+        txtHorario.setText(horario);
+        txtSueldo.setText(sueldo);
+        txtImagen.setText(imagen);
     }
     
     private void Limpiar()
     {
         txtNombre.setText("");
-        txtPassword.setText("");
-        txtDireccion.setText("");
-        txtTelefono.setText("");
         txtHorario.setText("");
         txtSueldo.setText("");
         txtImagen.setText("");
@@ -41,9 +47,6 @@ public class NuevoEmp extends javax.swing.JFrame
     private void Llenar()
     {
         txtNombre.setText("Nombre");
-        txtPassword.setText("Contraseña");
-        txtDireccion.setText("Dirección");
-        txtTelefono.setText("Teléfono");
         txtHorario.setText("Horario");
         txtSueldo.setText("Sueldo");
         txtImagen.setText("Imagen");
@@ -63,15 +66,10 @@ public class NuevoEmp extends javax.swing.JFrame
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        lblSee = new javax.swing.JLabel();
-        lblBlind = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
-        txtDireccion = new javax.swing.JTextField();
-        txtTelefono = new javax.swing.JTextField();
         txtImagen = new javax.swing.JTextField();
         txtHorario = new javax.swing.JTextField();
         txtSueldo = new javax.swing.JTextField();
-        txtPassword = new javax.swing.JPasswordField();
         btnCancelar = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         btnInsertar = new javax.swing.JButton();
@@ -95,31 +93,13 @@ public class NuevoEmp extends javax.swing.JFrame
         jLabel2.setFont(new java.awt.Font("Consolas", 1, 48)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(98, 88, 88));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Añadir Nuevo Empleado(a)");
+        jLabel2.setText("Editar Empleado(a)");
         jLabel2.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 920, 110));
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setOpaque(true);
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 920, 120));
-
-        lblSee.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/blind.png"))); // NOI18N
-        lblSee.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        lblSee.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblSeeMouseClicked(evt);
-            }
-        });
-        jPanel1.add(lblSee, new org.netbeans.lib.awtextra.AbsoluteConstraints(685, 245, -1, 35));
-
-        lblBlind.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/see.png"))); // NOI18N
-        lblBlind.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        lblBlind.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblBlindMouseClicked(evt);
-            }
-        });
-        jPanel1.add(lblBlind, new org.netbeans.lib.awtextra.AbsoluteConstraints(685, 250, -1, -1));
 
         txtNombre.setBackground(new java.awt.Color(255, 255, 255, 180));
         txtNombre.setFont(new java.awt.Font("Consolas", 1, 19)); // NOI18N
@@ -144,57 +124,7 @@ public class NuevoEmp extends javax.swing.JFrame
                 txtNombreActionPerformed(evt);
             }
         });
-        jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 170, 540, 45));
-
-        txtDireccion.setBackground(new java.awt.Color(255, 255, 255, 180));
-        txtDireccion.setFont(new java.awt.Font("Consolas", 1, 19)); // NOI18N
-        txtDireccion.setForeground(new java.awt.Color(98, 88, 88));
-        txtDireccion.setText("Dirección");
-        txtDireccion.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        txtDireccion.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtDireccionFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtDireccionFocusLost(evt);
-            }
-        });
-        txtDireccion.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtDireccionMouseClicked(evt);
-            }
-        });
-        txtDireccion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDireccionActionPerformed(evt);
-            }
-        });
-        jPanel1.add(txtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 310, 540, 45));
-
-        txtTelefono.setBackground(new java.awt.Color(255, 255, 255, 180));
-        txtTelefono.setFont(new java.awt.Font("Consolas", 1, 19)); // NOI18N
-        txtTelefono.setForeground(new java.awt.Color(98, 88, 88));
-        txtTelefono.setText("Teléfono");
-        txtTelefono.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        txtTelefono.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtTelefonoFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtTelefonoFocusLost(evt);
-            }
-        });
-        txtTelefono.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtTelefonoMouseClicked(evt);
-            }
-        });
-        txtTelefono.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTelefonoActionPerformed(evt);
-            }
-        });
-        jPanel1.add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 380, 540, 45));
+        jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 240, 540, 45));
 
         txtImagen.setBackground(new java.awt.Color(255, 255, 255, 180));
         txtImagen.setFont(new java.awt.Font("Consolas", 1, 19)); // NOI18N
@@ -219,7 +149,7 @@ public class NuevoEmp extends javax.swing.JFrame
                 txtImagenActionPerformed(evt);
             }
         });
-        jPanel1.add(txtImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 520, 540, 45));
+        jPanel1.add(txtImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 420, 540, 45));
 
         txtHorario.setBackground(new java.awt.Color(255, 255, 255, 180));
         txtHorario.setFont(new java.awt.Font("Consolas", 1, 19)); // NOI18N
@@ -244,7 +174,7 @@ public class NuevoEmp extends javax.swing.JFrame
                 txtHorarioActionPerformed(evt);
             }
         });
-        jPanel1.add(txtHorario, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 450, 270, 45));
+        jPanel1.add(txtHorario, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 330, 270, 45));
 
         txtSueldo.setBackground(new java.awt.Color(255, 255, 255, 180));
         txtSueldo.setFont(new java.awt.Font("Consolas", 1, 19)); // NOI18N
@@ -269,22 +199,7 @@ public class NuevoEmp extends javax.swing.JFrame
                 txtSueldoActionPerformed(evt);
             }
         });
-        jPanel1.add(txtSueldo, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 450, 240, 45));
-
-        txtPassword.setBackground(new java.awt.Color(255, 255, 255, 180));
-        txtPassword.setFont(new java.awt.Font("Consolas", 1, 19)); // NOI18N
-        txtPassword.setForeground(new java.awt.Color(98, 88, 88));
-        txtPassword.setText("Contraseña");
-        txtPassword.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        txtPassword.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtPasswordFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtPasswordFocusLost(evt);
-            }
-        });
-        jPanel1.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 240, 540, 45));
+        jPanel1.add(txtSueldo, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 330, 240, 45));
 
         btnCancelar.setBackground(new java.awt.Color(225, 214, 212));
         btnCancelar.setFont(new java.awt.Font("Consolas", 1, 20)); // NOI18N
@@ -296,7 +211,7 @@ public class NuevoEmp extends javax.swing.JFrame
                 btnCancelarMouseClicked(evt);
             }
         });
-        jPanel1.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 600, 190, -1));
+        jPanel1.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 570, 190, -1));
 
         jLabel5.setBackground(new java.awt.Color(255, 255, 255));
         jLabel5.setOpaque(true);
@@ -312,7 +227,7 @@ public class NuevoEmp extends javax.swing.JFrame
                 btnInsertarMouseClicked(evt);
             }
         });
-        jPanel1.add(btnInsertar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 600, 190, -1));
+        jPanel1.add(btnInsertar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 570, 190, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 670));
 
@@ -342,54 +257,6 @@ public class NuevoEmp extends javax.swing.JFrame
     private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNombreActionPerformed
-
-    private void txtDireccionFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDireccionFocusGained
-        if(txtDireccion.getText().equals("Dirección"))
-        {
-            txtDireccion.setText("");
-            txtDireccion.setForeground(new Color(98,88,88));
-        }
-    }//GEN-LAST:event_txtDireccionFocusGained
-
-    private void txtDireccionFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtDireccionFocusLost
-        if(txtDireccion.getText().isEmpty())
-        {
-            txtDireccion.setText("Dirección");
-            txtDireccion.setForeground(new Color(98,88,88));
-        }
-    }//GEN-LAST:event_txtDireccionFocusLost
-
-    private void txtDireccionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtDireccionMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtDireccionMouseClicked
-
-    private void txtDireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDireccionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtDireccionActionPerformed
-
-    private void txtTelefonoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTelefonoFocusGained
-        if(txtTelefono.getText().equals("Teléfono"))
-        {
-            txtTelefono.setText("");
-            txtTelefono.setForeground(new Color(98,88,88));
-        }
-    }//GEN-LAST:event_txtTelefonoFocusGained
-
-    private void txtTelefonoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTelefonoFocusLost
-        if(txtTelefono.getText().isEmpty())
-        {
-            txtTelefono.setText("Teléfono");
-            txtTelefono.setForeground(new Color(98,88,88));
-        }
-    }//GEN-LAST:event_txtTelefonoFocusLost
-
-    private void txtTelefonoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtTelefonoMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtTelefonoMouseClicked
-
-    private void txtTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelefonoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtTelefonoActionPerformed
 
     private void txtImagenFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtImagenFocusGained
         if(txtImagen.getText().equals("Imagen"))
@@ -473,98 +340,45 @@ public class NuevoEmp extends javax.swing.JFrame
 
     private void btnInsertarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInsertarMouseClicked
         MessageDialog OptionPane = new MessageDialog(this);   
-        Contrasena contrasena = new Contrasena(String.valueOf(txtPassword.getPassword()));        
         Registrarse obr = new Registrarse();
         String resp;
         
         if(!txtNombre.getText().isEmpty() && !txtNombre.getText().equals("Nombre"))
-            if(CONTROL.Existe(txtNombre.getText()) == true)
-            {
-                OptionPane.showMessage("Nuevo Empleada(o)", "El empleado ya se encuentra registrado", "/img/iconos/Close.png");
-                txtNombre.setText("");
-            }
-            else
-                if(!String.valueOf(txtPassword.getPassword()).isEmpty() && !String.valueOf(txtPassword.getPassword()).equals("Contraseña"))
-                    if(contrasena.ValidarContrasena() == true)
-                        if(!txtDireccion.getText().isEmpty() && !txtDireccion.getText().equals("Dirección"))
-                            if(!txtTelefono.getText().isEmpty() && !txtTelefono.getText().equals("Teléfono"))
-                                if(obr.valTelefono(txtTelefono.getText().trim()) == false)
-                                {
-                                    OptionPane.showMessage("Nuevo Empleada(o)", obr.Mensaje(), "/img/iconos/Close.png");
-                                    txtTelefono.setText("");
-                                }
-                                else
-                                    if(!txtHorario.getText().isEmpty() && !txtHorario.getText().equals("Horario")) 
-                                        if(obr.valHorario(txtHorario.getText()) == false)
-                                        {
-                                            OptionPane.showMessage("Nuevo Empleada(o)", "El horario no cumple con la estructura establecida 00-00", "/img/iconos/Close.png");
-                                            txtHorario.setText("");
-                                        }
-                                        else
-                                            if(!txtSueldo.getText().isEmpty() && !txtSueldo.getText().equals("Sueldo"))
-                                                if(obr.valSueldo(txtSueldo.getText()) == false)
-                                                {
-                                                    OptionPane.showMessage("Nuevo Empleada(o)", obr.Mensaje(), "/img/iconos/Close.png");
-                                                    txtSueldo.setText("");
-                                                }
-                                                else
-                                                    if(!txtImagen.getText().isEmpty() && !txtImagen.getText().equals("Imagen"))
-                                                    {
-                                                        resp = CONTROL.Insertar(txtNombre.getText(), String.valueOf(txtPassword.getPassword()), txtDireccion.getText(), txtTelefono.getText(), txtHorario.getText(), Double.parseDouble(txtSueldo.getText()), txtImagen.getText());
-                                                        
-                                                        if(resp.equals("OK"))
-                                                        {
-                                                            OptionPane.showMessage("Nuevo Empleada(o)", "Inserción de Empleada(o) exitoso", "/img/iconos/Info.png");
-                                                            Llenar();
-                                                        }
-                                                        else
-                                                            OptionPane.showMessage("Nuevo Empleada(o)", "Hubo un error en la inserción del nuevo empleado", "/img/iconos/Close.png");
-                                                    }                                                     
-                                                    else
-                                                        OptionPane.showMessage("Nuevo Empleada(o)", "Debes elegir una fotografía para el nuevo empleado", "/img/iconos/Close.png");                                                        
-                                            else
-                                                OptionPane.showMessage("Nuevo Empleada(o)", "Debes definir un Sueldo para el nuevo empleado", "/img/iconos/Close.png");                                                
-                                    else
-                                        OptionPane.showMessage("Nuevo Empleada(o)", "Debes definir un Horario para el nuevo empleado", "/img/iconos/Close.png");                                       
-                            else
-                                OptionPane.showMessage("Nuevo Empleada(o)", "Debes escribir un Teléfono", "/img/iconos/Close.png");                                
-                        else
-                            OptionPane.showMessage("Nuevo Empleada(o)", "Debes escribir una Dirección", "/img/iconos/Close.png");                            
+                if(!txtHorario.getText().isEmpty() && !txtHorario.getText().equals("Horario")) 
+                    if(obr.valHorario(txtHorario.getText()) == false)
+                    {
+                        OptionPane.showMessage("Editar Empleada(o)", "El horario no cumple con la estructura establecida 00-00", "/img/iconos/Close.png");
+                        txtHorario.setText("");
+                    }
                     else
-                        OptionPane.showMessage("Nuevo Empleada(o)", contrasena.Error(), "/img/iconos/Close.png");
+                        if(!txtSueldo.getText().isEmpty() && !txtSueldo.getText().equals("Sueldo"))
+                            if(obr.valSueldo(txtSueldo.getText()) == false)
+                            {
+                                OptionPane.showMessage("Editar Empleada(o)", obr.Mensaje(), "/img/iconos/Close.png");
+                                txtSueldo.setText("");
+                            }
+                            else
+                                if(!txtImagen.getText().isEmpty() && !txtImagen.getText().equals("Imagen"))
+                                {
+                                    resp = CONTROL.ActualizarD(txtNombre.getText(), nombreAnterior, txtHorario.getText(), Double.parseDouble(txtSueldo.getText()), txtImagen.getText());                                                        
+                                    
+                                    if(resp.equals("OK"))
+                                    {
+                                        OptionPane.showMessage("Editar Empleada(o)", "Inserción de Empleada(o) exitoso", "/img/iconos/Info.png");
+                                        Llenar();
+                                    }
+                                    else
+                                        OptionPane.showMessage("Editar Empleada(o)", "Hubo un error en la inserción del nuevo empleado", "/img/iconos/Close.png");
+                                }                                                     
+                                else
+                                    OptionPane.showMessage("Editar Empleada(o)", "Debes elegir una fotografía para el nuevo empleado", "/img/iconos/Close.png");                                                        
+                        else
+                            OptionPane.showMessage("Editar Empleada(o)", "Debes definir un Sueldo para el nuevo empleado", "/img/iconos/Close.png");                                                
                 else
-                    OptionPane.showMessage("Nuevo Empleada(o)", "Debes escribir una Contraseña", "/img/iconos/Close.png");                                    
+                    OptionPane.showMessage("Editar Empleada(o)", "Debes definir un Horario para el nuevo empleado", "/img/iconos/Close.png");                                       
         else
-            OptionPane.showMessage("Nuevo Empleada(o)", "Debes escribir un Nombre", "/img/iconos/Close.png");            
+            OptionPane.showMessage("Editar Empleada(o)", "Debes escribir un Nombre", "/img/iconos/Close.png");            
     }//GEN-LAST:event_btnInsertarMouseClicked
-
-    private void txtPasswordFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPasswordFocusGained
-        if(String.valueOf(txtPassword.getPassword()).equals("Contraseña"))
-        {
-            txtPassword.setText("");
-            txtPassword.setForeground(new Color(98,88,88));
-        }
-    }//GEN-LAST:event_txtPasswordFocusGained
-
-    private void txtPasswordFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPasswordFocusLost
-        if(String.valueOf(txtPassword.getPassword()).equals(""))
-        {
-            txtPassword.setText("Contraseña");
-            txtPassword.setForeground(new Color(98,88,88));
-        }
-    }//GEN-LAST:event_txtPasswordFocusLost
-
-    private void lblSeeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSeeMouseClicked
-        lblBlind.setVisible(true);
-        lblSee.setVisible(false);
-        txtPassword.setEchoChar('*');
-    }//GEN-LAST:event_lblSeeMouseClicked
-
-    private void lblBlindMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBlindMouseClicked
-        lblBlind.setVisible(false);
-        lblSee.setVisible(true);
-        txtPassword.setEchoChar((char)0);
-    }//GEN-LAST:event_lblBlindMouseClicked
 
     /**
      * @param args the command line arguments
@@ -583,21 +397,23 @@ public class NuevoEmp extends javax.swing.JFrame
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(NuevoEmp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditarEmp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(NuevoEmp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditarEmp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(NuevoEmp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditarEmp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(NuevoEmp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditarEmp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new NuevoEmp().setVisible(true);
+                new EditarEmp().setVisible(true);
             }
         });
     }
@@ -629,14 +445,9 @@ public class NuevoEmp extends javax.swing.JFrame
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel lblBlind;
-    private javax.swing.JLabel lblSee;
-    private javax.swing.JTextField txtDireccion;
     private javax.swing.JTextField txtHorario;
     private javax.swing.JTextField txtImagen;
     private javax.swing.JTextField txtNombre;
-    private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtSueldo;
-    private javax.swing.JTextField txtTelefono;
     // End of variables declaration//GEN-END:variables
 }

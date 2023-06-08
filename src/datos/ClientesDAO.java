@@ -233,6 +233,33 @@ public class ClientesDAO implements CrudClientes<Cliente>
         return id;
     }
     
+    public String nombre(int id)
+    {
+        String nombre = "";
+        String sql;
+        try
+        {
+            sql = "select nombreCliente from Clientes where idCliente = ?;";
+            ps = CON.Conectar().prepareStatement(sql);
+            ps.setInt(1, id);
+            rs = ps.executeQuery();
+            if(rs.next())
+                nombre = rs.getString(1);
+            ps.close();
+        }
+        catch(SQLException e)
+        {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+        finally
+        {
+            ps = null;
+            rs = null;
+            CON.desconectar();
+        }
+        return nombre;
+    }
+    
     public boolean borrarCitas(int idCliente)
     {
         resp = false;

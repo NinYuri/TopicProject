@@ -56,6 +56,11 @@ public class PrinDueña extends javax.swing.JFrame
         btnCalendario.setRoundTopRight(5);
         btnCalendario.setRuta(new java.io.File("C:\\Users\\Developer\\OneDrive\\Documentos\\University\\Archivos\\PDF's\\Tópicos\\Proyecto_img\\Clientes.png"));
         btnCalendario.setText("EMPLEADOS");
+        btnCalendario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnCalendarioMouseClicked(evt);
+            }
+        });
         getContentPane().add(btnCalendario, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 440, 210, 220));
 
         btnServicios.setBackground(new java.awt.Color(211, 199, 196));
@@ -108,6 +113,12 @@ public class PrinDueña extends javax.swing.JFrame
         ser.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnServiciosMouseClicked
+
+    private void btnCalendarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCalendarioMouseClicked
+        FrmEmpDueña ser = new FrmEmpDueña();
+        ser.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnCalendarioMouseClicked
 
     /**
      * @param args the command line arguments

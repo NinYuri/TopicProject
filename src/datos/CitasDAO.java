@@ -28,17 +28,19 @@ public class CitasDAO implements CrudCitas<Cita>
     }
 
     @Override
-    public List<Cita> listar(int id) 
+    public List<Cita> listar(int idEmpleada, String estadoCita)
     {
-        List<Cita> registros = new ArrayList();
+        List<Cita> citas = new ArrayList();
         String sql;
         try
         {
-            sql = "select * from Citas where idCita = ?;";
+            sql = "select idCita, idCliente, idEmpleada, fechaCita, horaCita, duracionCita, costoCita, observacionesCita from Citas where idEmpleada = ? and estadoCita = ?;";
             ps = CON.Conectar().prepareStatement(sql);
+            ps.setInt(1, idEmpleada);
+            ps.setString(2, estadoCita);
             rs = ps.executeQuery();
             while(rs.next())
-                registros.add(new Cita(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getDouble(7), rs.getString(8)));
+                citas.add(new Cita(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getDouble(7), rs.getString(8)));
             ps.close();
             rs.close();
         }
@@ -52,7 +54,7 @@ public class CitasDAO implements CrudCitas<Cita>
             rs = null;
             CON.desconectar();
         }
-        return registros;
+        return citas;
     }
 
     @Override
