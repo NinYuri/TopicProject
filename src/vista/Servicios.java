@@ -243,6 +243,9 @@ public class Servicios extends javax.swing.JFrame
                 cita.setCostos(costos);
                 cita.Contador();
                 cita.Datos(nombre, duracion, tipo, costo);
+                Carrusel.setVisible(false);
+                btnGaleria.setVisible(true);
+                btnCerrarG.setVisible(false);
 
                 cita.setVisible(true);
                 setVisible(false);

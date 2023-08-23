@@ -426,7 +426,7 @@ public class Citas extends javax.swing.JFrame
             Calendar fechaSeleccionadaCalendar = Calendar.getInstance();
             fechaSeleccionadaCalendar.setTime(fecha);
             if(fechaSeleccionadaCalendar.after(fechaActual))
-                if(fecha.compareTo(fechaLimiteSuperior) <= 0) 
+                if(fecha.compareTo(fechaLimiteSuperior) < 0) 
                     if(!txtMetodo.getText().isEmpty() && !txtMetodo.getText().equals("Método de Pago"))
                         if(txtMetodo.getText().equals("Transferencia") || txtMetodo.getText().equals("Depósito"))
                         {

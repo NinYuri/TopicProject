@@ -29,7 +29,6 @@ public class PrinDueña extends javax.swing.JFrame
         jLabel2 = new javax.swing.JLabel();
         btnCalendario = new comp.Opcion();
         btnServicios = new comp.Opcion();
-        btnNosotros = new comp.Opcion();
         lblExit = new javax.swing.JLabel();
         lblImagen = new javax.swing.JLabel();
 
@@ -61,7 +60,7 @@ public class PrinDueña extends javax.swing.JFrame
                 btnCalendarioMouseClicked(evt);
             }
         });
-        getContentPane().add(btnCalendario, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 440, 210, 220));
+        getContentPane().add(btnCalendario, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 440, 210, 220));
 
         btnServicios.setBackground(new java.awt.Color(211, 199, 196));
         btnServicios.setColor(new java.awt.Color(98, 88, 88));
@@ -76,17 +75,7 @@ public class PrinDueña extends javax.swing.JFrame
                 btnServiciosMouseClicked(evt);
             }
         });
-        getContentPane().add(btnServicios, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 440, 210, 220));
-
-        btnNosotros.setBackground(new java.awt.Color(227, 227, 227));
-        btnNosotros.setColor(new java.awt.Color(191, 166, 161));
-        btnNosotros.setRoundBottomLeft(5);
-        btnNosotros.setRoundBottomRight(5);
-        btnNosotros.setRoundTopLeft(5);
-        btnNosotros.setRoundTopRight(5);
-        btnNosotros.setRuta(new java.io.File("C:\\Users\\Developer\\OneDrive\\Documentos\\University\\Archivos\\PDF's\\Tópicos\\Proyecto_img\\Finanzas.png"));
-        btnNosotros.setText("FINANZAS");
-        getContentPane().add(btnNosotros, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 440, 210, 220));
+        getContentPane().add(btnServicios, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 440, 210, 220));
 
         lblExit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblExit.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -185,7 +174,6 @@ public class PrinDueña extends javax.swing.JFrame
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private comp.Opcion btnCalendario;
-    private comp.Opcion btnNosotros;
     private comp.Opcion btnServicios;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
